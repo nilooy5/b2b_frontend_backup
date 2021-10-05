@@ -1,0 +1,22 @@
+<div class="main-content-container">
+    <div class="main-content-block">
+        <div class="main-tab-block" *ngIf="form">
+            <div class="main-tab">
+                <ul class="main-tab-list">
+                    <li class="main-tab-item"><a routerLinkActive="active"
+                                                 [routerLink]="['.','general']"><span>General</span></a>
+                    </li>
+                    <li class="main-tab-item"><a routerLinkActive="active"
+                                                 [routerLink]="['.','items']"><span>Items</span>
+                        <span class="badge badge-secondary badge-pill">{{form.items.length}}</span></a></li>
+                    <li class="main-tab-item"><a routerLinkActive="active"
+                                                 [routerLink]="['.','running-inspections']"><span>Running
+                        Inspection</span> <span class="badge badge-secondary badge-pill">{{form.inspections.length}}</span></a></li>
+                </ul>
+            </div>
+            <div class="main-tab-content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

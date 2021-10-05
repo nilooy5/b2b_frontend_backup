@@ -1,0 +1,125 @@
+.table thead th {
+  vertical-align: middle;
+  padding: 10px;
+}
+
+td.mat-cell {
+  padding: 10px !important;
+}
+
+td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+  padding-left: 10px!important;
+}
+
+td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+  padding-right: 10px!important;
+}
+
+.table-striped tbody tr:nth-of-type(odd){
+  background-color: darken(white,4%)!important;
+}
+
+@import "../../src/scss/variables";
+
+.theme-table {
+  margin-top: 30px;
+  width: 100%;
+  th, td {
+    border: none;
+    font-size: .875rem;
+    font-weight: 400;
+    vertical-align: middle;
+    &:first-child {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+    &:last-child {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+  thead {
+    border: none;
+    tr {
+      background-color: $theme-grey;
+      color: $white;
+    }
+  }
+  tbody {
+    tr {
+      background-color: $white;
+      cursor: pointer;
+      td, th {
+        color: rgba(0, 0, 0, 0.6);
+        i {
+          color: $theme-color;
+        }
+      }
+    }
+  }
+  .tgap {
+    width: 100%; height: 5px
+  }
+}
+
+.main-table {
+
+  &-block {
+    padding: 20px 0 30px;
+  }
+
+  &-theme {
+    background-color: transparent;
+    border-spacing: 0 5px !important;
+    border-collapse: separate;
+    width: 100%;
+
+    thead tr th.mat-header-cell,
+    tbody tr td.mat-cell {
+      font-size: 14px;
+
+      &:first-of-type {
+        padding: 15px 0 15px 20px !important;
+        border-radius: 5px 0 0 5px;
+      }
+
+      &:last-of-type {
+        padding: 15px 20px 15px 0 !important;
+        border-radius: 0 5px 5px 0;
+      }
+
+      &.mat-column-select {
+        width: 50px;
+
+        .mat-checkbox-layout {
+          margin-bottom: 3px;
+
+          & .mat-checkbox-frame {
+            border-color: #b3b3b3;
+            border-width: 1.3px;
+            background-color: #fff;
+          }
+        }
+      }
+    }
+
+    thead {
+      background-color: #303778;
+    }
+
+    thead tr th.mat-header-cell {
+      font-weight: 600;
+      color: #fff;
+    }
+
+    tbody tr td.mat-cell {
+      color: rgba(0, 0, 0, 0.6);
+      border: none;
+      padding: 0 !important;
+      background-color: #fff;
+      cursor: pointer;
+    }
+  }
+
+}
+

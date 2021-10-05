@@ -1,0 +1,28 @@
+@import "../../../../../../src/scss/variables";
+@import "../../../../../../src/scss/journey";
+@import "../../../../../../src/scss/animations";
+@import "../../../../../../src/scss/colors";
+
+.time-slot {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: $primary-green;
+  cursor: pointer;
+  text-align: center;
+  p {
+    margin: 0;
+  }
+  span {
+    text-transform: lowercase;
+    color: rgba(0, 0, 0, 0.5) !important;
+  }
+  &.selected {
+    background-color: $primary-green-light;
+    border: 1px solid $primary-green;
+    span {
+      color: $primary-green !important;
+    }
+  }
+}

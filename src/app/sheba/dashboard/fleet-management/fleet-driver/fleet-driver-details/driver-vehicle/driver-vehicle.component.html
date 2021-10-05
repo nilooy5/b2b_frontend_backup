@@ -1,0 +1,12 @@
+<div style="padding: 16px">
+    <h5>Vehicle</h5>
+    <div class="vehicle-card d-flex align-items-center">
+        <img [src]="info.vehicle_image||'https://i.ibb.co/VqhqtZ8/image.png'"
+             (error)="info.vehicle_image='https://i.ibb.co/VqhqtZ8/image.png'" alt="">
+        <div class="vehicle-info">
+            <p style="font-weight: 500;">{{info.vehicle_license_number}}</p>
+            <p style="color: rgba(0,0,0,0.4)">{{info.vehicle_model_name}}</p>
+        </div>
+    </div>
+
+</div>

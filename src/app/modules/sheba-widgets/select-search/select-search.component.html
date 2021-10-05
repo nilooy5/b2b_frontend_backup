@@ -1,0 +1,24 @@
+<div class="select--primary select-search__select">
+    <select (change)="selectFromSelect($event)" id="itemSelect">
+        <option value="" (click)="selectItem(null)" disabled selected>{{placeholder || 'Select Item'}}</option>
+        <option *ngFor="let item of items" [value]="item.id">{{item.title}} [{{item.info}}]</option>
+    </select>
+    <i class="material-icons">keyboard_arrow_down</i>
+</div>
+
+<div class="select-search__search" [ngClass]="{'focus' : searchFocused}">
+    <input type="text" class="form-control"
+           (keyup)="searchItems($event)"
+           (focus)="searchFocused = true">
+    <i class="material-icons">search</i>
+    <ul class="select-search__search__results" *ngIf="searchFocused">
+        <li value="" (click)="selectItem(null)">Select Later</li>
+        <li *ngFor="let item of searchedItems" class="d-flex" (click)="selectItem(item)">
+            <img [src]="item.picture || item.image" alt="">
+            <div>
+                <h6>{{item.title}}</h6>
+                <p>{{item.info}}</p>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,67 @@
+@import './variables';
+
+
+.journey {
+  position: relative;
+}
+
+.journey__header {
+  &--basic {
+    border-bottom: 1px solid #bbc0cc;
+    padding: 16px;
+    h5 {
+      text-align: center;
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+}
+
+.journey__container {
+  border: 1px solid $light_bluish_grey;
+  padding: 24px;
+  border-radius: 4px;
+  background-color: $white;
+  margin-bottom: 100px;
+  //min-height: 70vh;
+  &--no-padding {
+    padding: 0;
+  }
+}
+
+.journey__footer {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  background-color: $white;
+  padding: 16px;
+  margin-left: 0;
+  z-index: 10;
+  .journey-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  &.opened {
+    margin-left: 230px;
+  }
+  .prev, .next {
+    button {
+      padding: 10px 30px;
+      font-size: .875rem;
+      i {
+        position: relative;
+        top: 3px;
+        font-size: 1rem;
+      }
+    }
+  }
+  .next {
+    .steps {
+      font-size: 1rem;
+      margin-right: 40px;
+    }
+  }
+}

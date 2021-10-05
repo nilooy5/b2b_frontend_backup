@@ -1,0 +1,134 @@
+<div class="container-fluid" style="margin-bottom: 80px;">
+    <div class="row rfq-quotation-header">
+        <div class="col-md-4 p-0 d-flex">
+            <div>
+                <img class="vendor-image" [src]="quotationDetails.vendor.logo" alt="vendor image">
+            </div>
+            <div>
+                <p class="vendor-name"> {{quotationDetails.vendor.name}} </p>
+                <p class="vendor-rating">
+                    <i class="material-icons vendor-rating-icon">grade</i>
+                   <span class="vendor-rating-number"> {{quotationDetails.vendor.rating}}</span>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-2 text-center">
+            <p class="m-0 price-title">Quotation</p>
+            <p class="m-0 price-value">
+                <span class="price-sign">৳</span> {{quotationDetails.price}}
+            </p>
+        </div>
+        <div class="col-md-6 p-0 action-buttons">
+            <a class="download-quote" [href]="downloadQuote()">Download Quote</a>
+            <button *ngIf="!can_show_hire" type="button" class="hire" (click)="goToHire()" >
+                HIRE
+            </button>
+<!--            <button type="button" class="hire" (click)="goToHire()" >HIRE</button>-->
+        </div>
+    </div>
+
+
+    <div *ngIf="quotationDetails.proposal" class="row proposal-details-container">
+        <div class="col-md-12 p-0">
+            <div class="proposal-details-header">
+                <p class="m-0">Proposal details</p>
+            </div>
+            <hr>
+            <div class="proposal-details-content">
+               <p class="m-0">
+                   {{quotationDetails.proposal}}
+               </p>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="quotationDetails.price_quotation" class="row price-quotation-container">
+        <div class="col-md-12 p-0">
+            <div class="price-quotation-header">
+                <p class="m-0">Price Quotation</p>
+            </div>
+            <hr>
+            <div class="price-quotation-content">
+                 <div class="main-table-block p-0">
+                     <table mat-table class="main-table-theme" [dataSource]="dataSource">
+                         <ng-container matColumnDef="sl_no">
+                             <th class="table-sl-no" mat-header-cell *matHeaderCellDef> SL NO</th>
+                             <td mat-cell *matCellDef="let element; let i = index">
+                                 <span> {{ i + 1}} </span>
+                             </td>
+                             <td mat-footer-cell *matFooterCellDef></td>
+                         </ng-container>
+                         <ng-container matColumnDef="item">
+                             <th class="table-item" mat-header-cell *matHeaderCellDef> Item  </th>
+                             <td mat-cell *matCellDef="let element">
+                                 <span> {{ element.title }} </span>
+                             </td>
+                             <td mat-footer-cell *matFooterCellDef></td>
+                         </ng-container>
+                         <ng-container matColumnDef="specifications">
+                             <th class="table-spec" mat-header-cell *matHeaderCellDef> Specifications</th>
+                             <td mat-cell *matCellDef="let element">
+                                 <span> {{ element.short_description }} </span>
+                             </td>
+                             <td mat-footer-cell *matFooterCellDef></td>
+                         </ng-container>
+                         <ng-container matColumnDef="unit">
+                             <th class="table-unit" mat-header-cell *matHeaderCellDef> Unit</th>
+                             <td mat-cell *matCellDef="let element">
+                                 <span> {{ element.unit }} </span>
+                             </td>
+                             <td mat-footer-cell *matFooterCellDef>
+                                 <span class="total-price">Total</span>
+                             </td>
+                         </ng-container>
+                         <ng-container matColumnDef="price">
+                             <th class="table-price" mat-header-cell *matHeaderCellDef> Price</th>
+                             <td mat-cell *matCellDef="let element">
+                                 <span> {{ element.result }} </span>
+                             </td>
+                             <td mat-footer-cell *matFooterCellDef>
+                                 <span class="total-price"> {{ getTotalPrice() }} </span>
+                             </td>
+                         </ng-container>
+                         <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+                         <tr mat-row *matRowDef="let row, columns: displayedColumns;" style="cursor: pointer"></tr>
+                         <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                     </table>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div *ngIf="quotationDetails.company_evaluation" class="col-md-6 pl-0">
+            <div class="evaluation-container">
+                <div class="evaluation-header">
+                    <p class="m-0">Company Evaluation</p>
+                </div>
+                <hr>
+                <div class="evaluation-content">
+                    <div *ngFor="let company_evaluation of quotationDetails.company_evaluation" class="evaluation-space">
+                        <p class="m-0 evaluation-question"> {{ company_evaluation.title }} </p>
+                        <p class="m-0 evaluation-answer"> {{ company_evaluation.result }} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="quotationDetails.technical_evaluation" class="col-md-6 pr-0">
+            <div class="evaluation-container">
+                <div class="evaluation-header">
+                    <p class="m-0">Technical Evaluation</p>
+                </div>
+                <hr>
+                <div class="evaluation-content">
+                    <div *ngFor="let technical_evaluation of quotationDetails.technical_evaluation" class="evaluation-space">
+                        <p class="m-0 evaluation-question"> {{ technical_evaluation.title }} </p>
+                        <p class="m-0 evaluation-answer"> {{ technical_evaluation.result }} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

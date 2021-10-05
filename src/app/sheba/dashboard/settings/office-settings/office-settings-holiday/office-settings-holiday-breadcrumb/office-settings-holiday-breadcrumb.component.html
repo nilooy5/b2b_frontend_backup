@@ -1,0 +1,20 @@
+<div class="breadcrumb-container">
+    <div class="breadcrumb-content" [ngClass]="{ open:isSidebarClosed }">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" *ngFor="let breadcrumb of breadcrumbList">
+                <a [ngClass]="{active: breadcrumb.isActive === true}"
+                   [routerLink]="breadcrumb.path">
+                    {{ breadcrumb.title }}
+                </a>
+            </li>
+        </ol>
+
+        <div class="breadcrumb-buttons">
+            <button class="button button--filled breadcrumb-buttons__filled" [disabled]="disableButton" (click)="addNewRow()">
+                <i class="material-icons">add</i>
+                <span>Add New holiday</span>
+            </button>
+        </div>
+    </div>
+
+</div>

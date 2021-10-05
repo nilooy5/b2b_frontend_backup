@@ -1,0 +1,15 @@
+<div class="purchase-request-forms-card layout__card" (click)="selectForm(index)" [class.selected]="selected">
+    <h6 class="purchase-request-forms-card__header">{{form.title}}</h6>
+    <p class="purchase-request-forms-card__description">
+        {{form.short_description}}
+    </p>
+
+    <div class="purchase-request-forms-card__action">
+        <a class="purchase-request-forms-card__link float-left"  (click)="viewFormDetail(form.id)">
+            Detail
+        </a>
+        <a class="purchase-request-forms-card__link float-right">
+            Select
+        </a>
+    </div>
+</div>

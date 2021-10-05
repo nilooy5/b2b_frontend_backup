@@ -1,0 +1,11 @@
+<div class="container subcategory-list">
+    <app-category-filter [categories]="categories"
+                         (filter)="handleFilter($event)"></app-category-filter>
+
+    <div class="row" style="padding-top: 40px" *ngIf="subCategories && subCategories.length">
+        <div class="col-md-4" *ngFor="let category of subCategories" >
+            <app-subcategory-card [data]="category"></app-subcategory-card>
+        </div>
+    </div>
+    <p style="margin-top: 30px" *ngIf="!subCategories.length">No Categories Available.</p>
+</div>

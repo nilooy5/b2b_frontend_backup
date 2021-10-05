@@ -1,0 +1,18 @@
+<div class="main-content-container">
+    <div class="main-content-block">
+        <div class="main-content-inner-block" id="noServices" *ngIf="notFound">
+            <h3>No Services Found</h3>
+        </div>
+        <div class="main-content-inner-block" *ngIf="!notFound">
+            <div class="main-content-inner-block-left">
+                <app-master-category-filter
+                    [activeCategory]="selectedFirstMasterCategory"
+                    (updateSelectedCategory)="receiveActiveCategory($event)"
+                    [masterCategories]="filteredMasterCategories"></app-master-category-filter>
+            </div>
+            <div class="main-content-inner-block-content content">
+                <app-secondary-category [masterCategories]="filteredMasterCategories"></app-secondary-category>
+            </div>
+        </div>
+    </div>
+</div>

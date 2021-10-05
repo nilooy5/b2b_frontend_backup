@@ -1,0 +1,46 @@
+.componentStyle{
+  display: none;
+  font-family: "Poppins", sans-serif;
+
+  .title {
+    text-align: center;
+    font-size: 24px;
+    font-family: OpenSans,sans-serif;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .thumbnail {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+  }
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color:#000;
+    opacity: 0.3;
+  }
+  .overlay:hover {
+    background-color:#000;
+    opacity: 0.4;
+    transition: 0.3s;
+  }
+  .playIcon {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    pointer-events: none;
+  }
+}
+@media screen and (max-width: 768px) {
+
+  .componentStyle {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+  }
+}

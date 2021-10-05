@@ -1,0 +1,73 @@
+<div class="co-workers-add__header">
+    <h5>Emergency Contact Person Information</h5>
+</div>
+
+<hr class="co-workers-add__divider">
+
+<div class="co-workers-add__controls" [formGroup]="emergencyInfoForm">
+
+    <!-- Name -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="name" class="form-container__label">
+                Name
+            </label>
+        </div>
+        <div class="col-lg-9">
+            <input type="text" name="name" id="name" class="form-container__control"
+                   placeholder="Ex : Ahmed" formControlName="name">
+        </div>
+    </div>
+
+    <!-- Phone -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="mobile" class="form-container__label">
+                Phone
+            </label>
+        </div>
+        <div class="col-lg-9">
+            <div class="input-group d-flex flex-nowrap">
+                <div class="input-group-prepend">
+                    <div class="input-group-text phone-group" id="basic-addon1">
+                        <div class="flag__square">
+                            <span class="flag__circle"></span>
+                        </div>
+                        <span class="phone-group__title"> +88 </span>
+                    </div>
+                </div>
+                <input type="tel" name="mobile" id="mobile" class="form-container__control phone-control"
+                       [ngClass]="{ 'error': !emergencyInfoFormControls.mobile.valid && emergencyInfoFormControls.mobile.touched }"
+                       placeholder="Ex. 01678242900" formControlName="mobile">
+            </div>
+            <div class="error-container" *ngIf="!emergencyInfoFormControls.mobile.valid && emergencyInfoFormControls.mobile.touched"
+            style="margin-top: 10px;">
+                <span class="error-container__text" style="">Please enter a valid Bangladeshi phone number</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Relationship -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="relationship" class="form-container__label">
+                Relationship
+            </label>
+        </div>
+        <div class="col-lg-9">
+            <input type="text" name="relationship" id="relationship" class="form-container__control"
+                   placeholder="Ex : Father" formControlName="relationship">
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="row">
+        <div class="offset-lg-3 col-lg-9">
+            <button class="button button--filled submit-info" (click)="submitEmergencyInfo()" [disabled]="isSaving">
+                <span *ngIf="!isSaving;else loader"> Save </span>
+                <ng-template #loader><span><i class="fas fa-spinner fa-spin" style="font-size: 20px"></i></span></ng-template>
+            </button>
+        </div>
+    </div>
+
+</div>

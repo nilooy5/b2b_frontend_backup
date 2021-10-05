@@ -1,0 +1,119 @@
+@import 'src/scss/variables';
+
+
+::ng-deep .mat-dialog-container {
+  border-radius: 10px ;
+}
+
+.verify-success-modal {
+  text-align: center;
+  padding: 5px 83px 38px 83px;
+
+  img {
+    margin-bottom: 40px;
+  }
+  h4 {
+    margin-bottom: 15px;
+    font-size: $fs-header-4;
+    font-weight: $font-weight-semiBold;
+    line-height: 1.4;
+    color: $black-80;
+    font-family: Poppins !important;
+  }
+  p {
+    font-size: 14px;
+    font-family: Poppins !important;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: rgba(10, 15, 20, 0.75);
+  }
+}
+
+.close-button{
+  background: none;
+  border: none;
+}
+
+.close-icon {
+  margin-right: 5px;
+  margin-top: 12px;
+  color: #bbc0cc;
+}
+
+
+.action-btn{
+  width: 280px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  background: #4373f5;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+  font-family: Poppins;
+}
+
+
+.success-close-btn{
+  display: block;
+  margin: 15px auto 0 auto;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: Poppins;
+  color: #437ff5;
+}
+
+
+.verify-failure-modal-upper {
+  text-align: center;
+  padding: 5px 83px 0 83px;
+
+  img {
+    margin-bottom: 30px;
+  }
+  h4 {
+    margin-bottom: 15px;
+    font-size: $fs-header-4;
+    font-weight: $font-weight-semiBold;
+    line-height: 1.4;
+    color: $black-80;
+    font-family: Poppins !important;
+  }
+  p {
+    font-size: 14px;
+    font-family: Poppins !important;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: rgba(10, 15, 20, 0.75);
+  }
+}
+
+.verify-failure-modal-lower {
+  text-align: center;
+  padding: 5px 83px 5px 83px;
+
+}
+
+.center-badge {
+  margin-top: -7px;
+  margin-bottom: 6px;
+  background: #e75050;
+  padding: 5px 0;
+}
+
+.center-badge-text{
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  color: #ffffff;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.center-badge-icon{
+  font-size: 18px;
+  margin-top: 1px;
+  margin-right: 6px;
+}

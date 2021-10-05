@@ -1,0 +1,17 @@
+.proposal-breadcrumb {
+  background: white;
+  font-size: 14px;
+  border: solid 1px #edeff4;
+  padding: 14px 0;
+  cursor: pointer;
+  margin-bottom: 30px;
+
+  .container {
+    padding: 0;
+  }
+
+  &__active {
+    color: rgba(0, 0, 0, 0.5);
+    cursor: text;
+  }
+}

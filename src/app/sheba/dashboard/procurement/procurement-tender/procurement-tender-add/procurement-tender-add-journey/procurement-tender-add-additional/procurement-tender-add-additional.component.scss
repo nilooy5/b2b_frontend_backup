@@ -1,0 +1,17 @@
+.procurement-additional {
+  &__title {
+    font-size: 16px;
+  }
+
+  &__textarea {
+    padding: 0;
+  }
+
+  #__description {
+    border-radius: 5px;
+    padding: 20px;
+    border: solid 1px #b3bace;
+    background-color: #fafbfc;
+  }
+}
+

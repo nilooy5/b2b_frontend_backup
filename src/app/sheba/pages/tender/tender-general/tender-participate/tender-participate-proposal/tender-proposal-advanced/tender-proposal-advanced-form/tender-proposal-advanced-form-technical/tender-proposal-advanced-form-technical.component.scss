@@ -1,0 +1,18 @@
+@import "../tender-proposal-advanced-form-company/tender-proposal-advanced-form-company.component";
+
+:host ::ng-deep {
+  ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    background-color: $primary !important;
+  }
+
+  ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: $primary !important;
+  }
+
+  .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: $primary !important;
+  }
+  .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: $primary !important;
+  }
+}

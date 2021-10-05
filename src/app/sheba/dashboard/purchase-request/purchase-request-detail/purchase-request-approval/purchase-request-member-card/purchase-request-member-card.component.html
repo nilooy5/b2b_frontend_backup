@@ -1,0 +1,22 @@
+<div class="purchase-request-employees-card layout__card" (click)="selectForm(index)" [class.selected]="selected">
+    <div class="row">
+        <div class="col-4">
+            <img [src]="employee.pro_pic" height="50px" width="50px" alt="">
+        </div>
+        <div class="col-8">
+            <h6 class="purchase-request-employees-card__header">{{employee.name}}</h6>
+            <p class="purchase-request-employees-card__description">
+                {{employee.designation}}, {{employee.department}}
+            </p>
+        </div>
+    </div>
+
+    <!--<div class="purchase-request-employees-card__action">-->
+        <!--<a class="purchase-request-employees-card__link float-left"  (click)="viewFormDetail(employee.id)">-->
+            <!--View-->
+        <!--</a>-->
+        <!--<a class="purchase-request-employees-card__link float-right">-->
+            <!--Select-->
+        <!--</a>-->
+    <!--</div>-->
+</div>

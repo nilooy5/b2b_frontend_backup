@@ -1,0 +1,39 @@
+<div class="procurement-tender-bid-vendor-card d-flex justify-content-between" [class.minimal]="minimal">
+    <div class="procurement-tender-bid-vendor-card__logo" (click)="redirectToBidMessaging()">
+        <img [src]="vendor.logo" alt="">
+        <div class="favorite-notion" *ngIf="minimal && isFavorite">
+            <i class="material-icons">favorite</i>
+        </div>
+    </div>
+    <div style="flex-grow: 1">
+        <div class="d-flex justify-content-between align-items-center">
+            <p class="procurement-tender-bid-vendor-card__name" (click)="redirectToBidMessaging()">{{limitString(vendor.name)}}</p>
+            <button class="btn button--inline procurement-tender-bid-vendor-card__show"
+                    (click)="changeVisibility()"
+                    [ngClass]="{active : isVisible }">
+                <i class="material-icons">remove_red_eye</i>
+            </button>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <p class="d-flex align-items-center">
+                <span class="procurement-tender-bid-vendor-card__rating"><i class="material-icons">star</i> 4.5</span>
+                <button class="btn button--inline procurement-tender-bid-vendor-card__favorite"
+                        *ngIf="!minimal"
+                        (click)="favorite()"
+                        [ngClass]="{active : vendor.is_favourite}">
+                    <i class="material-icons">{{vendor.is_favourite ? 'favorite' : 'favorite_border'}}</i>
+                </button>
+                <span class="procurement-tender-bid-vendor-card__hired-tag" *ngIf="vendor.status === 'accepted' && !minimal">HIRED</span>
+            </p>
+            <p class="procurement-tender-bid-vendor-card__date" *ngIf="!minimal">{{vendor.created_at ? vendor.created_at : ''}}</p>
+        </div>
+        <div *ngIf="minimal">
+            <button mat-icon-button (click)="redirectToBidMessaging()">
+                <i class="material-icons form-field-message">message</i>
+            </button>
+            <button class="procurement-tender-bid-vendor-card__quotation-btn btn button--outline" (click)="redirectToBidDetails()">
+                View Quote
+            </button>
+        </div>
+    </div>
+</div>

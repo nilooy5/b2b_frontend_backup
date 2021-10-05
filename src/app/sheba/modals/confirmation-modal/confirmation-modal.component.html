@@ -1,0 +1,19 @@
+<div mat-dialog-content>
+    <div class="dialog-content-inner">
+        <div class="confirmation-modal">
+            <button type="button" class="close" (click)="close()">
+                <i class="material-icons">close</i>
+            </button>
+
+            <img *ngIf="data.type === 'success'" src="https://i.ibb.co/rG1vWWj/sucess-request.png" alt="">
+            <img *ngIf="data.type === 'failure'" src="https://i.ibb.co/kKmBDZ4/fail-request.png" alt="">
+
+            <h4>{{data.title}}</h4>
+
+            <p>{{data.text}}</p>
+
+            <button class="btn button--outline close-btn" (click)="close()">{{data.actionText}}</button>
+        </div>
+    </div>
+</div>
+

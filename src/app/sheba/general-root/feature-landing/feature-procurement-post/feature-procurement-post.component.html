@@ -1,0 +1,173 @@
+<mat-horizontal-stepper [linear]="true" labelPosition="bottom" #stepper>
+
+    <ng-template matStepperIcon="edit">
+        <mat-icon>check</mat-icon>
+    </ng-template>
+
+    <mat-step [stepControl]="rfqInfo">
+        <form [formGroup]="rfqInfo" style="margin-top: 30px">
+            <ng-template matStepLabel>RFQ Info</ng-template>
+
+            <div class="form-field-div">
+                <label>Title</label>
+                <mat-form-field appearance="outline">
+                    <input matInput type="text" id="title" formControlName="title" placeholder="Title of your requirements">
+                </mat-form-field>
+                <p class="__error-message" *ngIf="showRFQError && rfqFormControls.title.errors && rfqFormControls.title.errors.required">
+                    RFQ Title is required
+                </p>
+            </div>
+
+            <div class="form-field-div">
+                <label>Your Requirements</label>
+                <mat-form-field appearance="outline">
+                    <textarea matInput rows="5"
+                              placeholder="Write your details requirements" formControlName="requirements"></textarea>
+                </mat-form-field>
+                <p class="__error-message" *ngIf="showRFQError && rfqFormControls.requirements.errors && rfqFormControls.requirements.errors.required">
+                    RFQ Requirements is required
+                </p>
+            </div>
+
+            <div class="form-field-div" >
+                <label>Last Date Of Submission</label>
+                <mat-form-field appearance="outline">
+                    <input readonly matInput [matDatepicker]="picker" [min]="getMinimumDateForSubmission()"
+                           placeholder="Choose a date" (focus)="picker.open()" formControlName="lastDateOfSubmission">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <p class="__error-message" *ngIf="showRFQError && rfqFormControls.lastDateOfSubmission.errors && rfqFormControls.lastDateOfSubmission.errors.required">
+                    Last date of submission is required
+                </p>
+            </div>
+
+            <div class="form-field-div" >
+                <label>Schedule</label>
+                <div style="margin: 10px 0 30px 0">
+                    <app-date-range-picker style="width: 100%" theme="outline" id="deliveryDate" themeColor="gray" [minimal]="true" [allowSameDate]="true"
+                                           (dateRangeChange)="updateDeliveryDate($event)" [dateRange]="deliveryDateRange"
+                                           [minDate]="getMinimumDateForDelivery()"></app-date-range-picker>
+                </div>
+            </div>
+
+            <button style="width: 100%" class="btn button--filled" mat-button (click)="firstStepper(stepper, 1)">Next</button>
+
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="personalInfo">
+        <form [formGroup]="personalInfo" style="margin-top: 30px">
+
+            <ng-template matStepLabel>Personal Info</ng-template>
+
+            <div style="margin-bottom: 30px">
+                <label>Your Name</label>
+                <input type="text" id="name" class="form-control input--primary"
+                       formControlName="name" placeholder="Your name">
+                <p class="__error-message"
+                   *ngIf="showPersonalInfoError && personalInfoFormControl.name.errors && personalInfoFormControl.name.errors.required">
+                    Name is required
+                </p>
+            </div>
+
+            <div style="margin-bottom: 30px">
+                <label>Your Office Email</label>
+                <input type="email" id="email" class="form-control input--primary"
+                       formControlName="email" placeholder="yourname@company.com">
+
+                <mat-hint class="__error-message"
+                          *ngIf="showPersonalInfoError && personalInfoFormControl.email.errors && personalInfoFormControl.email.errors.required">
+                    Email is required
+                </mat-hint>
+
+                <mat-hint class="__error-message"
+                          *ngIf="personalInfoFormControl.email.errors && personalInfoFormControl.email.errors.email">
+                    Invalid email address
+                </mat-hint>
+
+                <mat-hint class="__error-message" *ngIf="showMessage" style="margin-top: 5px">
+                    This email has already been taken
+                </mat-hint>
+            </div>
+
+            <div style="margin-bottom: 30px">
+                <label>Password</label>
+                <input type="password" id="password" class="form-control input--primary"
+                       formControlName="password" placeholder="6+ characters">
+                <mat-hint class="__error-message"
+                          *ngIf="showPersonalInfoError && personalInfoFormControl.password.errors && personalInfoFormControl.password.errors.required">
+                    Password is required
+                </mat-hint>
+                <mat-hint class="__error-message"
+                          *ngIf="personalInfoFormControl.password.errors && personalInfoFormControl.password.errors.minlength">
+                    Password must contain at least 6 characters
+                </mat-hint>
+                <mat-hint class="__error-message"
+                          *ngIf="personalInfoFormControl.password.errors && personalInfoFormControl.password.errors.maxlength">
+                    Password must contain less than 32 characters
+                </mat-hint>
+            </div>
+
+            <button mat-button style="width: 100%" class="btn button--filled" [disabled]="disableButton"
+                    (click)="secondStepper(stepper, 2)">
+                <span *ngIf="!submitting;else loader">Next</span>
+                <ng-template #loader><i class="fas fa-spinner fa-spin" style="color: rgba(255, 255, 255, 1)"></i></ng-template>
+            </button>
+
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="companyInfo">
+        <form [formGroup]="companyInfo" style="margin-top: 30px">
+
+            <ng-template matStepLabel>Company Info</ng-template>
+
+            <div style="margin-bottom: 30px">
+                <label>Company Name</label>
+                <input type="text" id="companyName" class="form-control input--primary"
+                       formControlName="companyName" placeholder="Company name">
+                <mat-hint class="__error-message"
+                          *ngIf="showCompanyInfoError && companyInfoFormControl.companyName.errors && companyInfoFormControl.companyName.errors.required">
+                    Name is required
+                </mat-hint>
+            </div>
+
+            <div style="margin-bottom: 30px">
+                <label>Company Address</label>
+                <input type="text" id="companyAddress" class="form-control input--primary"
+                       formControlName="companyAddress" placeholder="Company Address">
+                <mat-hint class="__error-message"
+                          *ngIf="showCompanyInfoError && companyInfoFormControl.companyAddress.errors && companyInfoFormControl.companyAddress.errors.required">
+                    Address is required
+                </mat-hint>
+            </div>
+
+            <div style="margin-bottom: 30px">
+                <label>Company Phone Number</label>
+                <input type="text" id="companyPhoneNumber" class="form-control input--primary"
+                       formControlName="companyPhoneNumber" placeholder="Company Phone Number">
+                <mat-hint class="__error-message"
+                          *ngIf="showCompanyInfoError && companyInfoFormControl.companyPhoneNumber.errors && companyInfoFormControl.companyPhoneNumber.errors.required">
+                    Phone Number is required
+                </mat-hint>
+
+                <mat-hint class="__error-message"
+                          *ngIf="companyInfoFormControl.companyPhoneNumber.errors && companyInfoFormControl.companyPhoneNumber.errors.pattern">
+                    Enter a Valid Bangladeshi Phone Number
+                </mat-hint>
+            </div>
+
+
+            <button mat-button style="width: 100%" class="btn button--filled" [disabled]="disableButton" (click)="submitRFQ()">
+                <span *ngIf="!submitting;else loader">Post a RFQ</span>
+                <ng-template #loader><i class="fas fa-spinner fa-spin" style="color: rgba(255, 255, 255, 1)"></i></ng-template>
+            </button>
+
+            <div class="footer">
+                <span>By posting a RFQ, I agree to Sheba.xyz’s <a href="">Terms of Service</a></span>
+            </div>
+        </form>
+    </mat-step>
+
+</mat-horizontal-stepper>

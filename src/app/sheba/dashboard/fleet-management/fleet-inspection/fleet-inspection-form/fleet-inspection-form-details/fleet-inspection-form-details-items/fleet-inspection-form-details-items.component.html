@@ -1,0 +1,26 @@
+<div class="">
+    <div class="head"></div>
+    <div class="contents" *ngIf="templateForm && templateForm.items && templateForm.items.length">
+        <app-fleet-inspection-form-item *ngFor=" let item of templateForm.items;let i=index" [data]="item" [index]="i"
+                                        appearance="update" [opened]="false"
+                                        [showSaveButton]="true"
+                                        (FormEvents)="OnItemEvent($event)"></app-fleet-inspection-form-item>
+        <app-fleet-inspection-form-item *ngFor="let item of getGroups();let i=index" [formGroup]="item"
+                                        [index]="i" (FormEvents)="OnItemEvent($event)"></app-fleet-inspection-form-item>
+        <div class="add-new">
+
+            <button class="button button-full button-primary mb-20" *ngIf="getGroups().length" (click)="saveNewItems()">
+                <span>Save New Items</span>
+            </button>
+            <button class="button button-full" [mat-menu-trigger-for]="addMenu">
+                <span><i class="fa fa-plus pr-2"></i>Add New</span>
+            </button>
+        </div>
+    </div>
+</div>
+<mat-menu #addMenu
+>
+    <button mat-menu-item (click)="addItem('radio')">Pass/Fail</button>
+    <button mat-menu-item (click)="addItem('text')">Free Text</button>
+    <button mat-menu-item (click)="addItem('number')">Meter Reading</button>
+</mat-menu>

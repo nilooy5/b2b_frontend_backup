@@ -1,0 +1,11 @@
+@import "../../../../../../scss/form_components";
+
+.search-input {
+    input {
+      padding: 16px 24px 16px 56px !important;
+      height: 60px !important;
+    }
+    .input-group-prepend {
+      top: 18px !important;
+    }
+}

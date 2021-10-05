@@ -1,0 +1,41 @@
+
+@import "../../../../../../src/scss/variables";
+
+#cartModal {
+  .modal-lg {
+    max-width: 80% !important;
+    width: 870px;
+  }
+  .modal-content {
+    border-radius: 4px;
+    .modal-header, .modal-footer {
+      background-color: $cream_grey;
+      padding: 24px;
+    }
+  }
+  .quick-purchase__cart {
+    .quick-purchase__cart__price {
+      margin: 0;
+      color: rgba(0,0,0, 0.6);
+      .quick-purchase__cart__amount {
+        color: $spice-red;
+        font-weight: 500;
+        font-size: 1.25rem;
+      }
+    }
+    .cart-header {
+      background-color: $cream_grey;
+      border-radius: 4px;
+      padding: 10px 16px;
+      color: $mid_grey;
+      margin-bottom: 15px;
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  .taka-sign {
+    font-family: $font-hind-siliguri;
+  }
+}

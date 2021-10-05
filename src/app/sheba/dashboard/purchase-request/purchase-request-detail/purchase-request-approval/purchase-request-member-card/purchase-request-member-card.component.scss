@@ -1,0 +1,60 @@
+@import "../../../../../../../scss/variables";
+
+.purchase-request-employees-card {
+  padding: 24px 24px;
+  margin-bottom: 20px;
+  min-height: 150px;
+  border: solid #e1e3ff 1px;
+  //width: 800px;
+
+  &.selected{
+    border: solid #5960f4 1px;
+
+    &:before{
+      content: '\2713';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      top: 0;
+      right: 15px;
+      background-color: #2f38f1;
+      text-align: center;
+      color: #fff;
+      padding-top: 5px;
+      border-bottom-left-radius: 3px;
+    }
+  }
+
+  &__header {
+    color: $black;
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 15px;
+  }
+
+  &__description {
+    color: $black;
+    opacity: 0.6;
+    font-size: 14px;
+    font-weight: 400;
+    word-break: break-all;
+  }
+
+  &__action{
+    .purchase-request-employees-card__button{
+      border: 1px solid $theme-font-color;
+      color: $theme-font-color;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 0 24px;
+      min-height: 30px;
+    }
+
+    .purchase-request-employees-card__link{
+      color: $theme-font-color;
+      font-size: 12px;
+      font-weight: 500;
+      min-height: 30px;
+    }
+  }
+}

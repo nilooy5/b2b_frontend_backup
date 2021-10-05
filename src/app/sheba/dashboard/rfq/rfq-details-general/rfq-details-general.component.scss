@@ -1,0 +1,233 @@
+.rfq-details {
+  &-container {
+    box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+    border-radius: 10px;
+  }
+
+  &-header {
+    margin: 0;
+    border-radius: 10px;
+    padding: 21px 30px 26px 30px;
+  }
+
+  &-title {
+    margin: 0 0 7px 0;
+    font-family: Poppins;
+    font-size: 14px;
+    line-height: 1.57;
+    color: rgba(10, 15, 20, 0.75);
+  }
+
+  &-value {
+    margin: 0;
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #000000;
+    word-break: break-word;
+  }
+
+  &-draft {
+    padding: 2px 6px;
+    font-size: 12px;
+    color: #fff;
+    border-radius: 4px;
+    background-color: #989caf;
+  }
+
+  &-published {
+    padding: 2px 6px;
+    font-size: 12px;
+    color: #fff;
+    border-radius: 4px;
+    background-color: #22aabf;;
+  }
+
+  &__btn__kebab {
+    padding: 10px 17px;
+    min-width: 44px;
+    background-color: #4373f5;
+  }
+
+  &__menu__item {
+    color: rgba(10, 15, 20, 0.75);
+    font-family: Poppins;
+    font-size: 14px;
+    i {
+      color:#bbc0cc;
+      position: relative;
+      top: 6px;
+      margin-right: 10px;
+    }
+  }
+
+  &-warning-img {
+    margin-right: 10px;
+    margin-left: 5px;
+    margin-top: -3px;
+  }
+}
+
+.mat-menu-item:hover{
+  background-color:#4373f5;
+  .rfq-details__menu__item {
+    color: #fff;
+    font-family: Poppins;
+    font-size: 14px;
+    i {
+      color: #fff;
+      position: relative;
+      top: 6px;
+      margin-right: 10px;
+    }
+  }
+}
+
+:host ::ng-deep .alert-custom {
+  padding: 12px;
+  background-color: #fff8e6;
+  border: solid 0.5px #f5e0ab;
+  justify-content: left;
+  border-radius: 8px;
+  color: #664900;
+  font-size: 14px;
+  font-family: Poppins;
+}
+
+.rfqStatus {
+  color: #FFFFFF!important;
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-family: Lato;
+  &.draft {
+    background: #b3b7cc;
+  }
+  &.open {
+    background: #2ba660;
+  }
+  &.expired {
+    background: #fa5252;
+  }
+  &.hired {
+    background: #29b9cf;
+  }
+  &.closed {
+    background: #0c99f7;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .publish-btn-ipad {
+    width: 110%;
+  }
+  .kebab-btn {
+    display: inline-block !important;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .publish-btn-ipad {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+mat-form-field {
+  width: 40px;
+  margin-top: -5px;
+
+  mat-select {
+    border-radius: 0 10px 10px 0;
+    background: #3961D0;
+    font-weight: bold;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ::ng-deep {
+      .mat-select-trigger {
+        .mat-select-value {
+          color: white;
+        }
+      }
+    }
+  }
+
+  ::ng-deep {
+    .mat-form-field-wrapper {
+      padding: 0;
+      .mat-form-field-underline {
+        display: none;
+      }
+      .mat-form-field-infix{
+        padding: 0 !important;
+      }
+    }
+  }
+}
+
+mat-option {
+  ::ng-deep {
+
+    background: #437ff5 !important;
+    color: white !important;
+    display: flex;
+    align-items: center;
+    transition: all 1s ease;
+
+    &:hover {
+      -webkit-filter: brightness(130%);
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+      transition: all 1s ease;
+    }
+
+    .material-icons {
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+  }
+}
+.submitButton {
+  background: #437ff5;
+  color: white;
+  border-radius: 10px 0 0 10px;
+  width: 100%;
+  height: 40px;
+  font-weight: 600;
+  font-size: 16px;
+  padding-left: 20px;
+
+  .material-icons {
+    font-size: 20px;
+  }
+  .drop-select {
+    width: 50%;
+  }
+}
+:host mat-select ::ng-deep .mat-select-arrow{
+  color: white;
+  transform: scale(1.5);
+}
+
+::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow{
+  color: white;
+  transform: scale(1.5);
+}
+
+.drop-button {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+}
+
+.right-row {
+  justify-content: flex-end;
+}

@@ -1,0 +1,33 @@
+<div class="multi-select-with-search" id="multiSelectBox" (blur)="showResults = false">
+    <div class="input-group multi-select-with-search__input d-flex justify-content-between align-items-center">
+        <i class="material-icons">search</i>
+        <input type="text" class="form-control" [(ngModel)]="searchKey" placeholder="Search Items" (keyup)="searchItems()" (focus)="showResults = true">
+    </div>
+    <ul class="multi-select-with-search__results" *ngIf="showResults">
+        <li class="d-flex justify-content-between align-items-center" *ngFor="let item of filteredItems">
+            <img src="https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/images/partners/logos/1496558303_dhaka_setup.jpeg" alt="">
+            <div style="flex-grow: 1">
+                <h6>{{item.title}}</h6>
+                <p class="vendor-info">
+                    <span *ngFor="let info of item.info">{{info}}</span>  <span class="ball" *ngIf="item.info[0] && item.info[0] !== ''"></span> <span>{{item.address}}</span>
+                </p>
+            </div>
+            <button *ngIf="!isAdded(item)" class="btn button--outline multi-select-with-search__results__add-btn" (click)="addItem(item)">Add</button>
+            <button *ngIf="isAdded(item)" class="btn button--filled multi-select-with-search__results__close-btn" (click)="removeItem(item)"><i class="material-icons">close</i></button>
+        </li>
+    </ul>
+
+    <ul class="multi-select-with-search__results" *ngIf="noResultFound">
+        <li class="d-flex justify-content-center align-items-center" style="height: 260px; text-align: center">
+            <div style="flex-grow: 1" class="no-result-found">
+                <img src="../../../assets/svg/search.svg" alt="" style="height: auto; width: auto; border-radius: 0; margin-bottom: 15px">
+
+                <h5 style="margin-bottom: 15px">No result found</h5>
+                <p style="margin-bottom: 15px">Did not enlist the vendor you are looking for?</p>
+                <button [routerLink]="['/', 'dashboard', 'vendors', 'add']"
+                        class="button button-primary button-semi-small button-outline">Add New Vendor</button>
+            </div>
+        </li>
+    </ul>
+
+</div>

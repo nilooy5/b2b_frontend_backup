@@ -1,0 +1,112 @@
+@import "../../src/scss/variables";
+
+.elevated-pane {
+  border-radius: 20px;
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.1);
+  background-color: $white;
+}
+
+.layout__card {
+  background-color: $white;
+  padding: 16px;
+  border-radius: 4px;
+  &.layout__card__header {
+    background-color: $theme-grey;
+    color: $white;
+    .layout__card__header__btn {
+      color: $white;
+      border: 1px solid $white;
+      &.filled {
+        color: $theme-grey;
+        background-color: $white;
+      }
+    }
+  }
+  &--base {
+    padding: 0;
+  }
+}
+
+.info-list {
+  .info-list__item {
+    padding: 10px 0;
+    border-bottom: 1.5px solid #e5ebfa;
+    font-size: 14px;
+    .info-list__item__label {
+      color: $black60;
+    }
+    .info-list__item__data {
+      p {
+        margin: 0;
+      }
+      .info-list__item__btn {
+        font-size: 10px;
+        padding: 0 5px;
+        margin-left: 10px;
+      }
+
+    }
+    .editable__select {
+
+    }
+  }
+}
+
+.layout__tab-bar {
+  background: $white;
+  border-radius: 4px;
+  ::ng-deep {
+    .mat-tab-label {
+      padding: 30px;
+      min-width: 100px;
+      opacity: 1 !important;
+      &-active {
+        color: $theme-font-color;
+      }
+    }
+  }
+}
+
+.layout__grid-card {
+  border: 1px solid $light-grey;
+  box-sizing: border-box;
+  border-radius: 4px;
+  cursor: pointer;
+  overflow: hidden;
+  margin-bottom: 20px;
+  &:hover {
+    border: 1px solid $theme-color;
+  }
+  &-image {
+    width: 100%;
+    height: 180px;
+    background-size: cover;
+    background-position: top center;
+  }
+  p {
+    font-size: 1rem;
+    padding: 16px;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.layout__window {
+  padding: 0;
+  background-color: #FCFCFC;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  &__header {
+    background-color: $cream_grey;
+    border-radius: 4px;
+    padding: 10px 16px;
+    margin-bottom: 16px;
+
+    span {
+      color: $black;
+      font-weight: 500;
+    }
+  }
+}
+
+

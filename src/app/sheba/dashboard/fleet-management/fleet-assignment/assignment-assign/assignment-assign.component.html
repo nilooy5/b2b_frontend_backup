@@ -1,0 +1,47 @@
+<div class="b2b-breadcrumb">
+    <a [routerLink]="['/','dashboard','fleet-management','assignments']">Fleet Management</a><span>/</span>
+    <a [routerLink]="['/','dashboard','fleet-management','assignments']">Assignments</a> <span>/</span>
+    <span>Assign</span>
+</div>
+<div class="main-content-container">
+    <div class="main-content-block" *ngIf="!showSuccess;else vehicleAssigned">
+        <div class="main-content-title">
+            <h5 class="text-center">Assign A Vehicle</h5>
+        </div>
+        <div class="main-content-block">
+            <div class="bg-white">
+                <app-list-select title="Vehicle" (OnSelect)="OnVehicleSelect($event)" [listData]="vehicles" bindTitle="license_number" bindSubTitle="vehicle_model" bindImage="vehicle_image">
+                </app-list-select>
+                <app-list-select title="Drivers" [listData]="drivers" (OnSelect)="OnDriverSelect($event)" bindTitle="name" bindImage="picture">
+
+                </app-list-select>
+                <div class="flex p-20">
+                    <button class="button button-primary button-wide" (click)="submit()">
+                        <span>Assign</span>
+                        <span class="position-absolute right top" *ngIf="submitting">
+                            <i class="fa fa-spinner fa-spin"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #vehicleAssigned>
+        <div class="content-block-content align-items-center bg-white p-40">
+            <div class="content-block-image mb-4">
+                <img src="" [src]="'/assets/img/statics/sent_illustration.png'" alt="">
+            </div>
+            <div class="content-block-title mb-4">
+                Vehicle has been assigned successfully
+            </div>
+            <div class="content-block-actions">
+                <button class="button button-primary mr-4" [routerLink]="['/','dashboard','fleet-management','assignments',tripID,'details']">
+                    View Details
+                </button>
+                <button class="button button-primary button-outline" [routerLink]="['/','dashboard','fleet-management','assignments']">
+                    Add Another
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</div>

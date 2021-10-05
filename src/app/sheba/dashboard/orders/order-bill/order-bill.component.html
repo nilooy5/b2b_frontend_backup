@@ -1,0 +1,35 @@
+<div class="service-payment__bill" *ngIf="!loading&&bill">
+    <div class="service-payment__header d-flex justify-content-between">
+        <span>Payment Details</span>
+    </div>
+    <p class="service-payment__bill__item" *ngFor="let service of bill.services">
+        <span>{{service.name}} (x{{service.quantity}})</span>
+        <span>{{service.price|currency:'৳':'symbol':'1.1-2'}}</span>
+    </p>
+    <hr>
+    <p class="service-payment__bill__item">
+        <span>Subtotal</span>
+        <span>{{bill.original_price|currency:'৳':'symbol':'1.1-2'}}</span>
+    </p>
+    <p class="service-payment__bill__item" style="color: #00804c">
+        <span>Discount</span>
+        <span>-{{bill.discount|currency:'৳':'symbol':'1.1-2'}}</span>
+    </p>
+    <hr>
+    <p class="service-payment__bill__item" style="font-weight: 500 ">
+        <span>Total</span>
+        <span>{{bill.total|currency:'৳':'symbol':'1.1-2'}}</span>
+    </p>
+    <p class="service-payment__bill__item">
+        <span>Paid</span>
+        <span>{{bill.paid|currency:'৳':'symbol':'1.1-2'}}</span>
+    </p>
+    <p class="service-payment__bill__item">
+        <span>Due</span>
+        <span>{{bill.due|currency:'৳':'symbol':'1.1-2'}}</span>
+    </p>
+    <div *ngIf="showActionButton" class="flex justify-content-between">
+        <a [href]="bill.invoice" target="_blank" class="button button-outline button-primary" *ngIf="bill.invoice">Invoice</a>
+        <button class="button  button-primary " *ngIf="bill.due>0" (click)="actionClick('payment')">Make Payment</button>
+    </div>
+</div>

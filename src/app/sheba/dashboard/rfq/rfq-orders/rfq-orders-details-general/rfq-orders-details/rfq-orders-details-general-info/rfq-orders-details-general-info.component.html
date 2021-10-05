@@ -1,0 +1,19 @@
+<div class="section">
+    <div class="section-head">General Info</div>
+    <div class="section-body d-flex flex-column">
+        <div class="fields">
+            <div class="fields__label">Tender ID</div>
+            <div class="fields__data">
+                <div class="id"># {{order.procurement_code}}</div>
+            </div>
+        </div>
+        <div class="fields">
+            <div class="fields__label">Price</div>
+            <div class="fields__data">৳ {{numericFormat.numberWithCommas(order.bid_price)}}</div>
+        </div>
+        <div class="fields">
+            <div class="fields__label">Job Duration</div>
+            <div class="fields__data">{{order.procurement_start_date}} - {{order.procurement_end_date}}</div>
+        </div>
+    </div>
+</div>

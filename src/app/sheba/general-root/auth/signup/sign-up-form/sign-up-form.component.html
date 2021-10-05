@@ -1,0 +1,53 @@
+<div class="general-form elevated-pane">
+    <div class="general-form-title">
+        <h3>Free For 1 Year!</h3>
+    </div>
+    <div class="general-form-alert" #alertDiv></div>
+    <div class="general-form-content">
+        <form [formGroup]="form" (submit)="submit()">
+            <div class="form-item">
+                <label for="name">Name</label>
+                <input type="text"
+                       placeholder="Your name" id="name"
+                       class="form-control input--primary" formControlName="name">
+                <span class="mat-error" *ngIf="formInputInvalid('name')">
+                    <span *ngIf="form.get('name').hasError('required')">Name is required</span>
+                </span>
+            </div>
+            <div class="form-item">
+                <label for="email">Office Email</label>
+                <input type="email" id="email"
+                       placeholder="you@company.com"
+                       class="form-control input--primary" formControlName="email">
+                <span class="mat-error" *ngIf="formInputInvalid('email')">
+                    <span *ngIf="form.get('email').hasError('required')">Email is required</span>
+                    <span *ngIf="form.get('email').hasError('email')&&!form.get('email').hasError('required')">Invalid Email</span>
+                </span>
+            </div>
+<!--            <div class="form-item">-->
+<!--                <label for="mobile">Phone Number</label>-->
+<!--                <input type="text" id="mobile"-->
+<!--                       placeholder="01XXXXXXXXX"-->
+<!--                       class="form-control input&#45;&#45;primary" formControlName="mobile">-->
+
+<!--                <span class="mat-error" *ngIf="formInputInvalid('mobile')">-->
+<!--                    <span *ngIf="form.get('mobile').hasError('required')">Phone Number is required</span>-->
+<!--                    <span *ngIf="(form.get('mobile').hasError('minlength')||form.get('mobile').hasError('maxlength')||form.get('mobile').hasError('pattern'))&&!form.get('mobile').hasError('required')">Invalid Phone Number</span>-->
+<!--                </span>-->
+<!--            </div>-->
+            <div class="form-item">
+                <label for="password">Password</label>
+                <input type="password" id="password"
+                       placeholder="Password"
+                       class="form-control input--primary" formControlName="password">
+                <div class="mat-error" *ngIf="formInputInvalid('password')" >
+                    <span *ngIf="form.get('password').hasError('required')">Password is required</span>
+                    <span *ngIf="form.get('password').hasError('minlength')&&!form.get('password').hasError('required')">Password must have minimum of 4 character</span>
+                </div>
+            </div>
+            <div class="form-item">
+                <button type="submit" class="button button-theme  button-jumbo button-full"><span *ngIf="!submitting;else loader">Sign Up</span> <ng-template #loader><i class="fas fa-spinner fa-spin"></i></ng-template></button>
+            </div>
+        </form>
+    </div>
+</div>

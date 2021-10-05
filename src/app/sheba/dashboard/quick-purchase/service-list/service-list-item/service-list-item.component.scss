@@ -1,0 +1,115 @@
+@import "../../../../../../../src/scss/variables";
+@import "../../../../../../../src/scss/form_components";
+
+.service-list-item {
+  border: 1px solid $light_grey;
+  border-radius: 4px;
+  padding: 16px 24px;
+  margin-bottom: 10px;
+  .service-list-item__img {
+    height: 75px;
+    width: 75px;
+    border-radius: 4px;
+  }
+  .service-list-item__info {
+    flex-grow: 1;
+    padding: 0 24px;
+    p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    button {
+      color: $theme-color;
+      font-size: 1rem;
+      padding: 0;
+      i {
+        font-size: .875rem;
+        position: relative;
+        top: 2px;
+      }
+    }
+  }
+  .service-list-item__add-button {
+    display: block;
+    max-height: 40px;
+    background-color: $mat-green;
+  }
+
+  .service-list-item__added-button {
+    display: block;
+    max-height: 40px;
+    color: $mat-green;
+    box-sizing: border-box;
+    border: 1.5px solid $mat-green;
+    background-color: $white;
+  }
+
+  .service-list-item__edit {
+    .service-list-item__edit__counter {
+      button {
+        height: 30px;
+        width: 30px;
+        padding: 5px;
+        i {
+          font-size: 1rem;
+        }
+      }
+      input {
+        height: 30px;
+        max-width: 90px;
+        background-color: #f5f5f5;
+        border: none;
+        font-size: 1rem;
+        margin: 0 10px;
+        text-align: center;
+        padding: 3px;
+        position: relative;
+        top: 1px;
+        border-radius: 4px;
+        &:disabled {
+          background-color: #f5f5f5;
+        }
+      }
+    }
+    .service-list-item__edit__remove {
+      button {
+        margin-left: 16px;
+        color: $spice-red;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        background-color: #f5f5f5;
+        padding: 0;
+        text-align: center;
+        padding-top: 5px;
+        i {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+.addedService {
+  border-radius: 12px;
+  border: solid 1px #1dbe7e;
+  font-size: 14px;
+  font-family: Rubik, sans-serif;
+  color: #1dbe7e;
+  font-weight: normal !important;
+  padding: 4px 10px !important;
+  margin-left: 20px;
+}
+.imgDiv {
+  position: relative;
+}
+.addedDot {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  border: solid 2px #ffffff;
+  background-color: #ff584d;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+}

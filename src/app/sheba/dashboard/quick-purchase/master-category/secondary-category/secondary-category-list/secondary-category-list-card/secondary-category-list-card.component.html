@@ -1,0 +1,9 @@
+<div class="secondary-category-list" style="margin-left: -15px">
+    <div class="secondary-category-list__item cardBg" *ngFor="let secondaryCategories of masterCategory.filtered_children.slice(4)"
+                                                (click)="selectSecondaryCategory(secondaryCategories)">
+        <img class="secondary-category-list__item-image cardThumb" [src]="secondaryCategories.thumb" alt=""
+             onerror="this.src='/assets/img/config/default.png'">
+        <span class="secondary-category-list__item-title align-self-center">{{ secondaryCategories.name }}</span>
+    </div>
+</div>
+

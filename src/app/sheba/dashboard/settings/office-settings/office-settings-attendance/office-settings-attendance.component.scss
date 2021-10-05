@@ -1,0 +1,131 @@
+@import 'src/scss/variables';
+hr{
+  margin: 0;
+}
+
+.office-settings-attendance-info
+{
+  &-container{
+    border-radius: 10px;
+    box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+  }
+  &-header{
+    margin: 0;
+    padding: 14px 30px;
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+  }
+  &-row-space{
+    padding: 15px 0px;
+  }
+  &-content{
+    padding: 0 30px;
+  }
+  &-ips{
+    padding: 0 26% 0 0;
+  }
+  &-ip-space:not(:first-child){
+    padding: 15px 0px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  &-ip-space:first-child{
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  &-title{
+    opacity: 0.6;
+    font-family: Poppins;
+    font-size: 14px;
+    color: #000000;
+  }
+  &-value{
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+  }
+  &-edit{
+    padding: 30px 0 49px 0;
+  }
+}
+
+.mat-button-edit{
+  font-size: 12px;
+  line-height: 1.5px;
+  font-weight: 600;
+  color: #437ff5;
+  width: 150px;
+  height: 30px;
+  border-radius: 6px;
+  border: solid 1px #d3d8e6;
+}
+
+.ribbon-img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+:host ::ng-deep .alert-info_ribbon {
+  color: #005566;
+  background-color: #ccf6ff;
+  border-color: #b3f2ff;
+  border-radius: 8px;
+  justify-content: left;
+  font-family: Poppins;
+  font-size: 14px;
+  .close {
+    color: #0b0b0b;
+    font-weight: 300;
+    font-size: 30px;
+    margin-top: -2px;
+  }
+}
+
+:host ::ng-deep .alert-success_ribbon {
+  color: #ffffff;
+  background-color: #12b886;
+  border-radius: 8px;
+  justify-content: left;
+  font-family: Poppins;
+  font-size: 14px;
+  .close {
+    color: #0b0b0b;
+    font-weight: 300;
+    font-size: 30px;
+    margin-top: -2px;
+  }
+}
+
+:host ::ng-deep .alert-warning_ribbon {
+  color: #664900;
+  background-color: #fff8e6;
+  border: .5px solid #f5e0ab;
+  border-radius: 8px;
+  justify-content: left;
+  font-family: Poppins;
+  font-size: 14px;
+  .close {
+    color: #0b0b0b;
+    font-weight: 300;
+    font-size: 30px;
+    margin-top: -2px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .container-fluid {
+    padding-right: 30%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container-fluid{
+    width: 132%;
+  }
+}

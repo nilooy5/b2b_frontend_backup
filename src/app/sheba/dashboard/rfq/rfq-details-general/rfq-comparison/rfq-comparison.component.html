@@ -1,0 +1,17 @@
+<div style="background-color: #fff; border-radius: 10px; box-shadow: 0 1px 5px 0 rgba(19, 34, 64, 0.1); margin-top: 20px; margin-bottom: 100px;">
+    <ng-container *ngIf="bidsDetails.length === 0">
+        <app-rfq-comparison-empty></app-rfq-comparison-empty>
+    </ng-container>
+
+    <ng-container *ngIf="bidsDetails.length > 0">
+        <div class="row pb-50 pr-50">
+            <div class="col-xl-4 col-lg-5 col-md-4">
+                <app-rfq-comparison-vendor-list [bidsList]="bidsDetails"></app-rfq-comparison-vendor-list>
+            </div>
+            <div class="col-xl-8 col-lg-7 col-md-8">
+                <app-rfq-comparison-table [bidsList]="bidsDetails"></app-rfq-comparison-table>
+            </div>
+        </div>
+
+    </ng-container>
+</div>

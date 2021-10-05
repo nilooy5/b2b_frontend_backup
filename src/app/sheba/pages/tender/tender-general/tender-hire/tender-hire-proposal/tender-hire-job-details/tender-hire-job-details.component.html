@@ -1,0 +1,61 @@
+
+<div class="job-details-card">
+   <div class="header both-side-padding">
+    <div class="d-flex bd-highlight align-self-center">
+        <div class="p-3 flex-grow-1 bd-highlight job-title">Job Details</div>
+        <div class="p-3 bd-highlight">
+            <i class="fa fa-chevron-down icon-color" *ngIf="!isExpand" aria-hidden="true" (click)="isExpand = !isExpand" data-toggle="collapse" data-target="#dtex"></i>
+            <i class="fa fa-chevron-up icon-color" *ngIf="isExpand" aria-hidden="true" (click)="isExpand = !isExpand" data-toggle="collapse" data-target="#dtex"></i>
+        </div>
+      </div>
+   </div>
+   <mat-divider></mat-divider>
+   <div class="both-side-padding">
+    <div class="mt-2 display-status bd-highlight align-self-center">
+        <div class="p-3 flex-grow-1 bd-highlight title">{{tenderHireDetails?.title}}</div>
+        <div class="d-flex">
+            <div class="p-3 bd-highlight Final-Budget">
+                <p class="mt-1">Final Budget</p>
+            </div>
+            <div class="p-3 bd-highlight budget text-style-1">
+                <span>৳{{tenderHireDetails?.final_budget}}</span>
+            </div>
+        </div>
+      </div>
+   </div>
+   <div *ngIf="isExpand"  id="dtex" class="collapse both-side-padding">
+    <div class="d-flex bd-highlight align-self-center">
+        <div class="p-3 bd-highlight A-request-for-quotat">
+           {{tenderHireDetails?.description}}
+        </div>
+    </div>
+    <div class=" flex-row bd-highlight mb-3">
+        <div class="p-3 bd-highlight">
+            <p class="d-flex Delivery-within---15"><img [src]="tenderHireDetails?.delivery_within?.icon"
+                class="time"> <span style="margin-left: 10px;">Delivery within - {{tenderHireDetails?.delivery_within?.date_range}}</span></p>
+        </div>
+        <div *ngIf="tenderHireDetails?.payment_options" class="p-3 bd-highlight ml-5 mb-padding">
+            <p class="d-flex Delivery-within---15"><img src="/assets/svg/icons/rfq/bdt-2.svg"
+                class="time"> <span style="margin-left: 10px;">Payment - {{tenderHireDetails?.payment_options}}</span></p>
+        </div>
+      </div>
+      <hr>
+      <div class="mb-3">
+        <div class="header">
+            <div class="d-flex mt-2 bd-highlight align-self-center">
+                <div class="p-3 flex-grow-1 bd-highlight title">Your Proposal</div>
+              </div>
+          </div>
+            <div class="d-flex display-postion bd-highlight align-self-center">
+                <div class="p-3 flex-grow-1 bd-highlight A-request-for-quotat-2">{{tenderHireDetails?.proposal}}</div>
+
+                <div class="p-3 bd-highlight flex-fill Proposed-Budget">
+                    <p class="mt-1">Proposed Budget</p>
+                    <span class=" budget text-style-1">৳{{tenderHireDetails?.proposed_budget}}</span>
+                </div>
+              </div>
+      </div>
+        <app-price-quotation-table *ngIf="tenderHireDetails?.price_quotations" [tenderHireDetailsData]="tenderHireDetails"></app-price-quotation-table>
+   </div>
+
+</div>

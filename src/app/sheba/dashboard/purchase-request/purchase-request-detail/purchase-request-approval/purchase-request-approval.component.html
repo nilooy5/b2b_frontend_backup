@@ -1,0 +1,20 @@
+<div mat-dialog-title>
+    <h5 class="modal-title" style="display: inline" id="optionsModalLabel">Need Approval From</h5>
+    <button type="button" class="close" (click)="close()">
+        <i class="material-icons">close</i>
+    </button>
+</div>
+<div mat-dialog-content>
+    <div class="dialog-content-inner purchase-request-employees__section row">
+        <div class="col-6" *ngFor="let employee of employees; let i = index">
+            <app-purchase-request-member-card [employee]="employee" [index]="i" [selected]="isSelected(i)" (select)="selectForm($event)" (closeModal)="closeModal($event)"></app-purchase-request-member-card>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions style="box-shadow: 0 -4px 10px 0 rgba(0, 0, 0, 0.1);">
+    <div class="d-flex justify-content-end align-items-end" style="width: 100%">
+        <button class="btn button--primary--filled" style="padding: 8px 32px; font-weight: 400; max-height: 40px"
+                (click)="next()">Next
+        </button>
+    </div>
+</div>

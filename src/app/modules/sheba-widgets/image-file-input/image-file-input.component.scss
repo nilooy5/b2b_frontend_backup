@@ -1,0 +1,69 @@
+@import "../../../../../src/scss/variables";
+
+.image-file-input--preview {
+  position: relative;
+  img {
+    height: 80px;
+    width: 80px;
+    border-radius: 4px;
+  }
+  input.image-file-input__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+  }
+
+  .image-file-input__btn{
+    padding: 8px 20px;
+    border-radius: 3px;
+    border: solid 1.5px #2f38f1;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    color: #2f38f1;
+    margin-left: 20px;
+    cursor: pointer;
+
+  }
+}
+.image-file-input {
+  height: 40px;
+  border-radius: 4px;
+  border: 1.5px solid $theme-light-grey;
+  background-color: #fafbfc;
+  padding: 5px 16px;
+  input.image-file-input__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+  }
+  p {
+    margin: 0;
+  }
+
+  .image-file-input__btn{
+    &.file-upload{
+      float: right;
+      position: absolute;
+      right: 16px;
+      top: 1px;
+      padding: 9px 35px;
+      background: transparent;
+      border: solid 1px #2f38f1;
+      font-size: 12px;
+      font-weight: 500;
+      text-align: center;
+      color: #2f38f1;
+      border-bottom-right-radius: 3px;
+      border-top-right-radius: 3px;
+      cursor: pointer;
+    }
+  }
+}

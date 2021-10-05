@@ -1,0 +1,87 @@
+<div class="stepper-container">
+    <div class="overlay"></div>
+    <div class="stepper-container__text">Complete the steps to submit your proposal</div>
+    <mat-vertical-stepper [linear]="false" #stepper [selectedIndex]="nextStateIndex">
+        <mat-step [stepControl]="firstFormGroup" state="form">
+            <div (click)="passState('form')" *matStepLabel>
+                Your Proposal
+            </div>
+        </mat-step>
+        <mat-step *ngIf="tender.price_quotation" [stepControl]="firstFormGroup" state="quotation">
+            <div (click)="passState('quotation')" *matStepLabel>
+                Price Quotation
+            </div>
+        </mat-step>
+        <mat-step *ngIf="tender.company_evaluation" [stepControl]="firstFormGroup" state="companyEval">
+            <div (click)="passState('companyEval')" *matStepLabel>
+                Company Evaluation
+            </div>
+        </mat-step>
+        <mat-step *ngIf="tender.technical_evaluation" [stepControl]="firstFormGroup" state="techEval">
+            <div *matStepLabel (click)="passState('techEval')">
+                Technical Evaluation
+            </div>
+        </mat-step>
+    </mat-vertical-stepper>
+    <!--<div>
+        <button (click)="goBack(stepper)" type="button">Back</button>
+        <button (click)="goForward(stepper)" type="button">Next</button>
+    </div>-->
+<!--    {{nextStateIndex}}-->
+</div>
+
+<div class="horizontal-stepper-container">
+    <div class="overlay"></div>
+
+    <mat-horizontal-stepper #stepper [selectedIndex]="nextStateIndex">
+
+        <mat-step [stepControl]="firstFormGroup" state="form">
+            <div (click)="passState('form')" *matStepLabel>
+            </div>
+        </mat-step>
+        <mat-step *ngIf="tender.price_quotation" [stepControl]="firstFormGroup" state="quotation">
+            <div (click)="passState('quotation')" *matStepLabel>
+            </div>
+        </mat-step>
+        <mat-step *ngIf="tender.company_evaluation" [stepControl]="firstFormGroup" state="companyEval">
+            <div (click)="passState('companyEval')" *matStepLabel>
+            </div>
+        </mat-step>
+        <mat-step *ngIf="tender.technical_evaluation" [stepControl]="firstFormGroup" state="techEval">
+            <div *matStepLabel (click)="passState('techEval')">
+            </div>
+        </mat-step>
+        <!--<mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Fill out your name</ng-template>
+                <div>
+                    <p>Go to a different step to see the error state</p>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="firstFormGroup" errorMessage="Address is required.">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Fill out your address</ng-template>
+                <mat-form-field>
+                    <mat-label>Address</mat-label>
+                    <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
+                           required>
+                </mat-form-field>
+                <div>
+                    <p>Go to a different step to see the error state</p>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            <p>You are now done.</p>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+        </mat-step>-->
+    </mat-horizontal-stepper>
+</div>

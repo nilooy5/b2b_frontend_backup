@@ -1,0 +1,53 @@
+<app-wallet-transactions-filter (filterEmitter)="applyFilter($event)"></app-wallet-transactions-filter>
+
+<div class="main-content-block">
+    <div class="main-content-table" *ngIf="transactions">
+        <table *ngIf="(transactions.length && dataSource)" mat-table [dataSource]="dataSource"
+               class="table  designer-table">
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef>Date</th>
+                <td mat-cell *matCellDef="let element">
+                    <span>{{element.date}}</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="sector">
+                <th mat-header-cell *matHeaderCellDef>Sector</th>
+                <td mat-cell *matCellDef="let element">
+                    <span>{{element.sector}}</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="amount">
+                <th mat-header-cell *matHeaderCellDef>Amount</th>
+                <td mat-cell
+                    *matCellDef="let element">
+                    <span>{{element.amount}}</span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef>Type</th>
+                <td mat-cell
+                    *matCellDef="let element">
+                    <span>{{element.type}}</span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="message">
+                <th mat-header-cell *matHeaderCellDef>Message</th>
+                <td mat-cell
+                    *matCellDef="let element">
+                    <span> {{element.log}}</span>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+        </table>
+        <div class="no-driver" *ngIf="!transactions.length">
+            <p>No Transactions.</p>
+        </div>
+    </div>
+    <div class="no-driver" *ngIf="!transactions">
+        <p>No Transactions.</p>
+    </div>
+</div>

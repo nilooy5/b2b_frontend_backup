@@ -1,0 +1,87 @@
+
+@media only screen and (max-width: 600px) {
+  .reject {
+    width: 150px !important;
+  }
+  .accept{
+    width: 150px !important;
+  }
+}
+.proposal-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: white;
+  box-shadow: 0 -4px 30px 0 rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  //.mat-button {
+  //  width: 270px;
+  //  border-radius: 10px;
+  //  color: white;
+  //  font-weight: 600;
+  //  font-size: 18px;
+  //  background: #4373f5;
+  //  height: 50px;
+  //
+  //  &:disabled {
+  //    background: $grey-medium;
+  //    border-color: $grey-medium;
+  //    cursor: not-allowed;
+  //    color: $white;
+  //  }
+  //}
+}
+
+.accept{
+  width: 270px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: var(--primary);
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--white);
+}
+.reject {
+  width: 270px;
+  height: 50px;
+  border-radius: 10px;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  color: #437ff5;
+}
+
+.By-accepting-I-agre {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  color: rgba(10, 15, 20, 0.75);
+  display: block;
+}
+.example-button-row{
+  text-align: right;
+}
+@media only screen and (max-width: 600px) {
+  .By-accepting-I-agre {
+    display: none!important;
+  }
+  .example-button-row{
+    text-align: center!important;
+  }
+}

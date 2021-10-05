@@ -1,0 +1,16 @@
+@import "../../../leave-requests/leave-requests-details/leave-requests-details-info/leave-requests-details-info.component";
+
+.marker {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  margin-right: 11px;
+
+  &--approved {
+    background-color: #2ba660;
+  }
+
+  &--rejected {
+    background-color: #fa5252;
+  }
+}

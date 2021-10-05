@@ -1,0 +1,68 @@
+<div class="details-container">
+    <div class="layout__card layout__card__header mb-10"> Inspection Details</div>
+    <div class="layout__card info-list ">
+        <div class="row info-list__item">
+            <div class="col-4 info-list__item__label">
+                <label> Inspection Form </label>
+            </div>
+            <div class="col-8 info-list__item__data">
+                <a class="anchor"
+                   [routerLink]="['/','dashboard','fleet-management','inspection','ongoing',inspection.id,'details','items']">{{inspection.inspection_form}} </a>
+            </div>
+        </div>
+        <div class="row info-list__item">
+            <div class="col-4 info-list__item__label">
+                <label> Created on</label>
+            </div>
+            <div class="col-8 info-list__item__data">
+                <p>{{inspection.created_at|date:'EEE, d M yyyy h:m aaa'}} </p>
+            </div>
+        </div>
+        <div class="row info-list__item">
+            <div class="col-4 info-list__item__label">
+                <label> Vehicle </label>
+            </div>
+            <div class="col-8 info-list__item__data d-flex">
+                <div class="flex align-items-start justify-content-start">
+                    <div class="profile-image-avatar mr-20"><img src="https://i.ibb.co/VqhqtZ8/image.png"></div>
+                    <div class="flex flex-column align-items-start">
+                        <div class="sheba-title-small">{{inspection.vehicle.vehicle_model}}</div>
+                        <div class="horizontal-bullets">
+                            <div class="status" [ngClass]="{active:inspection.vehicle.status==='active'}"><i class="material-icons">brightness_1</i></div>
+                            <span>{{inspection.vehicle.status|titlecase}}</span>
+                            <span>{{inspection.vehicle.vehicle_type|titlecase}}</span>
+                            <span>{{inspection.vehicle.assigned_to}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row info-list__item">
+            <div class="col-4 info-list__item__label">
+                <label> Inspector </label>
+            </div>
+            <div class="col-8 info-list__item__data">
+                <p class="anchor">{{inspection.inspector}} </p>
+            </div>
+        </div>
+        <div class="row info-list__item">
+            <div class="col-4 info-list__item__label">
+                <label> Schedule Type </label>
+            </div>
+            <div class="col-8 info-list__item__data">
+                <p class="anchor">
+                    <ng-template [ngIf]="inspection.type!='once'">Recurrent-</ng-template>
+                    {{inspection.type|titlecase}} </p>
+            </div>
+        </div>
+        <div class="row info-list__item">
+            <div class="col-4 info-list__item__label">
+                <label> Next Schedule Date </label>
+            </div>
+            <div class="col-8 info-list__item__data">
+                <p class="anchor" *ngIf="inspection.next_start_date"> {{inspection.next_start_date}}</p>
+                <ng-template [ngIf]="!inspection.next_start_date"><p>N/A</p></ng-template>
+            </div>
+        </div>
+    </div>
+</div>

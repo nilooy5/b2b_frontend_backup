@@ -1,0 +1,85 @@
+@import 'src/scss/variables';
+
+//.advanced-settings {
+//  .row {
+//    margin-bottom: 15px;
+//    .col-md-12 {
+//      .mat-button {
+//        height: 40px;
+//        width: 48%;
+//        background: $grey-light;
+//        font-weight: normal;
+//        border-radius: 20px;
+//        ::ng-deep {
+//          .mat-button-wrapper {
+//            position: absolute;
+//            left: 0;
+//            top: 0;
+//            padding-left: 45px;
+//            padding-top: 2px;
+//          }
+//        }
+//
+//        .material-icons {
+//          font-size: 20px;
+//          padding-left: 5px;
+//          color: #12b886;
+//          padding-bottom: 4px;
+//        }
+//
+//        &.image {
+//          background-repeat: no-repeat;
+//          background-position: 5px 5px;
+//        }
+//      }
+//    }
+//  }
+//}
+
+
+.advance-options {
+
+  &-item {
+    border-radius: 20px;
+    background-color: $grey-light;
+    margin-bottom: 15px;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background: white;
+      box-shadow: 0 5px 25px 0 rgba(19, 34, 64, 0.12);
+      span {
+        transition: all;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &-button-link {
+    padding: 0;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: $font-weight-bold;
+    color: #437ff5;
+    background-color: transparent;
+    border: 1px solid transparent;
+  }
+
+  &-title {
+    font-size: 14px;
+    font-weight: normal;
+    padding-left: 10px;
+    text-align: left;
+    line-height: 1.57;
+    color: rgba(10, 15, 20, 0.75);
+  }
+
+  &-icon {
+    font-size: 20px;
+    padding-left: 5px;
+    color: #12b886;
+  }
+
+}

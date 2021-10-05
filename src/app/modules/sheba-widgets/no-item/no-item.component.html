@@ -1,0 +1,8 @@
+<div class="no-item">
+    <div class="heading">
+       {{heading}}
+    </div>
+    <div class="action" *ngIf="showAction">
+        <button class="button button-theme-dark button-rounded" (click)="takeAction()">{{action_text}}</button>
+    </div>
+</div>

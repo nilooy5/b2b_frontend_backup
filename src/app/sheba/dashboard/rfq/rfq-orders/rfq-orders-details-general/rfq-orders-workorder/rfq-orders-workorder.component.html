@@ -1,0 +1,126 @@
+<div class="main-content">
+
+    <div class="main-content__head">
+        <div class="main-content__head__text">Work order no: &nbsp;&nbsp;#{{work_order.code}}</div>
+        <div class="main-content__head__buttons">
+            <button mat-button (click)="downloadWorkorder()">Download</button>
+            <button mat-button (click)="downloadWorkorder()">Print</button>
+        </div>
+    </div>
+    <!--addresses-->
+    <div class="row address">
+        <!--to-->
+        <div class="col-md-6 address__to">
+            <div class="address__to__label">To Address:</div>
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td class="colonSign">:</td>
+                    <td>{{work_order.to.name}}</td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td class="colonSign">:</td>
+                    <td>{{work_order.to.address}}</td>
+                </tr>
+                <tr>
+                    <td>Mobile</td>
+                    <td class="colonSign">:</td>
+                    <td>{{work_order.to.mobile}}</td>
+                </tr>
+            </table>
+        </div>
+        <!--from-->
+        <div class="col-md-6 address__to">
+            <div class="address__to__label">From Address:</div>
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td class="colonSign">:</td>
+                    <td>{{work_order.from.name}}</td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td class="colonSign">:</td>
+                    <td>{{work_order.from.name}}</td>
+                </tr>
+                <tr>
+                    <td>Mobile</td>
+                    <td class="colonSign">:</td>
+                    <td>{{work_order.from.mobile}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!--table-->
+    <div class="main-content-container">
+        <div class="main-content-block">
+            <div class="main-content-table">
+                <table id="table" mat-table [dataSource]="dataSource" class="table designer-table" style="font-size: 14px">
+
+                    <ng-container matColumnDef="title">
+                        <th mat-header-cell *matHeaderCellDef style=" font-size: 14px">Item Name</th>
+                        <td mat-cell *matCellDef="let element" style=" font-size: 14px">
+                            <span>{{element.title}}</span>
+                        </td>
+                        <td mat-footer-cell *matFooterCellDef class="footerCell" style=" font-size: 14px"> </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="short_description">
+                        <th mat-header-cell *matHeaderCellDef style=" font-size: 14px">Specification</th>
+                        <td mat-cell *matCellDef="let element" style=" font-size: 14px">
+                            <span>{{element.short_description}}</span>
+                        </td>
+                        <td mat-footer-cell *matFooterCellDef class="footerCell" style=" font-size: 14px"> </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="unit">
+                        <th mat-header-cell *matHeaderCellDef style=" font-size: 14px">Unit</th>
+                        <td mat-cell *matCellDef="let element" style=" font-size: 14px">
+                            <span>{{element.unit}}</span>
+                        </td>
+                        <td mat-footer-cell *matFooterCellDef class="footerCell" style=" font-size: 14px"> </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="unit_price">
+                        <th mat-header-cell *matHeaderCellDef style=" font-size: 14px">Unit Price</th>
+                        <td mat-cell *matCellDef="let element" style=" font-size: 14px">
+                            <span>৳{{element.unit_price}}</span>
+                        </td>
+                        <td mat-footer-cell *matFooterCellDef class="footerCell" style=" font-size: 14px">
+                            <div class="d-flex flex-column footerCell__box" style="margin-bottom: 30px; font-size: 14px">
+                                <span class="breakdown">Sub total</span>
+                                <span class="breakdown">Due</span>
+                                <span class="breakdown">Grand total</span>
+                            </div>
+
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="total_price">
+                        <th mat-header-cell *matHeaderCellDef style=" font-size: 14px">Total</th>
+                        <td mat-cell *matCellDef="let element" style=" font-size: 14px">
+                            <span>৳{{element.total_price}}</span>
+                        </td>
+                        <td mat-footer-cell *matFooterCellDef class="footerCell" style=" font-size: 14px">
+                            <div class="d-flex flex-column footerCell__box" style="margin-bottom: 30px; font-size: 14px">
+                                <span class="breakdown">৳{{work_order.sub_total}}</span>
+                                <span class="breakdown">৳{{work_order.due}}</span>
+                                <span class="breakdown">৳{{work_order.grand_total}}</span>
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--terms & conditions-->
+    <div class="termsAndConditions">
+        <div class="row termsAndConditions__title">Terms and Conditions</div>
+        <div class="row termsAndConditions__content" [innerHTML]="work_order.terms"></div>
+    </div>
+</div>

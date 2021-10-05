@@ -1,0 +1,14 @@
+<div class="breadcrumb-container" [ngClass]="{htmlMarkup: hasHtml}">
+    <div class="breadcrumb-content" [ngClass]="{open:open}">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" *ngFor="let breadcrumb of breadcrumbList">
+                <a [ngClass]="{active: breadcrumb.isActive === true}"
+                   [routerLink]="breadcrumb.path"
+                   [queryParams]="breadcrumb.queryParams">
+                    {{ breadcrumb.title }}
+                </a>
+            </li>
+        </ol>
+        <div id="breadcrumbHtml" [innerHTML]="htmlMarkup"></div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+@import "../../../../../../../src/scss/variables";
+
+
+:host ::ng-deep {
+  .mat-header-row {
+    background-color: #a7b1cc;
+  }
+
+  #table {
+    thead {
+      tr {
+        th.mat-header-cell {
+          font-size: 14px;
+          font-weight: 500;
+          padding: 16px 20px !important;
+          }
+      }
+    }
+    tbody {
+      tr {
+        td.mat-cell {
+          font-size: 14px;
+          padding: 16px 20px !important;
+
+        }
+      }
+    }
+
+    #actionsColumnContent {
+      text-align: right;
+    }
+  }
+}
+
+.main-content-block {
+  padding: 0 0 40px;
+}
+
+.main-content-table {
+  .order-status {
+    width: 85px;
+    height: 18px;
+    margin: 0;
+    font-size: 12px;
+    color: $white;
+    border-radius: 3px;
+    text-align: center;
+    display: inline-block;
+    padding: 0 !important;
+    text-transform: capitalize;
+  }
+
+  .request-details-icon {
+    i {
+      color: $theme-font-color;
+      font-size: 28px;
+    }
+  }
+}
+
+

@@ -1,0 +1,48 @@
+@import "../../../../../../../src/scss/variables";
+
+.main-content-inner-block-nav {
+
+  margin-top: 10px;
+
+  &-item {
+    line-height: 3.57;
+    letter-spacing: normal;
+    color: rgba(0, 0, 0, 0.8);
+    position: relative;
+
+    a {
+      font-size: 14px;
+      &.active {
+        background-color: rgba(47, 56, 241, 0.05);
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 3px;
+          height: 100%;
+          background-color: #437ff5;
+          border-radius: 0 100px 100px 0;
+        }
+      }
+    }
+  }
+}
+
+
+
+//.nav-item{
+//
+//  a {
+//    font-size: 14px;
+//  }
+//
+//  & .active {
+//    color: $theme-color;
+//  }
+//
+//  //&:hover{
+//  //  background-color: darken(white, 2%);
+//  //}
+//}

@@ -1,0 +1,51 @@
+<div class="header">
+    <div class="header-icon h4-title h4-title--semibold-weight" [ngClass]="{open:open}">{{ title }}</div>
+    <div class="header-navigation">
+        <ul class="nav">
+            <li class="nav-item" *ngIf="(walletAmount !== null) && CanUserAccess">
+                <a class="" [routerLink]="['/','dashboard','transactions']">
+                    <div class="wallet-amount">
+                        <span style="font-size: 12px; font-weight: 300; color: white; padding-right: 5px">Balance</span><span class="taka-sign">৳</span>{{walletAmount}}
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <mat-menu #menu="matMenu" xPosition="before" yPosition="below" class="nav-menu">
+                    <button mat-menu-item [routerLink]="['/','dashboard','my-account']">
+                        <i class="fa fa-cog"></i>
+                        <span>Settings</span>
+                    </button>
+                    <button mat-menu-item (click)="logout()">
+                        <i class="fa fa-sign-out-alt"></i>
+                        <span>Sign out</span>
+                    </button>
+                </mat-menu>
+                <a class="" [matMenuTriggerFor]="menu">
+                    <span>My Account</span><span class="profile-image-avatar"> <img [src]="user.pro_pic"
+                                                                                    alt=""></span>
+                </a>
+            </li>
+            <li class="nav-item" >
+                <a  [matMenuTriggerFor]="notifications">
+                    <i id="notification-bell" class="d-flex material-icons">
+                        <span *ngIf="notify > 0" [matBadge]="unreadNotifications"></span>
+                        notifications
+                    </i>
+                </a>
+                <mat-menu  #notifications="matMenu">
+                    <div class="notification--wrapper">
+                        <div class="notification--wrapper__header" (click)="$event.stopPropagation()">
+                            <h6 class="notification--wrapper__header__title">Notifications</h6>
+                        </div>
+                        <div class="notification--wrapper__content">
+                            <app-notifications-content (notificationLength)="notificationCount($event)"></app-notifications-content>
+                        </div>
+                        <div [routerLink]="['/', 'dashboard', 'notifications']" class="notification--wrapper__footer">
+                            <a class="button--link">View All</a>
+                        </div>
+                    </div>
+                </mat-menu>
+            </li>
+        </ul>
+    </div>
+</div>

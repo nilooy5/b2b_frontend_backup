@@ -1,0 +1,42 @@
+<div class="main-content-container" >
+    <div class="main-content-block">
+        <div class="row">
+            <div class="col-md-5">
+                <h6 class="py-3">Service Providers</h6>
+                <div class="p-30 bg-white">
+                    <div class="flex w-100 justify-content-start align-items-start mb-4 subscription-order-details__info">
+                        <div class="flex flex-row align-items-start">
+                            <section>
+                                <img [src]="serviceProvider.logo" onerror="this.src = 'https://i.ibb.co/bXqhnhG/user.png'" class="employee-info__image">
+                            </section>
+
+                            <section>
+                                <h6 class="subscription-order-details__info__title">
+                                    {{serviceProvider.partner_name}}
+                                </h6>
+                                <p>
+                            <span class="partner-rating"><span class="rating"><i class="material-icons">star</i> {{serviceProvider.avg_rating}}</span>
+                                &nbsp;({{serviceProvider.total_rating}} Ratings)</span>
+                                </p>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="flex w-100 justify-content-start align-items-start mb-4">
+                            <h6 style="color: grey">Contact Person: </h6>
+                            <h6 class="pl-3">{{ serviceProvider.contact_person }}</h6>
+                    </div>
+                    <div class="flex w-100 justify-content-start align-items-start mb-4">
+                            <h6 style="color: grey">Address: </h6>
+                            <h6 class="pl-3">{{ serviceProvider.partner_address }}</h6>
+                    </div>
+                    <div class="flex w-100 justify-content-start align-items-start mb-4">
+                            <h6 style="color: grey">Phone Number: </h6>
+                            <h6 class="pl-3">{{ serviceProvider.partner_mobile }}</h6>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<table *ngIf="dataSource" mat-table [dataSource]="dataSource" class="table designer-table">
+    <ng-container *ngFor="let column of displayColumns; let col_i = index" [matColumnDef]="column">
+        <th mat-header-cell *matHeaderCellDef class="table-header">
+            <span *ngIf="column !== 'actions'">
+                {{column}}
+                <button [matMenuTriggerFor]="menu" class="btn table-menu-button">
+                  <i class="material-icons">more_vert</i>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="editColumn(column, col_i)">
+                    <span><i class="material-icons">create</i> Edit Name</span>
+                  </button>
+                  <button mat-menu-item (click)="deleteColumn(column)">
+                     <span><i class="material-icons">delete</i> Delete Column</span>
+                  </button>
+                </mat-menu>
+            </span>
+            <button class="btn" *ngIf="column === 'actions'" (click)="addColumn()">
+                <i class="material-icons">add</i>
+            </button>
+        </th>
+
+        <td mat-cell *matCellDef="let element; let i = index">
+            <span *ngIf="column !== 'actions'">{{element[column]}}</span>
+            <div *ngIf="column === 'actions'">
+                <button class="btn" (click)="editRow(i)">
+                    <i class="material-icons">create</i>
+                </button>
+                <button class="btn" (click)="deleteRow(i)">
+                    <i class="material-icons">delete</i>
+                </button>
+            </div>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayColumns;" style="margin-bottom: 20px;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+</table>
+
+<div class="d-flex justify-content-end">
+    <button class="btn button--filled add-row-button" (click)="addRow()"><i class="material-icons">add</i></button>
+</div>

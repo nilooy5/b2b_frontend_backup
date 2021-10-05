@@ -1,0 +1,269 @@
+@import 'src/scss/variables';
+@import "../../../../../scss/form_components";
+
+.sorting {
+  margin-right: 15px;
+  &__month {
+    position: relative;
+
+    &-select {
+      padding: 4px 55px 4px 15px ;
+      min-width: auto !important;
+      background-color: #fff;
+      border: solid 1px #d3d8e6;
+      color: rgba(0, 0, 0, 0.8);
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: $font-lato !important;
+      position: relative;
+      -webkit-appearance: none; // Removing the default dropdown icon
+      -moz-appearance: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &-option {
+      color: rgba(0, 0, 0, 0.8);
+      cursor: pointer;
+      font-size: 14px;
+      border: none;
+    }
+
+    &-icon {
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      font-size: 22px;
+      color: #bbc0cc;
+      pointer-events: none;
+    }
+  }
+}
+
+.downloadBtn {
+  border: solid 1px #4373f5;
+  color: #4373f5;
+  max-height: 30px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 22px;
+}
+
+hr{
+  margin: 0;
+}
+
+.employee-info {
+  &-container{
+    border-radius: 10px;
+    box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+  }
+  &-container-outside{
+    padding: 0 15px 0 0;
+  }
+  &-header{
+    margin: 0;
+    padding: 14px 30px;
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+  }
+  &-content{
+    padding: 0 30px 15px 30px;
+  }
+  &-content-row-padding{
+    padding: 15px 0px;
+  }
+  &-content-title{
+    opacity: 0.6;
+    font-family: Poppins;
+    font-size: 14px;
+    color: #000000;
+  }
+  &-content-value{
+    padding: 0 0 0 26px;
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+  }
+}
+
+.summary {
+  &-container{
+    border-radius: 10px;
+    box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+  }
+  &-container-outside{
+    padding: 0 0 0 15px;
+  }
+  &-header{
+    margin: 0;
+    padding: 14px 30px;
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+  }
+  &-content{
+    padding: 0 30px;
+  }
+  &-content-row-padding{
+    padding: 15px 0px;
+  }
+  &-content-title{
+    opacity: 0.6;
+    font-family: Poppins;
+    font-size: 14px;
+    color: #000000;
+  }
+  &-content-value{
+    padding: 0 0 0 26px;
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+  }
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.attendanceStatus {
+  color: #FFFFFF!important;
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  //font-family: $font-rubik;
+  font-family: Poppins;
+  &.onTime {
+    background: #2ba660;
+  }
+  &.late {
+    background: #fa5252;
+  }
+  &.leftEarly {
+    background: #ff8219;
+  }
+  &.absent {
+    //background: #b3b7cc;
+    background: #2a2b32;
+  }
+  &.leftTimely{
+    background: #29b9cf;
+  }
+  &.onLeave{
+    background: #b3b7cc;
+  }
+}
+
+.r-design{
+  border: 1.2px solid #4373f5;
+  border-radius: 50%;
+  padding: 0 6px;
+  color: #4373f5;
+  font-weight: 500;
+}
+
+.checkout_width{
+  width: 234px;
+  margin-top: 10px;
+}
+
+::ng-deep .my-custom-class .tooltip-inner {
+  max-width:400px;
+  width:242px;
+  background:#000;
+  border-radius:5px;
+  color:#fff;
+  padding:14px;
+  line-height:24px;
+  text-align:left;
+  font-family:Poppins;
+  font-size:14px
+}
+
+.employee{
+  &-pro-pic{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+  &-name{
+    opacity: 1;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+  }
+  &-phone{
+    font-family: Poppins;
+    font-size: 14px;
+    margin-top: 2px;
+    color: rgba(10, 15, 20, 0.75);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .small-screen .col-md-6{
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  .employee-info-container-outside{
+    padding: 0;
+  }
+  .summary-container-outside{
+    padding: 0;
+  }
+  .ipad-design{
+    overflow-x: scroll;
+  }
+  .checkout_width{
+    width: 215px;
+    margin-top: 10px;
+    margin-right: 45px;
+  }
+
+  .small-screen-date{
+    padding-right: 65px;
+  }
+}
+
+@media only screen and (max-width: 1299px) {
+  .employee-name-phone{
+    padding: 0 0 0 35px;
+  }
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1600px) {
+  .employee-name-phone{
+    padding: 0 0 0 30px;
+  }
+}
+
+@media screen and (min-width: 1601px) {
+  .employee-name-phone{
+    padding: 0 0 0 5px;
+  }
+  .employee-info-content-value{
+    margin-left: -12%;
+  }
+  .summary-content-value{
+    margin-left: -10%;
+  }
+}
+

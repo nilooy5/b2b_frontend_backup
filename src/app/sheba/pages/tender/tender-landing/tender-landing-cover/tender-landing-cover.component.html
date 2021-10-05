@@ -1,0 +1,19 @@
+<div class="bg-color">
+    <div class="container d-flex flex-column align-items-center">
+        <h1 class="header-text mt-5 Find-any-work-online">Find any work online</h1>
+        <p class="header-description sWorkxyz-helps-busi">sbusiness.xyz helps businesses to manage their procurements and connects with vendors who want to work with corporate clients.</p>
+        <div class="example-button-row text-center" >
+            <a [routerLink]="['/tender/list']" >
+                <button class="BG btn btn-primary"
+                [ngClass]="{'button-row-desk': !isMobileDevice}" > View All Tenders </button>
+            </a>
+
+            <button class="WBG btn" style="background-color: #edf2ff;" (click)="playVideo()"> <img src="/assets/svg/icons/rfq/play.svg"
+                class="play">Watch Demo</button>
+        </div>
+        <div class="cover-image">
+            <img src="/assets/svg/icons/rfq/landing-cover.svg" class="illustration-1">
+        </div>
+    </div>
+</div>
+

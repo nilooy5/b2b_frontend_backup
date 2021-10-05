@@ -1,0 +1,113 @@
+
+@mixin box_shadow($shadow) {
+    box-shadow:$shadow;
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow:$shadow;
+    -ms-box-shadow:$shadow;
+    -o-box-shadow:$shadow;
+    
+}
+@mixin transitions($value) {
+    -webkit-transition: $value;
+     -moz-transition: $value;
+      -ms-transition: $value;
+       -o-transition: $value;
+          transition: $value;
+    
+}
+@mixin transforms($value) {
+    -webkit-transform: $value;
+     -moz-transform: $value;
+      -ms-transform: $value;
+       -o-transform: $value;
+          transform: $value;
+}
+
+@mixin border_radius($value){
+  -webkit-border-radius:$value;
+  -moz-border-radius:$value;
+  -o-border-radius:$value;
+  -ms-border-radius:$value;
+  border-radius:$value;
+}
+/*********************
+  Mixins
+**********************/
+@mixin smart_shadow() {
+    -webkit-box-shadow: -1px 2px 1px 1px rgba(0, 0, 0, 0.2), 1px 2px 1px rgba(0, 0, 0, 0.2), 1px 1px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: -1px 2px 1px 1px rgba(0, 0, 0, 0.2), 1px 2px 1px rgba(0, 0, 0, 0.2), 1px 1px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: -1px 2px 1px 1px rgba(0, 0, 0, 0.2), 1px 2px 1px rgba(0, 0, 0, 0.2), 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+@mixin hover {
+    @if $enable-hover-media-query {
+        // See Media Queries Level 4: http://drafts.csswg.org/mediaqueries/#hover
+        // Currently shimmed by https://github.com/twbs/mq4-hover-shim
+        @media (hover: hover) {
+            &:hover {
+                @content
+            }
+        }
+    }
+    @else {
+        &:hover {
+            @content
+        }
+    }
+}
+
+@mixin hover-focus {
+    @if $enable-hover-media-query {
+        &:focus {
+            @content
+        }
+        @include hover {
+            @content
+        }
+    }
+    @else {
+        &:focus,
+        &:hover {
+            @content
+        }
+    }
+}
+
+@mixin plain-hover-focus {
+    @if $enable-hover-media-query {
+        &,
+        &:focus {
+            @content
+        }
+        @include hover {
+            @content
+        }
+    }
+    @else {
+        &,
+        &:focus,
+        &:hover {
+            @content
+        }
+    }
+}
+
+@mixin hover-focus-active {
+    @if $enable-hover-media-query {
+        &:focus,
+        &:active {
+            @content
+        }
+        @include hover {
+            @content
+        }
+    }
+    @else {
+        &:focus,
+        &:active,
+        &:hover {
+            @content
+        }
+    }
+}
+

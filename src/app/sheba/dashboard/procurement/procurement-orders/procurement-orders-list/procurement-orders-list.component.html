@@ -1,0 +1,70 @@
+<app-procurement-orders-filter [rfqOrderStatus]="rfqOrderStatus"
+                               [totalOrdersCount]="totalOrdersCount"
+                               (filterEmitter)="setFilteredSubscriptionOrders($event)"
+                               (searchInputEmitter)="handleSearch($event)"
+                               (alphabeticFilter)="handleAlphabeticSort($event)"></app-procurement-orders-filter>
+
+<div class="main-content-container">
+    <div class="main-content-block">
+        <div class="main-content-table">
+            <table id="table" *ngIf="(filteredProcurementOrdersList.length && dataSource)" mat-table [dataSource]="dataSource" class="table designer-table">
+
+                <ng-container matColumnDef="serviceName">
+                    <th mat-header-cell *matHeaderCellDef>Product/Service Name</th>
+                    <td mat-cell *matCellDef="let element">
+                    <span> {{ element.procurement_title }}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="serviceProvider">
+                    <th mat-header-cell *matHeaderCellDef>Service Provider</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>{{ element.vendor.name }}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="createdAt">
+                    <th mat-header-cell *matHeaderCellDef>Created Date</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>{{ element.created_at }}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef>Price</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>৳{{ element.price | number }}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef>Status</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span class="order-status" [ngStyle]="{'background-color' : element.color }">
+                                {{ element.procurement_status }}
+                        </span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element" id="actionsColumnContent">
+                        <a class="request-details-icon" (click)="redirectToProcurementOrder(element)">
+                            <i class="material-icons">keyboard_arrow_right</i>
+                        </a>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            </table>
+            <div class="no-rfq" *ngIf="!filteredProcurementOrdersList.length">
+                <p>No RFQ Orders Available.</p>
+            </div>
+        </div>
+        <div class="no-rfq" *ngIf="!filteredProcurementOrdersList || filteredProcurementOrdersList === undefined">
+            <p>No RFQ Orders Available</p>
+        </div>
+    </div>
+</div>

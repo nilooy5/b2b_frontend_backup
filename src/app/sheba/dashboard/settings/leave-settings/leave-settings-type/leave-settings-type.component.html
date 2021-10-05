@@ -1,0 +1,119 @@
+<app-leave-settings-type-breadcrumb *ngIf="show_leave_types" [dataSource]="dataSource"
+                                    [disableButton]="disableAddRow"
+                                    (createNewRow)="handleNewRow($event)"></app-leave-settings-type-breadcrumb>
+
+<div class="mt-50" *ngIf="show_leave_types">
+    <div class="row">
+        <div class="col-md-12">
+            <p *ngIf="showSuccessAlert">
+                <ngb-alert type="success_ribbon" [dismissible]="true" *ngIf="showSuccessAlert" (close)="initiateAgain()">
+                    <img class="ribbon-img" src="../../../../../../assets/svg/succes_img_ribbon.svg" alt="info">
+                    {{ alert_message }}
+                </ngb-alert>
+            </p>
+        </div>
+    </div>
+
+    <div class="row mx-0 justify-content-between" *ngIf="leaveTypeList.length">
+
+        <div class="col px-0 align-self-center">
+            <p class="records-text"> {{ total_records }} Records found </p>
+        </div>
+
+        <div class="search ml-auto">
+            <i class="search-text material-icons">search</i>
+            <input type="text" class="search-input form-control" [(ngModel)]="search_text" placeholder="Search" (input)="search($event)">
+        </div>
+
+    </div>
+
+    <div class="main-table-block">
+
+        <table mat-table class="main-table-theme" [dataSource]="dataSource">
+
+            <ng-container matColumnDef="serialNo">
+                <th mat-header-cell *matHeaderCellDef style="width: 20%">SL.</th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    <span>{{ i + 1}}.</span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="typeName">
+                <th mat-header-cell *matHeaderCellDef style="width: 35%">Leave Name</th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-form-field  appearance="outline" floatLabel="{{ element.editing ? 'float' : 'never'}}">
+                        <input matInput [formControl]="element.validator.controls['typeName']" type="text" placeholder="Ex.Casual Leave">
+                    </mat-form-field>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="totalDays">
+                <th mat-header-cell *matHeaderCellDef style="width: 25%; padding-left: 0">Total Days</th>
+                <td mat-cell *matCellDef="let element">
+                    <div *ngIf="element.editing">
+                        <mat-form-field appearance="outline" floatLabel="{{ element.editing ? 'float' : 'never'}}">
+                            <input matInput [formControl]="element.validator.controls['totalDays']" type="number" placeholder="Ex. 20">
+                        </mat-form-field>
+                    </div>
+                    <div *ngIf="!element.editing">
+                        {{ element.validator.controls.totalDays.value }} Days
+                    </div>
+                </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="actionsColumn">
+                <th mat-header-cell *matHeaderCellDef style="width: 20%"> </th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    <div class="actions-column" [ngClass]="{ 'opacity-1': inEditMode[i], 'opacity-0': !inEditMode[i] }">
+                        <button class="perform perform-save" *ngIf="element.editing"
+                                (click)="confirmRow(element, i)" [ngStyle]="{ 'width' : element.validator.controls.id.value ? '109px' : '82px' }">
+                            <span> {{ element.validator.controls.id.value ? 'Update' : 'Add' }} </span>
+                        </button>
+                        <button class="perform perform-edit" *ngIf="!element.editing"
+                                (click)="editRow(element, i)">
+                            Edit
+                        </button>
+                        <button class="perform perform-delete" *ngIf="!element.editing"
+                                (click)="deleteRow(element, i)">
+                            Delete
+                        </button>
+                        <button class="perform perform-cancel" *ngIf="element.editing"
+                                (click)="deleteRow(element, i)">
+                            <span class="material-icons" style="margin-top: 5px;" > close </span>
+                        </button>
+                    </div>
+                </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+
+        </table>
+
+    </div>
+</div>
+
+<div *ngIf="!show_leave_types">
+    <div class="container-fluid no-types-container">
+        <div class="row">
+            <div class="col-md-12 bg-white no-types-content">
+                <img class="no-types-img" src="../../../../../../assets/svg/no_rfq_list.svg" alt="Success">
+                <p class="no-types-heading">No Leave Types</p>
+                <p class="no-types-text">
+                    Configure & manage leave types for leave management module.
+                </p>
+                <button class="btn btn-primary no-types-btn" (click)="addRow(dataSource)" >Add Leave Type</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--<div class="custom-toggler">-->
+<!--    <label class="switch">-->
+<!--        <input type="checkbox" [checked]="false" [(ngModel)]="isChecked">-->
+<!--        <span class="slider round"></span>-->
+<!--    </label>-->
+<!--</div>-->

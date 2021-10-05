@@ -1,0 +1,90 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10 bg-white p-0 office-settings-attendance-edit-container">
+            <div class="office-settings-attendance-edit-header">
+                <p class="m-0">Attendance Information</p>
+            </div>
+            <hr>
+            <div class="office-settings-attendance-edit-content">
+                <form>
+                    <div class="row m-0 attendance-edit-padding24">
+                        <div class="col-md-3 p-0 mt-2 attendance-edit-title">
+                            <p class="office-settings-info-edit-title">Attendance type</p>
+                        </div>
+                        <div class="col-md-9 p-0 m-0">
+                            <div class="row">
+                                <div class="col-md-12" *ngFor="let sheba_type of sheba_attendance_types">
+                                    <mat-checkbox [checked]="existing_types.indexOf(sheba_type.value) != -1"
+                                                  [value]="sheba_type.value" (change)="onCheckChange($event)">
+                                        <span class="ml-1 attendance-edit-value"> {{ sheba_type.title }} </span>
+                                        <span class="ml-1 attendance-edit-subvalue"> {{ sheba_type.subtitle }} </span>
+                                    </mat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="show_ip_list" class="row m-0">
+                        <div class="col-md-3 p-0 mt-2 attendance-edit-title">
+                            <p class="office-settings-info-edit-title" style="margin-top: 20px">List of IPs</p>
+                        </div>
+                        <div class="col-md-9 p-0 m-0">
+                            <div class="main-table-block">
+
+                                <table mat-table class="main-table-theme" [dataSource]="dataSource">
+                                    <ng-container *ngFor="let columnDef of displayedColumns" [matColumnDef]="columnDef.value">
+                                        <th mat-header-cell *matHeaderCellDef> {{ columnDef.label }} </th>
+                                        <td mat-cell *matCellDef="let element; let i = index">
+
+                                            <div *ngIf="columnDef.value !== 'actionsColumn'">
+                                                <mat-form-field appearance="outline" floatLabel="{{ element.editing ? 'float' : 'never'}}">
+                                                    <input matInput [formControl]="element.validator.controls[columnDef.value]" type="text">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="actions-column" *ngIf="columnDef.value == 'actionsColumn'" [ngClass]="{ 'opacity-1': inEditMode[i], 'opacity-0': !inEditMode[i] }">
+                                                <button class="perform perform-save" *ngIf="element.editing"
+                                                        (click)="confirmRow(element, i)">
+                                                    Save
+                                                </button>
+                                                <button class="perform perform-edit" *ngIf="!element.editing"
+                                                        (click)="editRow(element, i)">
+                                                    Edit
+                                                </button>
+                                                <button class="perform perform-delete" *ngIf="!element.editing"
+                                                        (click)="deleteRow(element, i)">
+                                                    Delete
+                                                </button>
+                                                <button class="perform perform-cancel" *ngIf="element.editing"
+                                                        (click)="deleteRow(element, i)">
+                                                    <span class="material-icons" style="margin-top: 2px;" > close </span>
+                                                </button>
+                                            </div>
+
+                                        </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayColumns;" ></tr>
+                                </table>
+
+                            </div>
+                            <div id="add-ip-button" class="justify-content-start" *ngIf="showAddNewRowButton">
+                                <button #addNewRow
+                                        class="btn add-new-row d-flex align-items-center justify-content-center"
+                                        (click)="createNewRow(dataSource)">
+                                    <span>{{ showAddAnotherText ? '+Add Another IP' : '+Add Your First Ip' }}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-md-3 p-0 mt-2 attendance-edit-title">
+                        </div>
+                        <div class="col-md-9 p-0 m-0">
+                            <button id="save-changes" [disabled]="!showAddNewRowButton" (click)="submit()">Save Changes</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

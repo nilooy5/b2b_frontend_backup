@@ -1,0 +1,9 @@
+@import "../../../../../../../src/scss/variables";
+@import "../../../../../../../src/scss/layouts";
+
+.subscription-service-list {
+  border: 1px solid $light_bluish_grey;
+  padding: 24px;
+  border-radius: 4px;
+  background-color: $white;
+}

@@ -1,0 +1,22 @@
+<div class="landing__section landing__section--odd">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4 mr-4 price-plan-card elevated-pane"
+                 [class.selected]="item.selected"
+                 *ngFor="let item of data; let i = index">
+                <h2>{{item.name}}</h2>
+                <p>{{item.text}}</p>
+                <h2 class="price-plan-card__amount"><span class="taka-sign"
+                                                          style="font-size: 32px">{{item.currency}}</span>{{item.amount}}
+                </h2>
+                <p *ngIf="item.amountText">{{item.amountText}}</p>
+                <p *ngIf="item.oldAmount" class="old-amount"><span class="taka-sign">{{item.oldAmount}}</span></p>
+                <button [class.button--primary--outline]="item.buttonType == 'outline'"
+                        [class.button--primary--filled]="item.buttonType == 'filled'"
+                        style="padding: 10px 32px"
+                        class="btn"
+                        [routerLink]="item.actionButtonLink">{{item.actionButtonText}}</button>
+            </div>
+        </div>
+    </div>
+</div>

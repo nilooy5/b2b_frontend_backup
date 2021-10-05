@@ -1,0 +1,27 @@
+<div mat-dialog-title>
+    <h5 class="modal-title" style="display: inline" id="optionsModalLabel">Rejection Note</h5>
+    <button type="button" class="close" (click)="close()">
+        <i class="material-icons">close</i>
+    </button>
+</div>
+<div mat-dialog-content>
+    <form [formGroup]="generalInformation">
+        <div class="form-group row" style="margin: 20px 0;">
+
+            <div class="offset-1 col-md-10">
+                <textarea placeholder="Write the reason for rejecting this purchase request" class="form-control" id="rejection_note" type="text" formControlName="rejection_note"
+                         style="height: 100px;" required></textarea>
+                <p class="employee-add__error-message" *ngIf=" generalInformation.get('rejection_note').hasError('required')">
+                    Rejection Note is required
+                </p>
+            </div>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions style="box-shadow: 0 -4px 10px 0 rgba(0, 0, 0, 0.1);">
+    <div class="d-flex justify-content-between align-items-end" style="width: 100%">
+        <button class="btn button--primary--filled" style="padding: 8px 32px; font-weight: 400; max-height: 40px"
+                (click)="next()">Reject
+        </button>
+    </div>
+</div>

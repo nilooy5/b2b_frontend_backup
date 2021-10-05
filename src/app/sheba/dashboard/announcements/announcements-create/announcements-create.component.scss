@@ -1,0 +1,115 @@
+@import '../../../../../../src/scss/variables';
+
+:host ::ng-deep {
+  .note-popover {
+    height: 50px;
+  }
+
+  .note-modal-footer {
+    padding: 0 10px;
+  }
+}
+
+.announcement-create {
+  background-color: $white;
+  padding: 60px;
+  //max-width: 730px;
+
+  h5 {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .announcement-create__form {
+    background-color: $white;
+    font-family: $theme-font;
+    margin-top: 20px;
+    border-radius: 4px;
+    //padding: 40px 20px 40px 20px;
+    input,
+    textarea {
+      border: 1.5px solid $theme-light-grey;
+      background-color: #fafbfc;
+      padding: 20px 16px;
+    }
+    textarea {
+      padding: 10px 16px;
+    }
+    .form-group {
+      margin: 0 0 40px;
+      align-items: center;
+    }
+    button {
+      background-color: $theme-font-color;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 42px;
+      color: $white;
+      margin-left: 10px;
+      margin-top: 20px;
+      i {
+        position: relative;
+        font-size: 20px;
+        top: 5px;
+      }
+    }
+
+    .date-picker {
+      position: relative;
+      .announcement-create__date-picker__toggle {
+        position: absolute;
+        top: 2px;
+        right: 5px;
+      }
+    }
+
+    .col-form-label {
+      align-self: center;
+      margin-bottom: 0;
+    }
+  }
+
+  .announcement-create__select {
+    select {
+      border: 1.5px solid $theme-light-grey;
+      background-color: #fafbfc;
+      padding: 8px 16px;
+      min-height: 0;
+    }
+    i {
+      top: 12px;
+    }
+  }
+
+  .announcement-create__error-message {
+    font-size: 14px;
+    color: $red;
+    margin: 0;
+  }
+
+  .disabled {
+    background-color: #82b9e9 !important;
+  }
+}
+
+
+//.btn {
+//  padding: 10px 0;
+//  color: $primary !important;
+//}
+
+
+.button {
+  margin: 10px 0;
+  padding: 3px 20px;
+  min-height: 0;
+  font-size: 13px;
+  color: $navy-blue !important;
+}
+
+.descriptionPreview {
+  border: 1.5px solid #d3d8e6;
+  background-color: #fafbfc;
+  padding: 20px 16px 10px 16px;
+  border-radius: 5px
+}

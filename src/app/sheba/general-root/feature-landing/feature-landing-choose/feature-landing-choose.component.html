@@ -1,0 +1,13 @@
+<div class="container componentStyle">
+    <div class="topDiv">
+        <p class="title">Why Choose Us</p>
+        <p class="subtitle">The best in the business, to manage your Office</p>
+    </div>
+    <div class="row justify-content-md-between">
+        <div class="col-md-3 text-center" *ngFor="let item of contents[feature]">
+            <div><img src="{{ item.image }}" alt=""></div>
+            <div class="card_title">{{ item.label }}</div>
+            <div class="description">{{ item.description }}</div>
+        </div>
+    </div>
+</div>

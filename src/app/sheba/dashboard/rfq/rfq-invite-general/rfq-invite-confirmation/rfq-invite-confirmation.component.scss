@@ -1,0 +1,60 @@
+@import "src/scss/variables";
+
+.confirmation {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $white;
+    padding: 70px;
+  }
+
+  &-image {
+    margin-bottom: 15px;
+  }
+
+  &-title {
+    font-size: $fs-header-6;
+    font-weight: $font-weight-semiBold;
+    line-height: 1.4;
+    text-align: center;
+    color: $black-80;
+    margin-bottom: 15px;
+  }
+
+  &-subtitle {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    color: rgba(10, 15, 20, 0.75);
+    margin-bottom: 30px;
+  }
+
+  &-buttons {
+    display: flex;
+
+    .button--primary--filled,
+    .button--primary--outline {
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: $font-weight-medium;
+      line-height: 1.29;
+      text-align: center;
+      min-height: 0;
+      width: 200px;
+      max-height: 40px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .button--primary--filled {
+      margin-right: 20px;
+      background-color: $primary;
+    }
+    .button--primary--outline {
+      border: solid 1px $primary;
+      color: #437ff5;
+    }
+  }
+}

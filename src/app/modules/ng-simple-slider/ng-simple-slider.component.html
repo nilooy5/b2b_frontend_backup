@@ -1,0 +1,21 @@
+<div class="block-select">
+    <div class="block-select-container-wrapper">
+        <div class="block-select-container" id="block-container"  #container>
+            <div class="block-select-items" #content>
+<!--                <div class="block-select-item-container" *ngFor="let item of items">-->
+<!--                    {{item}}-->
+<!--                    <ng-content ></ng-content>-->
+<!--                </div>-->
+                <ng-content ></ng-content>
+            </div>
+        </div>
+
+    </div>
+    <button *ngIf="hasOverflowLeft" type="button"
+            class="block-select-nav button-icon button-fav button cool-shadow  nav-left"
+            (click)="previous()"><i
+        class="fa fa-chevron-left"></i></button>
+    <button type="button" class="block-select-nav button-icon button-fav button cool-shadow  nav-right"
+            (click)="next()" *ngIf="hasOverflowRight"><i
+        class="fa fa-chevron-right"></i></button>
+</div>

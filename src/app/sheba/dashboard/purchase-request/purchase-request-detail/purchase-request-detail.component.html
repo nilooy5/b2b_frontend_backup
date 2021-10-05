@@ -1,0 +1,198 @@
+<h3 class="purchase-request-forms-details-header">Purchase Request Details</h3>
+
+<div class="purchase-request-forms-details layout__card">
+    <div class="row mb-3 purchase-request-forms-details-row">
+        <div class="col-2">
+            <h4>Request By</h4>
+        </div>
+        <div class="col-8">
+            <div class="d-flex justified-content-start" *ngIf="details.request_by">
+                <div class="align-top">
+                    <img [src]="details.request_by.image">
+                </div>
+
+                <div class="align-content-start" style="padding-left: 10px;">
+                    <span class="request-details" style="color: #000;">{{details.request_by.name}}</span> <br>
+                    <span class="request-details">{{details.request_by.mobile}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row purchase-request-forms-details-row">
+        <div class="col-2">
+            <h4>Request For</h4>
+        </div>
+        <div class="col-8">
+            <p class="request-details">
+                {{ details.request_for }}
+            </p>
+        </div>
+    </div>
+
+    <div class="row purchase-request-forms-details-row">
+        <div class="col-2">
+            <h4>Title</h4>
+        </div>
+        <div class="col-8">
+            <p class="request-details">
+                {{ details.title }}
+            </p>
+        </div>
+    </div>
+
+    <div class="row purchase-request-forms-details-row">
+        <div class="col-2">
+            <h4>Estimated Price</h4>
+        </div>
+        <div class="col-8">
+            <p class="request-details request-price">
+                {{ details.estimated_price }}
+            </p>
+        </div>
+    </div>
+
+    <div class="row purchase-request-forms-details-row">
+        <div class="col-2">
+            <h4>Required Date</h4>
+        </div>
+        <div class="col-8">
+            <p class="request-details">
+                {{ details.required_date }}
+            </p>
+        </div>
+    </div>
+
+    <div class="row purchase-request-forms-details-row">
+        <div class="col-2">
+            <h4>Message</h4>
+        </div>
+        <div class="col-8">
+            <p class="request-details">
+                {{ details.message }}
+            </p>
+        </div>
+    </div>
+
+    <div class="row purchase-request-forms-details-row">
+        <div class="col-2">
+            <h4>Status</h4>
+        </div>
+        <div class="col-8">
+            <p>
+                <span [class]="getStatus(details.status)" style="padding: 7px 7px; color:white;"> {{ statusReadableNames[details.status] }}</span>
+
+                <button class="btn purchase-request-forms__create-button " *ngIf="details.status !== 'approved' && details.status !== 'rejected'"(click)="changeStatus('approved')">
+                    Approve
+                </button>
+
+                <button *ngIf="details.status !== 'approved' && details.status !== 'rejected' && details.status !== 'need_approval'"  class="btn purchase-request-forms__create-button " (click)="openApprovalModal()">
+                    Need Approval
+                </button>
+
+                <button *ngIf="details.status !== 'approved' && details.status !== 'rejected'" class="btn purchase-request-forms__create-button " (click)="openRejectionModal()">
+                    Reject
+                </button>
+
+                <button  *ngIf="details.status === 'approved'" class="btn purchase-request-forms__create-button" (click)="openProcurement()">
+                    Create Procurement
+                </button>
+            </p>
+        </div>
+    </div>
+
+    <div class="row purchase-request-forms-details-row" *ngIf="details.status == 'need_approval'">
+        <div class="col-2">
+            <h4>Need Approval</h4>
+        </div>
+        <div class="col-8">
+            <div class="d-flex justified-content-start" *ngIf="details.approved_by">
+                <div class="align-top">
+                    <img [src]="details.approved_by.image">
+                </div>
+
+                <div class="align-content-start" style="padding-left: 10px;">
+                    <span class="request-details" style="color: #000;">{{details.approved_by.name}}</span> <br>
+                    <span class="request-details">{{details.approved_by.mobile}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row purchase-request-forms-details-row" *ngIf="details.status == 'approved'">
+        <div class="col-2">
+            <h4> Approved By</h4>
+        </div>
+        <div class="col-8">
+            <div class="d-flex justified-content-start" *ngIf="details.approved_by">
+                <div class="align-top">
+                    <img [src]="details.approved_by.image">
+                </div>
+
+                <div class="align-content-start" style="padding-left: 10px;">
+                    <span class="request-details" style="color: #000;">{{details.approved_by.name}}</span> <br>
+                    <span class="request-details">{{details.approved_by.mobile}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row purchase-request-forms-details-row" *ngIf="details.status == 'rejected'">
+        <div class="col-2">
+            <h4>Rejection Reason</h4>
+        </div>
+        <div class="col-8">
+            <p class="request-details">
+                {{ details.rejection_reason }}
+            </p>
+        </div>
+    </div>
+
+    <div class="row purchase-request-forms-details-row" *ngIf="details.status == 'approved'">
+        <div class="col-2">
+            <h4>Procurement ID</h4>
+        </div>
+        <div class="col-8">
+            <p class="request-details request-price">
+                {{ details.procurement_id }}
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<section *ngIf="!displayColumns.includes('')">
+    <h3 class="purchase-request-forms-details-header">Form</h3>
+
+    <table *ngIf="(displayColumns.length && dataSource)" mat-table [dataSource]="dataSource" class="table  designer-table">
+
+        <ng-container *ngFor="let column of displayColumns" [matColumnDef]="column">
+            <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+            <td mat-cell *matCellDef="let element">
+                <span>{{element[column]}}</span>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+    </table>
+</section>
+
+<div *ngIf="details.questions.length > 0;">
+    <h3 class="purchase-request-forms-details-header">Additional Questions</h3>
+
+    <div class="purchase-request-forms-details layout__card">
+
+        <div class="purchase-request-forms-details-question" *ngFor="let question of details.questions;">
+            <p>
+                {{ question.question }}
+            </p>
+
+            <input placeholder="Answer" class="form-control" disabled>
+
+        </div>
+    </div>
+</div>
+
+

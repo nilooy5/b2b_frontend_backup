@@ -1,0 +1,66 @@
+.animation-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 290px;
+  height: 110px;
+  white-space: nowrap;
+  .focus {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: Arial;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      filter: blur(3px);
+      font-size: 65px;
+      opacity: 0.6;
+      color: $theme-color;
+    }
+
+}
+.mask {
+  position: absolute;
+  left: -5px;
+  top: -2px;
+  width: 70px;
+  font-family: Arial;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 65px;
+  clip: rect(0px,70px,125px,0px);
+  background: linear-gradient($theme-color, $theme-color 0) no-repeat,
+    linear-gradient(to right, $theme-color, $theme-color 0) no-repeat,
+    linear-gradient(to right, $theme-color, $theme-color 0) bottom left no-repeat,
+    linear-gradient(to right, $theme-color, $theme-color 0) bottom left no-repeat,
+    linear-gradient($theme-color, $theme-color 0) bottom right no-repeat,
+    linear-gradient($theme-color, $theme-color 0) bottom right no-repeat,
+    linear-gradient($theme-color, $theme-color 0) top right no-repeat,
+    linear-gradient($theme-color, $theme-color 0) top right no-repeat;
+  background-size: 10px 2px, 2px 10px, 2px 10px, 10px 2px, 2px 10px, 10px 2px, 10px 2px, 2px 10px, 10px 2px;
+  color: $theme-color;
+  padding: 5px;
+  transform: translateX(0);
+  box-sizing: border-box;
+  animation: mask 2s linear infinite alternate;
+}
+
+.text {
+  transform: translateX(0);
+  animation: text 2s linear infinite alternate;
+}
+
+@keyframes mask {
+  to {
+    transform: translateX(230px);
+  }
+}
+
+@keyframes text {
+  to {
+    transform: translateX(-230px);
+  }
+}
+

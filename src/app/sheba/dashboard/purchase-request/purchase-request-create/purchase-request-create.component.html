@@ -1,0 +1,110 @@
+
+<h3>Purchase Request Details</h3>
+
+<div class="purchase-request">
+    <div class="container form--create">
+        <form class="form--create__form" [formGroup]="generalInformation">
+            <div class="form-group row">
+                <label for="name" class="col-md-3 col-form-label">Request Form</label>
+                <div class="col-md-4 pr-0">
+                    <input placeholder="Product Buy" [ngModel]="selectedForm.title" class="form-control" id="selected_form_id" type="text" formControlName="selected_form_id" required>
+                    <span (click)="selectForm()" class=""> <i class="material-icons">apps</i> </span>
+                    <p class="employee-add__error-message" *ngIf="showgErrorMsg && generalInformation.get('selected_form_id').hasError('required')">
+                    Please select a form
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="requestFor" class="col-md-3 col-form-label">Request for</label>
+                <div class="col-md-9">
+                    <mat-radio-group aria-labelledby="example-radio-group-label" style="margin-bottom: 15px" class="example-radio-group" formControlName="requested_for">
+                        <mat-radio-button id="requestFor" value="product"  color="primary" class="example-radio-button purchase-request-radio example-radio-group-one">
+                            Product
+                        </mat-radio-button>
+
+                        <mat-radio-button color="primary" value="service" class="example-radio-button purchase-request-radio">
+                            Service
+                        </mat-radio-button>
+
+                    </mat-radio-group>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="title" class="col-md-3 col-form-label">Title</label>
+                <div class="col-md-8 pr-0">
+                    <input placeholder="Ex. Need Computer Parts" class="form-control" id="title" type="text" formControlName="title" required>
+                    <p class="employee-add__error-message" *ngIf="showgErrorMsg && generalInformation.get('title').hasError('required')">
+                     Title is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="estimated_price" class="col-md-3 col-form-label">Estimated Price</label>
+                <div class="col-md-4 pr-0">
+                    <input placeholder="Ex. ৳5,000" class="form-control" id="estimated_price" type="text" formControlName="estimated_price" required>
+                    <p class="employee-add__error-message" *ngIf="showgErrorMsg && generalInformation.get('estimated_price').hasError('required')">
+                     Estimated Price is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="name" class="col-md-3 col-form-label">Required Date</label>
+                <div class="col-md-6 pr-0">
+<!--                    <mat-form-field appearance="outline">-->
+                        <input class="date-input"  placeholder="Choose a date" matInput (focus)="picker.open()" formControlName="required_date" [matDatepicker]="picker" [(ngModel)]="filter.startDate">
+                        <mat-datepicker-toggle class="in-f  orm" matSuffix [for]="picker">
+                            <span class="material-icons calendar-icon" matDatepickerToggleIcon>calendar_today</span>
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker panelClass="chevron-picker"></mat-datepicker>
+<!--                    </mat-form-field>-->
+                    <p class="employee-add__error-message" *ngIf="showgErrorMsg && generalInformation.get('required_date').hasError('required')">
+                     Date is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="message" class="col-md-3 col-form-label">Message (optional)</label>
+                <div class="col-md-8 pr-0">
+                    <textarea placeholder="Write message" class="form-control" id="message" type="text" formControlName="message"></textarea>
+                    <!--<p class="employee-add__error-message" *ngIf="showgErrorMsg && generalInformation.get('name').hasError('required')">
+                     Name is required
+                    </p>-->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<h3>Form</h3>
+
+<div>
+    <app-editable-table [tableData]="tableInitialData" (change)="handleTableUpdate($event)"></app-editable-table>
+</div>
+
+<h3 class="purchase-request-forms-details-header">Additional Questions</h3>
+
+<div class="purchase-request-forms-details layout__card">
+
+    <div class="purchase-request-form">
+        <div class="purchase-request-form-section">
+            <app-questions (update)="handleQuestionUpdates($event)"></app-questions>
+        </div>
+    </div>
+</div>
+
+<div class="row d-flex justify-content-end">
+    <div class="purchase-request-forms__action" style="margin-top: 20px;">
+        <button class="button button-primary purchase-request-forms__create-button " (click)="submitPurchaseRequestForm()">
+            Submit Request
+        </button>
+    </div>
+</div>
+
+
+
+

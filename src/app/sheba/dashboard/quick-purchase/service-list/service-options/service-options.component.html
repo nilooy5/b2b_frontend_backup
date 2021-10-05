@@ -1,0 +1,68 @@
+<div mat-dialog-title>
+    <h5 class="modal-title" style="display: inline" id="optionsModalLabel">Service Options</h5>
+    <button type="button" class="close" (click)="close()">
+        <i class="material-icons">close</i>
+    </button>
+</div>
+<div mat-dialog-content>
+    <div class="dialog-content-inner">
+        <form [formGroup]="form">
+            <div *ngFor="let option of data.options;let i=index">
+                <div *ngIf="option.input_type === 'dropdown'">
+                    <!--<select name="" id="">-->
+                    <!--<option value="" *ngFor="let answer of option.answers; let i = index" [value]="i">-->
+                    <!--{{answer}}-->
+                    <!--</option>-->
+                    <!--</select>-->
+                    <mat-form-field class="select--primary" appearance="outline" floatLabel="never">
+                        <mat-label>{{option.question}}</mat-label>
+                        <mat-select name="" id="" [formControlName]="i+''" [value]="0">
+                            <mat-option *ngFor="let answer of option.answers; let i = index" [value]="i">
+                                {{answer}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div *ngIf="option.input_type === 'radiobox'">
+                    <label id="example-radio-group-label1">{{option.question}}</label>
+                    <mat-radio-group
+                            aria-labelledby="example-radio-group-label"
+                            class="example-radio-group" [formControlName]="i+''" [value]="0">
+                        <mat-radio-button color="primary" class="example-radio-button"
+                                          *ngFor="let answer of option.answers; let i = index" [value]="i">
+                            {{answer}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+                <div *ngIf="option.input_type === 'selectbox'">
+                    <label id="example-radio-group-label2">{{option.question}}</label>
+                    <mat-checkbox color="primary"
+                                  class="example-margin"
+                                  *ngFor="let answer of option.answers; let i = index" [value]="i+''"
+                                  [formControlName]="i+''">
+                        {{answer}}
+                    </mat-checkbox>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div mat-dialog-actions style="box-shadow: 0 -4px 10px 0 rgba(0, 0, 0, 0.1);">
+    <div class="d-flex justify-content-between align-items-end" style="width: 100%">
+        <div class="service-option__edit__counter">
+            <h5>Quantity:</h5>
+            <button class="btn button--success" (click)="updateQuantity('decrease')"><i
+                class="material-icons">remove</i></button>
+            <input type="number" class="no-arrow" [(ngModel)]="quantity">
+            <button class="btn button--success" (click)="updateQuantity('increase')"><i class="material-icons">add</i>
+            </button>
+            <span style="margin-left: 10px"> unit</span>
+        </div>
+
+        <button class="btn button--primary--filled" style="padding: 8px 32px; font-weight: 400; max-height: 40px"
+                (click)="add()">ADD
+        </button>
+    </div>
+</div>

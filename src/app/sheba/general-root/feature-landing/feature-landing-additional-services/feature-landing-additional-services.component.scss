@@ -1,0 +1,87 @@
+@import "../../../../../scss/variables";
+.card_title{
+  font-family: Lato, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  margin-top: 50px;
+}
+.imgFrame{
+  width: 120px;
+  height: 120px;
+  background-color: #f5f6fc;
+  border-radius: 120px;
+  display: inline-block;
+}
+.image{
+  height: 50px;
+  width: auto;
+  margin-top: 35px;
+}
+.title{
+  opacity: 0.8;
+  font-family: OpenSans, sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  color: #000000;
+}
+.subtitle{
+  opacity: 0.6;
+  font-family: Lato, sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  text-align: center;
+  color: #000000;
+}
+.header{
+  padding: 65px;
+}
+/*.scrollDiv{
+  height: 10em;
+  overflow-x: auto;
+  white-space: nowrap;
+}*/
+.componentStyle{
+  padding-bottom: 100px;
+}
+@media screen and (max-width: 768px) {
+  /*.scrollDiv{
+    overflow-x: auto;
+    white-space: nowrap;
+  }*/
+  .title {
+    font-size: 20px;
+    font-family: $font-poppins !important;
+    font-weight: 500;
+  }
+  .subtitle {
+    font-size: 14px;
+  }
+  .card_title {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  .imgFrame {
+    width: 60px;
+    height: 60px;
+  }
+  .image{
+    height: 30px;
+    width: auto;
+    margin-top: 13px;
+  }
+  #slider-container {
+    width: 100%;
+    overflow: auto;
+  }
+  .row {
+    flex-wrap: nowrap;
+  }
+  .componentStyle {
+    padding: 0 30px 70px 30px;
+  }
+}

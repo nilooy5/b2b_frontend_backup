@@ -1,0 +1,15 @@
+<div class="container componentStyle">
+    <div class="header">
+        <div class="title">We Provide these Services too</div>
+        <div class="subtitle">Things you might also want to know</div>
+    </div>
+
+    <div class="row justify-content-md-between" id="slider-container">
+        <div class="col-md-2 text-center" id="slider" *ngFor="let item of contents[services]">
+            <div class="imgFrame">
+                <img class="img-fluid image" src="{{ item.image }}" alt="">
+                <div class="card_title">{{ item.label }}</div>
+            </div>
+        </div>
+    </div>
+</div>

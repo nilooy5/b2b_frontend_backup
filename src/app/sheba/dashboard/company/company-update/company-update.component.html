@@ -1,0 +1,62 @@
+<div class="dialog-big-head" mat-dialog-title>
+    <div class="dialog-big-head-title">Complete Your Profile</div>
+    <span class="dialog-big-head-sub-title">Only few steps left</span>
+</div>
+<div #alertDiv></div>
+<div class="dialog-big-content">
+    <form (submit)="submit()" [formGroup]="form">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="general-form-content">
+                    <div class="form-item">
+                        <label for="name">Company Name</label>
+                        <input type="name"
+                               placeholder="X Company" id="name"
+                               class="form-control input--primary" formControlName="name">
+                        <span class="mat-error" *ngIf="formInputInvalid('name')">
+                            <span *ngIf="form.get('name').hasError('required')">Name is required</span>
+                        </span>
+                    </div>
+                    <div class="form-item" *ngIf="items.length">
+                        <label for="name">Company Area</label>
+                        <ng-select [groupBy]="'city_name'" [items]="items" placeholder="Company Area" bindValue="id"
+                                   bindLabel="name" (change)="setLatLng($event)"></ng-select>
+                        <span class="mat-error" *ngIf="formInputInvalid('name')">
+                            <span *ngIf="form.get('name').hasError('required')">Name is required</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="general-form-content">
+                    <div class="form-item">
+                        <label for="no_of_employee">Number of employee</label>
+                        <input type="number"
+                               placeholder="No of employee" id="no_of_employee"
+                               class="form-control input--primary" formControlName="no_employee">
+                        <span class="mat-error" *ngIf="formInputInvalid('no_employee')">
+                            <span *ngIf="form.get('no_employee').hasError('required')">Number of employee is required</span>
+                        </span>
+                    </div>
+                    <div class="form-item">
+                        <label for="address">Company Address</label>
+                        <input type="text"
+                               placeholder="Company Address" id="address"
+                               class="form-control input--primary" formControlName="address">
+                        <span class="mat-error" *ngIf="formInputInvalid('address')">
+                            <span *ngIf="form.get('address').hasError('required')">Address is required</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class=" flex w-100 justify-content-center">
+                <div class="w-50">
+                    <button type="submit" class="button button-jumbo button-theme button-full">
+                        <span *ngIf="!submitting;else loader">DONE</span>
+                        <ng-template #loader><span><i class="fas fa-spinner fa-spin"></i></span></ng-template>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

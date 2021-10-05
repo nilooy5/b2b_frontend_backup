@@ -1,0 +1,73 @@
+<div id ="success-message"  style="padding-top: 40px;" class="mb-3">
+    <div class="d-flex success">
+        <div class="d-flex flex-fill justify-content-start">
+            <img  src="/assets/svg/check_white.svg"
+            class="check mt-1 ml-3">
+            <span class="A-simple-success-ale mt-1 ml-3">Updated Successfully</span>
+        </div>
+        <div class="d-flex flex-fill justify-content-end">
+            <img (click)="hideMessage()"  src="/assets/svg/cross_black.svg"
+            class="cross mr-2">
+        </div>
+    </div></div>
+<div class="d-flex pb-30 mx-0" [ngClass]="{'mt-5 ': marginTop}">
+
+    <div class="filtering">
+        <mat-form-field appearance="none">
+            <mat-select placeholder="Department" (selectionChange)="selectDepartment($event)">
+                <mat-option value="all" *ngIf="departments?.length">All</mat-option>
+                <mat-option *ngFor="let department of departments" [value]="department?.id">
+                    {{ department.name }}
+                </mat-option>
+                <mat-option *ngIf="!departments.length" disabled>No Departments Available</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="filtering ml-3">
+        <mat-form-field appearance="none">
+            <mat-select placeholder="Status" (selectionChange)="selectStatus($event)">
+                <mat-option value="invited">Invited</mat-option>
+                <mat-option value="active">Active</mat-option>
+                <mat-option value="inactive">Inactive</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="search ml-auto">
+        <i class="search__icon material-icons">search</i>
+        <label>
+            <input type="text" class="form-control search__input" placeholder="Search" (input)="search($event)">
+        </label>
+    </div>
+</div>
+
+
+<div class="d-flex justify-content-between align-items-center">
+   <div class="d-flex align-items-center">
+       <h5 class="total-info">{{ totalCoWorkerCount }} Records found</h5>
+       <ng-container *ngIf="selectedRow.length">
+           <div class="filtering pl-4">
+            <mat-form-field appearance="none">
+                <mat-select placeholder="Bulk Action" (selectionChange)="selectAction($event)">
+                    <mat-option *ngFor="let action of bulkActionOptions | keyvalue" [value]="action.key">
+                        {{action.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+           </div>
+       </ng-container>
+   </div>
+
+    <div class="pagination-button">
+        <div class="align-self-center pr-3">
+            <span style="color: rgba(0, 0, 0, 0.6); font-size: 14px"> {{ dataOffset }} - {{ currentLength }} of {{ totalCoWorkerCount }}</span>
+        </div>
+        <button class="pagination-button__previous"
+                [class.disabled]="isPreviousPageUnavailable()" (click)="previousPage()">
+            <i class="material-icons">keyboard_arrow_left</i>
+        </button>
+        <button class="pagination-button__next"
+                [class.disabled]="isNextPageUnavailable()" (click)="nextPage()">
+            <i class="material-icons">keyboard_arrow_right</i>
+        </button>
+    </div>
+</div>

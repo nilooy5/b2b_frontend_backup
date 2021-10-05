@@ -1,0 +1,58 @@
+
+@media only screen and (max-width: 600px) {
+  .bg-color{
+    margin-top: 35px;
+  }
+  .header-text {
+    font-size: 24px !important;
+    margin-left: 50px;
+    margin-right: 50px;
+    line-height: 1.33 !important;
+  }
+}
+.header-text {
+  font-family: Poppins;
+  font-size: 28px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.14;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--black);
+}
+.bg-color{
+  background-color: var(--white);
+  margin-top: 35px;
+}
+.title{
+  font-family: Poppins;
+  font-size: 32px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.13;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--primary);
+}
+.sub-title {
+  max-height: 20px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: center;
+  color: #333333;
+}
+.row-position{
+  width: 70%;
+  margin-top: 35px;
+  margin-left: 15%;
+}
+// .flex-fill{
+//   margin-right: 30px;
+// }

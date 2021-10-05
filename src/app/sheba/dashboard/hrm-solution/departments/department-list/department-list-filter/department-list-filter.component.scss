@@ -1,0 +1,66 @@
+@import "../../../../../../../../src/scss/variables";
+
+.vehicle-list-filter {
+  .select--primary {
+    select {
+      min-height: 0;
+      font-size: 14px;
+      padding: 10px 16px;
+      border: solid 1.5px $theme-light-grey;
+    }
+    i {
+      top: 10px;
+    }
+  }
+  .search-input {
+    input {
+      font-size: 14px;
+      height: 40px;
+      min-height: 0;
+      border-radius: 4px;
+      padding: 10px 16px 10px 36px;
+      border: solid 1.5px $theme-light-grey;
+    }
+    .input-group-prepend {
+      top: 9px;
+      left: 10px;
+    }
+  }
+  .add-vehicle-button {
+    padding: 7px 20px;
+    font-size: 14px;
+    width: 100%;
+    i {
+      font-size: 16px;
+      position: relative;
+      top: 2px;
+    }
+  }
+
+  .pagination {
+    p {
+      margin: 0;
+    }
+    .pagination--control {
+      button {
+        background-color: $theme-grey;
+        padding: 5px;
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+        i {
+          color: $white;
+          font-size: 16px;
+        }
+      }
+      p {
+        margin-left: 10px;
+        font-size: 14px;
+        span {
+          color: $theme-color;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

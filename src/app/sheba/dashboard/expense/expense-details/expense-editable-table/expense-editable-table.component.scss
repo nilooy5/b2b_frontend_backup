@@ -1,0 +1,248 @@
+@import 'src/scss/variables';
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+  -moz-appearance:textfield; /* Firefox */
+}
+
+:host ::ng-deep {
+
+  tr.mat-header-row {
+    height: 0;
+    padding-bottom: 50px !important;
+  }
+
+  .mat-input-element {
+
+    &:enabled {
+      color: rgba(0, 0, 0, 0.8);
+      font-family: $font-lato !important;
+    }
+
+    &:disabled {
+      color: rgba(0, 0, 0, 0.8);
+      font-family: $font-lato !important;
+
+    }
+  }
+
+  .mat-row {
+    border-bottom: solid 1px red;
+  }
+
+  .mat-header-row {
+    // background-color: #a7b1cc;
+  }
+
+  .mat-form-field-wrapper {
+    padding: 5px 0;
+  }
+
+  .mat-form-field-infix {
+    width: auto !important;
+    border: none;
+  }
+
+  .mat-form-field-appearance-outline {
+
+    .mat-form-field-wrapper {
+      margin: 0 !important;
+    }
+
+    .mat-form-field-flex {
+      padding: 2px 0.75em 0 0 !important;
+      //padding: 0 !important;
+    }
+
+    .mat-form-field-outline {
+      //padding: 0.4em 0;
+      margin: 0.4em 0;
+      //background-color: #f0f2f7;
+      border-radius: 5px;
+      //padding: 1em 0 1em 1em;
+      border: solid 1px #d3d8e6;
+    }
+
+    .mat-form-field-infix {
+      padding: 1em 0 1em 1em;
+    }
+
+    &.mat-form-field-disabled {
+      .mat-form-field-outline {
+        border: none;
+        color: rgba(0, 0, 0, 0);
+        background-color: #fff;
+      }
+    }
+
+  }
+
+  #table {
+    margin-bottom: 0;
+    border-spacing: 0 2px;
+
+    width: 100%;
+    table-layout: fixed;
+
+    th, td {
+      overflow: hidden;
+      width: 100px !important;
+      text-overflow: ellipsis;
+      //white-space: nowrap;
+    }
+
+    thead {
+      tr {
+        th.mat-header-cell {
+          font-size: 14px;
+          font-weight: bold ;
+          //padding: 15px !important;
+          padding: 0 !important;
+          background-color: #fff;
+          color: $black;
+          border-bottom: solid 1px #e5ebfa !important;
+          border-radius: 0;
+          padding-bottom: 15px !important;
+          font-family: $font-lato !important;
+
+
+          &:first-of-type {
+            //padding-left: 25px !important;
+            padding-left: 0 !important;
+          }
+          &:nth-child(2) {
+            padding-left: 1em !important;
+          }
+
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td.mat-cell {
+          font-size: 14px;
+          padding-left: 0 !important;
+
+          border-bottom: solid 1px #e5ebfa !important;
+          font-family: $font-lato !important;
+          color: $black80;
+
+          &:first-of-type {
+            border-radius: 5px 0 0 0;
+            //padding-left: 15px !important;
+            padding-left: 0 !important;
+          }
+
+          &:last-of-type {
+            border-radius: 0 5px 0 0;
+          }
+        }
+      }
+    }
+
+  }
+
+}
+
+.main-content-block {
+  padding: 0;
+
+  .main-title {
+    padding: 6px 0 8px 0;
+  }
+  .actions-column {
+    &__start-edit,
+    &__confirm-edit,
+    &__delete {
+      font-size: 17px;
+      color: #2f38f1;
+    }
+  }
+}
+
+.print-button {
+  margin-top: 30px;
+  .button--primary--filled {
+    padding: 10px 50px;
+    border-radius: 3px;
+    background-color: #437ff5;
+  }
+  a {
+    color: #fff !important;
+  }
+}
+
+.expense-attached-documents {
+  #count {
+    width: 30%;
+  }
+  a {
+    color: #437ff5;
+    margin-left: 10px;
+    margin-top: 0;
+    i {
+      font-size: 14px;
+    }
+  }
+}
+
+textarea {
+  border: none;
+}
+
+.textarea-input {
+  font-size: 14px;
+  float: left;
+  position:relative;
+  padding: 0 16px 0 0;
+  color: $black80;
+  background-color: #fff;
+}
+
+.material-icons {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  font-size: 15px;
+  line-height: 30px;
+}
+
+.form-field {
+  &-edit {
+    color: #437ff5;
+    border: 1px solid #437ff5;
+  }
+  &-submit {
+    color: #ffffff;
+    border: 1px solid #437ff5;
+    background-color: #437ff5;
+  }
+  &-delete {
+    color: #fa5252;
+    border: 1px solid #fa5252;
+    background-color: #fafbfc;
+  }
+}
+
+.__error-message {
+  font-size: 14px;
+  color: $red;
+  margin-bottom: 0;
+  padding-top: 9px;
+}
+
+.no-expense {
+  p {
+    font-family: $font-lato;
+    font-size: 14px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.8);
+  }
+}

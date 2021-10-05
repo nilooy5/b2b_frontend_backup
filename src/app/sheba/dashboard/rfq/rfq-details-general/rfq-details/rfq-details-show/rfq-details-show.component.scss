@@ -1,0 +1,312 @@
+hr{
+  margin: 0;
+}
+.rfq-details {
+
+  &-value {
+    margin: 0;
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #000000;
+    word-break: break-word;
+  }
+
+}
+
+.rfq-general-info {
+  &-container {
+    border-radius: 10px;
+    box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+  }
+  &-header {
+    padding: 14px 22px 14px 30px;
+  }
+  &-content {
+    padding: 15px 20px;
+  }
+  &-title {
+    margin: 0;
+    font-family: Poppins;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(10, 15, 20, 0.75);
+  }
+  &-value {
+    margin: 0;
+    font-family: Poppins;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(10, 15, 20, 0.75);
+  }
+}
+
+.rfq-other-info {
+  &-container {
+    box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  &-description {
+    margin: 0;
+    padding: 17px 25px 40px 31px;
+    font-family: Poppins;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(10, 15, 20, 0.75);
+    word-break: break-word;
+  }
+  &-no-document {
+    margin: 0;
+    padding: 15px 30px;
+    font-family: Poppins;
+    opacity: 0.8;
+  }
+  &__attachments {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0 30px 35px;
+
+    &__title {
+      line-height: 1.43;
+      margin-bottom: 15px;
+    }
+
+    &__contents {
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.general-info-edit {
+  &-form {
+    padding: 20px 50px;
+  }
+  &-row {
+    padding: 15px 0;
+  }
+  &-label {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    color: #484b4f;
+  }
+}
+
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-header {
+  box-shadow: 0 2px 15px 0 rgba(19, 34, 64, 0.5);
+}
+
+.modal-title {
+  margin-left: 34%;
+  opacity: 0.8;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.modal-footer {
+  box-shadow: 0 5px 24px 0 rgba(23, 34, 83, 0.8);
+  justify-content: flex-end !important;
+}
+
+.closeButton {
+  width: 120px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  background-color: #e9effe;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  color: #437ff5;
+}
+
+.updateButton {
+  margin-bottom: 0 !important;
+  width: 120px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #4373f5;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.edit-btn {
+  background: none;
+  border: none;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #437ff5;
+}
+
+.edit-btn-flex {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.attachment {
+  margin-right: 15px;
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+  margin-bottom: 20px;
+
+  &__preview {
+    height: 80px;
+
+    img {
+      border-radius: 10px 10px 0 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__type {
+    text-align: center;
+    font-weight: 600;
+    color: white;
+    height: 20px;
+    border-radius: 0 0 10px 10px;
+  }
+}
+
+::ng-deep .cdk-overlay-container{ z-index: 1200 !important; }
+
+mat-select {
+  border: solid 1px #d3d8e6;
+  border-radius: 10px;
+  background: #f7f9fc;
+  display: block;
+  height: 40px;
+  width: auto;
+  padding: 8px 15px;
+}
+
+mat-form-field.mat-form-field {
+  //background-color: #FFFFFF;
+  padding: 0;
+  display: flex;
+  height: 100%;
+  //margin-right: 30px;
+  margin-right: -37px;
+  margin-top: 0;
+}
+
+.mat-form-field-appearance-outline {
+  .mat-form-field-infix {
+    display: contents;
+  }
+}
+
+
+:host ::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important;}
+:host ::ng-deep .mat-form-field-label-wrapper { top: -1.5em; }
+:host ::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  transform: translateY(-1.1em) scale(.75);
+  width: 133.33333%;
+}
+
+.attendance_datepicker {
+   ::ng-deep .mat-form-field {
+    &-infix {
+      border: none;
+    }
+    &-wrapper {
+      max-height: 40px;
+      margin: 0;
+    }
+    &-flex {
+      padding: 8px .75em;
+    }
+  }
+  position: relative;
+  &__toggle {
+    position: absolute;
+    top: -2px;
+    right: 0;
+  }
+  input {
+    font-size: 14px;
+    margin-left: 4px;
+  }
+
+  ::ng-deep .mat-button-focus-overlay {
+      background-color: transparent!important;
+  }
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper{
+  width: 91%;
+  border-radius: 10px;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline {
+  & .mat-form-field-outline{
+    &-thick {
+       //Border With When Input is Focused or Hovered
+      & .mat-form-field-outline-end,
+      & .mat-form-field-outline-gap,
+      & .mat-form-field-outline-start {
+        border-width: 1.5px !important;
+      }
+    }
+
+    &-start, &-end {
+      min-width: 0 !important;
+    }
+    &-start {  border: none !important }
+    &-end {
+      border-radius: 10px !important;
+      border-color: #d3d8e6 !important;
+      border-left-style: solid !important;
+      background: #f7f9fc !important;
+    }
+  }
+}
+
+:host ::ng-deep {
+  app-material-date-range-picker {
+    form {
+      #date-ranger-picker-material {
+        height: 40px;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+textarea[id="rfqDescription"] {
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .rfq-basic-details {
+    .col-md-4 {
+      flex: 0 0 90.333333%;
+      max-width: 90.333333%;
+      margin-bottom: 25px;
+    }
+  }
+}
+
+.right-row {
+  justify-content: flex-end;
+}
+
+.col-md-4, .col-md-8 {
+  //padding: 0;
+}

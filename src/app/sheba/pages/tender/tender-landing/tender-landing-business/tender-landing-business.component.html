@@ -1,0 +1,56 @@
+<div class="bg-color">
+    <div class="container">
+        <h1 class="header-text text-center p-2"  style="text-align:center">Trusted by 100+ businesses</h1>
+        <div class="align-items-center bd-highlight d-flex mt-5" *ngIf="!isMobileDevice">
+            <div class="p-2 d-flex align-items-center flex-column flex-fill">
+                <h1 class="title">{{statistics?.tenders}}+</h1>
+                <p class="sub-title">Tenders</p>
+            </div>
+            <div class="p-2 d-flex align-items-center flex-column flex-fill">
+                <h1 class="title">{{statistics?.suppliers}}+</h1>
+                <p class="sub-title">Suppliers</p>
+            </div>
+            <div class="p-2 d-flex align-items-center flex-column flex-fill">
+                <h1 class="title">{{statistics?.quotations}}+</h1>
+                <p class="sub-title">Quotations</p>
+            </div>
+            <div class="p-2 d-flex align-items-center flex-column flex-fill">
+                <h1 class="title"> <{{statistics?.avg_duration}}h </h1>
+                <p class="sub-title">Avg. Duration</p>
+            </div>
+            <div class="p-2 d-flex align-items-center flex-column flex-fill">
+                <h1 class="title">{{statistics?.industries}}+</h1>
+                <p class="sub-title">Industries</p>
+            </div>
+          </div>
+          <div class="header-text text-center p-4" *ngIf="isMobileDevice">
+            <div class=" bd-highlight d-flex ">
+                <div class="p-2 d-flex align-items-center flex-column flex-fill">
+                    <h1 class="title">{{statistics?.tenders}}+</h1>
+                    <p class="sub-title">Tenders</p>
+                </div>
+                <div class="p-2 d-flex align-items-center flex-column flex-fill">
+                    <h1 class="title">{{statistics?.suppliers}}+</h1>
+                    <p class="sub-title">Suppliers</p>
+                </div>
+              </div>
+              <div class=" bd-highlight d-flex ">
+                <div class="p-2 d-flex align-items-center flex-column flex-fill">
+                    <h1 class="title">{{statistics?.quotations}}+</h1>
+                    <p class="sub-title">Quotations</p>
+                </div>
+                <div class="p-2 d-flex align-items-center flex-column flex-fill">
+                    <h1 class="title"> <{{statistics?.avg_duration}}h </h1>
+                    <p class="sub-title">Avg. Duration</p>
+                </div>
+              </div>
+              <div class=" bd-highlight d-flex ">
+                <div class="p-2 d-flex align-items-center flex-column flex-fill">
+                    <h1 class="title">{{statistics?.industries}}+</h1>
+                    <p class="sub-title">Industries</p>
+                </div>
+              </div>
+          </div>
+    </div>
+</div>
+

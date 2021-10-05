@@ -1,0 +1,59 @@
+<div class="b2b-breadcrumb">
+    <a [routerLink]="['/','dashboard']">Home</a> <span>/</span>
+    <span>Service Request</span><span>/</span>
+    <span>Invite Vendor</span>
+</div>
+<div class="content-block flex align-items-center flex-column position-relative">
+
+    <app-journey-header class="w-100" title="Invite Vendors" padding="20px"></app-journey-header>
+    <div class="content-block-content position-relative" *ngIf="!sent;else invitationSent">
+        <div class="mat-title">
+            Invite non-Sheba vendors to sign up for the Sheba B2B platform
+        </div>
+        <div class="mat-sub-title">
+            Type mobile numbers & Press enter
+        </div>
+        <div class="content-block-input">
+            <mat-form-field class="chip-form-field" appearance="outline">
+                <mat-chip-list #chipList>
+                    <mat-chip *ngFor="let item of numbers;let i =index; " [selectable]="false"
+                              [removable]="true" (removed)="remove(i)">
+                        {{item}}
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                    </mat-chip>
+                    <input placeholder="Add Vendor Numbers..."
+                           [matChipInputFor]="chipList"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="true"
+                           (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+            </mat-form-field>
+        </div>
+        <div class="content-block-actions">
+            <button class="button button-primary mr-2" (click)="invite()">
+                <span>INVITE VENDOR</span>
+            </button>
+            <button class="button align-items-center share-btn"><i class="fas fa-link mr-2"></i> <span>Get Shareable Link</span>
+            </button>
+        </div>
+    </div>
+    <div class="position-absolute left bottom w-100" *ngIf="submitting">
+        <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+    </div>
+    <ng-template #invitationSent>
+        <div class="content-block-content align-items-center">
+            <div class="content-block-image mb-4">
+                <img src="" [src]="'/assets/img/statics/sent_illustration.png'" alt="">
+            </div>
+            <div class="content-block-title mb-4">
+                Your invitation has been sent
+            </div>
+            <div class="content-block-sub-title">
+                An invitation has been sent to your vendor
+            </div>
+            <div class="content-block-actions">
+                <button class="button button-outline button-primary" (click)="sent=false"> INVITE AGAIN</button>
+            </div>
+        </div>
+    </ng-template>
+</div>

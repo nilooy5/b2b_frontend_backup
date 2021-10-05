@@ -1,0 +1,250 @@
+@import '../../../../../../../scss/layouts';
+@import '../../../../../../../scss/variables';
+
+
+:host ::ng-deep {
+  //.procurement-summary {
+    .mat-form-field {
+      padding-top: 5px;
+      width: 100%;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-wrapper{
+      border-bottom: solid 1px $theme-light-grey;
+      padding: 0 !important;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-infix {
+      padding: 0 !important;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-underline {
+      height: 0 !important;
+    }
+
+    .mat-row:last-child {
+      border-bottom: none;
+    }
+
+    .mat-row {
+      padding: 5px 0;
+    }
+
+    /* START: Radio Button */
+    .mat-radio-button.mat-radio-disabled.mat-radio-checked .mat-radio-outer-circle,
+    .mat-radio-button.mat-radio-disabled .mat-radio-outer-circle {
+      border-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .mat-radio-button.mat-radio-disabled .mat-radio-label-content {
+      color: rgba(0, 0, 0, 0.8);
+    }
+    /* END: Radio Button */
+
+
+    /* START: Checkbox */
+    .mat-checkbox-disabled:not(.mat-checkbox-checked) .mat-checkbox-frame {
+      border-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .mat-checkbox-disabled .mat-checkbox-label {
+      color: rgba(0, 0, 0, 0.8);
+    }
+    /* END: Checkbox */
+  //}
+}
+
+
+mat-header-row {
+  border-bottom: none;
+}
+
+mat-header-cell {
+  font-size: 16px;
+  background-color: #a7b1cc;
+  color: #fff;
+
+  &:first-child{
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+
+  &:last-child{
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+}
+
+input {
+  border: none;
+  padding: 20px 16px;
+  border-radius: 0;
+  border-bottom: 1.5px solid $theme-light-grey;
+  &.small:disabled {
+    font-size: 16px;
+  }
+  &:disabled {
+    border-bottom: none;
+    background: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.8);
+  }
+  &:focus{
+    outline: none;
+  }
+}
+
+
+
+.layout__card {
+  margin-bottom: 30px;
+  padding: 35px 30px;
+}
+
+.procurement-summary {
+
+  &__title {
+    h3 {
+      font-size: 20px;
+    }
+  }
+
+  &__btn {
+
+    &__publish {
+      background-color: #437ff5;
+    }
+
+    &__draft {
+      color: #437ff5;
+      border: solid 1px #437ff5;
+      font-family: $font-lato;
+      font-weight: bold;
+    }
+
+    &__publish,
+    &__draft {
+      width: 200px;
+      height: auto;
+      border-radius: 4px;
+      padding: 13px;
+    }
+
+    &__edit {
+      width: 80px;
+      height: auto;
+      border-radius: 3px;
+      padding: 3px;
+      color: #2f38f1;
+      border: solid 1px #2f38f1;
+      background-color: #ffffff;
+    }
+  }
+
+}
+
+.general-information {
+
+  &__info {
+    h6 {
+      font-size: 14px;
+      margin-top: 0.5rem;
+    }
+  }
+
+  &__card {
+    padding: 35px 40px 30px 40px !important;
+
+    &__section {
+      h5 {
+        padding: 7px 0 5px 0;
+        font-size: 14px;
+      }
+      p {
+        color: rgba(0, 0, 0, 0.8);
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+  }
+
+}
+
+.advanced-rfq {
+  margin-top: 1.2rem !important;
+
+  .price-quotation,
+  .technical-evaluation,
+  .company-evaluation {
+
+    &__info {
+      h6 {
+        font-size: 14px;
+        margin-top: 0.5rem;
+      }
+    }
+
+    &__card {
+      padding: 30px 40px 30px 40px !important;
+
+      &__title {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+
+  }
+}
+
+.attached-documents {
+  padding-top: 30px;
+
+  h6 {
+    margin-bottom: 0;
+  }
+
+  &__amount {
+    padding: 2px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  &__card {
+    max-width: 620px;
+    padding: 30px !important;
+  }
+
+  &__item {
+    padding: 16px 0;
+    border-bottom: 1px solid #e5ebfa;
+    font-size: 12px;
+    &-buttons {
+      a {
+        color: $theme-color;
+        margin-left: 10px;
+        i {
+          font-size: 16px;
+        }
+      }
+    }
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

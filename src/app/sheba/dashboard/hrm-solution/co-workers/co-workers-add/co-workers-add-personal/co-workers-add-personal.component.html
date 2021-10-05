@@ -1,0 +1,153 @@
+<div class="co-workers-add__header">
+    <h5>Other Personal Information</h5>
+</div>
+
+<hr class="co-workers-add__divider">
+
+<div class="co-workers-add__controls" [formGroup]="personalInfoForm">
+
+    <!--  Phone -->
+    <div class="row form-container align-items-center mb-0">
+        <div class="col-lg-3">
+            <label for="phone" class="form-container__label"> Phone </label>
+        </div>
+        <div class="col-lg-9">
+            <div class="input-group d-flex flex-nowrap">
+                <div class="input-group-prepend">
+                    <div class="input-group-text phone-group" id="basic-addon1">
+                        <div class="flag__square">
+                            <span class="flag__circle"></span>
+                        </div>
+                        <span class="phone-group__title"> +88 </span>
+                    </div>
+                </div>
+                <input type="tel" name="phone" id="phone" class="form-container__control phone-control"
+                       [ngClass]="{ 'error': !personalInfoFormControls.mobile.valid && personalInfoFormControls.mobile.touched }"
+                       placeholder="Ex. 01678242900" formControlName="mobile">
+            </div>
+            <div class="error-container" *ngIf="!personalInfoFormControls.mobile.valid && personalInfoFormControls.mobile.touched"
+                 style="margin-top: 10px;">
+                <span class="error-container__text" style="">Please enter a valid Bangladeshi phone number</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Small Info -->
+    <div class="row" style="margin-bottom: 24px">
+        <div class="offset-lg-3 col-lg-9">
+            <div class="small-info">
+                <img class="img-fluid" src="../../../../../../../assets/svg/info_blue.svg" alt="Info">
+                <span>Please contact with the co-worker if the number needs to be changed</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Date of Birth -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="dateOfBirth" class="form-container__label"> Date of Birth </label>
+        </div>
+        <div class="col-lg-9">
+            <div class="date-picker w-100">
+                <mat-datepicker #dateOfBirth></mat-datepicker>
+                <input class="form-container__control date-input" id="dateOfBirth" [matDatepicker]="dateOfBirth"
+                       (focus)="dateOfBirth.open()" formControlName="date_of_birth" placeholder="Ex : 28 / 08 /  1994" readonly>
+                <span class="date-picker__toggle">
+                    <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Address -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="address" class="form-container__label"> Address </label>
+        </div>
+        <div class="col-lg-9">
+            <input type="text" name="address" id="address" class="form-container__control"
+                   placeholder="Ex : House no : 01 ; Road no : 01 ; Mirpur ; Dhaka" formControlName="address">
+        </div>
+    </div>
+
+    <!-- Nationality -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="nationality" class="form-container__label">
+                Nationality
+            </label>
+        </div>
+        <div class="col-lg-9">
+            <input type="text" name="nationality" id="nationality" class="form-container__control"
+                   placeholder="Bangladeshi" formControlName="nationality">
+        </div>
+    </div>
+
+    <!-- NID / Passport Number -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="nid-number" class="form-container__label">
+                NID / Passport number
+            </label>
+        </div>
+        <div class="col-lg-9">
+            <input type="text" name="nid-number" id="nid-number" class="form-container__control type-number"
+                   placeholder="Ex: 12132" formControlName="nid_number">
+        </div>
+    </div>
+
+    <!-- NID / Passport Front -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="nid-front" class="form-container__label">
+                NID / Passport front
+            </label>
+        </div>
+        <div class="col-lg-9">
+            <div class="attachment-container">
+                <i class="material-icons add-icon">add</i>
+
+                <input type="text" name="nid-front" id="nid-front" class="form-container__control attachment-input"
+                       placeholder="Choose File" [value]="nidFrontAttachmentName" readonly>
+
+                <div class="attachment-button-container">
+                    <input type="file" (change)="selectNidAttachment($event,'front')">
+                    <button class="button button--outline browse-button">Browse</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NID / Passport Back -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="nid-back" class="form-container__label">
+                NID / Passport back
+            </label>
+        </div>
+        <div class="col-lg-9">
+            <div class="attachment-container">
+                <i class="material-icons add-icon">add</i>
+
+                <input type="text" name="nid-back" id="nid-back" class="form-container__control attachment-input"
+                       placeholder="Choose File" [value]="nidBackAttachmentName" readonly>
+
+                <div class="attachment-button-container">
+                    <input type="file" (change)="selectNidAttachment($event, 'back')">
+                    <button class="button button--outline browse-button">Browse</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="row">
+        <div class="offset-lg-3 col-lg-9">
+            <button class="button button--filled submit-info" (click)="submitPersonalInformation()" [disabled]="isSaving">
+                <span  *ngIf="!isSaving;else loader"> Save </span>
+                <ng-template #loader><span><i class="fas fa-spinner fa-spin" style="font-size: 20px"></i></span></ng-template>
+            </button>
+        </div>
+    </div>
+
+</div>

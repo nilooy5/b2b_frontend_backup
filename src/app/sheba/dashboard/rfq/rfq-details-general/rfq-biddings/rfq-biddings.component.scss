@@ -1,0 +1,126 @@
+#actionColumnContents {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #437ff5;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.bidding {
+  &-price-quotation {
+    opacity: 0.8;
+    font-family: Lato;
+    font-size: 20px;
+    color: #000000;
+  }
+
+  &-taka-sign {
+    font-weight: 600;
+  }
+
+  &-status {
+    opacity: 0.8;
+    font-family: Lato;
+    font-size: 16px;
+    color: #000000;
+  }
+
+  &-ratings {
+    display: flex;
+    align-items: center;
+
+    i {
+      margin-right: 6px;
+      font-size: 14px;
+      color: #ff8219;
+    }
+
+    .rating-number {
+      font-size: 16px;
+      font-family: Lato;
+      color: #ff8219;
+      font-weight: bold;
+    }
+  }
+
+  &-vendor-info {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 5px;
+      border: solid 1px rgba(0, 0, 0, 0.05);
+      margin-right: 15px;
+    }
+
+    .vendor-name {
+      opacity: 0.8;
+      font-family: Poppins;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: #000000;
+      word-break: break-word;
+    }
+  }
+}
+
+.no-bidding {
+  &-container {
+    margin-top: 30px;
+    border-radius: 10px;
+    //box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+  }
+
+  &-content {
+    padding: 5% 10% 6% 10%;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 80px;
+  }
+
+  &-heading {
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.33;
+    color: #000000;
+  }
+
+  &-text {
+    font-family: Poppins;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(10, 15, 20, 0.75);
+  }
+
+  &-img {
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  &-btn {
+    width: 280px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background: #4373f5;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 25px;
+    font-family: Poppins;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :host ::ng-deep .main-table-theme tbody tr td.mat-cell {
+    padding-right: 10px !important;
+  }
+}

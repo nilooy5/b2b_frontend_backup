@@ -1,0 +1,123 @@
+<app-attendance-daily-list-filter
+    [departments]="departments"
+    [filteredAttendances]="filteredAttendances"
+    [totalAttendancesCount]="totalAttendancesCount"
+    [limit]="getLimit()"
+    [dataOffset]="dataOffset"
+    [currentLength]="currentLength"
+    [sort]="sortObj"
+    (filterEmitter)="setFilteredAttendancesList($event)"
+    (searchInputEmitter)="handleSearch($event)"
+    (alphabeticFilter)="handleAlphabeticSort($event)">
+</app-attendance-daily-list-filter>
+
+<div class="main-table-block ipad-design">
+    <table mat-table class="main-table-theme" [dataSource]="dataSource">
+        <ng-container matColumnDef="employeeName">
+            <th mat-header-cell *matHeaderCellDef style="width: 18%;border-radius: 10px 0 0 10px"> Employee</th>
+            <td mat-cell *matCellDef="let element">
+                <div class="row">
+                    <div class="col-md-10">
+                        <span>{{ element.member.name }}</span>
+                    </div>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="department">
+            <th mat-header-cell *matHeaderCellDef style="width: 14%"> Department</th>
+            <td mat-cell *matCellDef="let element">
+                <div class="row">
+                    <div class="col-md-10">
+                        <span>{{ element.department ? element.department.name : 'N/A' }}</span>
+                    </div>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="check_in">
+            <th mat-header-cell *matHeaderCellDef style="width: 22%">
+                Check In
+                <i class="fas fa-sort pl-2 cursor-pointer" (click)="sortCheckInTime()"></i>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <div *ngIf="element.check_in && !element.is_absent" class="p-0 m-0">
+                    <div class="row" style="width: 220px;margin-top: 4px">
+                        <div class="col-md-5">
+                            <span>{{ element.check_in.checkin_time }}</span>
+                        </div>
+                        <div class="col-md-4 p-0 m-0" *ngIf="element.check_in.status" [ngSwitch]="element.check_in.status">
+                            <span class="attendanceStatus onTime" style="margin-left: -3px;" *ngSwitchCase="'on_time'">On Time</span>
+                            <span class="attendanceStatus late" style="margin-left: -3px;"
+                                  *ngSwitchCase="'late'">Late</span>
+                        </div>
+                        <div *ngIf="element.check_in.is_remote" class="col-md-2 p-0 m-0">
+                            <button class="btn p-0 m-0" ngbTooltip="{{ element.check_in.address }}" placement="top"
+                                    tooltipClass="my-custom-class" type="button">
+                                <span class="r-design">R</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <span *ngIf="element.is_absent" class="attendanceStatus absent">Absent</span>
+                <span *ngIf="element.is_on_leave" class="attendanceStatus onLeave">On Leave</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="check_out">
+            <th mat-header-cell *matHeaderCellDef>
+                Check Out
+                <i class="fas fa-sort pl-2 cursor-pointer" (click)="sortCheckOutTime()"></i>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <div *ngIf="element.check_out" class="p-0 m-0">
+                    <div class="row checkout_width">
+                        <div class="col-md-5">
+                            <span>{{ element.check_out.checkout_time }}</span>
+                        </div>
+                        <div class="col-md-5 p-0 m-0" *ngIf="element.check_out.status" [ngSwitch]="element.check_out.status">
+                            <span class="attendanceStatus leftTimely" *ngSwitchCase="'left_timely'">Left Timely</span>
+                            <span class="attendanceStatus leftEarly" *ngSwitchCase="'left_early'">Left Early</span>
+                        </div>
+                        <div *ngIf="element.check_out.is_remote" class="col-md-1 p-0 m-0">
+                            <button class="btn p-0 m-0" ngbTooltip="{{ element.check_out.address }}" placement="top"
+                                    tooltipClass="my-custom-class" type="button">
+                                <span class="r-design">R</span>
+                            </button>
+                        </div>
+                        <div *ngIf="element.check_out.note" class="col-md-1 p-0 m-0">
+                            <button class="btn p-0 m-0" ngbTooltip="{{ element.check_out.note }}" placement="top"
+                                    tooltipClass="my-custom-class" type="button">
+                                <i class="material-icons-outlined" *ngIf="element.check_out.is_remote"
+                                   style="padding-left: 12px;margin-top: -1px;color: #4373f5;">text_snippet</i>
+                                <i class="material-icons-outlined" *ngIf="!element.check_out.is_remote"
+                                   style="padding-left: 0px;margin-top: -1px;color: #4373f5;">text_snippet</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="hours">
+            <th mat-header-cell *matHeaderCellDef>
+                Hours
+                <i class="fas fa-sort pl-2 cursor-pointer" (click)="sortHours()"></i>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <span *ngIf="element.active_hours">{{ element.active_hours }}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef style="border-radius: 0 10px 10px 0;"></th>
+            <td mat-cell *matCellDef="let element" id="actionsColumnContent"
+                (click)="redirectToAttendanceDetails(element)">
+                <i class="material-icons">keyboard_arrow_right</i>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row, columns: displayedColumns;" style="cursor: pointer"></tr>
+    </table>
+</div>

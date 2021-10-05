@@ -1,0 +1,115 @@
+<app-rfq-list-breadcrumb></app-rfq-list-breadcrumb>
+
+<app-rfq-list-filter *ngIf="show_rfq_list" [procurementStatuses]='procurementStatuses'
+                     [totalProcurementCount]="totalProcurementCount"
+                     (filterEmitter)="setFilteredSubscriptionOrders($event)"
+                     [limit]="getLimit()"
+                     [dataOffset]="dataOffset"
+                     [sort]="sortObj"
+                     [currentLength]="currentLength">
+
+</app-rfq-list-filter>
+
+<div class="main-table-block" style="margin-bottom: 40px" *ngIf="show_rfq_list">
+    <table *ngIf="(filteredProcurementTenderLists.length && dataSource)" mat-table class="main-table-theme" [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+            <th class="rfq-list-id" mat-header-cell *matHeaderCellDef>
+                ID
+                <i class="fas fa-sort pl-2 cursor-pointer" (click)="sort('sort_by_id')"></i>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <span>{{ element.id }}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+            <th class="rfq-list-title" mat-header-cell *matHeaderCellDef>
+                Title
+                <i class="fas fa-sort pl-2 cursor-pointer" (click)="sort('sort_by_title')"></i>
+            </th>
+            <td mat-cell *matCellDef="let element" style="padding-right: 10px !important;">
+                <span style="line-height: 24px" >{{ element.title }}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="created_on">
+            <th class="rfq-list-created" mat-header-cell *matHeaderCellDef>
+                Created on
+                <i class="fas fa-sort pl-2 cursor-pointer" (click)="sort('sort_by_created_at')"></i>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <span> {{ element.created_at }} </span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="last_date_of_submission">
+            <th class="rfq-list-submission" mat-header-cell *matHeaderCellDef>Last date
+                of submission</th>
+            <td mat-cell *matCellDef="let element">
+                <span>{{element.last_date_of_submission}}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="bid_count">
+            <th class="rfq-list-bid" mat-header-cell *matHeaderCellDef>Bid(s)</th>
+            <td mat-cell
+                *matCellDef="let element">
+                <span>{{element.bid_count}}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th class="rfq-list-status" mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell
+                *matCellDef="let element">
+                <!--<span id="pro-status"> {{ element.status }} </span>-->
+                <div class="p-0 m-0" [ngSwitch]="element.status">
+                    <span class="rfqStatus draft" *ngSwitchCase="'Draft'"> {{ element.status }} </span>
+                    <span class="rfqStatus open" *ngSwitchCase="'Open'"> {{ element.status }} </span>
+                    <span class="rfqStatus expired" *ngSwitchCase="'Expired'"> {{ element.status }} </span>
+                    <span class="rfqStatus hired" *ngSwitchCase="'Hired'"> {{ element.status }} </span>
+                    <span class="rfqStatus closed" *ngSwitchCase="'Closed'"> {{ element.status }} </span>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <i class="fa fa-chevron-right" style="color:#2f38f1;cursor: pointer"></i>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayColumns;" (click)="redirectToProcurement(row.id)" class="pointer"></tr>
+    </table>
+</div>
+
+<app-rfq-footer-help *ngIf="show_rfq_list"></app-rfq-footer-help>
+
+<div class="no-rfq-margin" *ngIf="show_rfq_list === false">
+    <div class="container-fluid no-rfq-container">
+        <div class="row">
+            <div class="col-md-12 bg-white no-rfq-content">
+                <img class="no-rfq-img" src="../../../../../assets/svg/no_rfq_list.svg" alt="Success">
+                <p class="no-rfq-heading">No Request Created</p>
+                <p class="no-rfq-text">You have no lists. Your created designation list will appear here.</p>
+                <button class="btn btn-primary no-rfq-btn" [routerLink]="['/','dashboard','rfq','create']">Create a Request for Quotation</button>
+            </div>
+        </div>
+    </div>
+    <div class="help-container">
+        <div class="help-content">
+            <div class="help-content-info" style="position: relative; padding: 0 15px">
+                <span class="material-icons help-content-info__icon">info_outline</span>
+                <p class="help-content-info__title"> To know all about Request for Quotation </p>
+            </div>
+            <a class="help-content-link" target="_blank" [href]="redirectToHelp()">
+                <span class="help-content-link__title"> Go to Help Center </span>
+                <span class="material-icons help-content-link__icon">keyboard_backspace</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+

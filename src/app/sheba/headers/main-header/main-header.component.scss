@@ -1,0 +1,197 @@
+@import "src/scss/variables";
+
+#all-tender-btn {
+  color: #437ff5 !important;
+  padding: 8px 31px !important;
+  min-height: 0 !important;
+  border-radius: 8px !important;
+  background-color: rgba(67, 115, 245, 0.12);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  justify-content: space-between;
+  z-index: 50;
+
+  &-title {
+    font-size: 1.5rem;
+  }
+
+  &-navigation {
+    .nav {
+      .nav-item:not(:last-child) {
+        margin-right: 25px;
+      }
+    }
+  }
+
+  &-main {
+    z-index: 5;
+    height: 100%;
+    width: 100%;
+  }
+
+  &-notice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(92deg, #78b6fb 0%, #437ff5);
+    width: 100%;
+    cursor: pointer;
+    padding: 15px 0;
+
+    &__title {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 500;
+      margin: 0 8px;
+    }
+
+    &__arrow {
+      padding-top: 2px;
+    }
+  }
+}
+
+ul {
+  font-family: Poppins;
+
+  li {
+    margin: 0 7px;
+  }
+}
+.navigation-button {
+  color: $white !important;
+  background-color: $primary;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  min-height: 0;
+  padding: 8px 33px !important;
+}
+
+.container {
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar {
+  box-shadow: none;
+  width: 100%;
+}
+
+.shebaLogo {
+  width: auto;
+  height: 36px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.mr-auto {
+  margin-left: auto;
+  margin-right: 0 !important;
+}
+
+.navbar-light {
+  .navbar-nav {
+    .nav-link {
+      color: rgba(0, 0, 0, 0.8);
+      font-family: $font-poppins;
+      font-weight: 500;
+    }
+  }
+}
+
+.solutionsBtn {
+  font-size: 16px;
+  font-family: $font-poppins;
+  font-weight: 500;
+}
+
+.dropdownItems {
+  font-size: 14px !important;
+}
+
+.chevron {
+  border-style: solid;
+  border-width: 1.5px 1.5px 0 0;
+  content: '';
+  display: inline-block;
+  height: 0.45em;
+  left: 6px;
+  position: relative;
+  top: 12px;
+  transform: rotate(135deg);
+  vertical-align: center;
+  width: 0.45em;
+}
+
+.borderBottom {
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    height: 50px;
+    padding-left: 0;
+  }
+  .header {
+    height: 50px;
+
+    &-notice {
+      &__title {
+        font-size: 12px;
+        margin: 0 23px;
+
+        ::ng-deep {
+          app-badge {
+            .badge {
+              font-size: 12px !important;
+              padding: 4px 5px !important;
+            }
+          }
+        }
+      }
+
+      &__arrow {
+        height: 16px;
+        width: 16px;
+        padding-top: 0;
+      }
+    }
+  }
+  .shebaLogo {
+    width: auto;
+    height: 20px !important;
+    margin: 10px 8px;
+  }
+  .navbar {
+    height: 50px;
+  }
+  .phone-nav {
+    position: fixed;
+    top: 128px;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background-color: white;
+  }
+  a {
+    font-size: 14px;
+    line-height: 2;
+  }
+  .solutionsBtn {
+    font-size: 14px;
+  }
+  .dropdownItems {
+    display: flex;
+    align-items: center;
+  }
+  #all-tender-btn {
+    margin-top: 10px !important;
+  }
+}

@@ -1,0 +1,73 @@
+<div class="main-content-container">
+    <div class="main-title-block">
+        <div class="main-title">
+            <h4 class="font-weight-normal">Company Information</h4>
+        </div>
+        <div class="main-title-actions">
+            <!--        <div class="flex justify-content-end"><button class="button button-outline button-primary">Edit Profile</button></div>-->
+        </div>
+    </div>
+    <div class="main-content-block" *ngIf="vendor">
+        <div class="list-block">
+            <div class="list-block-item row ml-0">
+                <span class="list-block-item-title col-3 pl-0">Name</span>
+                <span class="list-block-item-text col-8">{{vendor.name}}</span>
+            </div>
+
+            <div class="list-block-item row ml-0">
+                <span class="list-block-item-title col-3 pl-0">Mobile Number</span>
+                <span class="list-block-item-text col-8">{{vendor.mobile}}</span>
+            </div>
+
+            <div class="list-block-item row ml-0">
+                <span class="list-block-item-title col-3 pl-0">Company Type</span>
+                <span class="list-block-item-text col-9">{{vendor.company_type.join(', ')}}</span>
+            </div>
+
+            <div class="list-block-item row ml-0">
+                <span class="list-block-item-title col-3 pl-0">Service Type</span>
+                <span class="list-block-item-text col-9">{{vendor.service_type.join(', ')}}</span>
+            </div>
+
+            <div class="list-block-item row ml-0">
+                <span class="list-block-item-title col-3 pl-0">No of resources</span>
+                <span class="list-block-item-text col-9">{{vendor.no_of_resource}}</span>
+            </div>
+
+            <div class="list-block-item row ml-0">
+                <span class="list-block-item-title col-3 pl-0">Trade Licence</span>
+                <div class="list-block-item-text col-9">
+                    {{vendor.trade_licence}}
+                    <p class="info-attachment d-flex offset-3 col-9 pl-0" *ngIf="vendor.trade_license_attachment">
+                        <span *ngIf="vendor.trade_license_attachment">{{limitString(vendor.trade_license_attachment.split('/').pop())}} [Front]</span>
+                        <span>
+                            <a [href]="vendor.trade_license_attachment" target="_blank"><i class="material-icons">remove_red_eye</i></a>
+                            <a [href]="vendor.trade_license_attachment" download><i class="material-icons">file_download</i></a>
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="list-block-item row ml-0">
+                <span class="list-block-item-title col-3 pl-0">Vat Registration</span>
+                <div class="list-block-item-text col-9">
+                    {{vendor.vat_registration_number}}
+                    <p class="info-attachment d-flex offset-3 col-9 pl-0" *ngIf="vendor.vat_registration_attachment">
+                        <span *ngIf="vendor.vat_registration_attachment">{{limitString(vendor.vat_registration_attachment.split('/').pop())}} [Front]</span>
+                        <span>
+                        <a [href]="vendor.vat_registration_attachment" target="_blank"><i class="material-icons">remove_red_eye</i></a>
+                        <a [href]="vendor.vat_registration_attachment" download><i class="material-icons">file_download</i></a>
+                    </span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="list-block-item row ml-0">
+                <span class="list-block-item-title col-3 pl-0">Establishment Year</span>
+                <span class="list-block-item-text col-9">{{vendor.establishment_year}}</span>
+            </div>
+
+        </div>
+
+    </div>
+</div>

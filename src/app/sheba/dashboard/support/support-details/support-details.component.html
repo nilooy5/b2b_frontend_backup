@@ -1,0 +1,60 @@
+<div class="p-30 bg-white support-header d-flex">
+    <div class="mr-auto">
+        <div class="support-header__title">
+            <p>ID</p>
+        </div>
+        <div class="support-header__info d-flex">
+            <p class="support-id">#S-{{ supportInfo.id }}</p>
+            <p [ngClass]="{open: supportInfo.status === 'open', closed: supportInfo.status === 'closed' }"
+                class="support-status align-self-center">{{ supportInfo.status }}</p>
+        </div>
+    </div>
+    <div *ngIf="supportInfo.status === 'open'">
+        <button class="btn button--filled" (click)="closeSupport()">Close</button>
+    </div>
+    <div class="align-self-center" *ngIf="supportInfo.is_satisfied !== null">
+        <img *ngIf="supportInfo.is_satisfied === 1" src="https://cdn-shebadev.s3.ap-south-1.amazonaws.com/sheba_xyz/satisfied.svg" alt="Satisfied">
+        <img *ngIf="supportInfo.is_satisfied === 0" src="https://cdn-shebadev.s3.ap-south-1.amazonaws.com/sheba_xyz/not-satisfied.svg" alt="Not Satisfied">
+    </div>
+</div>
+
+<div class="p-30 bg-white support-content">
+    <div class="row">
+        <label class="col-sm-2 support-content__label">Support</label>
+        <div class="col-sm-10 support-content__info">
+            <p>{{ supportInfo.long_description }}</p>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <label class="col-sm-2 support-content__label">Requested at</label>
+        <div class="col-sm-10 support-content__info">
+            <span>{{ supportInfo.created_at | date:'dd/MM/yyyy'}}</span>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <label class="col-sm-2 support-content__label">Requested by</label>
+        <div class="col-sm-10 support-content__info">
+            <div class="d-flex pt-1">
+                <section>
+                    <img alt="Vendor Logo" [src]="supportInfo.requested_by.image">
+                </section>
+                <section style="padding-left: 15px">
+                    <p id="requested-by-name">{{ supportInfo.requested_by.name }}</p>
+                    <p id="requested-by-designation">{{ supportInfo.requested_by.designation }}</p>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="supportInfo.status === 'closed'">
+        <hr>
+        <div class="row">
+            <label class="col-sm-2 support-content__label">Closed at</label>
+            <div class="col-sm-10 support-content__info">
+                <span>{{ supportInfo.closed_at | date:'dd/MM/yyy'}}</span>
+            </div>
+        </div>
+    </div>
+</div>

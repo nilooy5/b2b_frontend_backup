@@ -1,0 +1,99 @@
+<div class="b2b-breadcrumb">
+    <a [routerLink]="['/','dashboard','fleet-management','assignments']">Fleet Management</a><span>/</span>
+    <a [routerLink]="['/','dashboard','fleet-management','assignments']">Assignments</a> <span>/</span>
+    <span>List</span>
+</div>
+<div class="main-content-container">
+    <div class="main-content-block pb-0">
+        <div class="row">
+            <div class="col-md-6">
+                <app-assignment-list-filter (OnFilterEvent)="filterData($event)"></app-assignment-list-filter>
+            </div>
+            <div class="col-md-6">
+                <div class="flex flex-column align-items-end">
+                    <div class="flex align-items-start">
+                        <div class="input-group search-input input-group--primary">
+                            <div class="input-group-prepend">
+                                <i class="material-icons">search</i>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchQuery"
+                                   (keyup)="search()" aria-describedby="Table Search">
+                        </div>
+                        <button class="button button-primary button-semi-small ml-2 "
+                                [routerLink]="['/','dashboard','fleet-management','assignments','add']"><span><i
+                                class="fas fa-plus"></i> <span class="ml-2">Add New</span></span></button>
+                    </div>
+                    <div class="flex">
+                        <app-pagination (pageEvent)="paginate($event)" [total]="data.length" [currentPage]="1"
+                                        [pageSize]="1"></app-pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-content-block">
+        <div class="main-content-table">
+            <table *ngIf="(data.length && dataSource);else noData" mat-table [dataSource]="dataSource"
+                   class="table  designer-table">
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef>ID</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>#{{element.id}}</span>
+                        <!--                        <div class="flex flex-start">-->
+                        <!--                                  <span class="profile-image-avatar mr-2 circle">-->
+                        <!--                                  <img [lazyLoad]="element.image" [defaultImage]="appConfig.defaultImage"-->
+                        <!--                                       alt="">-->
+                        <!--                              </span>-->
+                        <!--                            <span class="flex flex-column align-items-start">-->
+                        <!--                    <span>{{element.name}}</span>-->
+                        <!--                  </span>-->
+                        <!--                        </div>-->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="vehicle">
+                    <th mat-header-cell *matHeaderCellDef>Vehicle</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>{{element.vehicle.name}}</span>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="assign_to">
+                    <th mat-header-cell *matHeaderCellDef>Assigned To</th>
+                    <td mat-cell
+                        *matCellDef="let element">
+                        <div class="flex flex-start">
+                            <span class="profile-image-avatar mr-2 circle">
+                                <img [lazyLoad]="element.driver.image" [defaultImage]="appConfig.defaultImage" alt="">
+                            </span>
+                            <span class="flex flex-column align-items-start">
+                                <span>{{element.driver.name}}</span>
+                            </span>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="assign_date">
+                    <th mat-header-cell *matHeaderCellDef>Assign Date</th>
+                    <td mat-cell
+                        *matCellDef="let element">
+                        <span>{{element.start_date|date}}</span> - <span>{{element.end_date|date}}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions" stickyEnd>
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element">
+                        <button class="button button-flat button-fav"
+                                [routerLink]="['.',element.id,'details']"><i
+                                class="fa fa-chevron-right"></i>
+                        </button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+            </table>
+            <ng-template #noData>
+                <app-no-item heading="No Assignment Found" [showAction]="false"></app-no-item>
+            </ng-template>
+        </div>
+    </div>
+</div>

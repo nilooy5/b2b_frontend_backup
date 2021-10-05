@@ -1,0 +1,25 @@
+<div class="partner-list-item">
+    <input type="radio" [checked]="checkIfSelected()" [id]="partner.id" name="partner" class="partner-list-item__radio" [value]="partner.id">
+    <label [for]="partner.id"
+           (click)="selectPartner(partner)"
+           class="partner-list-item__label d-flex justify-content-between align-items-center">
+        <img class="partner-list-item__img"
+             [src]="partner.logo"
+             onerror="this.src='https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/sheba_xyz/png/default-service.png'">
+
+        <div class="partner-list-item__info">
+            <p class="name">{{partner.name}}</p>
+            <p class="rating">{{partner.rating}} <i class="material-icons">star</i></p>
+            <p class="order-completed">
+                <span>{{partner.total_completed_orders}} orders completed</span>
+                <a [href]="generateSpShopUrl(partner.sub_domain)" target="_blank">View Profile <i class="material-icons">chevron_right</i></a>
+            </p>
+        </div>
+
+        <div class="order-price">
+            <h3>
+                <span class="taka-sign" style="font-size: 1.5rem">৳</span> {{numberWithCommas(partner.discounted_price)}}</h3>
+            <p *ngIf="partner.discounted_price < partner.original_price"><span class="taka-sign" style="font-size: .875rem;">৳</span> {{numberWithCommas(partner.original_price)}}</p>
+        </div>
+    </label>
+</div>

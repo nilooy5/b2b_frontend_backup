@@ -1,0 +1,392 @@
+@import "../../../../../../../../scss/variables";
+
+
+:host ::ng-deep {
+  .mat-radio-button {
+    label {
+      margin-bottom: 0;
+    }
+
+  }
+
+  .form-group:focus-within label {
+    color: $black80 !important;
+  }
+
+  .ng2-tag-input{
+    padding: 0 !important;
+    border-bottom: 0 !important;
+  }
+
+  tag-input-form {
+    width: 50px;
+  }
+
+  .ng2-tag-input__text-input{
+    background-color: transparent !important;
+    width: 500px;
+
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-wrapper
+
+
+
+  /* Custom Style for Angular Material Chips */
+
+  #close-material-chips-icon {
+    // Positioning the close icon of chips
+    font-size: 16px;
+    position: relative;
+    right: 3px;
+    top: 2px;
+  }
+
+  .mat-chip {
+    font-weight: 400;
+
+    &-list-wrapper {
+      padding: 8px 20px;
+      & .mat-standard-chip {
+        font-size: 14px;
+      }
+
+      & input.mat-input-element {
+        height: 32px;
+      }
+    }
+  }
+
+  .mat-form-field {
+    line-height: 0;
+
+    &-flex {
+      border-radius: 5px;
+      border: solid 1px #b3bace;
+      background-color: #fafbfc;
+    }
+
+    &-infix {
+      border: 0 solid transparent;
+    }
+
+    &.mat-focused {
+      // Underline Color when it's focused
+      .mat-form-field-ripple {
+        background-color: transparent;
+      }
+      // Placeholder Color When Its Focused
+      .mat-form-field-label {
+        color: rgba(0, 0, 0, 0.54);
+      }
+    }
+  }
+
+  .mat-form-field-appearance-legacy {
+    .mat-form-field {
+      // Underline Color of form field
+      &-underline {
+        background-color: transparent;
+      }
+
+      // Underline height when it's focused
+      &-ripple {
+        height: 0 !important;
+      }
+
+      // Positioning Placeholder Inside the Input
+      &-label {
+        font-size: 14px;
+        top: 1.2em;
+        padding: 14px 20px;
+      }
+
+      // Remove default padding of form field wrapper
+      &-wrapper {
+        border-bottom: solid 1px transparent;
+        padding-bottom: 0;
+      }
+
+      // Remove default padding inside form field
+      &-infix {
+        padding: 0;
+      }
+    }
+  }
+
+  .mat-standard-chip.mat-chip-with-trailing-icon {
+    // Positioning the content inside the chips
+    padding: 5px 8px 7px 15px !important;
+  }
+
+  /* Custom Style for Angular Material Chips */
+
+}
+
+.example-chip-list {
+  width: 100%;
+  padding: 0;
+}
+
+#preferredOption {
+  width: 80%;
+}
+
+.__error-message {
+  font-size: 14px;
+  color: $red;
+  margin: 0;
+}
+
+.procurement-rfq-general-form {
+  .form-group {
+    margin-bottom: 30px;
+
+    .procurement-rfq-general-form-tag{
+      border-radius: 5px;
+      border: solid 1px #b3bace;
+      background-color: #fafbfc;
+      font-size: 14px;
+      padding: 5px 12px;
+      width: 100%;
+      height: auto;
+
+      &::placeholder{
+        background-color: transparent;
+      }
+    }
+
+    .form-control {
+      border-radius: 5px;
+      border: solid 1px #b3bace;
+      background-color: #fafbfc;
+      font-size: 14px;
+      padding: 0 20px;
+      height: 50px;
+      width: 100%;
+    }
+
+    .form-title {
+      color: $black;
+      font-size: 16px;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+
+    .form-text {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 12px;
+    }
+
+    .tender-general-radio-button {
+      display: block;
+      border-radius: 5px;
+      border: solid 1px #b3bace;
+      background-color: #fafbfc;
+      font-size: 16px;
+      margin-bottom: 10px;
+      padding: 12px 15px;
+      &.selected {
+        border: solid 1px #2f38f1;
+      }
+
+    }
+
+
+
+    .tender-general-checkbox {
+      display: table;
+    }
+
+    .form-check {
+      padding-left: 0;
+    }
+
+    .tender-general-add-btn{
+      border-radius: 5px;
+      border: solid 1px #b3bace;
+      background-color: #fafbfc;
+      font-size: 16px;
+      margin-bottom: 10px;
+      padding: 0 0;
+
+
+      .tender-general-add-btn-icon{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        border-radius: 50%;
+        text-align: center;
+        background-color: #2f38f1;
+        //margin-right: 7px;
+        i{
+          color: $white;
+          font-size: 12px;
+        }
+      }
+
+      input {
+        border: none;
+        padding: 12px 0;
+        background: transparent;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      &.has-error {
+        border: 1px solid darkred;
+      }
+    }
+  }
+
+  .rfq-form-basic-helper-section{
+    border-radius: 3px;
+    background-color: #fff3e6;
+    padding: 15px 15px;
+    margin-top: 34px;
+    font-size: 12px;
+    position: relative;
+
+    &:before{
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #fff3e6;
+      left: -5px;
+      top: 25px;
+      transform: rotate(45deg);
+    }
+
+    .rfq-form-helper-img{
+      padding-right: 12px;
+
+      img {
+        width: auto;
+        height: 16px;
+      }
+    }
+
+    .rfq-form-helper-title{
+      font-weight: 500;
+      padding-right: 6px;
+    }
+  }
+
+  .rfq-form-helper-section{
+    border-radius: 3px;
+    background-color: #fff3e6;
+    padding: 15px 15px;
+    margin-top: 102px;
+    font-size: 14px;
+    position: relative;
+
+    &:before{
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #fff3e6;
+      left: -5px;
+      top: 10px;
+      transform: rotate(45deg);
+    }
+
+    .rfq-form-helper-img{
+      padding-right: 20px;
+
+      img {
+        width: auto;
+        height: 16px;
+      }
+    }
+
+    .rfq-form-helper-title{
+      font-weight: 500;
+      padding-right: 6px;
+    }
+  }
+
+  .date-picker {
+    position: relative;
+    .vehicle-add__date-picker__toggle {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+    }
+  }
+}
+
+
+.file-upload-drag {
+  width: 50%;
+  .drop-zone {
+    padding: 24px;
+    border: dashed 1.5px $theme-grey;
+    border-radius: 4px;
+    position: relative;
+    background-color: #fafbfc;
+    input {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+    }
+  }
+  .file-upload-drag__button {
+    margin-top: 20px;
+    display: block;
+    &:disabled {
+      display: none;
+    }
+  }
+  .file-upload-drag__file-item {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5ebfa;
+    span {
+      font-weight: 400;
+      padding: 16px 0;
+      font-size: 12px;
+    }
+    .remove-btn {
+      background: none;
+      color: $spice-red;
+      padding: 0 10px;
+      line-height: 0;
+      font-size: 14px;
+    }
+  }
+  .file-upload-drag__placeholder {
+    padding: 0 50px;
+    img {
+      width: 40px;
+      height: auto;
+      max-height: 30px;
+      margin-right: 16px;
+    }
+    p {
+      margin: 0;
+      &.sub {
+        color: $black40;
+        font-size: 14px;
+        span {
+          color: $theme-color;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+

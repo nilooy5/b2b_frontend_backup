@@ -1,0 +1,28 @@
+@import "../../../../../../../scss/variables";
+@import "../../../../../../../scss/table";
+
+.vehicle-details-assignment__table {
+  margin: 16px;
+  width: auto !important;
+  min-width: 95%;
+  td {
+    img {
+      height: 40px;
+      width: 40px;
+      margin-right: 10px;
+    }
+  }
+  tr {
+    vertical-align: middle;
+    border-bottom: 1px solid $theme-light;
+  }
+}
+.vehicle-details-assignment__header {
+  padding: 20px 16px;
+  h5 {
+    margin: 0;
+  }
+  a {
+    padding: 0;
+  }
+}

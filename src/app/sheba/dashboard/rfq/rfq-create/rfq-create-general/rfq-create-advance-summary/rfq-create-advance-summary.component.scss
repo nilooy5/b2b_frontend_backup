@@ -1,0 +1,68 @@
+@import "../../../../../../../scss/variables";
+@import "../../../../../../../scss/colors";
+
+// TODO: use for transition
+
+@mixin transitions($value) {
+  -webkit-transition: $value;
+  -moz-transition: $value;
+  -ms-transition: $value;
+  -o-transition: $value;
+  transition: $value;
+
+}
+
+.technical-evaluation, .company-evaluation, .price-quotation {
+  &__info {
+    margin-bottom: 20px;
+    &__title {
+      font-weight: $font-weight-semiBold;
+    }
+  }
+  &__card {
+    background: $grey-light;
+    padding: 40px 30px;
+    border-radius: 10px;
+  }
+}
+
+mat-form-field {
+  width: 100% !important;
+
+  ::ng-deep {
+    .mat-form-field-wrapper {
+      .mat-form-field-flex{
+        .mat-form-field-infix {
+          border-bottom: dotted 1px #cccccc !important;
+          input {
+            background: $grey-light;
+          }
+        }
+      }
+    }
+  }
+}
+
+.editButton {
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 12px;
+  color: $primary;
+  background: $grey-light;
+  @include transitions(all ease-in-out .3s);
+}
+
+:host ::ng-deep {
+  .main-table-theme thead tr th.mat-header-cell {
+    background: #303778;
+  }
+  .main-table {
+    &-theme {
+      thead tr,
+      tbody tr td.mat-cell {
+        padding: 15px 0 15px 20px !important;
+        background: $grey-light;
+      }
+    }
+  }
+}

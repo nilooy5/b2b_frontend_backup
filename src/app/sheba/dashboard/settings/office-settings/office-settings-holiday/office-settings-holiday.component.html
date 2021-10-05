@@ -1,0 +1,100 @@
+<app-office-settings-holiday-breadcrumb [dataSource]="dataSource"
+                                        [disableButton]="disableAddRow"
+                                        (createNewRow)="handleNewRow($event)"></app-office-settings-holiday-breadcrumb>
+
+<div class="mt-50">
+    <div class="row">
+        <div class="col-md-12">
+            <p *ngIf="showSuccessAlert">
+                <ngb-alert type="success_ribbon" [dismissible]="true" *ngIf="showSuccessAlert" (close)="initiateAgain()">
+                    <img class="ribbon-img" src="../../../../../../assets/svg/icons/succes_img_ribbon.svg" alt="info">
+                    {{ alert_message }}
+                </ngb-alert>
+            </p>
+        </div>
+    </div>
+    <div class="row mx-0 justify-content-between">
+
+        <div class="col px-0 align-self-center">
+            <p class="records-text"> {{ total_records }} Records found </p>
+        </div>
+
+        <div class="search ml-auto">
+            <i class="search-text material-icons">search</i>
+            <input type="text" class="search-input form-control" [(ngModel)]="search_text" placeholder="Search" (input)="search($event)">
+        </div>
+
+    </div>
+
+    <div class="main-table-block" style="margin-bottom: 250px;">
+        <table mat-table class="main-table-theme" [dataSource]="dataSource">
+
+            <ng-container matColumnDef="start_date">
+                <th mat-header-cell *matHeaderCellDef style="width: 34%">Date
+                    <i class="fas fa-sort pl-2 cursor-pointer" (click)="sort('sort_on_date')"></i>
+                </th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    <div *ngIf="element.editing">
+                        <app-material-date-range-picker
+                            [initialDateRange]="( { s_date: element.validator.controls.start_date.value, e_date: element.validator.controls.end_date.value} | firstpipe)"
+                            (selectedDateRange)="handleDeliveryTimeline($event, element, i)" class="date-range-picker"></app-material-date-range-picker>
+                    </div>
+                    <div *ngIf="!element.editing">
+                        {{ element.validator.controls.date.value }}
+                    </div>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="total_days">
+                <th mat-header-cell *matHeaderCellDef style="width: 10%; padding-left: 0">Day
+                    <i class="fas fa-sort pl-2 cursor-pointer" (click)="sort('sort_on_days')"></i>
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    <span> {{ element.validator.controls.total_days.value }} </span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef style="width: 40%">Holiday
+                    <i class="fas fa-sort pl-2 cursor-pointer" (click)="sort('sort_on_name')"></i>
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-form-field  appearance="outline" floatLabel="{{ element.editing ? 'float' : 'never'}}">
+                        <input matInput [formControl]="element.validator.controls['name']" type="text">
+                    </mat-form-field>
+                </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="actionsColumn">
+                <th mat-header-cell *matHeaderCellDef style="width: 16%"> </th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    <div class="actions-column" [ngClass]="{ 'opacity-1': inEditMode[i], 'opacity-0': !inEditMode[i] }">
+                        <button class="perform perform-save" *ngIf="element.editing"
+                                (click)="confirmRow(element, i)">
+                            Save
+                        </button>
+                        <button class="perform perform-edit" *ngIf="!element.editing"
+                                (click)="editRow(element, i)">
+                            Edit
+                        </button>
+                        <button class="perform perform-delete" *ngIf="!element.editing"
+                                (click)="deleteRow(element, i)">
+                            Delete
+                        </button>
+                        <button class="perform perform-cancel" *ngIf="element.editing"
+                                (click)="deleteRow(element, i)">
+                            <span class="material-icons" style="margin-top: 2px;" > close </span>
+                        </button>
+                    </div>
+                </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+
+        </table>
+
+    </div>
+</div>

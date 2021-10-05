@@ -1,0 +1,158 @@
+@import '../../../../../../../scss/layouts';
+@import '../../../../../../../scss/variables';
+
+$procurement_status_accepted: #12b886;
+$procurement_status_default: #0c99f7;
+
+$hiring_request_status_default: #ff8219;
+$hiring_request_status_accepted: #12b886;
+$hiring_request_status_rejected: #fa5252;
+
+::ng-deep {
+  .mat-header-row {
+    background-color: #a7b1cc;
+  }
+
+  #table {
+    margin-bottom: 0;
+    border-spacing: 0 2px;
+
+    thead {
+      tr {
+        th.mat-header-cell {
+          font-size: 14px;
+          font-weight: 500 ;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td.mat-cell {
+          font-size: 14px;
+
+          &:first-of-type {
+            border-radius: 5px 0 0 0;
+          }
+
+          &:last-of-type {
+            border-radius: 0 5px 0 0;
+          }
+        }
+      }
+    }
+
+    td.mat-footer-cell{
+      span {
+        display: block;
+      }
+      .total-title {
+        span {
+          padding: 7px 20px 7px 5px;
+        }
+      }
+      .total-price {
+        span {
+          padding: 7px 5px;
+        }
+      }
+
+      padding: 25px 0;
+      border-spacing: 0;
+      border: 0;
+      border-radius: 0 0 5px 5px;
+      background-color: $white;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.8);
+    }
+  }
+}
+
+.layout__card {
+  margin-bottom: 10px;
+  padding: 35px 30px;
+}
+
+.procurement-hiring-details {
+
+  &__info {
+
+    &__title {
+      h5 {
+        color: $black40;
+        font-size: 14px;
+      }
+      h6 {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+
+    &__quotation {
+      font-size: 20px !important;
+    }
+
+    &__requested_on {
+      font-size: 20px !important;
+      font-weight: 600;
+    }
+
+    img {
+      height: 40px;
+      width: 40px;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .button,
+    .button-outline.button-primary {
+      border-radius: 3px;
+      border: solid 1px $theme-font-color;
+      color: $theme-font-color;
+      padding: 7px 15px;
+      max-height: 40px;
+      min-height: 40px;
+    }
+  }
+}
+
+.main-content-block {
+  padding: 30px 0 0 0;
+  .main-title {
+    padding: 6px 0 8px 0;
+    h3 {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+
+
+
+}
+
+.terms-policy {
+  padding: 30px 0 0 0;
+  &__main-title {
+    padding: 6px 0 8px 0;
+    h3 {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  &__card {
+    p, li {
+      font-size: 14px;
+      line-height: 1.57;
+      color: $black60;
+    }
+
+
+  }
+
+}
+

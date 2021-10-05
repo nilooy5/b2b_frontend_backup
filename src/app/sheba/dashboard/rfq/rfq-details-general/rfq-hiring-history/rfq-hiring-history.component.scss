@@ -1,0 +1,103 @@
+#actionColumnContents {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #437ff5;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.history {
+  &-text {
+    font-family: Poppins;
+    font-size: 14px;
+    line-height: 1.57;
+    color: rgba(10, 15, 20, 0.75);
+    word-break: break-word;
+  }
+  &-taka {
+    font-weight: 600;
+    margin-right: 3px;
+  }
+}
+
+.hiringStatus {
+  color: #FFFFFF!important;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: Poppins;
+  &.accepted {
+    background: #2ba660;
+  }
+  &.pending {
+    background: #ff8219;
+  }
+  &.rejected {
+    background: #fa5252;
+  }
+}
+
+.no-history {
+  &-container {
+    margin-top: 30px;
+    border-radius: 10px;
+  }
+
+  &-content {
+    padding: 5% 10% 6% 10%;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 80px;
+  }
+
+  &-heading {
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.33;
+    color: #000000;
+  }
+
+  &-text {
+    font-family: Poppins;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(10, 15, 20, 0.75);
+  }
+
+  &-img {
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  &-btn {
+    width: 280px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background: #4373f5;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 25px;
+    font-family: Poppins;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  :host ::ng-deep .main-table-theme tbody tr td.mat-cell:first-of-type {
+    padding-right: 10px !important;
+  }
+  :host ::ng-deep .main-table-theme thead tr th.mat-header-cell {
+    padding-right: 10px;
+  }
+  :host ::ng-deep .main-table-theme tbody tr td.mat-cell {
+    padding-right: 10px !important;
+  }
+}

@@ -1,0 +1,20 @@
+<app-feature-landing-hero [feature]="feature"></app-feature-landing-hero>
+
+
+<app-feature-landing-how-it-works [feature]="feature"></app-feature-landing-how-it-works>
+
+<!--<app-feature-landing-slider></app-feature-landing-slider>-->
+
+<app-feature-landing-choose [feature]="feature"></app-feature-landing-choose>
+
+<app-feature-testimonial-slider [page]="'feature'"></app-feature-testimonial-slider>
+
+
+<p *ngIf="feature === 'facility'" >
+    <app-feature-landing-additional-services [services]="feature"></app-feature-landing-additional-services>
+</p>
+
+<!--<app-feature-landing-choose [feature]="feature"></app-feature-landing-choose>-->
+
+
+<app-feature-landing-getstarted [feature]="feature"></app-feature-landing-getstarted>

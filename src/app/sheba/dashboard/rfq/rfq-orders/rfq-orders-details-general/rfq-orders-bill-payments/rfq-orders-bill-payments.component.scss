@@ -1,0 +1,83 @@
+:host ::ng-deep .main-table-theme {
+  border-spacing: 0 2px !important;
+}
+
+:host ::ng-deep .main-table-theme tbody tr td.mat-cell{
+  background-color: #f6f8fb;
+  color: rgba(10, 15, 20, 0.75);
+}
+
+:host ::ng-deep .main-table-theme tr.mat-header-row {
+  background-color: #bbc0cc;
+}
+
+:host ::ng-deep th.mat-header-cell {
+  border-bottom-style: none;
+}
+
+#actionColumnContents {
+  display: flex;
+  justify-content: flex-end;
+  color: #437ff5;
+}
+
+.paymentStatus {
+  color: #FFFFFF!important;
+  padding: 2px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: Poppins;
+  &.approved {
+    background: #2ba660;
+  }
+  &.pending {
+    background: #ff8219;
+  }
+  &.rejected {
+    background: #b3b7cc;
+  }
+}
+
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-header {
+  box-shadow: 0 2px 15px 0 rgba(19, 34, 64, 0.5);
+}
+
+.modal-body {
+  padding: 30px;
+}
+
+.bill-info {
+  &-title{
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+  }
+  &-value{
+    margin: 0;
+    font-family: Poppins;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(10, 15, 20, 0.75);
+  }
+}
+
+.modal-footer {
+  box-shadow: 0 5px 24px 0 rgba(23, 34, 83, 0.8);
+  justify-content: flex-end !important;
+
+  .btn {
+    margin: 0 10px;
+    min-height: 0;
+    border-radius: 3px;
+    padding: 7px 49px;
+    border: solid 1px #3242d6;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

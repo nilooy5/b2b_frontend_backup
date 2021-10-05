@@ -1,0 +1,77 @@
+@import "../../../../../../../scss/variables";
+
+.sectionTitle {
+  font-weight: bold;
+  span {
+    font-weight: normal;
+  }
+}
+
+.attachments {
+
+  &__filesDrop {
+    position: relative;
+    padding: 25px 0;
+    border-radius: 10px;
+    background: $grey-light;
+    margin-bottom: 15px;
+    border: dashed 1px $grey-medium;
+
+    input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      border-radius: 10px;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    p {
+      margin-bottom: 6px;
+    }
+
+    &__container {
+
+      &__icon {
+          align-items: center;
+          display: flex;
+          margin-right: 15px;
+      }
+
+      &__text {
+
+        .browseFiles {
+          font-size: 14px;
+          color: rgba(0, 0, 0, 0.4);
+          span {
+            color: #437ff5;
+          }
+        }
+      }
+    }
+  }
+
+  &__listItem {
+    background: $grey-light;
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    font-family: $font-rubik;
+    font-size: 14px;
+
+    &__deleteItem {
+      border: solid 1px red;
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+
+      .material-icons {
+        color: red;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    }
+  }
+}

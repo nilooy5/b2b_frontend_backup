@@ -1,0 +1,113 @@
+<div class="yk-dateRange-container"
+     [ngClass]="{
+        'is-active': opened,
+        'theme-green': themeColor === 'green',
+        'theme-teal': themeColor === 'teal',
+        'theme-grape': themeColor === 'grape',
+        'theme-red': themeColor === 'red',
+        'theme-gray': themeColor === 'gray',
+        'outline': theme === 'outline',
+        'minimal':minimal
+    }
+">
+    <div class="yk-input-container" [ngClass]="{'outline': theme === 'outline'}">
+        <div class="yk-input-section" (click)="toggleCalendar('from')" [ngClass]="{'is-active': opened === 'from'}">
+            <span class="yk-icon"><i class="fa fa-calendar-alt"></i></span>
+            <span class="yk-input-text">
+        <span class="yk-label">{{startText}}</span>
+        <span class="yk-label">{{datePick?.from | date: 'mediumDate' }}</span>
+      </span>
+        </div>
+        <span class="yk-range-label">{{dateRangeText}} {{rangeText}}</span>
+        <div class="yk-input-section end" (click)="toggleCalendar('to')" [ngClass]="{'is-active': opened === 'to'}">
+      <span class="yk-input-text end">
+              <span class="yk-label">{{endText}}</span>
+              <span class="yk-label">{{datePick?.to | date: 'mediumDate' }}</span>
+
+      </span>
+            <span class="yk-icon"><i class="fa fa-calendar-alt"></i></span>
+        </div>
+    </div>
+    <div class="yk-calendar-container"
+         [ngClass]="{ 'is-opened': !!opened, 'is-to': opened === 'to' }">
+        <div class="yk-cancel-icon" (click)="toggleCalendar(false)">
+            <i class="fa fa-times"></i>
+        </div>
+        <span class="yk-calendar-text" *ngIf="infoText">
+       {{infoText}}
+    </span>
+        <div class="yk-calendar">
+            <div class="yk-calendar-control">
+                <div class="yk-calendar-control-nav" (click)="prevMonth()">
+                    <span class="nav-prev"></span>
+                </div>
+                <div class="yk-calendar-control-content">
+                    <div class="content">
+                        <span class="month">{{moment | date: 'MMMM'}}</span>
+                        <span class="year">{{moment | date: 'y'}}</span>
+                    </div>
+                </div>
+                <div class="yk-calendar-control-nav" (click)="nextMonth()">
+                    <span class="nav-next"></span>
+                </div>
+            </div>
+            <div class="yk-calendar-content">
+                <div class="yk-calendar-row">
+                    <span class="yk-weekday" *ngFor="let day of dayNames">{{ day }}</span>
+                </div>
+                <div class="yk-calendar-row">
+                    <div class="yk-day"
+                         *ngFor="let date of dates" [ngClass]="{
+						  'out-focus': date.getMonth() !== moment.getMonth(),
+						  'is-within-range': datePick.from == datePick.to ? false : isWithinRange(date),
+						  'is-from': isDateRangeFrom(date),
+						  'is-to': isDateRangeTo(date),
+						  'disabled':!isInvalid(date)
+						  }" (click)="selectDate(date)">
+                        <span class="yk-day-num"
+                              [ngClass]="{'is-active': isDateRangeFrom(date) || isDateRangeTo(date)}">{{ date | date: 'd' }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yk-calendar-sidebar">
+            <div class="yk-sidebar-btns">
+                <button type="button" class="yk-btn" (click)="selectRange('tm')" [class.is-active]="range === 'tm'">This
+                    Month
+                </button>
+                <button type="button" class="yk-btn" (click)="selectRange('lm')" [class.is-active]="range === 'lm'">Last
+                    Month
+                </button>
+                <button type="button" class="yk-btn" (click)="selectRange('tw')" [class.is-active]="range === 'tw'">This
+                    Week
+                </button>
+                <button type="button" class="yk-btn" (click)="selectRange('lw')" [class.is-active]="range === 'lw'">Last
+                    Week
+                </button>
+                <button type="button" class="yk-btn" (click)="selectRange('ty')" [class.is-active]="range === 'ty'">This
+                    Year
+                </button>
+                <button type="button" class="yk-btn" (click)="selectRange('ly')" [class.is-active]="range === 'ly'">Last
+                    Year
+                </button>
+            </div>
+            <div class="yk-sidebar-inputs">
+                <div class="yk-input-section" (click)="toggleCalendar('from')"
+                     [ngClass]="{'is-active': opened === 'from'}">
+                    <span class="yk-label">{{startText}}</span>
+                    <span class="yk-content">{{datePick?.from | date: 'mediumDate' }}</span>
+                    <span class="yk-icon"><!--<editor-fold desc="Calendar Icon">-->
+                <i class="fa fa-calendar-alt"></i>
+                        <!--</editor-fold>--></span>
+                </div>
+                <div class="yk-input-section" (click)="toggleCalendar('to')" [ngClass]="{'is-active': opened === 'to'}">
+                    <span class="yk-label">{{endText}}</span>
+                    <span class="yk-content">{{datePick?.to | date: 'mediumDate' }}</span>
+                    <span class="yk-icon"><!--<editor-fold desc="Calendar Icon">-->
+            <i class="fa fa-calendar-alt"></i>
+                        <!--</editor-fold>--></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

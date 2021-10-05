@@ -1,0 +1,27 @@
+<div class="no-vendor-container">
+
+    <img class="img-fluid no-vendor-image" [src]="notFound.img" alt="Vendor">
+
+    <p class="no-vendor-message"> {{ notFound.title }} </p>
+
+    <ng-container *ngIf="notFound.showAddNewButton">
+        <button class="button button-outline no-vendor-button"
+                [routerLink]="['/','dashboard', 'vendors', 'add']">Add New Vendor</button>
+    </ng-container>
+
+    <ng-container *ngIf="notFound.showVerifiedVendorsList">
+        <ul class="vendor__list">
+            <li class="vendor__list-item" *ngFor="let vendor of verifiedVendors">
+                <div class="vendor-card" (click)="onSelectVerifiedVendor(vendor)"
+                     [ngClass]="{'vendor-card-active': vendor.id | selectedVendors: selectedVerifiedVendors}">
+                    <img class="img-fluid vendor-card__image" [src]="vendor.logo" alt="">
+                    <div class="vendor-card__info">
+                        <h6 class="name"> {{ vendor.name }} </h6>
+                        <p class="phone">{{ vendor.mobile }} </p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </ng-container>
+
+</div>

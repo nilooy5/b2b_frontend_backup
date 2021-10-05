@@ -1,0 +1,142 @@
+@import 'src/scss/layouts';
+@import 'src/scss/variables';
+
+:host ::ng-deep {
+
+  #editable-table {
+    table {
+      width: 100%;
+
+      &.designer-table {
+
+        thead tr th.mat-header-cell {
+          font-weight: 500;
+
+          &:first-of-type {
+            border-radius: 10px 0 0 10px;
+          }
+
+          &:last-of-type {
+            border-radius: 0 10px 10px 0;
+          }
+        }
+
+        thead tr th.mat-header-cell,
+        tbody tr td.mat-cell {
+          font-size: 14px;
+
+          &:first-of-type {
+            padding: 0 20px !important;
+          }
+
+          &:last-of-type {
+            padding: 0 20px !important;
+          }
+        }
+
+        thead {
+          background-color: #303778;
+          border-radius: 10px;
+        }
+
+        tbody tr {
+          &:hover {
+            cursor: pointer;
+            box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+
+            & .actions-column {
+              opacity: 1;
+            }
+          }
+        }
+
+        tbody tr td.mat-cell {
+          background-color: $grey-light;
+          padding: 10px 5px !important;
+
+          &:last-of-type {
+            padding: 0 0 0 10px!important;
+          }
+        }
+      }
+    }
+  }
+
+  .table-input {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.57;
+    color: rgba(10, 15, 20, 0.75);
+    min-height: 30px;
+    max-width: 250px;
+    padding: 5px 15px;
+
+    &:disabled {
+      border: none;
+    }
+    //& .error {
+    //  border: solid 1px red;
+    //}
+  }
+
+  .actions-column {
+    //opacity: 0;
+    //transition: opacity 300ms;
+    display: flex;
+
+    .button--filled {
+      background-color: rgba(67, 115, 245, 0.15);
+      color: #437ff5;
+      min-height: 0;
+      padding: 5px 36px;
+      border-radius: 6px !important;
+      margin-right: 15px;
+      font-size: 12px;
+      font-weight: 600;
+      .material-icons {
+        font-size: 20px;
+        color: #fa5252;
+      }
+    }
+
+
+    &-delete {
+      background-color: rgba(250, 82, 82, 0.15) !important;
+      color: #fa5252 !important;
+    }
+
+    &-icon {
+      background-color: rgba(250, 82, 82, 0.15) !important;
+      padding: 5px !important;
+    }
+
+  }
+
+}
+
+.add-button {
+  .add-new-row {
+    background-color: $primary;
+    width: 240px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+
+    .material-icons {
+      font-size: 20px;
+    }
+  }
+}
+
+.opacity-0 {
+  opacity: 0;
+  transition: opacity 300ms;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.opacity-1 {
+  opacity: 1;
+}

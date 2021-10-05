@@ -1,0 +1,20 @@
+<div class="tender-breadcrumb">
+    <div class="container">
+        <span [routerLink]="['/', 'tender', 'list']">All RFQ Posts</span>
+        <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+        <span class="tender-breadcrumb__active">RFQ Details</span>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 tender-description">
+                <app-tender-details-description [tender]="tender"></app-tender-details-description>
+            </div>
+            <div class="col-md-5 tender-apply">
+                <app-tender-details-apply [tender]="tender"></app-tender-details-apply>
+            </div>
+        </div>
+    </div>
+</div>

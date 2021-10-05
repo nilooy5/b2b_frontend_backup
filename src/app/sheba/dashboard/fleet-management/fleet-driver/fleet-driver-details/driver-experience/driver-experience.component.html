@@ -1,0 +1,47 @@
+<div class="driver-info">
+    <h5>Experience Information</h5>
+    <form class="editable__form" *ngIf="experienceInformationData" [formGroup]="experienceInformation">
+        <ng-template matStepLabel>Experience Information</ng-template>
+        <div class="form-group form-add-group row">
+            <label for="yearsOfExperience" class="col-sm-4 col-form-label">Year Of Experience</label>
+            <div class="col-sm-8">
+                <input placeholder="e.g. 2" type="number" class="form-control" id="yearsOfExperience" formControlName="yearsOfExperience" [disableFormControl]="!experienceInformationEnable" required>
+            </div>
+        </div>
+        <div class="form-group form-add-group row">
+            <label for="trafficAwareness" class="col-sm-4 col-form-label">Traffic Awareness</label>
+            <div class="col-sm-8">
+                <input placeholder="e.g. Good, Moderate, Poor" class="form-control" id="trafficAwareness" formControlName="trafficAwareness" [disableFormControl]="!experienceInformationEnable" required>
+            </div>
+        </div>
+        <div class="form-group form-add-group row">
+            <label for="accidentHistory" class="col-sm-4 col-form-label">Accident History</label>
+            <div class="col-sm-8">
+                <input placeholder="e.g. 1, 2, 3 ..." class="form-control" id="accidentHistory" formControlName="accidentHistory" [disableFormControl]="!experienceInformationEnable" required>
+            </div>
+        </div>
+        <div class="form-group form-add-group row">
+            <label for="knowledgeOfBasic" class="col-sm-4 col-form-label">Knowledge of basic</label>
+            <div class="col-sm-8">
+                <input placeholder="e.g. Good, Moderate, Poor" class="form-control" id="knowledgeOfBasic" formControlName="knowledgeOfBasic" [disableFormControl]="!experienceInformationEnable" required>
+            </div>
+        </div>
+        <div class="form-group form-add-group row">
+            <label for="ageOfLicense" class="col-sm-4 col-form-label">Age Of Licence</label>
+            <div class="col-sm-8">
+                <input placeholder="e.g. 2" class="form-control" type="number" id="ageOfLicense" formControlName="ageOfLicense" [disableFormControl]="!experienceInformationEnable" required>
+            </div>
+        </div>
+        <div class="form-group form-add-group row">
+            <label for="additionalInfo" class="col-sm-4 col-form-label">Additional Info</label>
+            <div class="col-sm-8">
+                <input placeholder="Additional Info" class="form-control" id="additionalInfo" formControlName="additionalInfo" [disableFormControl]="!experienceInformationEnable" required>
+            </div>
+        </div>
+        <div class="d-flex container">
+            <button class="form-button" mat-button matStepperNext *ngIf="!experienceInformationEnable" (click)="experienceInformationEnable = true">Edit</button>
+            <button class="form-button" mat-button matStepperNext *ngIf="experienceInformationEnable" (click)="submitContactInfo()">Submit</button>
+        </div>
+    </form>
+
+</div>

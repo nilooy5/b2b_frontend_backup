@@ -1,0 +1,16 @@
+
+.feature-img {
+  background-repeat: no-repeat;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+.feature-img--right {
+  background-position: right bottom;
+}
+.feature-img--left {
+  background-position: left bottom;
+}
+
+p {
+  max-width: 450px;
+}

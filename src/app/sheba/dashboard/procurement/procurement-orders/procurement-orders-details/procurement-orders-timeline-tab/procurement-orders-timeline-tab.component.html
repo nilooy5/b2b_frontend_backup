@@ -1,0 +1,23 @@
+<div class="main-content-container">
+    <div class="order-timeline-tab">
+        <div class="row pb-30">
+            <div class="col-md-12">
+                <h6 class="order-timeline-tab__section-title">Timeline</h6>
+                <div class="timeline">
+                    <div class="entry" *ngFor="let item of orderTimeline">
+                        <div class="title">
+                            <h3>{{ item.date }}</h3>
+                            <span>{{ item.year }}</span>
+                        </div>
+                        <div class="body" *ngFor="let log of item.logs">
+                            <p>{{ log.time }}</p>
+                            <h6>{{ log.log }}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

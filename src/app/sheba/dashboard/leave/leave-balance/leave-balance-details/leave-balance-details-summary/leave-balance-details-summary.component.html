@@ -1,0 +1,27 @@
+<div class="main-content">
+    <div class="content-title">Summary</div>
+    <div class="contents">
+        <div class="container-fluid">
+            <div class="field-row row" *ngFor="let leave of leaveBalanceSummary.leave_balance">
+                <div class="field-row__label col-md-4">{{leave.title}}</div>
+                <div class="field-row__data col-md-8"  [ngStyle]="{'color': leave.is_leave_days_exceeded ? 'red' : '#000000'}">
+                    {{leave.allowed_leaves}}/{{leave.used_leaves}} days
+                </div>
+            </div>
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Leave Approved</div>
+                <div class="field-row__data col-md-8 d-flex align-items-center">
+                    <div class="marker marker--approved"></div>
+                    {{leaveBalanceSummary.approved_count}} Requests
+                </div>
+            </div>
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Leave Rejected</div>
+                <div class="field-row__data col-md-8 d-flex align-items-center">
+                    <div class="marker marker--rejected"></div>
+                    {{leaveBalanceSummary.rejected_count}} Requests
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

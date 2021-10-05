@@ -1,0 +1,6 @@
+<ul class="main-content-inner-block-nav" >
+    <li class="main-content-inner-block-nav-item" *ngFor="let masterCategory of masterCategories">
+        <a [ngClass]="{active: activeCategory === masterCategory.id}"  (click)="clickMasterCategory(masterCategory.id)">
+            {{ masterCategory.name }}</a>
+    </li>
+</ul>

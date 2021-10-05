@@ -1,0 +1,14 @@
+<div class="flex justify-content-start">
+    <div class="form-item">
+        <mat-form-field appearance="outline">
+            <mat-select placeholder="Vehicle" (closed)="FilterItems()" [(ngModel)]="filter.vehicle_id">
+                <mat-option *ngFor="let item of vehicles"
+                            [value]="item.id">{{item.vehicle_model|hyphenStrip|titlecase}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="form-item">
+        <app-date-range-picker class="px-2" (dateRangeChange)="OnRangeSelected($event)" themeColor="gray"
+                               [minimal]="true" [dateRange]="dateRange"></app-date-range-picker>
+    </div>
+</div>

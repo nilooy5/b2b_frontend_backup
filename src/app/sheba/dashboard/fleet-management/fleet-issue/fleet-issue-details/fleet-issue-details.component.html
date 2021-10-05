@@ -1,0 +1,111 @@
+<div class="container" style="padding-bottom: 100px">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="layout__card layout__card__header" style="margin-bottom: 10px">
+                Inspection Details
+            </div>
+            <div class="layout__card info-list container" style="margin-bottom: 10px">
+                <div class="row info-list__item" style="margin: 0 0">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Vehicle </label>
+                    </div>
+                    <div class="col-8 info-list__item__data d-flex">
+                        <img src="https://i.ibb.co/VqhqtZ8/image.png"
+                             style="height: 40px; width: 40px; border-radius: 4px">
+                        <div class="">
+                            <p style="margin-bottom: 8px">{{issue.vehicle.vehicle_model}}[{{issue.vehicle.model_year}}
+                                ]</p>
+
+                            <p class="vehicle-info">
+                                 <span><i class="material-icons"
+                                          [class.active]="issue.vehicle.status === 'active'"
+                                          [class.inactive]="issue.vehicle.status === 'inactive'"
+                                 >brightness_1</i>{{issue.vehicle.status}}</span>
+                            <li>{{issue.vehicle.vehicle_type}}</li>
+                            <li>{{issue.vehicle.assigned_to}}</li>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row info-list__item" style="margin: 0 0">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Inspection Form </label>
+                    </div>
+                    <div class="col-8 info-list__item__data">
+                        <p style="color: #458ae6">{{issue.inspection_form}} </p>
+                    </div>
+                </div>
+                <div class="row info-list__item" style="margin: 0 0">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Submitted </label>
+                    </div>
+                    <div class="col-8 info-list__item__data">
+                        <p>{{issue.submitted}} </p>
+                    </div>
+                </div>
+                <div class="row info-list__item" style="margin: 0 0">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Submitted From </label>
+                    </div>
+                    <div class="col-8 info-list__item__data">
+                        <p>{{issue.inspector}}  </p>
+                    </div>
+                </div>
+                <div class="row info-list__item" style="margin: 0 0;">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Inspector </label>
+                    </div>
+                    <div class="col-8 info-list__item__data">
+                        <p style="color: #458ae6">{{issue.inspector}} </p>
+                    </div>
+                </div>
+<!--                <div class="row info-list__item" style="margin: 0 0">-->
+<!--                    <div class="col-4 info-list__item__label" style="padding-left: 0">-->
+<!--                        <label> Failure </label>-->
+<!--                    </div>-->
+<!--                    <div class="col-8 info-list__item__data">-->
+<!--                        <p>Tire Problem</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="row info-list__item" style="margin: 0 0">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Details </label>
+                    </div>
+                    <div class="col-8 info-list__item__data">
+                        <p>{{issue.long_description}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                    </div>
+                    <div class="col-8 info-list__item issue-actions" *ngIf="issue.status !== 'closed'" style="margin: 0 0; border: none">
+                        <button class="btn button--primary--filled" (click)="requestService()">Request Service</button>
+                        <button class="btn button--primary--outline" (click)="closeIssue()">Close Issue</button>
+                    </div>
+                </div>
+            </div>
+            <div class="layout__card">
+                <app-comments postUsertype="business" (OnCommentUpdate)="handleComment()" [comments]="comments"
+                              title="Comments"
+                              [postUrl]="'issues/' + issueId + '/comments'"></app-comments>
+            </div>
+        </div>
+        <div class="col-md-6 ">
+            <div class="layout__card attachment">
+                <app-file-upload-drag [url]="attachmentUploadUrl" (uploaded)="handleUploaded()"></app-file-upload-drag>
+
+                <div *ngIf="attachments.length">
+                    <div *ngFor="let item of attachments" class="attachment__item d-flex justify-content-between">
+                        <span>{{limitString(item.title)}}</span>
+
+                        <div class="attachment__buttons">
+                            <a [href]="item.file" target="_blank"><i class="material-icons">remove_red_eye</i></a>
+                            <a [href]="item.file" target="_blank" download><i
+                                    class="material-icons">file_download</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

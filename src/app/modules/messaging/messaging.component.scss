@@ -1,0 +1,300 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+::ng-deep {
+  .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #fff;
+  }
+}
+
+/*SCROLL BAR*/
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #B2B2B2 ;
+  border-radius: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #B2B2B2;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  background-color: #ffffff;
+  //max-width: 800px;
+  position: relative;
+  //border: solid 1px #d2d4d9;
+  //padding-bottom: 20px;
+}
+
+/* Message Section */
+.message-section {
+  width: calc(100% - 20px);
+  box-sizing: border-box;
+  background-color: #ffffff;
+  float: left;
+  display: block;
+  height: 100vh;
+  max-height: 500px;
+  overflow: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding: 20px;
+  margin: 10px;
+}
+
+//.message-section {
+//  width: 100%;
+//  height: auto;
+//  background-color: #ffffff;
+//  float: left;
+//}
+
+.messages-container-s2 {
+  //border-top: solid 1px #d2d5d4;
+  width: 100%;
+  overflow: auto;
+  height: auto;
+  max-height: 500px;
+  padding: 10px 30px;
+  box-sizing: border-box;
+}
+
+.inbox-message-s2 {
+  width: calc(100% - 10px);
+  overflow: auto;
+  padding: 5px 10px 5px 0px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: #6a6d6c;
+}
+
+/* START: Others Messages*/
+
+.inbox-message-left-s2 {
+  width: 55px;
+  float: left;
+}
+
+.inbox-message-image-s2 {
+  width: 50px;
+  height: 100%;
+  max-height: 50px;
+  border-radius: 50%;
+  display: block;
+  border: solid 1px rgba(0, 0, 0, 0.1);
+}
+
+.inbox-message-right-s2 {
+  display:inline-block;
+  float: left;
+  margin-left: 15px;
+}
+
+.inbox-message-name-s2 {
+  color: #a9acab;
+  margin-bottom: 10px;
+}
+
+.inbox-message-body-s2 {
+  background-color: #f0f2f7;
+  color: rgba(0, 0, 0, 0.6);
+  width: auto;
+  max-width: 450px;
+  height: auto;
+  padding: 15px;
+  font-size: 14px;
+  line-height: 1.57;
+  border-radius: 10px;
+}
+
+.inbox-message-time-s2 {
+  margin-top: 13px;
+  font-size: 12px;
+  float: left;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* END: Others Messages */
+
+
+/* START: Your Messages */
+
+.inbox-message-left-s2-you {
+  width: 55px;
+  float: right;
+}
+
+.inbox-message-image-s2-you {
+  width: 50px;
+  height: 100%;
+  max-height: 50px;
+  border-radius: 50%;
+  display: block;
+  border: solid 1px rgba(0, 0, 0, 0.1);
+}
+
+.inbox-message-right-s2-you {
+  display:inline-block;
+  float: left;
+  margin-right: 15px;
+}
+
+.inbox-message-s2-you {
+  overflow: auto;
+  padding: 5px 10px 5px 0px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: #6a6d6c;
+  float: right;
+}
+
+.inbox-message-body-s2-you {
+  width: auto;
+  max-width: 450px;
+  height: auto;
+  background-color: #e1f5ef;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.57;
+  padding: 15px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+.inbox-message-time-s2-you {
+  margin-top: 13px;
+  font-size: 12px;
+  float: right;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* END: Your Messages */
+
+
+
+/*message input*/
+
+.message-input-container {
+  display: block;
+  width: 100%;
+  padding: 30px;
+}
+
+.message-input {
+  height: auto;
+  width: 100%;
+  display: inline-block;
+  padding: 16px 16px;
+  //margin: 0 30px;
+  background-color: #fafbfc;
+  color: rgba(0, 0, 0, 0.6);
+  border: solid 1px #d3d8e6;
+  border-radius: 4px;
+}
+
+textarea {
+  border: none;
+}
+
+#text-message {
+  font-size: 14px;
+  float: left;
+  position:relative;
+  padding: 0 16px 0 0;
+  color: rgba(0, 0, 0, 0.6);
+  background-color: #fafbfc;
+
+  &::placeholder {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+}
+
+#send-button {
+  width: 64px;
+  min-height: 30px !important;
+  max-height: 30px !important;
+  padding: 0;
+  border-radius: 3px;
+  background-color: #12b886;
+  text-align: center;
+}
+
+//#attach-icon {
+//  border-radius: 4px;
+//  border: solid 1px #d8d8d8;
+//  padding: 4px;
+//  margin-right: 10px;
+//  font-size: 20px;
+//  color: #787878;
+//  position: relative;
+//  top: 0;
+//}
+
+
+#attach-icon {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  //background: #f0f6fa;
+  color: #787878;
+  border-radius: 4px !important;
+  border: solid 1px #d8d8d8;
+  cursor: pointer;
+  height: 30px !important;
+  justify-content: center;
+  width: 30px;
+  margin: 0 10px;
+}
+
+#attach-icon i {
+  font-size: 20px;
+  transform: rotate(0deg);
+}
+
+#attach-icon input {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.file-name {
+  //position: absolute;
+  //bottom: 45px;
+  //right: 143px;
+  font-size: 14px;
+  padding-bottom: 20px;
+  //margin: 0 32px;
+}
+
+
+.close-icon {
+  color: red;
+  font-size: 18px !important;
+  position: relative;
+  top: 3px;
+}

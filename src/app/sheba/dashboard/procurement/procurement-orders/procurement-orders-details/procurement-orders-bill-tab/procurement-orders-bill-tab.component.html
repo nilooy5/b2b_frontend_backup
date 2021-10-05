@@ -1,0 +1,161 @@
+<div class="main-content-container">
+    <div class="order-bill-tab">
+        <div class="row">
+            <div class="col-md-4">
+                <h6 class="order-bill-tab__section-title">Payment Summary</h6>
+                <div class="p-30 bg-white order-bill-tab__section-content">
+
+                    <div class="payment-options" style="padding-bottom: 15px">
+                        <span>Total Price</span>
+                        <span class="ml-auto">{{ paymentSummary.total_price | number }}</span>
+                    </div>
+
+                    <div class="payment-options" style="padding-bottom: 15px">
+                        <span>Paid</span>
+                        <span class="ml-auto">{{ paymentSummary.paid | number }}</span>
+                    </div>
+
+                    <hr>
+
+                    <div class="payment-options" id="payment-due" style="padding-bottom: 0">
+                        <span>Due</span>
+                        <span class="ml-auto">{{ paymentSummary.due | number }}</span>
+                    </div>
+
+                    <div class="pt-20" *ngIf="paymentSummary.due !== 0">
+                        <button id="payBillButton" class="btn button--primary--filled w-100" *ngIf="!showPaymentOptions" (click)="onClickPayBill()">Pay Bill</button>
+                    </div>
+
+                    <section class="pt-3" *ngIf="showPaymentOptions && procurementId">
+                        <app-sheba-payment id="sheba-payment" [orderID]="procurementId" [clearUrl]="billClearUrl"></app-sheba-payment>
+                    </section>
+
+                </div>
+            </div>
+
+            <div class="col-md-8" *ngIf="paymentRequestsDataSource.length">
+                <h6 class="order-bill-tab__section-title">Advance Request</h6>
+                <div class="main-content-container">
+                    <div class="main-content-block">
+                        <div class="main-content-table">
+                            <table id="table" mat-table [dataSource]="paymentRequestsDataSource" class="table designer-table">
+
+                                <ng-container matColumnDef="id">
+                                    <th mat-header-cell *matHeaderCellDef>#ID</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <span> {{ element.id }}</span>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="date">
+                                    <th mat-header-cell *matHeaderCellDef>Created Date</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <span>{{ element.created_at }}</span>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="amount">
+                                    <th mat-header-cell *matHeaderCellDef>Amount</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <span>{{ element.amount }}</span>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="status">
+                                    <th mat-header-cell *matHeaderCellDef>Status</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <span class="payment-status" [ngStyle]="{'background-color' : element.color }">
+                                            {{ element.status }}
+                                        </span>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="download">
+                                    <th mat-header-cell *matHeaderCellDef></th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <a class="d-flex" [href]="downloadInvoice(element.id)">
+                                            <i class="material-icons align-self-center" style="color: #437ff5">file_download</i>
+                                        </a>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="actions">
+                                    <th mat-header-cell *matHeaderCellDef></th>
+                                    <td mat-cell *matCellDef="let element" id="actionsColumnContent">
+                                        <a class="request-details-icon" (click)="onClickPaymentRequest(element.id)"
+                                           data-toggle="modal" data-target="#advancePaymentRequestModal">
+                                            <i class="material-icons">keyboard_arrow_right</i>
+                                        </a>
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div  class="modal fade" id="advancePaymentRequestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" *ngIf="this.paymentRequestDetails">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Advance Request</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeModal>
+                    <span aria-hidden="true"><i class="material-icons">close</i></span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="pb-30">
+                    <h3>ID</h3>
+                    <p>#R-{{ paymentRequestDetails.id }}</p>
+                </div>
+
+                <div class="pb-30">
+                    <h3>Requested On</h3>
+                    <p>{{ paymentRequestDetails.created_at }}</p>
+                </div>
+
+                <div class="pb-30">
+                    <h3>Requested Amount</h3>
+                    <p>৳{{ paymentRequestDetails.amount }}</p>
+                </div>
+
+                <div>
+                    <h3>Description</h3>
+                    <p>{{ paymentRequestDetails.short_description }} </p>
+                </div>
+
+                <div class="pt-30" *ngIf="paymentRequestDetails.note !== ''">
+                    <h3>Notes</h3>
+                    <p>{{ paymentRequestDetails.note }} </p>
+                </div>
+
+                <div class="pt-30" *ngIf="paymentRequestDetails.status === 'pending'">
+                    <h3>Notes</h3>
+                    <label class="w-100 m-0" for="message-text">
+                        <textarea [formControl]="paymentRequestNote" class="form-control" cdkTextareaAutosize id="message-text"
+                                  style="overflow: hidden; min-height: 100px; height: auto;"></textarea>
+                    </label>
+                    <mat-error class="pt-5" style="font-size: 14px;" *ngIf="isNotesValid">* Notes is required</mat-error>
+                </div>
+
+            </div>
+
+            <div class="modal-footer" *ngIf="paymentRequestDetails.status === 'pending'">
+                <button class="btn button button--primary--outline" (click)="onSubmitPaymentRequest('reject')">Reject</button>
+                <button class="btn button--primary--filled" (click)="onSubmitPaymentRequest('accept')">Accept</button>
+            </div>
+
+        </div>
+    </div>
+</div>

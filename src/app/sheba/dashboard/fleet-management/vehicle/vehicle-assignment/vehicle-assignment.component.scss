@@ -1,0 +1,10 @@
+@import "../../../../../../scss/variables";
+
+.vehicle-assignment__list {
+  background-color: $white;
+  p {
+    padding: 20px 16px;
+    border-bottom: 1.5px solid $theme-light;
+    margin: 0;
+  }
+}

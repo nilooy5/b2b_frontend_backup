@@ -1,0 +1,48 @@
+@import 'src/scss/variables';
+
+.attachment-menu {
+  &-button {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    min-height: 0;
+    height: 32px;
+    width: 32px;
+    background-color: #fff;
+    border-radius: 3.2px !important;
+    border: solid 0.8px $primary;
+
+    i {
+      color: $primary;
+      font-size: 20px;
+    }
+    &:hover {
+      background-color: $primary;
+      color: $white;
+      i {
+        color: #fff;
+      }
+    }
+  }
+  &-item {
+    display: flex;
+    align-items: center;
+    span {
+      color: rgba(10, 15, 20, 0.75);
+      font-size: 14px;
+      font-weight: normal;
+      font-family: $theme-font;
+    }
+    i {
+      font-size: 16px;
+      color: $grey-medium;
+      margin-right: 10px;
+    }
+
+    &:hover {
+      background-color: $primary;
+      span { color: #fff; }
+      i { color: #fff; }
+    }
+  }
+}

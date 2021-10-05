@@ -1,0 +1,60 @@
+<div class="d-flex pb-30 mx-0">
+
+    <div class="sorting__status">
+        <label for="procurementOrderStatusFilter">
+            <select id="procurementOrderStatusFilter" (change)="selectStatus($event)">
+                <option hidden>Status</option>
+                <option *ngFor="let status of rfqOrderStatus"
+                        [value]="status.key">{{status.title}}</option>
+            </select>
+            <i class="material-icons">keyboard_arrow_down</i>
+        </label>
+    </div>
+
+    <app-date-range-picker id="dateRangePicker" theme="outline" class="px-2" [allowSameDate]="true" (dateRangeChange)="OnRangeSelected($event)" themeColor="gray"
+                           [minimal]="true" [dateRange]="dateRange"></app-date-range-picker>
+
+    <div class="search-input ml-auto">
+        <i class="material-icons">search</i>
+        <label>
+            <input type="text" class="form-control" placeholder="Search" (keyup)="search($event)">
+        </label>
+    </div>
+
+    <div class="ml-0">
+        <a class="btn button--filled create-rfq-button"
+           [routerLink]="['/', 'dashboard', 'procurement', 'create']">
+            Create RFQ
+        </a>
+    </div>
+
+</div>
+
+<div class="row pb-20 mx-0 justify-content-between">
+
+    <div class="col px-0 align-self-center">
+        <h5 class="mb-0">{{ totalOrdersCount }} Records found</h5>
+    </div>
+
+    <div class="col px-0 d-flex justify-content-end">
+
+        <div class="sorting__alphabetically mr-20">
+            <select id="" (change)="alphabeticSort($event)">
+                <option hidden>Sort: Name (Alphabetically)</option>
+                <option value="ascending">Sort: Name (A-Z)</option>
+                <option value="descending">Sort: Name (Z-A)</option>
+            </select>
+            <i class="material-icons">keyboard_arrow_down</i>
+        </div>
+
+        <div id="next-previous-button" class="d-flex">
+            <button class="btn" id="prev-button" (click)="previousPage()">
+                <i class="material-icons">keyboard_arrow_left</i>
+            </button>
+            <button class="btn" id="next-button" (click)="nextPage()">
+                <i class="material-icons">keyboard_arrow_right</i>
+            </button>
+        </div>
+
+    </div>
+</div>

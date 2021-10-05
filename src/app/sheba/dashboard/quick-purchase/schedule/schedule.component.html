@@ -1,0 +1,23 @@
+<div class="quick-purchase__schedule container">
+    <app-journey-header title="Set Schedule" [showCart]="false"></app-journey-header>
+    <div class="quick-purchase__schedule-content">
+        <h5>Select your prefer date</h5>
+        <div style="max-width: 520px; margin: 0 auto">
+            <app-slider-date-picker [dates]="dates"
+                                    [selectedDate]="this.orderService.Date"
+                                    (select)="selectDate($event)"
+            ></app-slider-date-picker>
+        </div>
+
+        <h5>Select your prefer time, expert will arrive by your selected time</h5>
+        <div style="max-width: 520px; margin: 0 auto">
+            <app-schedule-picker [times]="times"
+                                 [selectedTime]="orderService.Time"
+                                 (select)="selectTime($event)"
+            ></app-schedule-picker>
+        </div>
+        <p class="schedule-error"
+           *ngIf="noValidTime()"
+        >All the Service Providers are booked on the selected date, Please Change the date.</p>
+    </div>
+</div>

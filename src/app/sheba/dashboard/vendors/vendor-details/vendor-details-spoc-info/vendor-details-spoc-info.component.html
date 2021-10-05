@@ -1,0 +1,46 @@
+<div class="main-content-container">
+    <div class="main-title-block">
+        <div class="main-title">
+            <h4 class="font-weight-normal">SPOC Information</h4>
+        </div>
+        <div class="main-title-actions">
+            <!--        <div class="flex justify-content-end"><button class="button button-outline button-primary">Edit Profile</button></div>-->
+        </div>
+    </div>
+    <div class="main-content-block" *ngIf="info">
+        <div class="list-block">
+            <div class="list-block-item">
+                <span class="list-block-item-title">Name</span>
+                <span class="list-block-item-text">{{info.name}}</span>
+            </div>
+            <div class="list-block-item">
+                <span class="list-block-item-title">Mobile Number</span>
+                <span class="list-block-item-text">{{info.mobile}}</span>
+            </div>
+            <div class="list-block-item">
+                <span class="list-block-item-title">NID</span>
+                <span class="list-block-item-text">{{info.nid}}</span>
+            </div>
+            <div class="list-block-item">
+                <span class="list-block-item-title">NID Upload</span>
+                <div class="list-block-item-text">
+                    <p class="info-attachment d-flex" *ngIf="info.nid_image_front">
+                        <span>{{limitString(info.nid_image_front.split('/').pop())}} [Front]</span>
+                        <span>
+                            <a [href]="info.nid_image_front" target="_blank"><i class="material-icons">remove_red_eye</i></a>
+                            <a [href]="info.nid_image_front" download><i class="material-icons">file_download</i></a>
+                        </span>
+                    </p>
+                    <p class="info-attachment d-flex" *ngIf="info.nid_image_back">
+                        <span>{{limitString(info.nid_image_back.split('/').pop())}} [Back]</span>
+                        <span>
+                            <a [href]="info.nid_image_back" target="_blank"><i class="material-icons">remove_red_eye</i></a>
+                            <a [href]="info.nid_image_back" download><i class="material-icons">file_download</i></a>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

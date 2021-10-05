@@ -1,0 +1,223 @@
+@import '../../../../../../../scss/variables';
+
+h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+::ng-deep {
+  .mat-header-row {
+    background-color: #a7b1cc;
+  }
+
+  #table {
+    margin-bottom: 0;
+    border-spacing: 0 3px;
+
+    thead {
+      tr {
+        th.mat-header-cell {
+          font-size: 14px;
+          font-weight: 500 ;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+
+        td.mat-cell {
+          font-size: 14px;
+
+          &:first-of-type {
+            border-radius: 5px 0 0 0;
+          }
+
+          &:last-of-type {
+            border-radius: 0 5px 0 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.layout__card {
+  margin-bottom: 10px;
+  padding: 35px 30px;
+}
+
+.vendor-information {
+
+  &__proposal {
+    pre {
+      font-size: 16px;
+      line-height: 1.5;
+      color: rgba(0, 0, 0, 0.8);
+      border: initial;
+      padding: initial;
+      font-family: inherit;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      text-align: justify;
+    }
+  }
+
+  &__main-title {
+    padding: 6px 0 8px 0;
+    h3 {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  &__card {
+    p, li {
+      font-size: 14px;
+      line-height: 1.57;
+      color: $black60;
+    }
+
+    img {
+      height: 50px;
+      width: 50px;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    &__info {
+      font-size: 16px;
+      color: rgba(0, 0, 0, 0.8);
+      font-weight: normal;
+      margin-bottom: 1px;
+    }
+
+    &__rating {
+      margin-bottom: 1px;
+      .vendor-rating {
+        font-size: 12px;
+
+        .total-rating {
+          color: $black40;
+        }
+
+        .rating-section {
+          color: $ratings-gold;
+
+          .rating-amount {
+            font-weight: 500;
+            margin-right: 6px;
+          }
+
+          i {
+            font-size: 14px;
+            position: relative;
+            top: 3px;
+            right: 3px;
+          }
+        }
+      }
+    }
+
+    &__profile {
+      padding: 0;
+      font-size: 14px;
+      color: $theme-font-color;
+      i {
+        font-size: 19px;
+        position: relative;
+        top: 5px;
+      }
+    }
+
+    &__title {
+      h5 {
+        color: $black40;
+        font-size: 14px;
+      }
+      h6 {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+
+    &__quotation {
+      font-size: 20px !important;
+    }
+
+   .button--primary--filled {
+      width: auto;
+      padding: 12px 16px;
+      border-radius: 4px;
+      background-color: $theme-font-color;
+    }
+
+  }
+
+}
+
+.main-content-block {
+  padding: 30px 0 0 0;
+  .main-title {
+    padding: 6px 0 8px 0;
+    h3 {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.8);
+    }
+  }
+}
+
+.technical-company-evaluation{
+  padding-top: 30px;
+  &__main-title {
+    padding: 6px 0 8px 0;
+    h3 {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  &__card {
+    h4 {
+      color: rgba(0, 0, 0, 0.8);
+      font-size: 16px;
+      font-weight: 500;
+    }
+    p {
+      font-size: 16px;
+      color: $black60;
+    }
+  }
+
+}
+
+
+.attachments {
+  &__main-title {
+    padding: 6px 0 8px 0;
+
+  }
+
+  &__info {
+    margin: 16px;
+
+    span {
+      font-size: 14px;
+      color: $black80;
+    }
+    a {
+      i {
+        font-size: 14px;
+        margin-left: 10px;
+        position: relative;
+        top: 2px;
+        color: $theme-font-color;
+      }
+    }
+  }
+}
+

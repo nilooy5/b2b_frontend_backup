@@ -1,0 +1,5 @@
+<mat-form-field appearance="outline" #input>
+    <input matInput [(ngModel)]="selectedDates" #input
+           [placeholder]="placeholder" (focus)="openDate(input)">
+    <span matSuffix><i class="material-icons">today</i></span>
+</mat-form-field>

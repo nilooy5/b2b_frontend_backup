@@ -1,0 +1,26 @@
+<div class="journey__container container">
+    <app-journey-header title="Select Multiple Dates" [counter]="selectedServices.length"></app-journey-header>
+    <div class="subscription__schedule-content">
+        <div class="subscription__schedule-quick-btn-group">
+            <button [ngClass]="{selected:selectedButton==buttons.Next30Days, deselected: selectedButton === null}" (click)="quickSelect(buttons.Next30Days)">Next 30 Days</button>
+            <button [ngClass]="{selected:selectedButton==buttons.CurrentMonth, deselected: selectedButton === null}" (click)="quickSelect(buttons.CurrentMonth)">Select {{ currentMonth }}</button>
+            <button [ngClass]="{selected:selectedButton==buttons.NextMonth, deselected: selectedButton === null}" (click)="quickSelect(buttons.NextMonth)">Select {{ nextMonth }} </button>
+        </div>
+        <app-multidate-picker [MinDate]="minDate" [MaxDate]="maxDate"
+                              (datesSelectedChange)="handleSelectedDates($event)"
+                              [datesSelected]="selectedDates">
+        </app-multidate-picker>
+
+        <div class="d-flex justify-content-center mt-30 mb-30" *ngIf="selectedDates.length">
+            <div class="d-flex justify-content-center dates-selected">
+                <p class="align-self-center mb-0">{{ selectedDates.length }} days selected</p>
+                <button class="btn btn-link" (click)="deselectAllDate()">Deselect All</button>
+            </div>
+        </div>
+
+        <hr>
+        <div class="text-center">
+            <span>Select multiple dates for the service ({{minimumDaysToSelect}} days minimum)</span>
+        </div>
+    </div>
+</div>

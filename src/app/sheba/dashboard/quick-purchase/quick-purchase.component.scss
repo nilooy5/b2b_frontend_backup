@@ -1,0 +1,123 @@
+@import "../../../../../src/scss/variables";
+
+.quick-purchase {
+  position: relative;
+.allServicesSearch {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+}
+
+  .b2b-breadcrumb {
+    font-size: 16px;
+  }
+
+  .allServicesSearch {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+  }
+
+  &__title {
+    color: $black80;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .quick-purchase__footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    background-color: $white;
+    padding: 16px;
+    margin-left: 0;
+    .journey-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    &.opened {
+      margin-left: 230px;
+    }
+    .prev, .next {
+      button {
+        padding: 10px 30px;
+        font-size: .875rem;
+        i {
+          position: relative;
+          top: 3px;
+          font-size: 1rem;
+        }
+      }
+    }
+    .next {
+      .steps {
+        font-size: 1rem;
+        margin-right: 40px;
+      }
+    }
+  }
+}
+
+//.btnStyle{
+//  width: 60px;
+//  height: 40px;
+//  border-radius:0px 3px 3px 0px;
+//  background-color: #437ff5;
+//}
+
+.search-div {
+  background-color: #437ff5;
+  width: 60px;
+  height: 40px;
+  border-radius:0px 3px 3px 0px;
+  position: relative;
+  i {
+    position: absolute;
+    top: 8px;
+    left: 20px;
+  }
+}
+
+.rectangle{
+  float: right;
+  width: 55px;
+  height: 50px;
+  margin: 5px 0 5px 0;
+  background-color: #3ba661;
+  border-radius: 50px 0px 0px 50px;
+  transition: width 450ms, height 2s, transform 450ms;
+}
+.rectangle:hover{
+  width: 260px;
+
+}
+
+.btnColumn {
+  bottom: 15%;
+  display: flex;
+  float: right;
+  right: 0px;
+  flex-direction: column;
+  z-index: 1;
+  position: fixed;
+}
+.callMsgBtn{
+  color: white;
+  font-size: 24px;
+  padding-left: 8px;
+}
+.spanText{
+  padding: 25px;
+  color: white;
+  font-size: 16px;
+}
+.searchPanel{
+  height: 40px;
+  width: 400px;
+  border-radius: 3px;
+  border:#d3d8e6;
+  background-color: #fafbfc;
+}

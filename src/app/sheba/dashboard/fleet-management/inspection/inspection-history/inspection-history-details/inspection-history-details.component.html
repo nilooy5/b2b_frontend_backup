@@ -1,0 +1,137 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="layout__card layout__card__header" style="margin-bottom: 10px">
+                Inspection Details
+            </div>
+            <div class="layout__card info-list container" style="margin-bottom: 10px" *ngIf="inspection">
+                <div class="row info-list__item" style="margin: 0 0" *ngIf="inspection.vehicle">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Vehicle </label>
+                    </div>
+                    <div class="col-8 info-list__item__data d-flex">
+                        <img src="https://i.ibb.co/VqhqtZ8/image.png" style="height: 40px; width: 40px; border-radius: 4px; margin-right: 10px">
+                        <div class="">
+                            <p style="margin-bottom: 8px">{{inspection.vehicle.vehicle_model}}[{{inspection.vehicle.model_year}} {{inspection.vehicle.vehicle_type}}]</p>
+
+                            <p class="vehicle-info">
+                                 <span><i class="material-icons"
+                                          [class.active]="inspection.vehicle.status === 'active'"
+                                          [class.inactive]="inspection.vehicle.status === 'inactive'"
+                                 >brightness_1</i>{{inspection.vehicle.status}}</span>
+                            <li>{{inspection.vehicle.vehicle_type}}</li>
+                            <li>{{inspection.vehicle.assigned_to}}</li>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row info-list__item" style="margin: 0 0">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Inspection Form </label>
+                    </div>
+                    <div class="col-8 info-list__item__data">
+                        <p style="color: #458ae6">{{inspection.inspection_form}}</p>
+                    </div>
+                </div>
+                <div class="row info-list__item" style="margin: 0 0">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Submitted </label>
+                    </div>
+                    <div class="col-8 info-list__item__data">
+                        <p>{{inspection.submitted_date}}</p>
+                    </div>
+                </div>
+                <!--<div class="row info-list__item" style="margin: 0 0">-->
+                    <!--<div class="col-4 info-list__item__label" style="padding-left: 0">-->
+                        <!--<label> Submitted From </label>-->
+                    <!--</div>-->
+                    <!--<div class="col-8 info-list__item__data">-->
+                        <!--<p>{{inspection.submitted_from}}</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="row info-list__item" style="margin: 0 0">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Failure </label>
+                    </div>
+                    <div class="col-8 info-list__item__data">
+                        <span class="badge badge-pill failure-badge">{{inspection.failed_items}} Problems</span>
+                    </div>
+                </div>
+                <div class="row info-list__item" style="margin: 0 0; border-bottom: none">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Inspector </label>
+                    </div>
+                    <div class="col-8 info-list__item__data">
+                        <p style="color: #458ae6">{{inspection.inspector}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="layout__card info-list container" style="margin-bottom: 10px" *ngIf="!inspection">
+                No data Available
+            </div>
+            <div class="layout__card notes" *ngIf="inspection && inspection !== undefined">
+                <h6>Notes</h6>
+                <p>
+                    {{inspection.submission_note}}
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="layout__card layout__card__header d-flex" style="margin-bottom: 10px">
+                <span>Inspection Items</span>
+                <!--<button class="btn layout__card__header__btn" *ngIf="!inspectionInformationEnable" (click)="inspectionInformationEnable = true">Edit</button>-->
+                <!--<button class="btn layout__card__header__btn filled" *ngIf="inspectionInformationEnable" (click)="submitInspection()">Submit</button>-->
+            </div>
+            <form class="layout__card info-list" style="margin-bottom: 10px" [formGroup]="inspectionInformation">
+                <!--<div class="row info-list__item">-->
+                    <!--<div class="col-6 info-list__item__label" style="">-->
+                        <!--<label> Odometer Reading </label>-->
+                    <!--</div>-->
+                    <!--<div class="col-6 info-list__item__data">-->
+                        <!--<p>Odometer: 136,899 mi</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="row info-list__item" style="background-color: #e5ebfa">
+                    <div class="col-12" style="">
+                        <p style="margin: 0"> Item Checklist </p>
+                    </div>
+                </div>
+                <div class="row info-list__item" *ngFor="let item of inspection.inspection_items">
+                    <div class="col-6 info-list__item__label" style="">
+                        <label for="engine"> {{item.title}} </label>
+                    </div>
+                    <div class="col-6 info-list__item__data">
+                        <div class="d-flex justify-content-between">
+                            <span class="inspection-result"
+                                  [class.pass]="item.result === 'pass'" [class.fail]="item.result === 'failed'"
+                                  *ngIf="!inspectionInformationEnable" style="text-transform: capitalize">
+                                <i class="material-icons">{{item.result === 'failed' ? 'clear' : 'check'}}</i> {{item.result}}
+                            </span>
+                            <div class="select--primary info-list__editable__select d-block" *ngIf="inspectionInformationEnable">
+                                <select name="engine" id="engine" [formControlName]="'control' + item.id" required>
+                                    <option class="inspection-result pass" value="true">Pass</option>
+                                    <option class="inspection-result fail" value="false">Failed</option>
+                                </select>
+                                <i class="material-icons">keyboard_arrow_down</i>
+                            </div>
+                            <span class="d-flex" *ngIf="item.result === 'failed' && item.status === 'Pending' && !item.issue_id">
+                                <button class="btn button--filled info-list__item__btn" (click)="createIssue(item.id)">Create Issue</button>
+                                <button class="btn button--outline info-list__item__btn" (click)="acknowledge(item.id)">Acknowledge</button>
+                            </span>
+                            <span *ngIf="item.issue_id">Issue #{{item.issue_id}}</span>
+                            <span class="acknowledged" *ngIf="item.is_acknowledge"><i class="material-icons">thumb_up</i> Acknowledged</span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="layout__card notes" *ngIf="inspection && inspection !== undefined">
+                <h6>Failed Item Note</h6>
+                <div *ngFor="let item of inspection.inspection_items">
+                    <p *ngIf="item.result === 'failed'">
+                        <strong>{{item.title}}</strong>: {{item.comment}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

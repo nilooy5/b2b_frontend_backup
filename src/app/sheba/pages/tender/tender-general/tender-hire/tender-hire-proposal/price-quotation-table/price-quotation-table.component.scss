@@ -1,0 +1,113 @@
+
+@import "../../../../../../../../../src/scss/variables";
+
+@media only screen and (max-width: 600px) {
+  .main-table-theme{
+    min-width: 460px !important;
+  }
+}
+.header{
+  height: 50px;
+  border-radius: 10px;
+  background-color: var(--white);
+}
+.title{
+  width: 146px;
+  height: 32px;
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  color: var(--black);
+}
+
+
+:host ::ng-deep {
+  .mat-row {
+    cursor: pointer;
+  }
+
+  #table {
+    #actionsColumnContent {
+      text-align: right;
+    }
+  }
+
+.mat-header-cell {
+  text-align: end;
+  color: var(--white);
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+.mat-cell{
+  text-align: end;
+}
+.mat-footer-cell{
+  text-align: end;
+}
+
+}
+:host ::ng-deep .main-table-theme {
+  border-spacing: 0 2px !important;
+}
+
+:host ::ng-deep .main-table-theme tbody tr td.mat-cell{
+  background-color: #f6f8fb;
+  color: rgba(10, 15, 20, 0.75);
+}
+
+:host ::ng-deep tr.mat-footer-row{
+  background-color: #f6f8fb;
+}
+.main-content-block {
+  padding: 0 0 40px;
+  margin-bottom: auto;
+
+  .request-details-icon {
+    i {
+      color: #437ff5 !important;
+      font-size: 28px;
+    }
+  }
+
+}
+thead tr {
+  /* row border */
+  border-radius: 5px ;
+}
+table{
+  width: 100%;
+  border-radius: 1em;
+ }
+.total{
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.57;
+  word-spacing: 5px;
+  letter-spacing: normal;
+  text-align: right;
+  color: rgba(10, 15, 20, 0.75);
+}
+.total-value{
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: right;
+  color: var(--black);
+}
+

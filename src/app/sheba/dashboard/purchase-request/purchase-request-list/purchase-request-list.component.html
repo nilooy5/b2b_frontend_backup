@@ -1,0 +1,77 @@
+<!--<app-vehicle-list-filter [departments]="depart  ments" (sortEmitter)="sortVehicles($event)" (filterEmitter)="filterVehicles($event)" (searchEmitter)="searchVehicles($event)"></app-vehicle-list-filter>-->
+
+<app-purchase-request-list-filter (sortEmitter)="sortPurchaseRequests($event)"
+                                  (filterEmitter)="filterPurchaseRequests($event)"
+                                  (searchEmitter)="searchPurchaseRequests($event)">
+
+</app-purchase-request-list-filter>
+
+<div class="main-content-block">
+    <div class="main-content-table" *ngIf="purchaseRequests">
+        <table *ngIf="(purchaseRequests.length && dataSource)" mat-table [dataSource]="dataSource"
+               class="table  designer-table">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>ID</th>
+                <td mat-cell *matCellDef="let element">
+                    <span>#{{element.id}}</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="employee_name">
+                <th mat-header-cell *matHeaderCellDef>Employee Name</th>
+                <td mat-cell *matCellDef="let element">
+                    <img [src]="element.employee_image || 'https://i.ibb.co/bXqhnhG/user.png'" onerror="this.src='https://i.ibb.co/bXqhnhG/user.png'"
+                         style="padding: 10px; width: 52px; height: 52px;" />
+                    <span>{{element.employee_name}}</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef>Title</th>
+                <td mat-cell
+                    *matCellDef="let element">
+                    <span>{{element.title}}</span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="estimated_price">
+                <th mat-header-cell *matHeaderCellDef>Est. Price</th>
+                <td mat-cell
+                    *matCellDef="let element">
+                    <span>{{element.est_price}}</span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="required_date">
+                <th mat-header-cell *matHeaderCellDef>Required Date</th>
+                <td mat-cell
+                    *matCellDef="let element">
+                    <span> {{element.required_date}}</span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef>Status</th>
+                <td mat-cell *matCellDef="let element">
+                    <span [class]="getStatus(element.status)" style="padding: 5px; color:#fff; font-size: 12px; text-transform: capitalize;"> {{element.status}}</span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                    <button class="button button-flat button-fav"
+                            [routerLink]="['/','dashboard', 'purchase-request', 'detail',{id: element.id} ]"><i
+                        class="fa fa-chevron-right"></i>
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+        </table>
+        <div class="no-driver" *ngIf="purchaseRequests && !purchaseRequests.length">
+            <p>No Purchase Requests Available.</p>
+        </div>
+    </div>
+    <div class="no-driver" *ngIf="!purchaseRequests || purchaseRequests === undefined">
+        <p>No Purchase Requests Available.</p>
+    </div>
+</div>

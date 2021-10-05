@@ -1,0 +1,96 @@
+<div class="short_answer-center">
+    <div *ngIf="questions.length">
+        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+            <div cdkDrag *ngFor="let questionForm of questionForms; let i = index">
+                <div class="question-form example-box" [class.editable]="editIndex === i" (click)="editQuestion(i)">
+                    <div *ngIf="editIndex !== i" class="numberCard">{{i+1}}</div>
+                    <div class="drag-button d-flex">
+                        <img src="https://i.ibb.co/PmYct7F/drag-icon.png" alt="drag-icon" border="0">
+                    </div>
+                    <form [formGroup]="questionForm" (submit)="$event.preventDefault()">
+                        <!-- QUESTION -->
+                        <div class="row">
+                            <!-- QUESTION INPUT -->
+                            <div class="col-7">
+                                <input class="form-control question-input" placeholder="Write your question here" formControlName="question" (input)="onChangeQuestion()" [class.disabled]="editIndex !== i">
+                            </div>
+                            <!-- TYPE SELECT -->
+                            <div class="col-5" [class.hide]="editIndex !== i">
+                                <mat-form-field appearance="fill" class="mat-from-field--filled mat-from-field--no-underline d-block">
+                                    <mat-select formControlName="type" class="mat-select--filled"
+                                                (selectionChange)="handleActiveQuestionTypeChange($event, editIndex)"
+                                                [value]="questionForm.getRawValue().type" >
+                                        <mat-select-trigger class="d-flex align-items-center" style="font-size: 14px; font-weight: 500">
+                                            <i class="material-icons option-icon">{{getSelectedType(questionForm.getRawValue().type).icon}}</i>{{getSelectedType(questionForm.getRawValue().type).title}}
+                                        </mat-select-trigger>
+                                        <mat-option *ngFor="let type of questionTypes" [value]="type.value" style="font-size: 14px; font-weight: 500">
+                                            <i class="material-icons option-icon">{{type.icon}}</i> {{type.title}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <!-- ANSWER VIEW -->
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- TEXT -->
+                                <section *ngIf="questionForm.getRawValue().type === 'text'">
+                                    <input class="form-control question-input disabled-input" type="text" placeholder="Short answer" style="max-width: 360px">
+                                </section>
+                                <!-- TEXTAREA -->
+                                <section *ngIf="questionForm.getRawValue().type === 'textarea'">
+                                    <input class="form-control question-input disabled-input" type="text" placeholder="Long">
+                                </section>
+                                <!-- RADIO / CHECKBOX -->
+                                <section *ngIf="questionForm.getRawValue().type === 'radio' || questionForm.getRawValue().type === 'checkbox'">
+                                    <div *ngFor="let option of questions[i].options; let o = index; trackBy:trackByFn">
+                                        <mat-radio-button *ngIf="questionForm.getRawValue().type === 'radio'" [disabled]="true" style="width: 100%">
+                                            <mat-form-field  *ngIf="option !== undefined || option !== null">
+                                                <input matInput style="color: black" [value]="option" [id]="'option_' + i + o" (keyup)="updateOption(questions[i], o, $event)" [disabled]="editIndex !== i">
+                                            </mat-form-field>
+                                            <button type="button" class="btn" (click)="deleteOption(questions[i], o)" [class.hide]="editIndex !== i">
+                                                <i class="material-icons" style="color: rgba(0, 0, 0, 0.3)">close</i>
+                                            </button>
+                                        </mat-radio-button>
+                                        <mat-checkbox *ngIf="questionForm.getRawValue().type === 'checkbox'" [disabled]="true">
+                                            <mat-form-field *ngIf="option !== undefined || option !== null">
+                                                <input matInput style="color: black" [value]="option" [id]="'option_' + i + o" (keyup)="updateOption(questions[i], o, $event)" [disabled]="editIndex !== i">
+                                            </mat-form-field>
+                                            <button type="button" class="btn" (click)="deleteOption(questions[i], o)" [class.hide]="editIndex !== i">
+                                                <i class="material-icons" style="color: rgba(0, 0, 0, 0.3)">close</i>
+                                            </button>
+                                        </mat-checkbox>
+                                    </div>
+                                    <div class="d-flex align-items-center question-form__add-option" [class.hide]="editIndex !== i">
+                                        <button type="button" class="btn button--outline option-add-btn" (click)="addOptionToQuestion(i, ('option ' + (questions[i].options.length + 1)), questions[i].options.length)">add Option</button>
+                                        <span style="margin: 0 10px">or</span>
+                                        <button type="button" class="btn button--link" style="padding: 0" (click)="addOptionToQuestion(i, 'OTHER')">add 'OTHER'</button>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <!-- BOTTOM ACTIONS -->
+                        <div class="question-form__bottom-action d-flex justify-content-start" [class.hide]="editIndex !== i">
+                            <span>
+                                <mat-slide-toggle formControlName="required">Required</mat-slide-toggle>
+                            </span>
+                            <span>
+                                <button type="button" class="btn" (click)="copyQuestion(i)"><i class="material-icons">content_copy</i></button>
+                            </span>
+                            <span>
+                                <button type="button" class="btn" (click)="deleteQuestion(i)"><i class="material-icons">delete</i></button>
+                            </span>
+                            <!-- <span>
+                                <button type="button" class="btn"><i class="material-icons" (click)="submitQuestion(i)">check</i></button>
+                            </span> -->
+                        </div>
+                    </form>
+                    <button type="button" class="add-question button" (click)="addQuestion()" [class.hide]="editIndex !== i"><i class="material-icons">add</i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="questions.length === 0">
+        <button type="button" class="btn button--outline" (click)="addQuestion()">Add Questions</button>
+    </div>
+</div>

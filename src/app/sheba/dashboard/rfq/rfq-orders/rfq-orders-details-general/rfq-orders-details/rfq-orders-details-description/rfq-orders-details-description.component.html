@@ -1,0 +1,12 @@
+<div class="section">
+    <div class="section-head">Order Details</div>
+    <div class="section-body d-flex flex-column">
+        <div class="fields">
+            <div class="fields__label">{{order.procurement_title}}</div>
+            <div class="fields__data">{{order.procurement_additional_info}}</div>
+        </div>
+        <div class="tender-details-link" [routerLink]="['/', 'dashboard', 'rfq', 'list', order.procurement_id, 'details']">
+            View Tender Details
+        </div>
+    </div>
+</div>

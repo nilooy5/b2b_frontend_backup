@@ -1,0 +1,43 @@
+<section id="how-it-works-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="heading">
+                <h2>How It Works?</h2>
+                <span>It's simple and effective</span>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-5 steps-column align-self-center " >
+
+                <div class="row">
+                    <div class="col-md-12 mb-40" *ngFor="let item of contents[feature];">
+                        <div class="process-panel" (click)="activatePanel(item.index)">
+                            <div class="process-icon">
+                                <p>{{ item.index+ 1 }}</p>
+                            </div>
+                            <div class="process-content">
+                                <h3 class="process-content">{{ item.label }}</h3>
+                            </div>
+                        </div>
+                        <hr class="underline">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="offset-lg-1"></div>
+
+            <div class="col-lg-6 mobile-image-div d-none d-md-block" style="padding: 0 !important;">
+                <div class="phone-skin">
+                    <div class="display-holder" *ngFor="let item of contents[feature]">
+                        <div class="display" >
+                            <img [src]="item.image" [alt]="item.label">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,40 @@
+<div class="section">
+    <div class="section-head">Quotations</div>
+    <div class="section-body">
+
+        <table *ngIf="order.bid_price_quotations; else noQuotation" mat-table class="main-table-theme table designer-table mb-20" #table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="serialNo">
+                <th mat-header-cell *matHeaderCellDef>SL NO</th>
+                <td mat-cell *matCellDef="let row; let i = index">
+                    <span>{{ i + 1 }}</span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="itemName">
+                <th mat-header-cell *matHeaderCellDef>Item Name</th>
+                <td mat-cell *matCellDef="let row">
+                    <span> {{ row.title }} </span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="specification">
+                <th mat-header-cell *matHeaderCellDef> Specification </th>
+                <td mat-cell *matCellDef="let row">
+                    <span> {{ row.short_description }} </span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="unit">
+                <th mat-header-cell *matHeaderCellDef> Unit </th>
+                <td mat-cell *matCellDef="let row">
+                    <span> {{ row.unit }} </span>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <ng-template #noQuotation> No Quotation Available for this tender</ng-template>
+    </div>
+</div>

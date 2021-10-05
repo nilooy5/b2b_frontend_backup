@@ -1,0 +1,9 @@
+<div class="vehicle-card d-flex align-items-center">
+    <img [src]="vehicleData.vehicle_image||'https://i.ibb.co/VqhqtZ8/image.png'"
+         (error)="vehicleData.vehicle_image='https://i.ibb.co/VqhqtZ8/image.png'" alt="">
+    <div class="vehicle-info">
+        <p>{{vehicleData.model_name}} <span class="badge badge-pill status-badge">{{vehicleData.status}}</span></p>
+        <p class="schedule"><i class="material-icons">schedule</i>Enlisted from:
+            <span>{{vehicleData.enlisted_from}}</span></p>
+    </div>
+</div>

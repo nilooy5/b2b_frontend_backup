@@ -1,0 +1,30 @@
+.carousel-caption{
+  color: #0b0b0b;
+}
+img{
+  width: 370px;
+  height: 400px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.picsum-img-wrapper {
+  img {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    display: block;
+    margin: 0;
+  }
+}
+
+.carousel-indicators > li {
+  background-color: #0D47A1;
+  height: 50px;
+}
+
+a.carousel-control-prev,
+a.carousel-control-next {
+  span {
+    display: none;
+  }
+}

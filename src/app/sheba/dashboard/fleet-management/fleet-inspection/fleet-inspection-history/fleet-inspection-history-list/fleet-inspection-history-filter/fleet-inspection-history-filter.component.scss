@@ -1,0 +1,23 @@
+@import '../../../../../../../../scss/variables';
+
+.inspection-info {
+  margin-top: 15px;
+  h1 {
+    font-weight: 400;
+    color: $theme-color;
+    span {
+      font-size: 14px;
+      color: $black60;
+      position: relative;
+      top: -5px;
+      i {
+        position: relative;
+        top: 6px;
+      }
+    }
+  }
+  p {
+    font-size: 14px;
+    color: $black60;
+  }
+}

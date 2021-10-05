@@ -1,0 +1,5 @@
+<form class="driver-add__form " [formGroup]="imageForm" style="margin: 100px auto; max-width: 200px; text-align: center">
+    <app-image-file-input formControlName="driverPhoto" id="driverProfile" [showPreview]="true" [type]="'person'"></app-image-file-input>
+    <br>
+    <button class="btn btn-block button--filled" type="button" (click)="changePicture()">UPLOAD</button>
+</form>

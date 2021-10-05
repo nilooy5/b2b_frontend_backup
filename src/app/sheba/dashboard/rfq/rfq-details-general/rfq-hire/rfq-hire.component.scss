@@ -1,0 +1,55 @@
+:host ::ng-deep .alert-custom {
+  padding: 12px;
+  background-color: #e1fbff;
+  border: solid 0.5px #b3f2ff;
+  justify-content: left;
+  border-radius: 8px;
+  color: #005566;
+  font-size: 14px;
+  font-family: Poppins;
+  .close {
+    display: none;
+  }
+}
+
+.info-icon{
+  margin-right: 10px;
+  margin-left: 5px;
+  margin-top: -3px;
+}
+
+.hire-details-header{
+  &-container{
+    box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+    border-radius: 10px;
+  }
+  &-content{
+    border-radius: 10px;
+  }
+  &-title{
+    margin-bottom: 5px;
+    font-family: Poppins;
+    font-size: 14px;
+    color: rgba(10, 15, 20, 0.75);
+  }
+  &-value{
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #000000;
+    margin: 0;
+    word-break: break-word;
+  }
+}
+
+.vendor {
+  &-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: solid 1px rgba(0, 0, 0, 0.05);
+    margin-right: 15px;
+  }
+}

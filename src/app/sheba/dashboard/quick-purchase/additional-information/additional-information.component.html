@@ -1,0 +1,12 @@
+<div class="additional-information container">
+    <app-journey-header title="Additional information and Contact number" [showCart]="false"></app-journey-header>
+
+    <div class="additional-information__content">
+        <h3 class="additional-information__content-title">
+            Write if you have any additional info & <b>must drop the contact number</b>
+        </h3>
+        <textarea class="additional-information__content-info" cdkTextareaAutosize
+                  [formControl]="additionalInformation"
+                  placeholder="Ex. I need 2 cleaner for 4 days to clean our 6000sf office."></textarea>
+    </div>
+</div>

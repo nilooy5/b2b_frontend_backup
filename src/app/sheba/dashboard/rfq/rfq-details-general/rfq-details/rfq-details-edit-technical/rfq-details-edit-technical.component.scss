@@ -1,0 +1,85 @@
+@import 'src/scss/variables';
+
+.technical-evaluation {
+  &-container {
+    border-radius: 10px;
+    margin-bottom: 100px;
+    .header {
+      padding: 17px 10px 0 10px;
+
+      h3 {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 1.33;
+        color: $black-80;
+        margin-bottom: 10px;
+      }
+
+      hr {
+        margin: 0;
+        border-top: 1px solid $grey-medium;
+      }
+    }
+
+    .questions {
+      padding: 30px 50px 50px 50px;
+    }
+  }
+
+  &-footer {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    color: $white;
+    text-align: center;
+    box-shadow: 0 -4px 30px 0 rgba(0, 0, 0, 0.1);
+    padding: 15px 50px 15px 120px;
+    z-index: 1;
+    -webkit-transition: padding .3s ease-in-out;
+    -moz-transition: padding .3s ease-in-out;
+    -ms-transition: padding .3s ease-in-out;
+    -o-transition: padding .3s ease-in-out;
+    transition: padding .3s ease-in-out;
+    &.open {
+      padding-left: 260px;
+    }
+
+    .button--link {
+      padding: 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: $primary;
+      i {
+        color: $primary;
+        margin-right: 5px;
+      }
+    }
+
+    .button--filled {
+      display: flex;
+      justify-content: center;
+      max-height: 50px;
+      max-width: 380px;
+      width: 100%;
+      font-size: 18px;
+      border-radius: 10px !important;
+      font-weight: 600;
+      color: $white;
+      background-color: $primary;
+      &:hover {
+        background-color: $primary;
+      }
+
+    }
+  }
+}
+
+
+
+
+
+
+
+

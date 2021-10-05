@@ -1,0 +1,47 @@
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content quick-purchase__cart">
+            <div class="modal-header d-flex justify-content-between">
+                <h5 class="modal-title" id="cartModalLabel">My Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="material-icons">close</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="for !== 'subscription'">
+                    <div class="cart-header d-flex justify-content-between">
+                        <p>Service Detail</p>
+                        <p *ngIf="orderService.Partner" style="position: relative; left: 120px;">Approximate Price</p>
+                        <p>Quantity</p>
+                    </div>
+                    <div *ngFor="let service of orderService.Services; let i = index">
+                        <app-service-cart-item [service]="service" [index]="i"
+                                               [showCounter] = "showCounter"
+                                               (serviceRemove)="removeService(i)"
+                                               (decreaseQuantity)="decreaseServiceQuantity(i)"
+                                               (increaseQuantity)="increaseServiceQuantity(i)"></app-service-cart-item>
+                    </div>
+                    <p *ngIf="!orderService.Services.length">Your cart is empty.</p>
+                </div>
+                <div *ngIf="for === 'subscription'">
+                    <div class="cart-header d-flex justify-content-between">
+                        <p>Service Detail</p>
+                        <p>Quantity</p>
+                    </div>
+                    <div *ngFor="let service of services; let i = index">
+                        <app-service-cart-item for="subscription" [service]="service" [index]="i"
+                                               (serviceRemove)="removeService(i)"
+                                               (decreaseQuantity)="decreaseServiceQuantity(i)"
+                                               (increaseQuantity)="increaseServiceQuantity(i)">
+                        </app-service-cart-item>
+                    </div>
+                    <p *ngIf="services.length === 0">Your cart is empty.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="quick-purchase__cart__price" *ngIf="orderService.Partner">Approximate Total Price: <span class="quick-purchase__cart__amount"> <span class="taka-sign">৳</span>{{numberWithCommas(orderService.Partner.discounted_price)}}</span></p>
+                <p class="quick-purchase__cart__price" *ngIf="!orderService.Partner">Select a partner to see price.</p>
+            </div>
+        </div>
+    </div>
+</div>

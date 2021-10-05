@@ -1,0 +1,40 @@
+<app-co-workers-confirmation-message></app-co-workers-confirmation-message>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="sidebar-left">
+            <div class="d-flex flex-column align-items-center">
+                <circle-progress
+                    [percent]="totalProfileCompletion"
+                    [radius]="50"
+                    [outerStrokeWidth]="12"
+                    [innerStrokeWidth]="12"
+                    [outerStrokeColor]="'#12b886'"
+                    [innerStrokeColor]="'#bbc0cc'"
+                    [animation]="true"
+                    [animationDuration]="300"
+                ></circle-progress>
+                <p class="score-title text-center">Complete co-worker profile for better usage</p>
+            </div>
+
+            <div>
+                <ul class="main-content-inner-block-nav mb-0">
+                    <li class="main-content-inner-block-nav-item" *ngFor="let requirement of profileRequirements; let i = index;">
+                        <a (click)="redirectTo(requirement.link, i)" [ngClass]="{active: requirement.isActive, valid: requirement.isValid && !requirement.isActive}">
+                            <span class="number" *ngIf="!requirement.isValid && requirement.showNumber">{{ requirement.no }}</span>
+                            <span class="material-icons check" *ngIf="requirement.isValid && !requirement.isActive">check</span>
+                            <span class="title">{{ requirement.title }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-8">
+        <div class="sidebar-right" style=" ">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+

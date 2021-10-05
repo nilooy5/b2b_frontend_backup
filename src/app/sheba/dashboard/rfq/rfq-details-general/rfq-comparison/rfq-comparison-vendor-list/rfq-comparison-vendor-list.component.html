@@ -1,0 +1,31 @@
+<div class="container-fluid procurement-bid">
+    <div class="row d-flex justify-content-between">
+        <section class="layout__card layout__card--base procurement-bid__bidder-list w-100">
+            <mat-list role="list">
+                <mat-list-item role="listitem">
+                    <div class="d-flex justify-content-between align-items-center procurement-bid__bidder-list__header">
+                        <h6>All Bidders</h6>
+                        <button class="btn btn-link d-flex align-items-center  text-decoration-none" [class.active]="favoriteFilterOn" (click)="filterFavorites()">
+                            <i class="material-icons">{{ favoriteFilterOn ? 'favorite' : 'favorite_border' }}</i>
+                            Favorites
+                        </button>
+                    </div>
+                </mat-list-item>
+                <mat-list-item role="listitem">
+                    <div class="procurement-bid__bidder-list__compare-link d-flex align-items-center">
+                        <img class="img-fluid" src="../../../../../../../assets/svg/compare.svg" alt="Compare" style="margin-right: 10px">
+                        <p class="m-0" style="font-size: 16px; font-weight: 500; color: #437ff5;">Compare all Quotations</p>
+                        <!--                        <a>Compare all Quotations</a>-->
+                    </div>
+                </mat-list-item>
+                <ng-template [ngIf]="vendors && vendors.length">
+                    <mat-list-item role="listitem" *ngFor="let vendor of vendors; let i = index">
+                        <app-rfq-comparison-vendor-card [vendor]="vendor" [index]="i" [visibleIndexes]="compareIndexes" style="width: 100%;"></app-rfq-comparison-vendor-card>
+                    </mat-list-item>
+                </ng-template>
+                <ng-template [ngIf]="vendors && !vendors.length">
+                </ng-template>
+            </mat-list>
+        </section>
+    </div>
+</div>

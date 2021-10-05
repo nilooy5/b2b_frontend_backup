@@ -1,0 +1,83 @@
+<div class="contact-us" >
+    <h1 class="contact-us__heading">Contact Us</h1>
+    <p class="contact-us__info">Get in touch and let us know how we can help</p>
+
+    <div class="container-fluid">
+       <div class="row">
+           <div class="col-lg-6 col-md-12">
+               <div class="p-60 bg-white contact-form">
+
+                   <h2 class="contact-form__heading">Send Message</h2>
+
+                   <form class="contact-form__input-form" [formGroup]="contactUsForm" (submit)="submit()">
+                       <div class="form-item">
+                           <label for="name">Full Name</label>
+                           <input type="text" id="name" formControlName="name"
+                                  class="form-control input--primary">
+                           <mat-hint class="__error-message"
+                                     *ngIf="showContactUsError && contactUsFormControl.name.errors && contactUsFormControl.name.errors.required">
+                               Name is required
+                           </mat-hint>
+                       </div>
+                       <div class="form-item">
+                           <label for="email">Email</label>
+                           <input type="email" id="email" formControlName="email"
+                                  class="form-control input--primary">
+
+                           <mat-hint class="__error-message"
+                                     *ngIf="showContactUsError && contactUsFormControl.email.errors && contactUsFormControl.email.errors.required">
+                               Email is required
+                           </mat-hint>
+
+                           <mat-hint class="__error-message"
+                                     *ngIf="contactUsFormControl.email.errors && contactUsFormControl.email.errors.email">
+                               Invalid email address
+                           </mat-hint>
+                       </div>
+                       <div class="form-item">
+                           <label for="message">Message</label>
+                           <textarea name="" id="message" formControlName="message"
+                                     class="form-control input--primary">
+                           </textarea>
+                           <mat-hint class="__error-message"
+                                     *ngIf="showContactUsError && contactUsFormControl.message.errors && contactUsFormControl.message.errors.required">
+                               Message is required
+                           </mat-hint>
+
+                       </div>
+                       <div class="flex mb-4">
+                           <button type="submit" class="button button-jumbo button-theme button-full">
+                               <span *ngIf="!submitting;else loader">Send Message</span>
+                               <ng-template #loader><span><i class="fas fa-spinner fa-spin"></i></span></ng-template>
+                           </button>
+                       </div>
+                   </form>
+
+               </div>
+           </div>
+           <div class="col-lg-6 col-md-12 contact-details" >
+               <div class="contact-details__list" style="max-width: 509px;">
+                   <h3>Contact Information</h3>
+                   <div class="info">
+                       <span><i class="material-icons">phone</i></span>
+                       <p>16516</p>
+                   </div>
+
+                   <div class="info">
+                       <span><i class="material-icons">email</i></span>
+                       <p>b2b@sheba.xyz</p>
+                   </div>
+
+                   <div class="info">
+                       <span><i class="fas fa-map-marker-alt"></i></span>
+                       <p>House #63 (1st Floor), Road #04, Block-C, Banani, Dhaka 1213, Bangladesh</p>
+                   </div>
+               </div>
+
+               <div class="contact-details__map">
+                   <img src="../../../../assets/img/landing/contact-us/office_map.png" alt="" class="img-fluid">
+               </div>
+           </div>
+       </div>
+    </div>
+</div>

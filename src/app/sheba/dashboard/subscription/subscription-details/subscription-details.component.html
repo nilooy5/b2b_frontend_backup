@@ -1,0 +1,7 @@
+<div class="journey__container container-fluid">
+    <app-journey-header [title]="subscription.subscription_name" [showCart]="false"></app-journey-header>
+    <div class="center-form">
+        <h5>Service Detail</h5>
+        <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(subscription.subscription_description)"></p>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="container-fluid" style="margin-bottom: 100px;">
+    <div class="row basic-price-quotation-container">
+        <div class="col-md-12 p-0">
+            <div class="basic-price-quotation-header d-flex" style="justify-content: space-between;">
+                <p class="m-0">Price Quotation</p>
+                <span class="view-quotation" (click)="viewQuotation()" >View Quotation</span>
+            </div>
+            <hr>
+            <form [formGroup]="proposedPrice">
+            <div class="basic-price-quotation-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Your Proposed Quotation</p>
+                        <input type="text" id="proposed_price" class="form-container__control"
+                               formControlName="proposed_price">
+                    </div>
+                    <div class="col-md-6">
+                         <p>Vendor’s Proposed Quotation</p>
+                         <p class="m-0 pt-10"> ৳ {{ quotationDetails.price }} </p>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row terms-policy-small-screen">
+        <div class="col-md-6 pl-0">
+            <div class="terms-policy-container">
+                <div class="terms-policy-header">
+                    <p class="m-0">Terms and conditions</p>
+                    <span *ngIf="quotationDetails.terms && !enableTermsEdit" class="edit-btn" (click)="onClickEdit(1)">EDIT</span>
+                </div>
+                <hr>
+                <div class="terms-policy-content">
+                    <div *ngIf="!enableTermsEdit">
+                       <div *ngIf="quotationDetails.terms">
+                           <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(quotationDetails.terms)"></p>
+                       </div>
+                        <div *ngIf="!quotationDetails.terms" class="no-terms-policy">
+                            <h4>No T&C</h4>
+                            <p>No terms & condition added for this job</p>
+                            <button class="add-now-btn" (click)="onClickEdit(1)">Add Now</button>
+                        </div>
+                    </div>
+                    <div *ngIf="enableTermsEdit">
+                        <angular-editor id="termsAndConditionEditor" [formControl]="termsAndConditionContent" [config]="config"></angular-editor>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 pr-0">
+            <div class="terms-policy-container policy-small">
+                <div class="terms-policy-header">
+                    <p class="m-0">Policy</p>
+                    <span *ngIf="quotationDetails.policies && !enablePolicyEdit" class="edit-btn" (click)="onClickEdit(2)">EDIT</span>
+                </div>
+                <hr>
+                <div class="terms-policy-content">
+                    <div *ngIf="!enablePolicyEdit">
+                        <div *ngIf="quotationDetails.policies">
+                            <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(quotationDetails.policies)"></p>
+                        </div>
+                        <div *ngIf="!quotationDetails.policies" class="no-terms-policy">
+                            <h4>No Policy</h4>
+                            <p>No policy added for this job</p>
+                            <button class="add-now-btn" (click)="onClickEdit(2)">Add Now</button>
+                        </div>
+                    </div>
+                    <div *ngIf="enablePolicyEdit">
+                        <angular-editor id="policyEditor" [formControl]="policyContent" [config]="config"></angular-editor>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hire-request-container">
+    <div class="hire-request-content">
+        <div class="hire-request-content-info">
+            <p class="hire-request-content-info__title"> Want to hire this vendor? </p>
+        </div>
+        <button class="hire-request-btn" (click)="sendHire()" > Send Hiring Request </button>
+    </div>
+</div>

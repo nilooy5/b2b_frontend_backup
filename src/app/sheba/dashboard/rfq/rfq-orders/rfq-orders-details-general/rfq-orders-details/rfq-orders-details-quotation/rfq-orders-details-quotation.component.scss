@@ -1,0 +1,18 @@
+@import "../rfq-orders-details.component";
+
+:host ::ng-deep {
+  .main-table-theme tbody tr td.mat-cell {
+    background: #f8f8fb;
+    font-size: 14px;
+    line-height: 1.57;
+    color: rgba(10, 15, 20, 0.75);
+    padding: 15px !important;
+  }
+
+  .main-table-theme thead tr th.mat-header-cell {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--white);
+  }
+}

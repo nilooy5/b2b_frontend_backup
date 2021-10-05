@@ -1,0 +1,137 @@
+<div class="container-fluid" style="margin-bottom: 100px;">
+    <div *ngIf="quotationDetails.price_quotation" class="row price-quotation-container">
+        <div class="col-md-12 p-0">
+            <div class="price-quotation-header d-flex" style="justify-content: space-between;">
+                <p class="m-0">Price Quotation</p>
+                <span class="view-quotation" (click)="viewQuotation()" >View Quotation</span>
+            </div>
+            <hr>
+            <div class="price-quotation-content">
+                <div class="main-table-block p-0">
+                    <table mat-table class="main-table-theme" [dataSource]="dataSource">
+                        <ng-container matColumnDef="serialNo">
+                            <th class="table-sl-no" mat-header-cell *matHeaderCellDef> SL NO</th>
+                            <td mat-cell *matCellDef="let element; let i = index">
+                                <span> {{ i + 1}} </span>
+                            </td>
+                            <td mat-footer-cell *matFooterCellDef></td>
+                        </ng-container>
+                        <ng-container matColumnDef="itemName">
+                            <th class="table-item" mat-header-cell *matHeaderCellDef> Item  </th>
+                            <td mat-cell *matCellDef="let element">
+                                <span> {{ element.title }} </span>
+                            </td>
+                            <td mat-footer-cell *matFooterCellDef></td>
+                        </ng-container>
+                        <ng-container matColumnDef="specification">
+                            <th class="table-spec" mat-header-cell *matHeaderCellDef> Specifications</th>
+                            <td mat-cell *matCellDef="let element">
+                                <span> {{ element.short_description }} </span>
+                            </td>
+                            <td mat-footer-cell *matFooterCellDef></td>
+                        </ng-container>
+                        <ng-container matColumnDef="unit">
+                            <th class="table-unit" mat-header-cell *matHeaderCellDef> Unit</th>
+                            <td mat-cell *matCellDef="let element">
+                                <span> {{ element.unit }} </span>
+                            </td>
+                            <td mat-footer-cell *matFooterCellDef>
+                                <span class="total-price">Total Quoted</span>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="quoted">
+                            <th class="table-quoted" mat-header-cell *matHeaderCellDef> Quoted</th>
+                            <td mat-cell *matCellDef="let element">
+                                <span> {{ element.result }} </span>
+                            </td>
+                            <td mat-footer-cell *matFooterCellDef>
+                                <span class="total-price"> {{ getTotalPrice() }} </span>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="final">
+                            <th class="table-final" mat-header-cell *matHeaderCellDef> Final</th>
+                            <td mat-cell *matCellDef="let element; let i = index">
+                                <input
+                                    [value]="element.result"
+                                    type="number"
+                                    name="itemPrice"
+                                    id="itemPrice"
+                                    class="form-container__control"
+                                    placeholder="Price"
+                                    required="required"
+                                    (input)="emitOnFormChange(i, $event)">
+<!--                                <span> {{ element.result }} </span>-->
+                            </td>
+                            <td mat-footer-cell *matFooterCellDef>
+                                <span class="total-price"> Total Final &nbsp; {{numericFormat.numberWithCommas(totalPrice)}} </span>
+                            </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+                        <tr mat-row *matRowDef="let row, columns: displayedColumns;" style="cursor: pointer"></tr>
+                        <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row terms-policy-small-screen">
+        <div class="col-md-6 pl-0">
+            <div class="advance-terms-policy-container">
+                <div class="advance-terms-policy-header">
+                    <p class="m-0">Terms and conditions</p>
+                    <span *ngIf="quotationDetails.terms && !enableTermsEdit" class="edit-btn" (click)="onClickEdit(1)">EDIT</span>
+                </div>
+                <hr>
+                <div class="advance-terms-policy-content">
+                    <div *ngIf="!enableTermsEdit">
+                        <div *ngIf="quotationDetails.terms">
+                            <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(quotationDetails.terms)"></p>
+                        </div>
+                        <div *ngIf="!quotationDetails.terms" class="no-terms-policy">
+                            <h4>No T&C</h4>
+                            <p>No terms & condition added for this job</p>
+                            <button class="add-now-btn" (click)="onClickEdit(1)">Add Now</button>
+                        </div>
+                    </div>
+                    <div *ngIf="enableTermsEdit">
+                        <angular-editor id="termsAndConditionEditor" [formControl]="termsAndConditionContent" [config]="config"></angular-editor>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 pr-0">
+            <div class="advance-terms-policy-container policy-small">
+                <div class="advance-terms-policy-header">
+                    <p class="m-0">Policy</p>
+                    <span *ngIf="quotationDetails.policies && !enablePolicyEdit" class="edit-btn" (click)="onClickEdit(2)">EDIT</span>
+                </div>
+                <hr>
+                <div class="advance-terms-policy-content">
+                    <div *ngIf="!enablePolicyEdit">
+                        <div *ngIf="quotationDetails.policies">
+                            <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(quotationDetails.policies)"></p>
+                        </div>
+                        <div *ngIf="!quotationDetails.policies" class="no-terms-policy">
+                            <h4>No Policy</h4>
+                            <p>No policy added for this job</p>
+                            <button class="add-now-btn" (click)="onClickEdit(2)">Add Now</button>
+                        </div>
+                    </div>
+                    <div *ngIf="enablePolicyEdit">
+                        <angular-editor id="policyEditor" [formControl]="policyContent" [config]="config"></angular-editor>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hire-request-container">
+    <div class="hire-request-content">
+        <div class="hire-request-content-info">
+            <p class="hire-request-content-info__title"> Want to hire this vendor? </p>
+        </div>
+        <button class="hire-request-btn" (click)="sendHire()" > Send Hiring Request </button>
+    </div>
+</div>

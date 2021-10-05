@@ -1,0 +1,20 @@
+<div class="table-search">
+    <form class="table-search-form" (submit)="submit()" [ngClass]="{'open':open}">
+        <div class="form-group ">
+            <input type="text" name="search" class="form-control has-suffix" [(ngModel)]="query"
+                   [placeholder]="placeholder" aria-label="">
+        </div>
+        <div class="actions">
+            <button type="submit" matTooltip="Submit"
+                    class="button button-icon button-form-input button-form-input-suffix"><i class="material-icons">check</i>
+            </button>
+        </div>
+    </form>
+    <button type="button" class="table-search-button" mat-icon-button mat-stroked-button (click)="toggle()"
+            [matTooltip]="!open?tooltip:'Close'">
+        <i class="material-icons" *ngIf="!open;else close">search</i>
+        <ng-template #close>
+            <i class="material-icons">clear</i>
+        </ng-template>
+    </button>
+</div>

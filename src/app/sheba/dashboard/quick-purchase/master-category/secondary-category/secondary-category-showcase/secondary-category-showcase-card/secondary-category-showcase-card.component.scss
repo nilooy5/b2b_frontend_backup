@@ -1,0 +1,34 @@
+//.thumb{
+//  border-radius: 5px;
+//}
+//.catName{
+//  margin: 15px 5px 0px 5px;
+//  text-align: center
+//}
+
+.secondary-category-card {
+  cursor: pointer;
+  margin-top: 20px;
+
+  &__title {
+    padding-top: 15px;
+    text-align: center;
+    margin-bottom: 0;
+  }
+}
+
+img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+
+
+@media only screen and (min-width: 1300px) and (max-width: 1500px) {
+  img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+  }
+}

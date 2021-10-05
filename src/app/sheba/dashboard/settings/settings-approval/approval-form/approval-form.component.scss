@@ -1,0 +1,166 @@
+@import '../../../../../../../src/scss/variables';
+
+:host ::ng-deep {
+
+  #type,
+  #department,
+  #employees {
+    .mat-form-field {
+      &-appearance-outline {
+        .mat-form-field-wrapper {
+          margin: 0;
+        }
+        .mat-form-field-flex:hover .mat-form-field-outline-thick {
+          opacity: 0.05 !important;
+        }
+        .mat-form-field-infix {
+          padding: 15px 0 12px 0;
+        }
+      }
+      &-wrapper {
+        background-color: #fafbfc;
+        height: 40px;
+        padding-bottom: 0;
+      }
+      &-infix {
+        border: 0;
+      }
+    }
+    .mat-select {
+      font-size: 14px;
+    }
+  }
+
+  #department {
+    .mat-form-field {
+      width: 100%;
+      &-appearance-outline {
+        .mat-select-arrow-wrapper {
+          transform: translateY(0);
+        }
+      }
+    }
+    .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+      color: rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  #employees {
+    .mat-form-field {
+      &-appearance-outline {
+        .mat-select-arrow-wrapper {
+          transform: translateY(-30%);
+        }
+      }
+    }
+    .mat-select {
+      height: 0 !important;
+    }
+  }
+
+}
+
+.settings-approval-add {
+  padding: 50px 45px;
+  min-height: 70vh;
+  margin-bottom: 100px;
+
+  &__form {
+    input {
+      border: solid 1px $theme-light-grey;
+      background-color: #fafbfc;
+      padding: 19px 16px;
+      border-radius: 3px;
+    }
+    .form-group {
+      margin: 0 0 30px;
+      align-items: center;
+    }
+  }
+
+  &__error-message {
+    padding-top: 5px;
+    font-size: 12px;
+    color: $red;
+    margin: 0;
+  }
+}
+
+.form {
+  &-group {
+    &:focus-within {
+      label {
+        color: $black80;
+      }
+    }
+  }
+}
+
+.form-group label {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-family: $font-lato !important;
+}
+
+.form-control {
+  font-size: 14px;
+}
+
+.profile-image-avatar {
+  border-radius: 50% !important;
+}
+
+.selectedEmployeeInfo {
+  margin-top: 20px;
+  p {
+    color: $black80;
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+
+  span {
+    color: $black80;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  i {
+    border: solid 1px #fa5252;
+    border-radius: 50%;
+    color: #fa5252;
+  }
+
+  #employee-name {
+    color: $black80;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    font-family: $font-lato;
+  }
+
+  #employee-designation {
+    color: rgba(10, 15, 20, 0.75);
+    font-size: 14px;
+    line-height: 1.57;
+  }
+}
+
+.btn {
+  width: 154px;
+  height: 40px;
+  font-size: 14px;
+}
+
+.button--filled {
+  background-color: #437ff5;
+}
+
+.icon {
+  cursor: pointer;
+}

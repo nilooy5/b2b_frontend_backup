@@ -1,0 +1,60 @@
+<div class="container topComponent">
+    <div class="row reverse">
+        <div class="col-lg-6 order-md-2">
+            <img class="img-fluid image" src="{{contents[feature].image}}" alt="feature image">
+        </div>
+        <div class="col-lg-6 order-md-1">
+            <div class="container">
+                <div class="row">
+                    <div class="name col-md-12">
+                        {{contents[feature].name}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="heading col-md-12">
+                        {{contents[feature].heading}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="btnDiv col-md-12">
+<!--                        <button mat-button class="button" [routerLink]="['/', 'auth', 'sign-up']" [queryParams]="{reference: contents[feature].amplitudeEventName}">-->
+<!--                            <span class="btnLabel">{{contents[feature].buttonLabel}}</span>-->
+<!--                        </button>-->
+
+                        <button mat-button class="button" *ngIf="contents[feature].name === 'Request For Quotation'" data-toggle="modal"
+                                data-target="#exampleModalCenter">
+                            <span class="btnLabel">Get Started Now</span>
+                        </button>
+
+
+                        <button mat-button class="button" *ngIf="contents[feature].name !== 'Request For Quotation'"
+                                [routerLink]="['/', 'auth', 'sign-up']" [queryParams]="{reference: contents[feature].amplitudeEventName}">
+                            <span class="btnLabel">{{ contents[feature].buttonLabel }}</span>
+                        </button>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" #rfqModal id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" *ngIf="stepperIndex > 0" (click)="stepperBack()">
+                    <i class="material-icons">arrow_back</i>
+                </button>
+                <h5 class="modal-title" id="exampleModalLongTitle" style="margin: 0 auto;">Post a RFQ</h5>
+                <button type="button" class="close" aria-label="Close" (click)="close()">
+                    <i class="material-icons">close</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-feature-procurement-post></app-feature-procurement-post>
+            </div>
+        </div>
+    </div>
+</div>

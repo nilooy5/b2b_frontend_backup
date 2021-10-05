@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="container main-content">
+        <div class="success d-flex align-items-center flex-column">
+            <img src="../../../../../../../assets/svg/icons/tender/list_empty.svg" class="success__img" alt="empty list">
+            <div class="success__message">
+                <span>No records found</span>
+            </div>
+            <div class="success__details col-md-8 text-center">
+                <span>
+                    You have no lists. Your created designation list will appear here.
+                </span>
+            </div>
+            <div class="success__button">
+                <button mat-button [routerLink]="['/', 'dashboard', 'rfq', 'create']">Create a Tender</button>
+            </div>
+        </div>
+        <div class="success-footer d-flex">
+            <span class="material-icons-outlined info">
+                info
+            </span> &nbsp;
+            Can’t find what you are looking for? &nbsp; &nbsp;
+            <a class="link d-flex align-items-center" [href]="redirectToHelp()">
+                Go to Help Center
+                <span class="material-icons">
+                    arrow_right_alt
+                </span>
+            </a>
+        </div>
+    </div>
+</div>

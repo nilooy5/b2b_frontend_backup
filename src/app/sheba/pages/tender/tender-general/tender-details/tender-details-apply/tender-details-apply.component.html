@@ -1,0 +1,52 @@
+<div class="d-flex flex-column apply">
+    <a class="apply__companyDetail d-flex" href="https://www.smanager.xyz" target="_blank">
+        <div class="get-verified">Get verified to get more tenders</div>
+    </a>
+
+    <div class="apply__status d-flex align-items-center" *ngIf = "tender.last_date_of_submission">
+        <img src="{{tender.last_date_of_submission.icon}}" alt="" class="icon">
+        <div class="apply__status__text">Last date of submission - {{tender.last_date_of_submission.date}}</div>
+    </div>
+
+    <div class="apply__status d-flex align-items-center" *ngIf = "tender.number_of_participants">
+        <img src="../../../../../../../assets/svg/icons/tender/participants.svg" alt="" class="icon">
+        <div class="apply__status__text">Participants - {{tender.number_of_participants}}</div>
+    </div>
+
+    <div class="apply__status d-flex align-items-center" *ngIf = "tender.delivery_within">
+        <img src="{{tender.delivery_within.icon}}" alt="" class="icon">
+        <div class="apply__status__text">Delivery within - {{tender.delivery_within.date_range}}</div>
+    </div>
+
+    <div class="apply__status d-flex align-items-center" *ngIf = "tender.payment">
+        <img src="{{tender.payment.icon}}" alt="" class="icon">
+        <div class="apply__status__text">Payment - {{tender.payment.option}}</div>
+    </div>
+
+    <div style="margin-top: 20px">
+        <div class="apply-chips">
+            <span class="apply__helper"
+                  [style.background-color]="tender.number_of_applicants_or_applications.color"
+                  *ngIf="tender.number_of_applicants_or_applications">
+                <img src="{{tender.number_of_applicants_or_applications.icon}}" alt="">
+                <span *ngIf="tender.number_of_applicants_or_applications.applications; else showVendor">
+                    {{tender.number_of_applicants_or_applications.applications}}
+                </span>
+                <ng-template #showVendor>
+                    {{tender.number_of_applicants_or_applications.vendors}}
+                </ng-template>
+            </span>
+        </div>
+        <div class="apply-chips">
+            <span class="apply__helper" *ngIf="tender.remaining_days"
+                  [style.background-color]="tender.remaining_days.color">
+                <img src="{{tender.remaining_days.icon}}" alt="">
+                {{tender.remaining_days.days}}
+            </span>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px">
+        <button mat-button (click)="applyToTender()">Apply Now</button>
+    </div>
+</div>

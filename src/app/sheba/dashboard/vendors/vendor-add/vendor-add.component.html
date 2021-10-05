@@ -1,0 +1,192 @@
+<mat-horizontal-stepper class="vehicle-add__stepper container" [linear]="isLinear" #stepper *ngIf="!showConfirmation">
+    <mat-step [stepControl]="vendorInformation">
+        <form class="vehicle-add__form " [formGroup]="vendorInformation">
+            <ng-template matStepLabel>General Information</ng-template>
+
+            <div class="form-group row">
+                <label for="vendorLogo" class="col-md-4 col-form-label">Vendor Logo</label>
+                <div class="col-md-8">
+                    <app-image-file-input id="vendorLogo" [showPreview]="true" formControlName="vendorLogo" [type]="'item'"></app-image-file-input>
+                    <p class="vehicle-add__error-message" *ngIf="showVendorInformationError && vendorInformation.get('vendorLogo').hasError('required')">
+                        Photo is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="vendorName" class="col-md-4 col-form-label">Vendor Name*</label>
+                <div class="col-md-8">
+                    <input placeholder="Ex. Trust Solutions" class="form-control" id="vendorName" type="text" formControlName="vendorName" required>
+                    <p class="vehicle-add__error-message" *ngIf="showVendorInformationError && vendorInformation.get('vendorName').hasError('required')">
+                        Vendor Name is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="vendorPhoneNumber" class="col-md-4 col-form-label">Vendor Phone Number*</label>
+                <div class="col-md-8">
+                    <input placeholder="e.g. 01XXXXXXXXX" class="form-control" id="vendorPhoneNumber" formControlName="vendorPhoneNumber" required>
+                    <p class="vehicle-add__error-message" *ngIf="showVendorInformationError && vendorInformation.get('vendorPhoneNumber').hasError('required')">
+                        Phone Number is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="vendorEmail" class="col-md-4 col-form-label">Vendor Email</label>
+                <div class="col-md-8">
+                    <input placeholder="Ex. vendor@mail.com" class="form-control" id="vendorEmail" type="text" formControlName="vendorEmail">
+                    <p class="driver-add__error-message" *ngIf="showVendorInformationError && vendorInformation.get('vendorEmail').hasError('required')">
+                        Email is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+
+                <label for="vendorAddress" class="col-md-4 col-form-label">Vendor Address</label>
+                <div class="col-md-8">
+                    <textarea placeholder="Ex. Plot-11, Road 113/A, Gulshan-2, Dhaka 1212" class="form-control" id="vendorAddress" type="text"
+                              formControlName="vendorAddress"></textarea>
+                    <p class="vehicle-add__error-message" *ngIf="showVendorInformationError && vendorInformation.get('vendorAddress').hasError('required')">
+                        Address Name is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="masterCategory" class="col-md-4 col-form-label">Master Category</label>
+                <div class="col-md-8">
+                    <div class="select--primary vehicle-add__select">
+                        <select name="vendorArea" id="masterCategory" formControlName="masterCategory">
+                            <option value="" selected disabled>Select Master Category</option>
+                            <option *ngFor="let category of masterCategory" [value]="category.id">
+                                {{category.name}}
+                            </option>
+                        </select>
+                        <i class="material-icons">keyboard_arrow_down</i>
+                    </div>
+                     <p class="vehicle-add__error-message" *ngIf="showVendorInformationError && vendorInformation.get('masterCategory').hasError('required')">
+                        Department is required
+                     </p>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end container">
+                <button matStepperNext (click)="showVendorInformationError = true">
+                    Next <i class="material-icons">chevron_right</i>
+                </button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="registrationInformation">
+        <form class="vehicle-add__form" [formGroup]="registrationInformation">
+            <ng-template matStepLabel>Registration Information</ng-template>
+
+            <div class="form-group row">
+                <label for="licenseNumber" class="col-md-4 col-form-label">Trade License Number</label>
+                <div class="col-md-8">
+                    <input placeholder="Ex. 0716640" class="form-control" id="licenseNumber" formControlName="licenseNumber">
+<!--                    <p class="vehicle-add__error-message" *ngIf="showRegistrationInformationError && registrationInformation.get('licenseNumber').hasError('required')">-->
+<!--                        License Number is required-->
+<!--                    </p>-->
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="licenseImage" class="col-md-4 col-form-label">Trade License Document</label>
+                <div class="col-md-8">
+                    <app-image-file-input id="licenseImage" [showPreview]="false" formControlName="licenseImage"></app-image-file-input>
+                    <p class="vehicle-add__error-message" *ngIf="showRegistrationInformationError && registrationInformation.get('licenseImage').hasError('required')">
+                        License Number is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="vatRegistrationNumber" class="col-md-4 col-form-label">VAT Registration Number</label>
+                <div class="col-md-8">
+                    <input placeholder="Ex. 123456789" class="form-control" id="vatRegistrationNumber" formControlName="vatRegistrationNumber">
+<!--                    <p class="vehicle-add__error-message" *ngIf="showRegistrationInformationError && registrationInformation.get('vatRegistrationNumber').hasError('required')">-->
+<!--                        VAT Registration Number is required-->
+<!--                    </p>-->
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="vatLicenseImage" class="col-md-4 col-form-label">VAT Registration Document</label>
+                <div class="col-md-8">
+                    <app-image-file-input id="vatLicenseImage" [showPreview]="false" formControlName="vatLicenseImage"></app-image-file-input>
+                    <p class="vehicle-add__error-message" *ngIf="showRegistrationInformationError && registrationInformation.get('vatLicenseImage').hasError('required')">
+                        VAT Registration Number is required
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="d-flex justify-content-end container">
+                <button matStepperPrevious><i class="material-icons">chevron_left</i> Back</button>
+                <button matStepperNext (click)="showRegistrationInformationError = true">
+                    Next <i class="material-icons">chevron_right</i>
+                </button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="otherInformation">
+        <form class="vehicle-add__form container" [formGroup]="otherInformation">
+            <ng-template matStepLabel>Contact Information</ng-template>
+
+            <div class="form-group row">
+                <label for="contactPersonName" class="col-md-4 col-form-label">Contact Person Name*</label>
+                <div class="col-md-8">
+                    <input placeholder="Ex. Abir Tuhin" class="form-control" id="contactPersonName" formControlName="contactPersonName" required>
+                    <p class="vehicle-add__error-message" *ngIf="showOtherInformationError && otherInformation.get('contactPersonName').hasError('required')">
+                        Person Name is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="phoneNumber" class="col-md-4 col-form-label">Phone Number*</label>
+                <div class="col-md-8">
+                    <input placeholder="Ex. Abir Tuhin" class="form-control" id="phoneNumber" formControlName="phoneNumber" required>
+                    <p class="vehicle-add__error-message" *ngIf="showOtherInformationError && otherInformation.get('phoneNumber').hasError('required')">
+                        Phone Number is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="NID" class="col-md-4 col-form-label">NID</label>
+                <div class="col-md-8">
+                    <input placeholder="Ex. 973 046 8625" class="form-control" id="NID" formControlName="NID">
+<!--                    <p class="vehicle-add__error-message" *ngIf="showOtherInformationError && otherInformation.get('NID').hasError('required')">-->
+<!--                        NID is required-->
+<!--                    </p>-->
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="NIDImage" class="col-md-4 col-form-label">NID Document</label>
+                <div class="col-md-8">
+                    <app-image-file-input id="NIDImage" [showPreview]="false" formControlName="NIDImage"></app-image-file-input>
+                    <p class="vehicle-add__error-message" *ngIf="showOtherInformationError && otherInformation.get('NIDImage').hasError('required')">
+                        NID Image is required
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="d-flex justify-content-end container">
+                <button  matStepperPrevious><i class="material-icons">chevron_left</i> Back</button>
+                <button matStepperNext (click)="submitVendor()">Add Vendor</button>
+            </div>
+        </form>
+    </mat-step>
+</mat-horizontal-stepper>
+
+<app-confirm-message *ngIf="showConfirmation" (viewDetailsEmitter)="viewDetails()" [type]="confirmType" [title]="confirmTitle" [text]="confirmMessage">
+</app-confirm-message>

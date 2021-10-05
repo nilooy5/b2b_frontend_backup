@@ -1,0 +1,55 @@
+<div *ngIf="data.type === 'success'" mat-dialog-content>
+    <div class="dialog-content-inner">
+        <div style="text-align: right">
+            <button class="close-button" [mat-dialog-close]="true"><span class="material-icons close-icon">close</span>
+            </button>
+        </div>
+        <div class="verify-success-modal">
+            <img src="../../../../assets/svg/number_verify_success.svg" alt="Success">
+
+            <h4> Number Verified Successfully! </h4>
+
+            <p> Submit your proposal to get the job. Submit your proposal and get the job. </p>
+
+            <button class="btn btn-primary action-btn" (click)="submit()"> Apply to the RFQ</button>
+            <button class="btn success-close-btn" [mat-dialog-close]="true"> Close</button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="data.type === 'failure'" mat-dialog-content>
+    <div class="dialog-content-inner">
+        <div style="text-align: right">
+            <button class="close-button" [mat-dialog-close]="true"><span class="material-icons close-icon">close</span>
+            </button>
+        </div>
+        <div class="verify-failure-modal-upper">
+            <img src="../../../../assets/svg/number_verify_success.svg" alt="Success">
+
+            <h4> Number Verified Successfully! </h4>
+
+            <p *ngIf="data.errorType === 'not_invited'"> Only invited vendors by the company can submit proposal in this
+                RFQ. Try with another number. </p>
+            <p *ngIf="data.errorType === 'not_sheba_verified'"> Only verified by sheba.xyz vendors can submit proposal
+                in this RFQ. Please call <b> 16516 </b> for more info. </p>
+        </div>
+
+        <div *ngIf="data.errorType === 'not_invited'" class="center-badge">
+            <p class="m-0 d-flex center-badge-text"><span class="material-icons-round center-badge-icon">drafts</span>
+                Invited Service Providers can apply </p>
+        </div>
+        <div *ngIf="data.errorType === 'not_sheba_verified'" class="center-badge">
+            <p class="m-0 d-flex center-badge-text"><span class="material-icons center-badge-icon">verified_user</span>
+                Only Sheba.xyz verified SP can apply </p>
+        </div>
+
+        <div *ngIf="data.errorType === 'not_invited'" class="verify-failure-modal-lower">
+            <button class="btn btn-primary action-btn" (click)="goToRfqList()"> View other tenders</button>
+            <button class="btn success-close-btn" [mat-dialog-close]="true" (click)="anotherNumberTry()"> Try another number</button>
+        </div>
+        <div *ngIf="data.errorType === 'not_sheba_verified'" class="verify-failure-modal-lower">
+            <button class="btn btn-primary action-btn" (click)="goToRfqList()"> Check other RFQs</button>
+            <button class="btn success-close-btn" [mat-dialog-close]="true"> Know how to get verified</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,160 @@
+.dialog {
+  &-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row;
+    margin-bottom: 10px;
+
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0;
+      padding-right: 1px;
+    }
+
+    &-actions {
+      display: flex;
+      align-items: center;
+
+      > * {
+        padding-left: 5px;
+      }
+    }
+  }
+
+  &-big-head {
+    display: flex !important;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px 0;
+
+    &-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #000000;
+      font-weight: 500;
+    }
+
+    &-sub-title {
+      font-size: 1rem;
+      color: #000;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+  }
+
+  &-big-content {
+    padding: 40px;
+
+    .general-form-content {
+      min-width: calc(40vw - 100px);
+      max-width: 430px;
+    }
+  }
+}
+
+.dialog-general {
+  mat-dialog-container {
+    padding: 0;
+    overflow: hidden;
+
+    .mat-dialog-title {
+      background-color: #f5f5f5;
+      padding: 12px 24px;
+    }
+
+    .dialog-content-inner {
+      padding: 24px;
+    }
+
+    .mat-dialog-actions {
+      padding: 24px;
+      margin-bottom: 0;
+
+      .service-option__edit__counter {
+        button {
+          height: 30px;
+          width: 30px;
+          padding: 5px;
+
+          i {
+            font-size: 1rem;
+          }
+        }
+
+        input {
+          height: 30px;
+          max-width: 90px;
+          background-color: #f5f5f5;
+          border: none;
+          font-size: 1rem;
+          margin: 0 10px;
+          text-align: center;
+          padding: 3px;
+          position: relative;
+          top: 1px;
+          border-radius: 4px;
+
+          &:disabled {
+            background-color: #f5f5f5;
+          }
+        }
+      }
+
+      .service-option__edit__remove {
+        button {
+          margin-left: 16px;
+          color: $spice-red;
+          border-radius: 50%;
+          height: 30px;
+          width: 30px;
+          background-color: #f5f5f5;
+          padding: 0;
+          text-align: center;
+          padding-top: 5px;
+
+          i {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  mat-checkbox, mat-radio-button {
+    display: block;
+  }
+
+  mat-dialog-actions {
+    box-shadow: 0 -4px 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 16px 24px;
+  }
+}
+
+.dialog-confirmation {
+  mat-dialog-container {
+    padding: 0;
+  }
+  .mat-dialog-content {
+    margin: 0;
+    padding: 0;
+  }
+  .dialog-content-inner {
+    padding: 0;
+  }
+}
+
+.dialog-edit {
+  .mat-dialog-content {
+    margin: 0;
+  }
+}
+
+.round-model {
+  .mat-dialog-container {
+    border-radius: 20px;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.1);
+    overflow: visible;
+  }
+}

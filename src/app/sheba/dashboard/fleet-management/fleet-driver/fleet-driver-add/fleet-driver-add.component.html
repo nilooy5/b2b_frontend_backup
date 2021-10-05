@@ -1,0 +1,260 @@
+<mat-horizontal-stepper class="driver-add__stepper container" [linear]="isLinear" #stepper *ngIf="!showConfirmation">
+    <mat-step [stepControl]="generalInformation">
+        <form class="driver-add__form " [formGroup]="generalInformation">
+            <ng-template matStepLabel>General Info</ng-template>
+            <div class="form-group row">
+                <label for="driverPhoto" class="col-md-4 col-form-label">Driver Photo</label>
+                <div class="col-md-8">
+                    <app-image-file-input id="driverPhoto" [showPreview]="true" formControlName="driverPhoto"></app-image-file-input>
+                    <p class="driver-add__error-message" *ngIf="showGeneralInformationError && generalInformation.get('driverPhoto').hasError('required')">Photo is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="driverName" class="col-md-4 col-form-label">Driver Name</label>
+                <div class="col-md-8">
+                    <input placeholder="Ex. Kamal Hasan" class="form-control" id="driverName" type="text" formControlName="driverName" required>
+                    <p class="driver-add__error-message" *ngIf="showGeneralInformationError && generalInformation.get('driverName').hasError('required')">Name is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="dateOfBirth" class="col-md-4 col-form-label">Date of Birth</label>
+                <div class="col-md-8">
+                    <div class="driver-add__date-picker">
+                        <mat-datepicker #dateOfBirthPicker></mat-datepicker>
+                        <input class="form-control"
+                               (focus)="dateOfBirthPicker.open()"
+                               [matDatepickerFilter]="dateOfBirthFilter"
+                               matInput [matDatepicker]="dateOfBirthPicker"
+                               placeholder="DD / MM / YYYY"
+                               id="dateOfBirth" formControlName="dateOfBirth" required>
+                        <span class="driver-add__date-picker__toggle"><mat-datepicker-toggle matSuffix [for]="dateOfBirthPicker"></mat-datepicker-toggle></span>
+                    </div>
+                    <p class="driver-add__error-message" *ngIf="showGeneralInformationError && generalInformation.get('dateOfBirth').hasError('required')">Date of Birth is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="bloodGroup" class="col-md-4 col-form-label">Blood Group</label>
+                <div class="col-md-8">
+                    <div class="select--primary driver-add__select">
+                        <select name="driverDepartment" id="bloodGroup" formControlName="bloodGroup" required>
+                            <option value="a+" selected>A+</option>
+                            <option value="b+">B+</option>
+                            <option value="o+">O+</option>
+                            <option value="ab+">AB+</option>
+                            <option value="a-">A-</option>
+                            <option value="b-">B-</option>
+                            <option value="o-">O-</option>
+                            <option value="ab-">AB-</option>
+                        </select>
+                        <i class="material-icons">keyboard_arrow_down</i>
+                    </div>
+                    <p class="driver-add__error-message" *ngIf="showGeneralInformationError && generalInformation.get('bloodGroup').hasError('required')">Blood Group is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="nid" class="col-md-4 col-form-label">NID</label>
+                <div class="col-md-8">
+                    <input placeholder="Ex. 09808304320" class="form-control" id="nid" type="number" formControlName="nid" required>
+                    <p class="driver-add__error-message" *ngIf="showGeneralInformationError && generalInformation.get('nid').hasError('required')">NID is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="nidImageFront" class="col-md-4 col-form-label">Upload NID(Front)</label>
+                <div class="col-md-8">
+                    <app-image-file-input id="nidImageFront" [showPreview]="false" formControlName="nidImageFront"></app-image-file-input>
+                    <p class="driver-add__error-message" *ngIf="showGeneralInformationError && generalInformation.get('nidImageFront').hasError('required')">
+                        NID is required
+                    </p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="nidImageBack" class="col-md-4 col-form-label">Upload NID(Back)</label>
+                <div class="col-md-8">
+                    <app-image-file-input id="nidImageBack" [showPreview]="false" formControlName="nidImageBack"></app-image-file-input>
+                    <p class="driver-add__error-message" *ngIf="showGeneralInformationError && generalInformation.get('nidImageBack').hasError('required')">
+                        NID is required
+                    </p>
+                </div>
+            </div>
+            <!--<div class="form-group row">-->
+            <!--<label for="typeOfContact" class="col-md-4 col-form-label">Type of Contact</label>-->
+            <!--<div class="col-md-8">-->
+            <!--<input placeholder="driver@mail.com" class="form-control" id="typeOfContact" type="text" formControlName="typeOfContact" required>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="d-flex justify-content-end container">
+                <button matStepperNext (click)="showGeneralInformationError = true">Next <i class="material-icons">chevron_right</i></button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="userInformation">
+        <form class="driver-add__form" [formGroup]="userInformation" >
+            <ng-template matStepLabel>Driver Information</ng-template>
+            <div class="form-group row">
+                <label for="driveFor" class="col-md-4 col-form-label">Drive For</label>
+                <div class="col-md-8">
+                    <div class="select--primary driver-add__select">
+                        <select name="driveFor" id="driveFor" formControlName="driveFor" (change)="updateRoles()" required>
+                            <option value="" selected disabled>Select Department</option>
+                            <option *ngFor="let department of departments" [value]="department.id" selected>{{department.name}}</option>
+                        </select>
+                        <i class="material-icons">keyboard_arrow_down</i>
+                    </div>
+                    <p class="driver-add__error-message" *ngIf="showUserInformationError && userInformation.get('driveFor').hasError('required')">Department is required</p>
+                </div>
+            </div>
+            <!--<div class="form-group row">-->
+                <!--<label for="role" class="col-md-4 col-form-label">Role</label>-->
+                <!--<div class="col-md-8">-->
+                    <!--<div class="select&#45;&#45;primary driver-add__select">-->
+                        <!--<select name="role" id="role" formControlName="role" required>-->
+                            <!--<option disabled value="" selected>Select Role</option>-->
+                            <!--<option [value]="role.id" *ngFor="let role of roles">{{role.name}}</option>-->
+                        <!--</select>-->
+                        <!--<i class="material-icons">keyboard_arrow_down</i>-->
+                    <!--</div>-->
+                    <!--<p class="employee-add__error-message" *ngIf="showUserInformationError && userInformation.get('role').hasError('required')">Role is required</p>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="form-group row">
+                <label for="role" class="col-md-4 col-form-label">Role</label>
+                <div class="col-md-8">
+                    <div class="select--primary driver-add__select">
+                        <select name="role" id="role" formControlName="role" required>
+                            <option disabled value="" selected>Select Role</option>
+                            <option [value]="role.id" *ngFor="let role of roles">{{role.name}}</option>
+                        </select>
+                        <i class="material-icons">keyboard_arrow_down</i>
+                    </div>
+                    <p class="employee-add__error-message" *ngIf="showUserInformationError && userInformation.get('role').hasError('required')">Role is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="licenseNumber" class="col-md-4 col-form-label">License Number</label>
+                <div class="col-md-8">
+                    <input placeholder="License Number" class="form-control" id="licenseNumber" formControlName="licenseNumber" required>
+                    <p class="driver-add__error-message" *ngIf="showUserInformationError && userInformation.get('licenseNumber').hasError('required')">License Number is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="licenseClass" class="col-md-4 col-form-label">License Class</label>
+                <div class="col-md-8">
+                    <!--<input placeholder="License Class" class="form-control" id="licenseClass" formControlName="licenseClass" required>-->
+                    <div class="select--primary driver-add__select">
+                        <select name="driveFor" id="licenseClass" formControlName="licenseClass" required>
+                            <option value="" selected disabled>Select Department</option>
+                            <option value="professional">Professional</option>
+                            <option value="non-professional">Not Professional</option>
+                        </select>
+                        <i class="material-icons">keyboard_arrow_down</i>
+                    </div>
+                    <p class="driver-add__error-message" *ngIf="showUserInformationError && userInformation.get('licenseClass').hasError('required')">License Class is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="dateOfBirth" class="col-md-4 col-form-label">License End Date</label>
+                <div class="col-md-8">
+                    <div class="driver-add__date-picker">
+                        <mat-datepicker #licenseEndDatePicker></mat-datepicker>
+                        <input class="form-control"
+                               (focus)="licenseEndDatePicker.open()"
+                               matInput [matDatepicker]="licenseEndDatePicker"
+                               placeholder="DD / MM / YYYY"
+                               id="licenseEndDate" formControlName="licenseEndDate" required>
+                        <span class="driver-add__date-picker__toggle"><mat-datepicker-toggle matSuffix [for]="licenseEndDatePicker"></mat-datepicker-toggle></span>
+                    </div>
+                    <p class="driver-add__error-message" *ngIf="showGeneralInformationError && generalInformation.get('dateOfBirth').hasError('required')">Date of Birth is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="licenseUpload" class="col-md-4 col-form-label">License Upload</label>
+                <div class="col-md-8">
+                    <app-image-file-input style="width: 100%" id="licenseUpload" [showPreview]="false" formControlName="licenseUpload"></app-image-file-input>
+                    <p class="driver-add__error-message" *ngIf="showUserInformationError && userInformation.get('licenseUpload').hasError('required')">License Upload is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="vehicle" class="col-md-4 col-form-label">Vehicle</label>
+                <div class="col-md-8">
+                    <!--<app-select-search formControlName="vehicle"-->
+                                       <!--id="vehicle"-->
+                                       <!--placeholder="select vehicle"-->
+                                       <!--[items]="vehicleSelectionOptions"-->
+                    <!--&gt;</app-select-search>-->
+                    <app-select-picker-with-search formControlName="vehicle" [items]="vehicles"
+                                                   id="vehicle"
+                                                   placeholder="Select Vehicle"
+                                                   [queryFields]="'vehicle_model,vehicle_type'"
+                                                   [bindImage]="'vehicle_image'" [bindTitle]="'license_number'"
+                                                   [bindSubtitle]="'vehicle_model,vehicle_type'"
+                                                   bindValue="id"></app-select-picker-with-search>
+                    <p class="driver-add__error-message" *ngIf="showUserInformationError && userInformation.get('vehicle').hasError('required')">Vehicle is required</p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end container">
+                <button matStepperPrevious><i class="material-icons">chevron_left</i> Back</button>
+                <button matStepperNext (click)="showUserInformationError = true">Next <i class="material-icons">chevron_right</i></button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="contactInformation">
+        <form class="driver-add__form container" [formGroup]="contactInformation">
+            <ng-template matStepLabel>Contact Information</ng-template>
+            <div class="form-group row">
+                <label for="phoneNumber" class="col-md-4 col-form-label">Phone Number</label>
+                <div class="col-md-8">
+                    <input placeholder="e.g. 01XXXXXXXXX" class="form-control" id="phoneNumber" formControlName="phoneNumber" required>
+                    <p class="driver-add__error-message" *ngIf="showContactInformationError && contactInformation.get('phoneNumber').hasError('required')">Phone Number is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="address" class="col-md-4 col-form-label">Address</label>
+                <div class="col-md-8">
+                    <input placeholder="Address" class="form-control" id="address" formControlName="address" required>
+                    <p class="driver-add__error-message" *ngIf="showContactInformationError && contactInformation.get('address').hasError('required')">Address is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="has_vendor" class="col-md-4 col-form-label">Company</label>
+                <div class="col-md-8">
+                    <mat-radio-group id="has_vendor" aria-labelledby="example-radio-group-label"
+                                     style="margin-bottom: 15px"
+                                     class="boxed-radio-group" formControlName="has_vendor"
+                                     (change)="hasVendorChange()">
+                        <mat-radio-button id="requestFor" [value]="0" color="primary"
+                                          class="example-radio-button boxed-radio example-radio-group-one">
+                            No
+                        </mat-radio-button>
+
+                        <mat-radio-button color="primary" [value]="1" class="example-radio-button boxed-radio">
+                            Yes
+                        </mat-radio-button>
+
+                    </mat-radio-group>
+                </div>
+            </div>
+            <ng-template [ngIf]="hasVendor">
+                <div class="form-group row">
+                    <label for="vendor_id" class="col-md-4">Vendor</label>
+                    <div class="col-md-8">
+                        <app-select-picker-with-search formControlName="vendor_id" [items]="vendors"
+                                                       id="vendor_id"
+                                                       placeholder="Select vendor"
+                                                       [queryFields]="'name,mobile'"
+                                                       [bindImage]="'logo'" [bindTitle]="'name'"
+                                                       [bindSubtitle]="'mobile'"
+                                                       bindValue="id"></app-select-picker-with-search>
+                    </div>
+                </div>
+            </ng-template>
+            <div class="d-flex justify-content-end container">
+                <button matStepperPrevious><i class="material-icons">chevron_left</i> Back</button>
+                <button matStepperNext (click)="submitDriver()">Add Driver</button>
+            </div>
+        </form>
+    </mat-step>
+</mat-horizontal-stepper>
+
+<!--<app-driver-add-confirm *ngIf="showConfirmation" [type]="confirmType" [title]="confirmTitle" [text]="confirmMessage">-->
+<!--</app-driver-add-confirm>-->
+<app-confirm-message *ngIf="showConfirmation" (viewDetailsEmitter)="viewDetails()" [type]="confirmType" [title]="confirmTitle" [text]="confirmMesssage"></app-confirm-message>

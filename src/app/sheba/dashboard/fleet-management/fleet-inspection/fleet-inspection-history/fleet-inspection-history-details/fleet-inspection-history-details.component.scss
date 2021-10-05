@@ -1,0 +1,73 @@
+@import "../../../../../../../../src/scss/variables";
+
+.vehicle-info {
+  display: flex;
+  margin-bottom: 0;
+  li {
+    color: $black60;
+    list-style: circle inside $black60;
+    margin-left: 10px;
+  }
+  span i {
+    font-size: 12px;
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+    &.active {
+      color: $active_color;
+    }
+    &.inactive {
+      color: $inactive_color;
+    }
+  }
+}
+
+.failure-badge {
+  background-color: #ffebeb;
+  border-radius: 15px;
+  font-size: 14px;
+  color: #fa5252;
+  padding: 10px 16px;
+  font-weight: 500;
+}
+
+.inspection-result {
+  i {
+    font-size: 14px;
+    position: relative;
+    top: 2px;
+  }
+  &.pass {
+    color: $active_color;
+  }
+  &.fail {
+    color: $inactive_color;
+  }
+}
+
+.acknowledged {
+  font-size: 12px;
+  color: $mid_grey;
+  i {
+    font-size: 14px;
+    position: relative;
+    top: 2px;
+  }
+}
+
+.issue {
+  color: $mat-blue;
+}
+
+.notes {
+  margin-bottom: 10px;
+  padding: 30px;
+  h6 {
+    font-size: 16px;
+  }
+  p {
+    margin-bottom: 0;
+    color: $black60;
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,45 @@
+@import "../../../../../scss/journey";
+
+.subscription__schedule-quick-btn-group {
+  text-align: center;
+
+  button {
+    width: 20%;
+    margin: 10px;
+    padding: 7px;
+    background: $cream_grey;
+    border: 1.5px solid $light_dirt_grey;
+    color: $black;
+    border-radius: 4px;
+    &.selected {
+      background: $status-green;
+      color: $white;
+      border: none;
+    }
+    &.deselected {
+      background: $cream_grey;
+      color: $black;
+      border: 1.5px solid $light_dirt_grey;
+    }
+  }
+}
+
+.dates-selected {
+  background-color: #e6fbff;
+  padding: 10px 60px;
+  border-radius: 20px;
+
+  p {
+    font-size: 16px;
+    font-weight: 500;
+    color: $black80;
+  }
+
+  .btn-link {
+    padding: 0 12px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #3242d6;
+  }
+}

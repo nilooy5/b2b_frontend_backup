@@ -1,0 +1,40 @@
+.form-block {
+  padding: 30px 20px;
+  background-color: white;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  &-title {
+    font-size: 1.125rem;
+    line-height: 1.56;
+    opacity: .8;
+    margin-bottom: 15px;
+  }
+
+  &-description {
+    font-size: .875rem;
+    opacity: 0.6;
+    margin-bottom: 25px;
+    flex-grow: 1;
+  }
+
+  &-action {
+    display: flex;
+    width: 100%;
+
+    .button {
+      font-weight: 500;
+      min-height: 30px;
+      font-size: .875rem;
+      padding: 8px 25px;
+    }
+  }
+
+  &-container {
+    margin-bottom: 30px;
+  }
+}

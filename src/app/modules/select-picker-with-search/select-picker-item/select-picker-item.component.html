@@ -1,0 +1,15 @@
+<div class="select-list-item" [ngClass]="{active:active,selected:item.selected}">
+    <div class="select-list-item-img">
+        <div class="profile-image-avatar">
+            <img [src]="item[bindImage]" alt="" *ngIf="item[bindImage];else defaultImg">
+            <ng-template #defaultImg>
+                <img [src]="'/assets/img/statics/car-icon.svg'" alt="">
+            </ng-template>
+        </div>
+    </div>
+    <div class="select-list-item-text">
+        <div class="title">{{getLabel()}}</div>
+        <div class="sub-title"><span [ngClass]="{'pr-2':i<subtitles.length-1}"
+                                     *ngFor="let title of subtitles;let i =index">{{item[title]|titlecase}}</span></div>
+    </div>
+</div>

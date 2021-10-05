@@ -1,0 +1,60 @@
+<div class="subscription-order-details">
+    <div class="layout__card" *ngIf="orderDetails" style="margin-bottom: 30px; padding: 20px 30px">
+        <div class="row">
+            <div class="col-md-2 subscription-order-details__info">
+                <h5>Order</h5>
+                <h6 class="subscription-order-details__info__title">
+                    {{orderDetails.subscription_code}}
+                </h6>
+                <p class="subscription-status" [ngClass]="{accepted: orderDetails.subscription_status === 'accepted'}">{{orderDetails.subscription_status}}</p>
+            </div>
+            <div class="col-md-5 subscription-order-details__info">
+                <h5>Service</h5>
+                <div class="d-flex">
+                    <section>
+                        <img [src]="orderDetails.app_thumb" onerror="this.src='https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/sheba_xyz/png/default-service.png'">
+                    </section>
+                    <section>
+                        <h6 class="subscription-order-details__info__title">
+                            {{orderDetails.service_name}}
+                        </h6>
+                        <p class="category-name">{{orderDetails.category_name}}</p>
+                    </section>
+                </div>
+            </div>
+            <div class="col-md-5 subscription-order-details__info">
+                <h5>Service Provider</h5>
+                <div class="d-flex">
+                    <section>
+                        <img [src]="orderDetails.logo" onerror="this.src = 'https://i.ibb.co/bXqhnhG/user.png'" class="employee-info__image">
+                    </section>
+                    <section>
+                        <h6 class="subscription-order-details__info__title">
+                            {{orderDetails.partner_name}}
+                        </h6>
+                        <p>
+                            <span class="partner-rating "><span class="rating"><i class="material-icons">star</i> {{orderDetails.avg_rating}}</span> ({{orderDetails.total_rating}} ratings)</span>
+                            <span class="partner-phone dot-before">{{orderDetails.partner_mobile}}</span>
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layout__tab-bar">
+        <mat-tab-group [dynamicHeight]="true">
+            <mat-tab label="Details">
+                <app-subscription-detail-tab [orderDetail]="orderInfo"></app-subscription-detail-tab>
+            </mat-tab>
+            <mat-tab label="Orders">
+                <app-subscription-order-tab [orderList]="ordersList"></app-subscription-order-tab>
+            </mat-tab>
+            <mat-tab label="Bill">
+                <app-subscription-bill-tab [paymentInfoResponse]="orderDetails"></app-subscription-bill-tab>
+            </mat-tab>
+            <mat-tab label="Service Provider">
+                <app-subscription-service-provider-tab [serviceProviderInfo]="orderDetails"></app-subscription-service-provider-tab>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+@import 'src/scss/variables';
+
+::ng-deep .mat-dialog-container {
+  border-radius: 10px ;
+}
+
+.confirm-modal {
+  position: relative;
+  text-align: center;
+  padding: 26px;
+
+  img {
+    margin-bottom: 40px;
+  }
+  h4 {
+    margin-bottom: 15px;
+    font-size: $fs-header-4;
+    font-weight: $font-weight-semiBold;
+    line-height: 1.4;
+    color: $black-80;
+  }
+  p {
+    font-size: 16px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: rgba(10, 15, 20, 0.75);
+  }
+
+  .icon-div {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    i {
+      color: #bbc0cc;
+      display: flex;
+      font-size: 20px;
+    }
+  }
+
+  .close-btn {
+    padding: 8px 59px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: $primary;
+    border: solid 1px $primary;
+  }
+
+  .button--primary--filled {
+    margin-right: 15px;
+
+    &:hover {
+      background-color: $theme-color;
+    }
+  }
+
+  .button--primary--filled,
+  .button--primary--outline {
+    padding: 0;
+    min-height: 0;
+    height: 40px;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px !important;
+    font-weight: 600;
+  }
+
+
+}

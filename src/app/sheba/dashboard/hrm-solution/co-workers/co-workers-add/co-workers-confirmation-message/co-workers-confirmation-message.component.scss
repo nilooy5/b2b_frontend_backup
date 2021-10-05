@@ -1,0 +1,27 @@
+.message-container {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  padding: 0 15px;
+
+  &.success {
+    background-color: #12b886;
+  }
+
+  &.error {
+    background-color: #fa5252;
+  }
+
+  .message-icon {
+    color: #fff;
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  .close-icon {
+    font-size: 20px;
+  }
+}

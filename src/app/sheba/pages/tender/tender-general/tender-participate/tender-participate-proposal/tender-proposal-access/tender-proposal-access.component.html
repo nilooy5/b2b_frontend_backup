@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="container main-content">
+        <div class="success d-flex align-items-center flex-column">
+            <img src="../../../../../../../assets/svg/icons/rfq/cancel.svg" class="success__img" alt="cancel image">
+            <div class="success__message">
+                <span> {{ tenderDetails.message }}</span>
+            </div>
+            <div class="success__details col-md-8 text-center">
+                <span> {{ tenderDetails.description }} </span>
+            </div>
+            <div class="success__button">
+                <button mat-button [routerLink]="['/', 'tender', 'list']"> View Other Tenders </button>
+            </div>
+        </div>
+    </div>
+</div>

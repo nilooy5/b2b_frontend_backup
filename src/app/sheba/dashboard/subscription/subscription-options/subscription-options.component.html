@@ -1,0 +1,71 @@
+<div class="journey__container container">
+    <app-journey-header [title]="service.name"
+                        [showCart]="false"
+                        [counter]="selectedServices.length"
+                        (cart)="goToCart()"></app-journey-header>
+    <div class="center-form">
+        <div mat-dialog-content>
+            <div class="dialog-content-inner">
+                <form [formGroup]="form" *ngIf="service.isOptions()">
+                    <div style="margin-bottom: 20px" *ngFor="let option of service.options; let i=index">
+
+                        <div *ngIf="option.isDropdown() && service.options.length > 1">
+                            <h5>{{ option.question }}</h5>
+                            <mat-form-field class="select--primary col-10">
+                                <mat-select id="" [formControlName]="i+''" [value]="0">
+                                    <mat-option *ngFor="let answer of option.answers; let j = index" [value]="j">
+                                        {{answer}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div *ngIf="option.isRadioBox() && service.options.length > 1">
+                            <h5>{{ option.question }}</h5>
+                            <mat-radio-group aria-labelledby="example-radio-group-label"
+                                             class="example-radio-group" [formControlName]="i+''" [value]="0">
+                                <mat-radio-button color="primary" class="example-radio-button subscription-option-radio-button" style="display: block"
+                                                  *ngFor="let answer of option.answers; let j = index" [value]="j">
+                                    {{answer}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+                        <div *ngIf="service.options.length === 1">
+                            <h5>{{ option.question }}</h5>
+                            <mat-radio-group aria-labelledby="example-radio-group-label"
+                                             class="example-radio-group" [formControlName]="i+''" [value]="0">
+                                <mat-radio-button color="primary" class="example-radio-button subscription-option-radio-button" style="display: block"
+                                                  *ngFor="let answer of option.answers; let j = index" [value]="j">
+                                    {{answer}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+<!--                        <div *ngIf="option.isSelectBox()">-->
+<!--                            <h5>{{ option.question }}</h5>-->
+<!--                            <mat-checkbox color="primary" class="example-margin" style="display: block"-->
+<!--                                          *ngFor="let answer of form.controls[i].controls; let j = index" [value]="j+''"-->
+<!--                                          [formControl]="answer">-->
+<!--                                {{ option.answers[j] }}-->
+<!--                            </mat-checkbox>-->
+<!--                        </div>-->
+                    </div>
+                </form>
+
+                <div class="service-option__edit__counter">
+                    <h5>Quantity:</h5>
+                    <button class="btn button--success" (click)="decreaseQuantity()">
+                        <i class="material-icons">remove</i>
+                    </button>
+                    <input type="number" class="no-arrow" [(ngModel)]="quantity">
+                    <button class="btn button--success" (click)="increaseQuantity()">
+                        <i class="material-icons">add</i>
+                    </button>
+                    <span style="margin-left: 10px">{{' ' + ((service.unit) ? service.unit : 'unit')}}</span>
+                </div>
+                <!--          <button class="btn button&#45;&#45;primary&#45;&#45;filled add-btn" (click)="add()">ADD</button>-->
+            </div>
+        </div>
+    </div>
+</div>

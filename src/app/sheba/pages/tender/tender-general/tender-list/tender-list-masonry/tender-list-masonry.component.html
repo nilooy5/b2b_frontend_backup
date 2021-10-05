@@ -1,0 +1,50 @@
+<!--container-masonry-->
+<div class="container">
+    <!--start-->
+    <ngx-masonry [options]="{ gutter: 10 }" data-masonry='{"itemSelector": ".grid-item"}'>
+        <div ngxMasonryItem class="grid-item item" *ngFor="let tender of tenderList" [routerLink]="['.',tender.id]">
+            <div class="item__title">{{tender.title}}</div>
+            <div class="item__description">{{tender.description}}</div>
+            <div class="item__tags">
+                <div *ngFor="let label of tender.labels">
+                    <div class="item__tags__tag">{{label}}</div>
+                </div>
+            </div>
+            <div *ngIf="tender.category" class="item__category">
+                <img  [src]="tender.category.icon" alt="category">
+                <div>Category - {{tender.category.name}}</div>
+            </div>
+            <div *ngIf="tender.estimated_price" class="item__budget">
+                ৳&nbsp;{{numericFormat.numberWithCommas(tender.estimated_price)}}
+            </div>
+            <div *ngIf="tender.shared_to === 'verified'" class="badge">
+                <img src="assets/svg/icons/tender/shield.svg" alt="verified vendors">
+                <div class="badge-text">Only Sheba.xyz verified<br>vendors can apply</div>
+            </div>
+        </div>
+        <!--end-->
+    </ngx-masonry>
+
+    <!--start-->
+    <!--<div *ngFor="let tender of tenderList" class="item" [routerLink]="['.',tender.id]">
+        <div class="item__title">{{tender.title}}</div>
+        <div class="item__description">{{tender.description}}</div>
+        <div class="item__tags">
+            <div *ngFor="let label of tender.labels">
+                <div class="item__tags__tag">{{label}}</div>
+            </div>
+        </div>
+        <div *ngIf="tender.category" class="item__category">
+            <img  [src]="tender.category.icon" alt="category">
+            <div>Category - {{tender.category.name}}</div>
+        </div>
+        <div *ngIf="tender.estimated_price" class="item__budget">
+            ৳&nbsp;{{numericFormat.numberWithCommas(tender.estimated_price)}}
+        </div>
+        <div *ngIf="tender.shared_to !== 'public'" class="badge">
+            <img src="assets/svg/icons/tender/shield.svg" alt="verified vendors">
+            <div class="badge-text">Only Sheba.xyz verified<br>vendors can apply</div>
+        </div>
+    </div>-->
+    <!--end-->
+</div>

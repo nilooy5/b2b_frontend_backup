@@ -1,0 +1,74 @@
+<div class="bg-color">
+    <div class="container">
+
+        <div class="d-flex flex-row">
+            <div class="p-3 mt-5 d-flex align-items-center flex-column flex-fill">
+                <h1 class="header-text text-center">
+                    Top Categories
+                </h1>
+            </div>
+        </div>
+
+        <div class=" bd-highlight catagory mt-2" [ngClass]="{'d-flex': !isMobileDevice}">
+
+            <div class="p-2 d-flex  flex-column flex-fill " (click)="redirectToTenderList(categories[0]?.id)"
+                 [ngClass]="{'mobile-width': isMobileDevice, 'colum-width':!isMobileDevice}">
+                <a> <p class="tiny-text"><img [src]="categories[0]?.icon"
+                                              class="layer">{{categories[0]?.name}}</p></a>
+            </div>
+
+            <div class="p-2 d-flex  flex-column flex-fill" (click)="redirectToTenderList(categories[1]?.id)"
+                 [ngClass]="{'mobile-width': isMobileDevice, 'colum-width':!isMobileDevice}" >
+                <a> <p class="tiny-text"><img [src]="categories[1]?.icon"
+                                              class="layer">{{categories[1]?.name}}</p></a>
+
+            </div>
+
+            <div class="p-2 d-flex  flex-column flex-fill " (click)="redirectToTenderList(categories[2]?.id)"
+                 [ngClass]="{'mobile-width': isMobileDevice, 'colum-width':!isMobileDevice}">
+                <a> <p class="tiny-text"><img [src]="categories[2]?.icon"
+                                              class="layer">{{categories[2]?.name}}</p></a>
+            </div>
+
+            <div class="p-2 d-flex  flex-column flex-fill "  (click)="redirectToTenderList(categories[3]?.id)"
+                 [ngClass]="{'mobile-width': isMobileDevice, 'colum-width':!isMobileDevice}">
+                <a> <p class="tiny-text"><img [src]="categories[3]?.icon"
+                                              class="layer">{{categories[3]?.name}}</p></a>
+            </div>
+
+        </div>
+
+        <div class="flex-row bd-highlight catagory" [ngClass]="{'d-flex': !isMobileDevice}">
+
+            <div class="p-2 d-flex  flex-column flex-fill "  (click)="redirectToTenderList(categories[4]?.id)"
+                 [ngClass]="{'mobile-width': isMobileDevice, 'colum-width':!isMobileDevice}">
+                <a> <p class="tiny-text"><img [src]="categories[4]?.icon"
+                                              class="layer">{{categories[4]?.name}}</p></a>
+            </div>
+
+            <div class="p-2 d-flex  flex-column flex-fill "  (click)="redirectToTenderList(categories[5]?.id)"
+                 [ngClass]="{'mobile-width': isMobileDevice, 'colum-width':!isMobileDevice}">
+                <a> <p class="tiny-text"><img [src]="categories[5]?.icon"
+                                              class="layer">{{categories[5]?.name}}</p></a>
+            </div>
+
+            <div class="p-2 d-flex  flex-column flex-fill " (click)="redirectToTenderList(categories[6]?.id)"
+                 [ngClass]="{'mobile-width': isMobileDevice, 'colum-width':!isMobileDevice}">
+                <a> <p class="tiny-text"><img [src]="categories[6]?.icon"
+                                              class="layer">{{categories[6]?.name}}</p></a>
+            </div>
+
+            <div class="p-2 d-flex  flex-column flex-fill "  (click)="redirectToTenderList(categories[7]?.id)"
+                 [ngClass]="{'mobile-width': isMobileDevice, 'colum-width':!isMobileDevice}">
+                <a> <p class="tiny-text"><img [src]="categories[7]?.icon"
+                                              class="layer">{{categories[7]?.name}}</p></a>
+            </div>
+
+        </div>
+
+        <div class="p-2 d-flex flex-column mt-4 align-items-center">
+            <a class="BG mb-5 btn btn-primary" [routerLink]="['/tender/list']" > View All Tenders </a>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="d-flex pb-30 mx-0">
+
+    <div class="sorting__department">
+        <label>
+            <select (change)="selectType($event)">
+                <option hidden>Modules</option>
+                <option value="all" *ngIf="types.length">All</option>
+                <option *ngFor="let type of types"
+                        [value]="type">{{ type }}</option>
+                <option *ngIf="!types.length" disabled>No Modules Available</option>
+            </select>
+            <i class="material-icons">keyboard_arrow_down</i>
+        </label>
+    </div>
+
+    <div class="sorting__department">
+        <label>
+            <select (change)="selectDepartment($event)">
+                <option hidden>Department</option>
+                <option value="all" *ngIf="departments.length">All</option>
+                <option *ngFor="let department of departments"
+                        [value]="department.id">{{ department.name }}</option>
+                <option *ngIf="!departments.length" disabled>No Departments Available</option>
+            </select>
+            <i class="material-icons">keyboard_arrow_down</i>
+        </label>
+    </div>
+
+    <div class="search-input ml-auto">
+        <i class="material-icons">search</i>
+        <input type="text" class="form-control" placeholder="Search" (keyup)="search($event)">
+    </div>
+
+    <div class="ml-0">
+        <a class="btn button--filled"
+           [routerLink]="['/', 'dashboard', 'settings', 'approval', 'create']">Create New</a>
+    </div>
+
+</div>
+
+
+<div class="row pb-20 mx-0 justify-content-between">
+
+    <div class="col px-0 align-self-center">
+        <h5 class="mb-0">{{ totalApprovalsFlowCount }} Records found</h5>
+    </div>
+
+    <div class="col px-0 d-flex justify-content-end">
+
+        <div class="sorting__alphabetically mr-20">
+            <select (change)="alphabeticSort($event)">
+                <option hidden>Sort: Name (Alphabetically)</option>
+                <option value="ascending">Sort: Name (A-Z)</option>
+                <option value="descending">Sort: Name (Z-A)</option>
+            </select>
+            <i class="material-icons">keyboard_arrow_down</i>
+        </div>
+
+        <div id="next-previous-button" class="d-flex">
+            <button class="btn" id="prev-button" [class.disabled]="isPreviousPageUnavailable()" (click)="previousPage()">
+                <i class="material-icons">keyboard_arrow_left</i>
+            </button>
+            <button class="btn" id="next-button" [class.disabled]="isNextPageUnavailable()" (click)="nextPage()">
+                <i class="material-icons">keyboard_arrow_right</i>
+            </button>
+        </div>
+
+    </div>
+
+</div>

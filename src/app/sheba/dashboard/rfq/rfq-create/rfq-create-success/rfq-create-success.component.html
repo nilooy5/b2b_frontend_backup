@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-md-12 d-flex justify-content-center">
+        <img *ngIf="isPublished === 'public'" src="../../../../../../assets/svg/icons/rfq/publish.svg" alt="">
+        <img *ngIf="isPublished === 'verified'" src="../../../../../../assets/svg/icons/rfq/publish_to_verified.svg" alt="">
+        <img *ngIf="isPublished === 'draft'" src="../../../../../../assets/svg/icons/rfq/draft.svg" alt="">
+    </div>
+</div>
+
+<div class="row">
+    <div *ngIf="isPublished === 'public'" class="col-md-12 d-flex justify-content-center success-message mt-30">
+        TENDER published successfully!
+    </div>
+    <div *ngIf="isPublished === 'verified'" class="col-md-12 d-flex justify-content-center success-message mt-30">
+        Successfully published to verified Vendors!
+    </div>
+    <div *ngIf="isPublished === 'draft'" class="col-md-12 d-flex justify-content-center success-message mt-30">
+        Saved as draft successfully!
+    </div>
+</div>
+
+<div class="row">
+    <div *ngIf="isPublished === 'public'"
+         class="text-center col-md-12 d-flex justify-content-center flex-column align-items-center success-message-details">
+        <div>We will get back to you within a very short time. Thank you.</div>
+        <div>To get more quotations you can also share this TENDER.</div>
+    </div>
+    <div *ngIf="isPublished === 'verified'"
+         class="text-center col-md-12 d-flex justify-content-center flex-column align-items-center success-message-details">
+        <div>Your requirement is successfully published in sBusiness. Thank You.</div>
+        <div>You will get proposals from our thousand verified vendors within a short period of time.</div>
+    </div>
+    <div *ngIf="isPublished === 'draft'"
+         class="text-center col-md-12 d-flex justify-content-center flex-column align-items-center success-message-details">
+        <div class="text-center">
+            Your TENDER has been saved as draft. You can publish anytime to get quotations from vendors.
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isPublished === 'public' || isPublished === 'verified'" class="row">
+    <div class="col-md-12 d-flex justify-content-center share-options-label">
+        Share your TENDER
+    </div>
+</div>
+
+<div *ngIf="isPublished === 'public' || isPublished === 'verified'" class="share-options-buttons">
+    <img class="img-fluid" src="../../../../../../assets/svg/icons/rfq/facebook.svg" alt="Facebook" shareButton="facebook" [url]="sharingLink">
+    <img class="img-fluid" src="../../../../../../assets/svg/icons/rfq/linkedin.svg" alt="Linkedin" shareButton="linkedin" [url]="sharingLink">
+    <img class="img-fluid" src="../../../../../../assets/svg/icons/rfq/whatsapp.svg" alt="Whatsapp" shareButton="whatsapp" [url]="sharingLink">
+    <img class="img-fluid" src="../../../../../../assets/svg/icons/rfq/copy.svg" alt="Copy" shareButton="copy" [url]="sharingLink" (click)="copyLink()">
+</div>
+<span class="d-flex justify-content-center" style="margin: 15px 0" *ngIf="showCopyLinkText">Link Copied</span>
+
+<div class="row d-flex justify-content-center" *ngIf="isPublished === 'draft'" style="margin-bottom: 30px">
+    <div>
+        <button mat-button class="submitButton text-left" (click)="postRFQ(selectedSharing.value)">
+            <span class="material-icons">{{ selectedSharing.icon }}</span>
+            <span>&nbsp;&nbsp;{{ selectedSharing.label }}</span>
+        </button>
+        <mat-form-field appearance="none">
+            <mat-select [(value)]="initialSharingOption" (selectionChange)="setSharingOption($event)">
+                <mat-option *ngFor="let option of sharingOptions" [value]="option">
+                    <span class="material-icons">{{ option.icon }}</span>
+                    <span>{{ option.label }}</span>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 d-flex justify-content-center details-link">
+        <div class="details-link__button" [routerLink]="['/', 'dashboard', 'rfq', 'list', tenderID, 'details']">
+            View TENDER Details
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="main-content-container">
+    <div class="main-title-block">
+        <div class="main-title">
+            <h2>Vendors</h2>
+        </div>
+        <div class="main-title-actions">
+            <div class="d-flex justify-content-end">
+
+<!--                <button class="button button-theme mr-2" [routerLink]="['.','invite']">-->
+<!--                    <span>-->
+<!--                        <i class="fas fa-plus"></i> <span class="pl-1"> Invite</span>-->
+<!--                    </span>-->
+<!--                </button>-->
+
+                <div class=" form-item">
+                    <input type="text" class="form-control input--primary input--primary-small"
+                           placeholder="Search ...." [(ngModel)]="search" (keyup)="filterVendors()">
+                </div>
+
+                <div class="" style="padding-right: 0; margin-left: 10px;">
+                    <button mat-button [matMenuTriggerFor]="menu" class="btn button--primary--filled add-vehicle-button">
+                        Add New <i class="material-icons">keyboard_arrow_down</i>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="addItem()">Single Upload</button>
+                        <button mat-menu-item (click)="addBulkVendor()">Bulk Upload</button>
+                        <button mat-menu-item [routerLink]="['.','invite']">Invite</button>
+                    </mat-menu>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content-block">
+        <div class="main-content-table">
+            <table *ngIf="(vendors.length && dataSource);else empty" mat-table [dataSource]="dataSource"
+                   class="table ">
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="flex flex-start">
+                            <span class="profile-image-avatar mr-2">
+                            <img [lazyLoad]="element.logo" [defaultImage]="appConfig.defaultImage"
+                                 alt="">
+                        </span><span>{{element.name}}</span>
+                        </div>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef>Type</th>
+                    <td mat-cell *matCellDef="let element"> {{element.type.length ? element.type[0] : 'N/A'}} </td>
+                </ng-container>
+                <ng-container matColumnDef="mobile">
+                    <th mat-header-cell *matHeaderCellDef>Number</th>
+                    <td mat-cell *matCellDef="let element"> {{element.mobile ? element.mobile : 'N/A'}} </td>
+                </ng-container>
+                <ng-container matColumnDef="action" stickyEnd>
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element">
+                        <button class="button button-small button-outline button-primary"
+                                [routerLink]="['.',element.id,'details']">View
+                        </button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayColumns;sticky:true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+            </table>
+            <ng-template #empty>
+                <app-no-item heading="No Vendor added"></app-no-item>
+            </ng-template>
+        </div>
+    </div>
+</div>

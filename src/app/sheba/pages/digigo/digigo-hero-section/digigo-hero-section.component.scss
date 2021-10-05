@@ -1,0 +1,192 @@
+.background-parent-column {
+
+  font-family: "Poppins", sans-serif;
+
+  .background {
+    background: #f9fcff;
+    padding-bottom: 40px;
+
+    &__left {
+      display: flex;
+      align-items: center;
+
+      &__content {
+        align-items: flex-end;
+
+        .text {
+          font-size: 42px;
+          font-weight: 600;
+          margin-bottom: 50px;
+          padding-right: 10px;
+
+          &__desktop {
+
+            .color {
+              color: #437ff5;
+            }
+          }
+
+          &__mobile {
+            display: none;
+          }
+        }
+
+        .buttons {
+          display: flex;
+          flex-wrap: wrap;
+
+          .button {
+            width: 220px;
+            height: 50px;
+            font-size: 18px;
+            margin-bottom: 20px;
+
+            &--trial {
+              color: white;
+              background: #4373f5;
+              border-radius: 5px;
+              font-weight: 500;
+              margin-right: 30px;
+              box-shadow: 0 8px 10px 0 rgba(0, 55, 82, 0.16);
+            }
+
+            &--demo {
+              color: #4373f5;
+              background: rgba(67,115,245, 0.1);
+              border-radius: 10px !important;
+              font-weight: 600;
+
+              .material-icons {
+                margin-right: 12px;
+              }
+
+              &:hover {
+                box-shadow: 0 8px 10px 0 rgba(0, 55, 82, 0.16);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &__right {
+      border-radius: 0 0 0 90px;
+      background-color: #ebf8ff;
+      padding-top: 20px;
+    }
+  }
+}
+
+.bg-color {
+  background: #f9fcff;
+}
+
+.app-screen {
+  position: relative;
+  z-index: 100;
+  width: fit-content;
+
+  .screen-image {
+    position: relative;
+    z-index: 100;
+  }
+
+  .dots {
+    position: absolute;
+    z-index: 10;
+
+    &--bottom {
+      bottom: -40px;
+      left: 120px;
+    }
+
+    &--top {
+      top: 20px;
+      left: 63px;
+    }
+
+    &--right {
+      top: 115px;
+      right: 0;
+    }
+  }
+}
+
+.app-screen-mobile {
+  display: none;
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .background {
+    background-color: #ebf8ff !important;
+
+    &__left {
+      background-color: #ebf8ff;
+
+      &__content {
+
+        .text {
+          font-size: 32px !important;
+          font-weight: 600;
+          line-height: 1.5 !important;
+          margin: 50px 0 30px !important;
+
+          &__desktop {
+            display: none;
+          }
+
+          &__mobile {
+            display: flex !important;
+            text-align: center;
+          }
+        }
+
+      }
+    }
+
+    &__right {
+      border-radius: 0 !important;
+      padding: 40px 32px 0 15px !important;
+
+      .app-screen {
+        display: none;
+      }
+      .app-screen-mobile {
+        display: flex;
+
+        .screen-image-mobile {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+
+    .button {
+      margin-bottom: 0 !important;
+    }
+
+    .button--trial {
+      margin-right: 0 !important;
+      font-weight: 600 !important;
+      border-radius: 10px !important;
+      height: 40px !important;
+      width: 160px !important;
+    }
+    .button--demo {
+      display: none;
+    }
+  }
+
+  .app-screen {
+
+    .screen-image {
+        width: 100%;
+    }
+  }
+}

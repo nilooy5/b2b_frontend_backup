@@ -1,0 +1,81 @@
+<app-approval-list-filter [types]="types"
+                          [departments]="departments"
+                          [totalApprovalsFlowCount]="totalApprovalsFlowCount"
+                          (filterEmitter)="setFilteredApprovalsFlowList($event)"
+                          [limit]="getLimit()"
+                          (searchInputEmitter)="handleSearch($event)"
+                          (alphabeticFilter)="handleAlphabeticSort($event)"></app-approval-list-filter>
+
+<div class="main-content-container">
+    <div class="main-content-block">
+        <div class="main-content-table">
+
+            <table id="table"  *ngIf="(filteredApprovals.length && dataSource)"  mat-table [dataSource]="dataSource" class="table designer-table">
+
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Module </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span> {{ element.type }} </span>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="title">
+                    <th mat-header-cell *matHeaderCellDef> Title </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span> {{ element.title }}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="department">
+                    <th mat-header-cell *matHeaderCellDef> Department </th>
+                    <td mat-cell     *matCellDef="let element">
+                        <span>{{ element.department }}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="approverCount">
+                    <th mat-header-cell *matHeaderCellDef> Approver Count </th>
+                    <td class="d-flex" mat-cell *matCellDef="let element">
+                        <div  *ngFor="let item of element.approvers_images">
+                            <img style="border-radius: 50%;width: 31px; height: 31px;"
+                                 [src]="item" onerror="this.src='../../../../../../assets/img/default/avatar.jpg'"
+                                 alt="Avatar">
+                        </div>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="approvers">
+                    <th mat-header-cell *matHeaderCellDef> Approvers </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span  *ngFor="let item of element.approvers_name.slice(0, 3)">
+                            <span>{{ item }}, </span>
+                        </span>
+                        <span *ngIf="element.approvers_name.length > 4 ">
+                            <span>....</span>
+                        </span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element" id="actionsColumnContent">
+                        <i class="material-icons">keyboard_arrow_right</i>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+                <tr mat-row *matRowDef="let row, columns: displayedColumns;" (click)="redirectToApprovalFlowDetails(row)" style="cursor: pointer"></tr>
+
+            </table>
+
+            <div class="no-approval" *ngIf="!filteredApprovals.length">
+                <h3>No Approval Flow Available.</h3>
+            </div>
+
+        </div>
+
+        <div class="no-approval" *ngIf="!filteredApprovals || filteredApprovals === undefined">
+            <p>No Approval Flow Available</p>
+        </div>
+
+    </div>
+</div>

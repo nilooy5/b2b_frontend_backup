@@ -1,0 +1,180 @@
+<div class="container-fluid">
+    <div class="row rfq-basic-details mt-30">
+        <div class="col-md-4" style="padding: 0 30px 0 0;">
+            <div class="p-0 bg-white rfq-general-info-container">
+                <div class="row m-0 rfq-general-info-header">
+                    <div class="col-md-10 p-0">
+                        <p class="rfq-details-value">General Info</p>
+                    </div>
+                    <div class="col-md-2 p-0 edit-btn-flex">
+                        <!--                        <button class="edit-btn" (click)="editGeneralInfo()" >EDIT</button>-->
+                        <button *ngIf="can_edit" class="edit-btn" data-toggle="modal" [attr.data-target]="'#exampleModalCenter'">
+                            EDIT
+                        </button>
+                    </div>
+                    <div class="modal fade" [id]="'exampleModalCenter'" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <form [formGroup]="generalInformation" (submit)="submit($event)">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">General Informations</h5>
+                                </div>
+                                <div class="modal-body p-0">
+                                    <div class="general-info-edit-form">
+                                        <div class="general-info-edit-row" style="margin-top: 15px">
+                                            <p class="general-info-edit-label">Maximum Number of Participant</p>
+                                            <mat-select placeholder="Select No. of Participants" formControlName="number_of_participants">
+                                                <mat-option *ngFor="let participant of participants"
+                                                            [value]="participant.key">
+                                                    {{ participant.value }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+                                        <div class="general-info-edit-row">
+                                            <p class="general-info-edit-label">Last date of submission</p>
+                                            <mat-form-field class="attendance_datepicker datePicker"
+                                                            appearance="outline">
+                                                <input matInput class="dateInput" [matDatepicker]="myDatepicker"
+                                                       formControlName="lastDateOfSubmission"
+                                                       placeholder="Current Date">
+                                                <span class="attendance_datepicker__toggle">
+                    <mat-datepicker-toggle [for]="myDatepicker" matsuffix>
+                        <mat-icon matDatepickerToggleIcon><i class="material-icons"
+                                                             style="color: #bbc0cc;margin-left: 8px;">date_range</i></mat-icon>
+                    </mat-datepicker-toggle>
+                </span>
+                                                <mat-datepicker #myDatepicker></mat-datepicker>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="general-info-edit-row">
+                                            <p class="general-info-edit-label">Delivery Date</p>
+                                            <div class="date-range-picker">
+                                                <app-material-date-range-picker
+                                                    [initialDateRange]="deliveryTimelineObj"
+                                                    (selectedDateRange)="handleDeliveryTimeline($event)"></app-material-date-range-picker>
+                                            </div>
+                                        </div>
+                                        <div class="general-info-edit-row"
+                                             style="margin-bottom: 15px">
+                                            <p class="general-info-edit-label">Payment Option</p>
+                                            <input type="text" id="payment" class="form-container__control"
+                                                   formControlName="payment_option"
+                                                   placeholder="Enter desired payment method">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer d-flex justify-content-center">
+                                    <button type="button" class="btn btn-secondary closeButton" data-dismiss="modal">
+                                        Close
+                                    </button>
+                                    <button type="submit" class="btn btn-secondary updateButton">
+                                        Update
+                                    </button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="rfq-general-info-content" style="margin-top: 5px;">
+                    <p class="rfq-general-info-title">Max. Number of Participants</p>
+                    <p class="rfq-general-info-value">
+                        {{ procurementDetails.number_of_participants == 0 ? 'Unlimited' : procurementDetails.number_of_participants }}
+                    </p>
+                </div>
+                <div class="rfq-general-info-content">
+                    <p class="rfq-general-info-title">Last Date of Submission</p>
+                    <p class="rfq-general-info-value">{{ procurementDetails.last_date_of_submission }} </p>
+                </div>
+                <div class="rfq-general-info-content">
+                    <p class="rfq-general-info-title">Delivery Date</p>
+                    <p class="rfq-general-info-value">{{ procurementDetails.start_date }}
+                        - {{ procurementDetails.end_date }} </p>
+                </div>
+                <div class="rfq-general-info-content">
+                    <p class="rfq-general-info-title">Payment Option</p>
+                    <p class="rfq-general-info-value"
+                       style="margin-bottom: 30px;">{{ procurementDetails.payment_options ? procurementDetails.payment_options : 'N/A' }} </p>
+                </div>
+            </div>
+            <div class="row mx-0 mt-20">
+                <div class="col-md-12 p-0 bg-white rfq-other-info-container">
+                    <div class="row m-0 rfq-general-info-header">
+                        <div class="col-md-11 p-0">
+                            <p class="rfq-details-value">Documents</p>
+                        </div>
+                        <div class="col-md-1 p-0 edit-btn-flex">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="rfq-other-info__attachments" *ngIf="procurementDetails.attachments.length > 0">
+                        <div class="rfq-other-info__attachments__contents d-flex">
+                            <div *ngFor="let item of procurementDetails.attachments"
+                                 class="attachment d-flex flex-column"
+                                 (click)="downloadAttachment(item.file)">
+                                <div class="attachment__preview"><img src="{{item.file}}" alt=""></div>
+                                <div class="attachment__type text-uppercase"
+                                     [ngStyle]="{'background': item.file_type.toLowerCase() === 'jpg' ? '#12b886' : '#e75050'}">{{item.file_type}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="!procurementDetails.attachments.length">
+                        <p class="rfq-other-info-no-document"> No Document Found </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8" style="margin-bottom: 60px;">
+            <div class="row">
+                <div class="col-md-12 p-0 bg-white rfq-other-info-container">
+                    <div class="row m-0 rfq-general-info-header">
+                        <div class="col-md-11 p-0">
+                            <p class="rfq-details-value">Description</p>
+                        </div>
+                        <div class="col-md-1 p-0 edit-btn-flex">
+                            <button *ngIf="can_edit" class="edit-btn" data-toggle="modal" [attr.data-target]="'#editDescription'">
+                                EDIT
+                            </button>
+                        </div>
+                        <div class="modal fade" [id]="'editDescription'" tabindex="-1" role="dialog"
+                             aria-labelledby="editDescriptionTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <form [formGroup]="updateDescription" (submit)="editDescription($event)">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Update Description</h5>
+                                        </div>
+                                        <div class="modal-body p-0">
+                                            <div class="general-info-edit-form">
+                                                <div class="general-info-edit-row" style="margin-top: 15px">
+                                                    <p class="general-info-edit-label">Description</p>
+                                                    <textarea class="form-control" rows="5" formControlName="description">{{ procurementDetails.long_description }}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer d-flex justify-content-center">
+                                            <button type="button" class="btn btn-secondary closeButton" data-dismiss="modal">
+                                                Close
+                                            </button>
+                                            <button type="submit" class="btn btn-secondary updateButton">
+                                                Update
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <p class="rfq-other-info-description">{{ procurementDetails.long_description }}</p>
+                </div>
+                <div class="col-md-12">
+                    <app-rfq-details-show-advanced [procurementDetails] = "procurementDetails">
+                    </app-rfq-details-show-advanced>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

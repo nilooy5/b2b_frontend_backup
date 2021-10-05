@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="settings-card" [routerLink]="['', 'dashboard', 'settings', 'sms']">
+                <p class="settings-card__icon"><i class="material-icons">message</i></p>
+                <p>SMS Settings</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="settings-card" [routerLink]="['', 'dashboard', 'my-account', 'profile']">
+                <p class="settings-card__icon"><i class="material-icons">account_box</i></p>
+                <p>Account Settings</p>
+            </div>
+        </div>
+
+       <!-- <div class="col-md-4" *ngIf="canUserAccess">
+            <div class="settings-card" [routerLink]="['', 'dashboard', 'fleet-management', 'approval']">
+                <p class="settings-card__icon"><i class="material-icons">supervised_user_circle</i></p>
+                <p>Approval</p>
+            </div>
+        </div>-->
+
+
+        <div class="col-md-3" *ngIf="canUserAccess">
+            <div class="settings-card" [routerLink]="['', 'dashboard', 'settings', 'leave']">
+                <p class="settings-card__icon"><i class="material-icons">exit_to_app</i></p>
+                <p>Leave</p>
+            </div>
+        </div>
+
+        <div class="col-md-3" *ngIf="canUserAccess">
+            <div class="settings-card" [routerLink]="['', 'dashboard', 'settings', 'approval']">
+                <p class="settings-card__icon"><i class="material-icons">assignment_turned_in</i></p>
+                <p>Approval</p>
+            </div>
+        </div>
+
+        <div class="col-md-3" *ngIf="canUserAccess">
+            <div class="settings-card" [routerLink]="['', 'dashboard', 'settings', 'office']">
+                <p class="settings-card__icon"><i class="material-icons">work_outline</i></p>
+                <p>Office Settings</p>
+            </div>
+        </div>
+    </div>
+</div>

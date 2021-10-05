@@ -1,0 +1,223 @@
+@import "../../../../../scss/variables";
+
+
+.form-field-div {
+  margin-bottom: 25px;
+}
+
+::ng-deep .cdk-overlay-container{
+  z-index: 1200 !important;
+}
+
+:host ::ng-deep {
+
+  .mat-horizontal-stepper-header{
+    pointer-events: none !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    display: flex;
+    position: absolute;
+    top: 0.9em;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-flex {
+    padding: 0 .75em 0 .75em;
+    margin-top: -0.7em;
+    position: relative;
+  }
+
+  .mat-stepper-label-position-bottom .mat-horizontal-stepper-header {
+    box-sizing: border-box;
+    flex-direction: column;
+    height: auto;
+    padding: 24px 0;
+  }
+
+  .mat-horizontal-content-container {
+    overflow: hidden;
+    padding: 0;
+  }
+  .mat-form-field-appearance-outline .mat-form-field-flex {
+    padding: 0 15px 0 15px;
+    margin-top: -0.5em;
+    position: relative;
+  }
+
+  .mat-step-icon {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    flex-shrink: 0;
+    position: relative;
+    background-color: #fff;
+    color: #bbc0cc;
+    border: solid 2px #d3d8e6;
+  }
+
+  .mat-step-icon-selected  {
+    background-color: #437ff5 !important;
+    color: #fff !important;
+    border: none;
+  }
+
+  .mat-step-icon-state-done,  .mat-step-icon-state-edit {
+    background-color: #12b886;
+    color: #fff !important;
+    border: none;
+  }
+
+  .mat-step-icon .mat-icon, .mat-step-icon-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 18px;
+  }
+
+
+  .mat-step-header .mat-step-label {
+    font-size: 16px;
+    font-family: $font-lato !important;
+    color: $black60;
+  }
+
+  .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before,
+  .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after,
+  [dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::after,
+  [dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::before {
+    border-top-width: 2px;
+    border-top-style: solid;
+    content: '';
+    display: inline-block;
+    height: 0;
+    position: absolute;
+    top: 21px;
+    width: calc(50% - 20px);
+  }
+
+  .mat-stepper-label-position-bottom .mat-horizontal-stepper-header {
+    box-sizing: border-box;
+    flex-direction: column;
+    height: auto;
+    padding: 0;
+  }
+
+  .mat-stepper-label-position-bottom .mat-stepper-horizontal-line {
+    margin: 0;
+    min-width: 0;
+    border-top-width: 2px;
+    position: relative;
+    top: 21px;
+  }
+
+  .mat-horizontal-stepper-header::before, .mat-horizontal-stepper-header::after, .mat-stepper-horizontal-line {
+    border-top-color: #d3d8e6;
+  }
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0;
+  }
+
+
+
+  /* Date Ranger Picker Customization */
+  .yk-dateRange-container {
+    &.outline {
+      width: 100%;
+    }
+    .yk-calendar-container {
+      top: -407px !important;
+      width: auto !important;
+      left: 50px !important;
+      &:after {
+        top: 380px !important;
+        transform: rotate(225deg) !important;
+      }
+
+      &.is-to:after {
+        left: 245px !important;
+      }
+    }
+  }
+
+  .mat-icon-button {
+    top: 3px !important;
+  }
+
+}
+
+.__error-message {
+  font-size: 14px;
+  color: $red;
+  margin-bottom: 0;
+  padding-top: 9px;
+}
+
+:host /deep/ .material-icons {
+  font-family: 'Material Icons' !important;
+}
+
+.button--filled {
+  background-color: #437ff5;
+  opacity: 1;
+}
+
+.mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button {
+  padding: 7px 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+.mat-form-field {
+  width: 100%;
+
+}
+
+input {
+  &::placeholder {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.3);
+  }
+}
+//
+
+label {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.footer {
+  margin-top: 20px;
+  text-align: center;
+
+  span {
+    font-family: $font-lato;
+    font-size: 14px;
+    font-weight: normal;
+    //text-align: center;
+    color: rgba(0, 0, 0, 0.6);
+
+    a {
+      color: #437ff5;
+    }
+  }
+
+}
+
+.input--primary {
+  padding: 15px;
+  min-height: 50px;
+  margin-bottom: 0;
+}

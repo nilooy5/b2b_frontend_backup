@@ -1,0 +1,34 @@
+<div class="landing__section--even">
+    <div class="container">
+        <div class="row landing__section align-items-center">
+            <div class="col-md-6">
+                <h1 class="landing__section__title" style="font-size: 42px">Build, manage, scale your businesses</h1>
+                <p class="landing__section__description" style="color: rgba(0, 0, 0, 0.5)">Sheba.xyz for Business helps
+                    companies in dealing with the mundane job of handling hundreds of suppliers on a monthly basis
+                    through online automation.</p>
+            </div>
+            <div class="col-md-6">
+                <div class="elevated-pane" style="padding: 35px; text-align: center; max-width: 470px; margin: 0 auto">
+                    <h2 style="font-size: 32px; margin-bottom: 16px">Free for 1 year!</h2>
+                    <p style="font-size: 16px; margin-bottom: 24px">Join using your business email</p>
+                    <form [formGroup]="form" (submit)="submit()">
+                        <div class="form-item text-left">
+                            <input type="email"
+                                   placeholder="you@company.com"
+                                   class="form-control input--primary"
+                                   formControlName="email">
+                            <span class="mat-error" *ngIf="formInputInvalid('email')">
+                                <span *ngIf="form.get('email').hasError('required')">Email is required</span>
+                                <span *ngIf="form.get('email').hasError('email')&&!form.get('email').hasError('required')">Invalid Email</span>
+                            </span>
+                        </div>
+                        <button class="btn btn-block button--primary--filled" type="submit"
+                                style="font-size: 20px">Get Started
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

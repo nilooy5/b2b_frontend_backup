@@ -1,0 +1,39 @@
+<section class="layout__card container-fluid">
+    <div class="row" style="padding-top:40px">
+        <div class="col-md-1">
+            <img style=" max-width:100%; padding: 0px; "
+                 src="https://cdn-shebaxyz.s3.ap-south-1.amazonaws.com/b2b/image/icon/subscription.svg" alt="">
+        </div>
+        <div class="col-md-10">
+            <h4 class="subscription-available">Subscription Available!</h4>
+            <p class="subscription-available">Choose your desired service & configure according to your need on weekly, monthly basis. Easily manage your subscription by yourself with no additional cost.</p>
+            <a (click)="moveTo(procedure)" class="subscription-available">See how subscription work</a>
+        </div>
+    </div>
+</section>
+
+<br>
+
+<section class="layout__card container-fluid">
+    <app-subscription-category-filter [totalSubscription]="totalSubscription" (filter)="handleFilter($event)"
+                                      (search)="handleSearch($event)"
+                                      (alphabeticFilter)="handleNameSort($event)"
+                                      [subscriptions_categories]='subscriptions_categories'
+                                      [filteredSubscriptions]="filteredSubscriptions"
+    ></app-subscription-category-filter>
+    <div class="row" style="padding-top:40px">
+        <div class="col-md-3" *ngFor="let subscription of filteredSubscriptions"
+             (click)="selectSubscription(subscription)">
+            <app-subscription-service-card [subscription]='subscription'></app-subscription-service-card>
+        </div>
+    </div>
+</section>
+
+<br>
+
+<section class="layout__card container-fluid" #procedure>
+    <app-home-showcase [data]="subscriptionProcedure" theme="light" cardAlignment="center"></app-home-showcase>
+</section>
+
+<br><br>
+

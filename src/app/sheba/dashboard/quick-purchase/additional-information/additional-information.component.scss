@@ -1,0 +1,40 @@
+@import "../../../../../../src/scss/variables";
+
+.additional-information {
+  border: 1px solid $light_bluish_grey;
+  padding: 15px;
+  border-radius: 4px;
+  background-color: $white;
+
+  &__content {
+    height: 55vh;
+    //padding-top: 50px;
+    padding: 50px 150px;
+    &-title {
+      color: $black80;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    &-info {
+      cursor: auto;
+      width: 100%;
+      height: 150px !important;
+      //min-height: 150px;
+      //max-height: 300px;
+      overflow: auto;
+      border-radius: 5px;
+      border: solid 2px #cccccc;
+      background-color: #ffffff;
+      padding: 15px 15px;
+      font-size: 16px;
+
+      &::placeholder {
+        color: $black30;
+        font-size: 16px;
+      }
+    }
+  }
+}
+

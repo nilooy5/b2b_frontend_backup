@@ -1,0 +1,31 @@
+@import "../../../../../../../src/scss/variables";.dot-before {
+  position: relative;
+  margin-left: 15px;
+  &:before {
+    content: ' ';
+    height: 4px;
+    width: 4px;
+    background-color: $black60;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    left: -8px;
+  }
+}
+@import "../../../../../../../src/scss/journey";
+@import "../../../../../../../src/scss/form_components";
+
+
+.procurement-add {
+  &__next-btn {
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+  &__next-btn-icon {
+    float: right;
+    padding: 3px 0;
+  }
+}

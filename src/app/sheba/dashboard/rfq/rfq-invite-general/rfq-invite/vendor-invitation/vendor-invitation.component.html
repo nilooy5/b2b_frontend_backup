@@ -1,0 +1,57 @@
+<div class="invite-container">
+
+    <div class="invite-header">
+        <h3 class="invite-header__title">Invite Vendor</h3>
+        <div class="invite-header__input-container">
+            <i class="material-icons search__icon">search</i>
+            <input type="text" class="form-container__control search__input" [formControl]="searchFormControl" placeholder="Type vendor's name or number to search">
+        </div>
+    </div>
+
+    <hr class="invite-divider">
+
+    <div class="invite-content" [ngStyle]="{'padding' : !noVendorFound ? '30px 0 0 20px' : '30px 20px 20px 20px'}">
+
+        <ng-container *ngIf="!noVendorFound">
+            <ul class="vendor__list">
+                <li class="vendor__list-item" *ngFor="let vendor of vendors" >
+                    <div class="vendor-card" (click)="onSelectVendor(vendor, 'selectedVendors', 'OwnListedSelectedVendors')"
+                         [ngClass]="{'vendor-card-active': vendor.id | selectedVendors: selectedVendors}">
+                        <img class="img-fluid vendor-card__image" [src]="vendor.logo" alt="">
+                        <div class="vendor-card__info">
+                            <h6 class="name"> {{ vendor.name }} </h6>
+                            <p class="phone">{{ vendor.mobile }} </p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </ng-container>
+
+        <ng-container *ngIf="noVendorFound">
+            <app-no-vendor-found [notFoundType]="notFoundType" [verifiedVendors]="shebaVerifiedVendors"
+                                 [selectedVerifiedVendors]="selectedVerifiedVendors"
+                                 (shebaVerifiedVendorsEmitter)="handleSelectedShebaVerifiedVendors($event)"></app-no-vendor-found>
+        </ng-container>
+
+        <ng-container *ngIf="!noVendorFound && verifyVendors.length > 0">
+            <div style="margin-top: 30px">
+                <h3>Sheba Verified Vendors</h3>
+                <hr class="invite-divider">
+                <ul class="vendor__list" style="padding-top: 30px">
+                    <li class="vendor__list-item" *ngFor="let vendor of verifyVendors">
+                        <div class="vendor-card" (click)="onSelectVendor(vendor, 'selectedVerifiedVendors', 'ShebaVerifiedSelectedVendors')"
+                             [ngClass]="{'vendor-card-active': vendor.id | selectedVendors: selectedVerifiedVendors}">
+                            <img class="img-fluid vendor-card__image" [src]="vendor.logo" alt="">
+                            <div class="vendor-card__info">
+                                <h6 class="name"> {{ vendor.name }} </h6>
+                                <p class="phone">{{ vendor.mobile }} </p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </ng-container>
+
+    </div>
+
+</div>

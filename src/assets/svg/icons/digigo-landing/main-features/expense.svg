@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="579" height="447" viewBox="0 0 579 447">
+    <defs>
+        <filter id="prefix__d" width="124.6%" height="124.6%" x="-12.3%" y="-11.5%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feMorphology in="SourceAlpha" radius="2" result="shadowInner"/>
+            <feOffset dy="2" in="shadowInner" result="shadowInner"/>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="9.5"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"/>
+        </filter>
+        <filter id="prefix__f" width="128.4%" height="128.4%" x="-14.2%" y="-11%" filterUnits="objectBoundingBox">
+            <feOffset dy="5" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feMorphology in="SourceAlpha" radius="2" result="shadowInner"/>
+            <feOffset dy="5" in="shadowInner" result="shadowInner"/>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="6.5"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.932801178 0"/>
+        </filter>
+        <filter id="prefix__h" width="112.4%" height="112.4%" x="-6.2%" y="-5.6%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feMorphology in="SourceAlpha" radius="2" result="shadowInner"/>
+            <feOffset dy="2" in="shadowInner" result="shadowInner"/>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="6.5"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"/>
+        </filter>
+        <filter id="prefix__j" width="124.9%" height="127.1%" x="-12.4%" y="-13.6%" filterUnits="objectBoundingBox">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="15"/>
+        </filter>
+        <filter id="prefix__k" width="133.6%" height="244.9%" x="-16.8%" y="-72.4%" filterUnits="objectBoundingBox">
+            <feOffset dy="10" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="11"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.0142463919 0 0 0 0 0.139484006 0 0 0 0 0.385784647 0 0 0 0.197934878 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <filter id="prefix__m" width="101.4%" height="105.9%" x="-.7%" y="-2.9%" filterUnits="objectBoundingBox">
+            <feOffset dy="-4" in="SourceAlpha" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+            <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 0.239215686 0 0 0 0 0.568627451 0 0 0 0 0.952941176 0 0 0 1 0"/>
+        </filter>
+        <filter id="prefix__q" width="101.2%" height="105.2%" x="-.6%" y="-2.6%" filterUnits="objectBoundingBox">
+            <feOffset dy="-4" in="SourceAlpha" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+            <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 0.901960784 0 0 0 0 0.901960784 0 0 0 0 0.901960784 0 0 0 1 0"/>
+        </filter>
+        <filter id="prefix__v" width="120.3%" height="187.8%" x="-10.1%" y="-32.4%" filterUnits="objectBoundingBox">
+            <feOffset dy="10" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="11"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0994318182 0"/>
+        </filter>
+        <filter id="prefix__x" width="112.8%" height="155.5%" x="-6.4%" y="-16.2%" filterUnits="objectBoundingBox">
+            <feOffset dy="-4" in="SourceAlpha" result="shadowOffsetInner1"/>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+            <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 0.901960784 0 0 0 0 0.901960784 0 0 0 0 0.901960784 0 0 0 1 0"/>
+        </filter>
+        <circle id="prefix__a" cx="165" cy="165" r="120"/>
+        <circle id="prefix__b" cx="158.5" cy="168.5" r="77.5"/>
+        <circle id="prefix__c" cx="165.5" cy="165.5" r="165.5"/>
+        <circle id="prefix__y" cx="19.227" cy="19.227" r="19.227"/>
+        <linearGradient id="prefix__o" x1="19.021%" x2="84.259%" y1="8.444%" y2="86.37%">
+            <stop offset="0%" stop-color="#FFF"/>
+            <stop offset="100%" stop-color="#EDF2FA"/>
+        </linearGradient>
+        <linearGradient id="prefix__t" x1="19.021%" x2="84.259%" y1="8.444%" y2="86.37%">
+            <stop offset="0%" stop-color="#FFF"/>
+            <stop offset="100%" stop-color="#EDF2FA"/>
+        </linearGradient>
+        <linearGradient id="prefix__z" x1="19.021%" x2="84.259%" y1="8.427%" y2="86.386%">
+            <stop offset="0%" stop-color="#FFF"/>
+            <stop offset="100%" stop-color="#EDF2FA"/>
+        </linearGradient>
+        <rect id="prefix__l" width="374.932" height="86.504" x="0" y="0" rx="8.545"/>
+        <rect id="prefix__r" width="333.273" height="76.893" x="0" y="0" rx="8.545"/>
+        <rect id="prefix__w" width="374.932" height="86.523" x="0" y="0" rx="8.545"/>
+        <mask id="prefix__e" width="240" height="240" x="0" y="0" fill="#fff" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox">
+            <use xlink:href="#prefix__a"/>
+        </mask>
+        <mask id="prefix__g" width="155" height="155" x="0" y="0" fill="#fff" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox">
+            <use xlink:href="#prefix__b"/>
+        </mask>
+        <mask id="prefix__i" width="331" height="331" x="0" y="0" fill="#fff" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox">
+            <use xlink:href="#prefix__c"/>
+        </mask>
+        <ellipse id="prefix__n" cx="18.693" cy="18.689" rx="18.693" ry="18.689"/>
+        <ellipse id="prefix__s" cx="17.091" cy="17.087" rx="17.091" ry="17.087"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#FFF" d="M0 0H570V420H0z" transform="translate(9)"/>
+        <g>
+            <g stroke-linejoin="bevel">
+                <g stroke-dasharray="6" transform="translate(9) translate(0 19) translate(208 15)">
+                    <use fill="#000" filter="url(#prefix__d)" xlink:href="#prefix__a"/>
+                    <use stroke="#98B2E5" stroke-width="4" mask="url(#prefix__e)" xlink:href="#prefix__a"/>
+                </g>
+                <g stroke-dasharray="1 8" transform="translate(9) translate(0 19) translate(208 15)">
+                    <use fill="#000" filter="url(#prefix__f)" xlink:href="#prefix__b"/>
+                    <use stroke="#89AAEC" stroke-width="4" mask="url(#prefix__g)" xlink:href="#prefix__b"/>
+                </g>
+                <g stroke-dasharray="1 6" transform="translate(9) translate(0 19) translate(208 15)">
+                    <use fill="#000" filter="url(#prefix__h)" xlink:href="#prefix__c"/>
+                    <use stroke="#A8C4FB" stroke-width="4" mask="url(#prefix__i)" xlink:href="#prefix__c"/>
+                </g>
+            </g>
+            <path fill="#302F2D" fill-opacity=".08" d="M40 51H402V383H40z" filter="url(#prefix__j)" transform="translate(9) translate(0 19)"/>
+            <g transform="translate(9) translate(0 19) translate(13.886 6.138)">
+                <rect width="376" height="330.2" x="16.6" y=".212" fill="#FFF" stroke="#437FF5" stroke-width=".748" rx="5.341"/>
+                <g filter="url(#prefix__k)" transform="translate(77.977 45.932)">
+                    <rect width="374.932" height="86.504" fill="#3D91F3" opacity=".1" rx="8.545"/>
+                    <rect width="373.864" height="85.436" x=".534" y=".534" stroke="#3D91F3" stroke-width="1.068" rx="8.545"/>
+                    <use fill="#DEE7F9" xlink:href="#prefix__l"/>
+                    <use fill="#000" filter="url(#prefix__m)" xlink:href="#prefix__l"/>
+                    <use stroke="#437FF5" stroke-width="1.068" xlink:href="#prefix__l"/>
+                    <g transform="translate(307.636 21.36)">
+                        <mask id="prefix__p" fill="#fff">
+                            <use xlink:href="#prefix__n"/>
+                        </mask>
+                        <use fill="url(#prefix__o)" xlink:href="#prefix__n"/>
+                        <ellipse cx="24.301" cy="24.296" fill="#E6EDFA" mask="url(#prefix__p)" rx="13.085" ry="13.082"/>
+                        <g fill-rule="nonzero">
+                            <path fill="#EA473B" d="M8.996 15.547c-.018 0-.037 0-.055-.002l-8.073-.514c-.308-.02-.583-.198-.73-.474-.147-.275-.146-.609.005-.882.042-.077 1.06-1.907 2.997-3.502 2.618-2.156 5.662-2.856 8.802-2.022.26.069.477.254.589.504.112.25.107.537-.012.783L9.798 15.04c-.152.313-.463.508-.802.508z" transform="matrix(-1 0 0 1 33.025 3.115)"/>
+                            <path fill="#CC2727" d="M15.504 29.903c-.147 0-.294-.037-.427-.112-.27-.15-.446-.43-.465-.744l-.504-8.232c-.023-.367.173-.712.496-.875l5.492-2.775c.241-.121.523-.126.768-.012.246.114.427.335.495.6.817 3.203.131 6.307-1.983 8.977-1.564 1.976-3.359 3.013-3.434 3.056-.136.078-.287.117-.438.117z" transform="matrix(-1 0 0 1 33.025 3.115)"/>
+                            <path fill="#ECEAEC" d="M27.916 7.362l-5.784-5.898c-.232-.237-.572-.325-.886-.23-3.873 1.168-7.051 3-9.449 5.445-.5.51-.98 1.062-1.427 1.642-1.3 1.686-2.386 3.678-3.227 5.923-.536 1.43-.972 2.963-1.296 4.555-.567 2.781-.598 4.774-.599 4.857-.003.246.092.483.262.657.168.171.396.267.633.267h.01c.083 0 2.037-.032 4.764-.61 1.56-.331 3.064-.776 4.467-1.323 2.2-.857 4.155-1.964 5.807-3.29.569-.456 1.111-.945 1.611-1.456 2.398-2.445 4.194-5.686 5.34-9.635.092-.32.006-.667-.226-.904z" transform="matrix(-1 0 0 1 33.025 3.115)"/>
+                            <path fill="#FFF261" d="M11.528 22.595l-4.334-4.42c-.32-.325-.828-.357-1.184-.072-.277.221-.54.46-.783.706-3.015 3.076-3.109 7.84-3.111 8.041-.003.246.091.483.262.657.168.171.395.267.632.267h.012c.197-.002 4.87-.097 7.885-3.173.242-.247.475-.515.692-.798.28-.363.249-.881-.071-1.208z" transform="matrix(-1 0 0 1 33.025 3.115)"/>
+                            <path fill="#1B3B6B" d="M7.212 14.061l-2.659 2.712c-.167.17-.262.403-.262.645s.095.474.262.645l7.086 7.225c.167.171.395.268.632.268.238 0 .465-.097.633-.268l2.658-2.711-8.35-8.516z" transform="matrix(-1 0 0 1 33.025 3.115)"/>
+                            <path fill="#06CCAB" d="M18.82 13.523c-.73 0-1.415-.29-1.93-.815-1.064-1.085-1.064-2.85 0-3.935.515-.526 1.2-.815 1.93-.815.728 0 1.414.289 1.929.815.515.525.8 1.224.8 1.968 0 .743-.285 1.442-.8 1.967-.515.526-1.2.815-1.93.815z" transform="matrix(-1 0 0 1 33.025 3.115)"/>
+                            <path fill="#1B3B6B" d="M18.819 14.416c-.963 0-1.868-.383-2.548-1.077-1.405-1.433-1.405-3.764 0-5.197.68-.694 1.586-1.077 2.548-1.077.963 0 1.868.383 2.548 1.077.681.694 1.056 1.617 1.056 2.599 0 .981-.375 1.904-1.056 2.598-.68.694-1.585 1.077-2.548 1.077zm0-5.526c-.485 0-.94.192-1.283.542-.708.722-.708 1.896 0 2.617.343.35.798.542 1.283.542.485 0 .94-.192 1.283-.542.343-.35.532-.814.532-1.308 0-.495-.189-.96-.532-1.309-.342-.35-.798-.542-1.283-.542z" transform="matrix(-1 0 0 1 33.025 3.115)"/>
+                            <path fill="#EA473B" d="M29.09.267c-.171-.174-.405-.272-.645-.267-.132.002-3.295.056-7.2 1.234l6.896 7.032c1.155-3.982 1.208-7.207 1.21-7.342.003-.246-.091-.483-.262-.657z" transform="matrix(-1 0 0 1 33.025 3.115)"/>
+                            <path fill="#DAD8DB" d="M27.916 7.362l-2.892-2.95-19.514 19.9c.168.172.395.268.633.268h.01c.083 0 2.037-.032 4.764-.61 1.56-.331 3.064-.776 4.467-1.323 2.2-.857 4.155-1.964 5.807-3.29.569-.456 1.111-.945 1.611-1.456 2.398-2.445 4.194-5.686 5.34-9.635.092-.32.006-.667-.226-.904z" transform="matrix(-1 0 0 1 33.025 3.115)"/>
+                            <path fill="#FDBF00" d="M11.528 22.595l-2.167-2.21-6.983 7.122c.168.171.395.267.632.267h.011c.198-.002 4.87-.097 7.886-3.173.242-.247.475-.515.692-.798.28-.363.25-.881-.071-1.208z" transform="matrix(-1 0 0 1 33.025 3.115)"/>
+                            <path fill="#001035" d="M11.387 18.32l-3.291 3.356 3.543 3.613c.167.17.395.267.632.267.238 0 .465-.097.633-.267l2.658-2.712-4.175-4.258z" transform="matrix(-1 0 0 1 33.025 3.115)"/>
+                            <path fill="#1CADB5" d="M20.749 8.773l-3.86 3.935c.516.526 1.201.815 1.93.815.73 0 1.415-.29 1.93-.815.515-.525.8-1.224.8-1.967 0-.744-.285-1.443-.8-1.968z" transform="matrix(-1 0 0 1 33.025 3.115)"/>
+                            <path fill="#001035" d="M21.367 8.142l-1.265 1.29c.343.35.532.814.532 1.309 0 .494-.189.959-.532 1.308-.342.35-.798.542-1.283.542-.485 0-.94-.192-1.283-.542l-1.265 1.29c.68.694 1.585 1.077 2.548 1.077.963 0 1.868-.383 2.548-1.077.68-.694 1.056-1.617 1.056-2.598 0-.982-.375-1.905-1.056-2.6z" transform="matrix(-1 0 0 1 33.025 3.115)"/>
+                            <path fill="#CC2727" d="M29.09.267L24.693 4.75l3.447 3.516c1.155-3.982 1.208-7.207 1.21-7.342.003-.246-.091-.483-.262-.657z" transform="matrix(-1 0 0 1 33.025 3.115)"/>
+                        </g>
+                    </g>
+                    <text fill="#172B4D" font-family="Nunito-Regular, Nunito" font-size="17.091">
+                        <tspan x="71.568" y="45.832">Transport</tspan>
+                    </text>
+                    <ellipse cx="40.591" cy="41.65" fill="#FFF" stroke="#3D91F3" stroke-width="5.341" rx="9.08" ry="9.077"/>
+                </g>
+                <g transform="translate(41.66 143.722)">
+                    <g>
+                        <rect width="333.273" height="76.893" fill="#FFF" rx="8.545"/>
+                        <rect width="332.205" height="75.825" x=".534" y=".534" stroke="#E6E6E6" stroke-width="1.068" rx="8.545"/>
+                        <use fill="#000" filter="url(#prefix__q)" xlink:href="#prefix__r"/>
+                    </g>
+                    <g transform="translate(273.455 19.223)">
+                        <mask id="prefix__u" fill="#fff">
+                            <use xlink:href="#prefix__s"/>
+                        </mask>
+                        <use fill="url(#prefix__t)" xlink:href="#prefix__s"/>
+                        <ellipse cx="22.218" cy="22.213" fill="#E6EDFA" mask="url(#prefix__u)" rx="11.964" ry="11.961"/>
+                        <g fill-rule="nonzero">
+                            <path fill="#3BBC56" d="M9.837 5.697C9.577 4.714 8.15.414 3.004.024 2.76.005 2.56.214 2.59.458c.19 1.513 1.263 6.207 7.214 5.45.01-.071.022-.141.034-.21z" transform="translate(7.406 3.417)"/>
+                            <path fill="#30AA44" d="M3.69.458c-.017-.132.035-.254.126-.335-.26-.044-.53-.078-.812-.1C2.76.006 2.56.216 2.59.459c.183 1.453 1.18 5.839 6.529 5.514C4.728 5.675 3.859 1.805 3.69.458z" transform="translate(7.406 3.417)"/>
+                            <path fill="#93603E" d="M10.157 8.92c.544-2.03 2.02-5.302 3.768-7.106.19-.197.207-.498-.008-.667L12.612.13c-.298-.233-.733-.143-.913.189-.602 1.104-2.174 5.288-2.47 8.53.302.092.619.115.928.072z" transform="translate(7.406 3.417)"/>
+                            <path fill="#7F573C" d="M12.69.319c.016-.03.035-.059.056-.085L12.612.13c-.298-.233-.733-.143-.913.189-.602 1.104-2.174 5.288-2.47 8.53.302.092.619.115.928.072.026-.098.055-.2.086-.304C10.59 5.41 12.1 1.397 12.689.32z" transform="translate(7.406 3.417)"/>
+                            <path fill="#EA473B" d="M10.784 8.624c-1.04.492-1.99-.052-1.9-.014C4.733 6.89.099 9.856.007 14.349l-.001.158c0 4.525 3.913 12.833 8.44 12.833.508 0 1.006-.047 1.49-.136.482.089.98.136 1.489.136 4.526 0 8.44-8.308 8.44-12.833 0-5.08-5.004-7.81-9.08-5.883z" transform="translate(7.406 3.417)"/>
+                            <path fill="#DD332F" d="M1.105 14.507c0-.053 0-.106.002-.158.069-3.41 2.757-5.94 5.864-6.21C3.425 7.832.084 10.542.006 14.35l-.001.158c0 4.525 3.913 12.833 8.44 12.833.221 0 .44-.01.658-.027-4.336-.513-7.998-8.429-7.998-12.806z" transform="translate(7.406 3.417)"/>
+                            <path fill="#CC2727" d="M13.345 23.068c.16 0 .313-.094.38-.251 1.354-3.184 2.477-7.274 1.164-10.454-.828-2.006-2.244-2.672-2.304-2.7-.207-.094-.452-.003-.547.204-.095.208-.004.452.204.547.011.006 1.178.555 1.884 2.264.678 1.64 1.026 4.676-1.16 9.816-.116.272.085.574.38.574z" transform="translate(7.406 3.417)"/>
+                        </g>
+                    </g>
+                    <ellipse cx="36.318" cy="37.378" fill="#FFF" stroke="#D7DAE1" stroke-width="3.205" rx="9.08" ry="9.077"/>
+                    <text fill="#172B4D" font-family="Nunito-Regular, Nunito" font-size="17.091">
+                        <tspan x="64.091" y="42.628">Food</tspan>
+                    </text>
+                </g>
+                <g transform="translate(0 231.131)">
+                    <rect width="374.932" height="86.523" fill="#FFF" rx="8.545"/>
+                    <rect width="373.864" height="85.455" x=".534" y=".534" stroke="#E6E6E6" stroke-width="1.068" rx="8.545"/>
+                    <use fill="#000" filter="url(#prefix__v)" xlink:href="#prefix__w"/>
+                    <use fill="#FFF" xlink:href="#prefix__w"/>
+                    <use fill="#000" filter="url(#prefix__x)" xlink:href="#prefix__w"/>
+                    <g transform="translate(307.636 21.364)">
+                        <mask id="prefix__A" fill="#fff">
+                            <use xlink:href="#prefix__y"/>
+                        </mask>
+                        <use fill="url(#prefix__z)" xlink:href="#prefix__y"/>
+                        <circle cx="24.995" cy="24.995" r="13.459" fill="#E6EDFA" mask="url(#prefix__A)"/>
+                        <g transform="translate(6.537 16.535)">
+                            <circle cx="2.692" cy="2.692" r="2.692" fill="#FF334B"/>
+                            <circle cx="12.69" cy="2.692" r="2.692" fill="#FFC233"/>
+                            <circle cx="22.688" cy="2.692" r="2.692" fill="#33CDFF"/>
+                        </g>
+                    </g>
+                    <circle cx="40.591" cy="41.659" r="10.148" fill="#FFF" stroke="#D7DAE1" stroke-width="3.205"/>
+                    <text fill="#172B4D" font-family="Nunito-Regular, Nunito" font-size="17.091">
+                        <tspan x="72.636" y="46.909">Other</tspan>
+                    </text>
+                </g>
+                <text fill="#111D31" font-family="Nunito-Bold, Nunito" font-size="14.955" font-weight="bold">
+                    <tspan x="41.659" y="27.818">Select type fo expense</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,125 @@
+hr{
+  margin: 0;
+}
+
+.rfq-other-info {
+  &-container {
+    box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+}
+
+.rfq-advance-info {
+    &-header{
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 30px;
+      opacity: 0.8;
+      font-family: Poppins;
+      font-size: 16px;
+      font-weight: 600;
+      color: #000000;
+    }
+  &-content{
+    padding: 30px;
+  }
+  &-nothing{
+    margin: 0;
+    padding: 15px 30px;
+    font-family: Poppins;
+    opacity: 0.8;
+  }
+  &-nothing-add{
+    padding: 0 30px 30px 30px;
+  }
+}
+
+.evaluation {
+  &-row-space {
+    padding: 15px 0;
+  }
+  &-question {
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 16px;
+    color: #000000;
+  }
+}
+
+:host ::ng-deep .main-table-theme {
+  border-spacing: 0 2px !important;
+}
+
+:host ::ng-deep .main-table-theme tbody tr td.mat-cell{
+  background-color: #f6f8fb;
+  color: rgba(10, 15, 20, 0.75);
+}
+
+:host ::ng-deep .main-table-theme tr.mat-header-row {
+  background-color: #bbc0cc;
+}
+
+:host ::ng-deep th.mat-header-cell {
+  border-bottom-style: none;
+}
+
+.edit-btn{
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2567e8;
+  line-height: 1.5;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.add-btn {
+  border: none;
+  width: 100px;
+  height: 30px;
+  border-radius: 6px;
+  background-color: #4373f5;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.form-control:disabled {
+  background: none;
+}
+
+:host ::ng-deep .mat-form-field-label-wrapper {
+  top: 0;
+}
+:host ::ng-deep .mat-form-field-infix {
+  border: none;
+}
+
+:host ::ng-deep .mat-radio-button.mat-radio-disabled .mat-radio-label-content {
+  opacity: 0.8;
+  color: #000000;
+}
+
+:host ::ng-deep .mat-radio-button.mat-radio-disabled .mat-radio-outer-circle {
+  border-color: #666666;
+}
+
+:host ::ng-deep .mat-checkbox-disabled:not(.mat-checkbox-checked) .mat-checkbox-frame {
+  border-color: #666666;
+}
+
+:host ::ng-deep .mat-checkbox-disabled .mat-checkbox-label {
+  opacity: 0.8;
+  color: #000000;
+}
+
+@media screen and (max-width: 768px) {
+  .rfq-advance-small-screen {
+    .col-md-12 {
+      flex: 0 0 150%;
+      max-width: 150%;
+    }
+  }
+}

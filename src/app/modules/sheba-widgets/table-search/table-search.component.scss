@@ -1,0 +1,28 @@
+.table-search {
+  display: flex;
+  overflow: hidden;
+
+  &-form {
+    display: flex;
+    width: 0;
+    -webkit-transition: width .3s ease-in-out;
+    -moz-transition: width .3s ease-in-out;
+    -ms-transition: width .3s ease-in-out;
+    -o-transition: width .3s ease-in-out;
+    transition: width .3s ease-in-out;
+    overflow: hidden;
+
+    .form-group {
+      margin-bottom: 0;
+    }
+
+    &.open {
+      width: 220px;
+    }
+  }
+
+  &-button {
+    margin: 0 16px 0 0;
+  }
+
+}

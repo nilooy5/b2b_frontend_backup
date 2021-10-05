@@ -1,0 +1,66 @@
+.row > div {border:10px solid white}
+.security {
+  height:400px;
+  position: relative;
+  //background-image:linear-gradient(to bottom, rgba(255,255,255,.0) 70%, rgba(0,0,0,.88)), url('../../../../../assets/img/landing/services/office-cleaning.jpg');
+  background-size: cover;
+  border-radius: 15px;
+}
+.waste {
+  height:200px;
+  position: relative;
+  //background-image:linear-gradient(to bottom, rgba(255,255,255,.0) 70%, rgba(0,0,0,.88)), url('../../../../../assets/img/landing/services/trips-and-travel.jpg');
+  background-size: cover;
+  border-radius: 15px;
+}
+.painting {
+  height:200px;
+  position: relative;
+  //background-image:linear-gradient(to bottom, rgba(255,255,255,.0) 70%, rgba(0,0,0,.88)), url('../../../../../assets/img/landing/services/appliance-repair.jpg');
+  background-size: cover;
+  border-radius: 15px;
+}
+.moves {
+  height:200px;
+  position: relative;
+  //background-image:linear-gradient(to bottom, rgba(255,255,255,.0) 70%, rgba(0,0,0,.88)), url('../../../../../assets/img/landing/services/daily-lunch.jpg');
+  background-size: cover;
+  border-radius: 15px;
+}
+.catering {
+  height:200px;
+  position: relative;
+  //background-image:linear-gradient(to bottom, rgba(255,255,255,.0) 70%, rgba(0,0,0,.88)), url('../../../../../assets/img/landing/services/product.jpg');
+  background-size: cover;
+  border-radius: 15px;
+}
+.facility {
+  height:200px;
+  position: relative;
+  //background-image:linear-gradient(to bottom, rgba(255,255,255,.0) 70%, rgba(0,0,0,.88)), url('../../../../../assets/img/landing/services/office-shifting.jpg');
+  background-size: cover;
+  border-radius: 15px;
+}
+.label{
+  position: absolute;
+  bottom: 1rem;
+  left: 1.5rem;
+  font-weight: 500;
+  color: white;
+  font-size: 20px;
+}
+.title{
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  padding: 30px;
+}
+.divOuter{
+  margin-bottom: 100px;
+}
+@media screen and (max-width: 768px) {
+  .divOuter{
+    display: none;
+  }
+  display: none;
+}

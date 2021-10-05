@@ -1,0 +1,33 @@
+<div class="bg-color">
+    <div class="container">
+        <div class="d-flex flex-row padding-sm mb-5 ">
+            <div class="mt-5 p-1 d-flex align-items-center flex-column flex-fill">
+                <h1 class="header-text text-center">
+                    How it works
+                </h1>
+            </div>
+    </div>
+        <div class="bd-highlight " [ngClass]="{'d-flex ': !isMobileDevice, 'lpadding': !isMobileDevice}">
+            <div class="p-2 d-flex flex-column  flex-fill">
+                <img src="/assets/svg/icons/rfq/find_works.svg" class="layer">
+                <h1 class="title ">Find Works</h1>
+                <div class="Rectangle mt-3 mb-4"></div>
+                <p class="sub-title" [ngClass]="{'sub-title-desk': !isMobileDevice}">On sBusiness you can choose your own project and start selling to corporate clients. Search job, respond to client invitation.</p>
+            </div>
+            <div class="p-2 works-item-space  d-flex flex-column flex-fill">
+                <img src="/assets/svg/icons/rfq/submit_proposal.svg" class="layer">
+                <h1 class="title">Submit Proposal</h1>
+                <div class="Rectangle  mt-3 mb-4"></div>
+                <p class="sub-title" [ngClass]="{'sub-title-desk': !isMobileDevice}">Sending proposals is easier now than before via sBusiness. Submit your proposal with a proper cover letter, competitive budget directly to clients.</p>
+            </div>
+            <div class="p-2 works-item-space d-flex  flex-column flex-fill">
+                <img src="/assets/svg/icons/rfq/get_hired.svg" class="layer">
+                <h1 class="title">Get Hired</h1>
+                <div class="Rectangle  mt-3 mb-4"></div>
+                <p class="sub-title" [ngClass]="{'sub-title-desk': !isMobileDevice}">sBusiness helps you to connect with clients. By submiting proper proposal, budget will help you to get hired quickly and work efficiently.</p>
+            </div>
+          </div>
+    </div>
+
+</div>
+

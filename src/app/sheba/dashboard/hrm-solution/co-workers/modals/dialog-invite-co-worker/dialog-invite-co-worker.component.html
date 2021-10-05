@@ -1,0 +1,49 @@
+<div class="d-flex BG">
+    <div class="flex-fill text-right Portlet mt-3">Invite Co-worker</div>
+    <div class="flex-fill text-right"><img (click)="onNoClick()" src="/assets/svg/cross_black.svg" class="cross mt-3 mr-2"></div>
+</div>
+<mat-divider></mat-divider>
+<div class="d-flex">
+    <div class="text-center flex-fill mt-3">
+        <span class="Send-Email-invitatio">Send Email invitation to join sBusiness.xyz</span>
+    </div>
+</div>
+<div class="d-flex mt-3" style="padding-left: 61px;">
+    <span class="Invite-single-and-mu">Invite single and multiple coworker</span>
+</div>
+<div class="d-flex taginput">
+    <div class="normal">
+        <tag-input
+            #tagInput
+            name="emails"
+            [(ngModel)]="items"
+            [validators]="validators"
+            [separatorKeyCodes]="[32]"
+            [placeholder]="''"
+            [clearOnBlur]="true"
+            [secondaryPlaceholder]="'Enter email address(es)'"
+            [pasteSplitPattern]="splitPattern"
+            [addOnPaste]="true"
+            [onAdding]="onAddedFunc"
+        >
+        </tag-input>
+    </div>
+</div>
+
+<div class="d-flex mt-3" style="padding-left: 61px; margin-top: -15px! important;">
+    <span class="Invite-single-and-mu" style="color: #aa3837">** Press enter to separate the email addresses</span>
+</div>
+
+<div *ngIf="invalidedMail" class="d-flex fill-flex Rectangle">
+    <span class="Please-make-sure-tha mt-1">Please make sure that all email addresses are properly formed.</span>
+</div>
+
+<div class="d-flex BG">
+    <div class="flex-fill text-center Portlet mt-3">
+        <button (click)="sendInvitation()" [disabled]="items.length==0" class="sendButton">
+            <span class="invite-text">
+                Send invitation
+            </span>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="share-dialog-container">
+    <i class="material-icons close-icon" (click)="closeModal()">close</i>
+    <h4 class="title">Share this Tender</h4>
+    <p class="subtitle">You can share this tender with others in order to get more proposals.</p>
+    <div class="image-container">
+        <img class="img-fluid" src="../../../../../../assets/svg/icons/rfq/facebook.svg" alt="Facebook" shareButton="facebook"
+             [url]="data.link">
+        <img class="img-fluid" src="../../../../../../assets/svg/icons/rfq/linkedin.svg" alt="Linkedin" shareButton="linkedin"
+             [url]="data.link">
+        <img class="img-fluid" src="../../../../../../assets/svg/icons/rfq/whatsapp.svg" alt="Whatsapp" shareButton="whatsapp"
+             [url]="data.link">
+        <img class="img-fluid" src="../../../../../../assets/svg/icons/rfq/copy.svg" alt="Copy" shareButton="copy"
+             [url]="data.link" (click)="copyLink()">
+    </div>
+    <span style="margin-top: 15px" *ngIf="showCopyLinkText">Link Copied</span>
+</div>

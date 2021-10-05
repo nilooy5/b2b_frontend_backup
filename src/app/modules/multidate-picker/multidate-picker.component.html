@@ -1,0 +1,13 @@
+<ngb-datepicker #dp [displayMonths]="2" [dayTemplate]="t" [minDate]="minDate" [maxDate]="maxDate"></ngb-datepicker>
+
+<ng-template #t let-date="date" let-focused="focused">
+  <span class="custom-day"
+        (click)="onDateSelection($event,date)"
+        [class.focused]="focused"
+        (mouseenter)="hoveredDate = date"
+        [class.selected]="isDateSelected(date)"
+        [class.disabled]="isDateDisabled(date)"
+        (mouseleave)="hoveredDate = null">
+    {{ date.day }}
+  </span>
+</ng-template>

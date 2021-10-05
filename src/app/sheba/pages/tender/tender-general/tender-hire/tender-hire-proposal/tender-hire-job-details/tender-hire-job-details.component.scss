@@ -1,0 +1,157 @@
+@media only screen and (max-width: 600px) {
+  .display-status{
+    display: block!important;
+  }
+  .title{
+    font-size: 16px !important;
+    line-height: 1.5 !important
+  }
+  .budget{
+    font-size: 20px !important;
+    line-height: 1.4 !important;
+  }
+  .both-side-padding{
+    padding: 0px 10px 20px 20px !important;
+  }
+  .mb-padding{
+    margin-left: 0px!important;
+  }
+  .flex-row{
+    display: block !important;
+  }
+  .display-postion{
+    display: block!important;
+  }
+  .Proposed-Budget {
+    display: flex !important;
+  }
+  .budget{
+    margin-left: 10px;
+  }
+}
+.job-details-card{
+    min-height: 130px;
+    border-radius: 10px;
+    background-color: var(--white);
+  }
+.header{
+  height: 50px;
+  border-radius: 10px;
+  background-color: var(--white);
+}
+.job-title{
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: var(--black);
+}
+.title{
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  color: var(--black);
+}
+.only-expanded {
+  display:none
+}
+.time {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+.both-side-padding{
+  padding: 0px 14px 0px 14px;
+}
+.Delivery-within---15 {
+  min-width: 263px;
+  height: 22px;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.57;
+  letter-spacing: normal;
+  color: rgba(10, 15, 20, 0.75);
+}
+.A-request-for-quotat {
+  min-height: 48px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: rgba(10, 15, 20, 0.75);
+}
+.Final-Budget {
+  height: 20px;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: right;
+  color: var(--black);
+}
+.budget{
+  height: 32px;
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: right;
+  color: var(--black);
+}
+ .text-style-1 {
+  font-family: KohinoorBangla;
+}
+.A-request-for-quotat-2 {
+  max-width: 710px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: rgba(10, 15, 20, 0.75);
+}
+.Proposed-Budget {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: right;
+  color: var(--black);
+  display: block;
+}
+.icon-color{
+  color: var(--primary);
+}
+.display-status{
+  display: flex;
+}
+.flex-row{
+  display: flex;
+}
+.display-postion{
+  display: flex;
+}

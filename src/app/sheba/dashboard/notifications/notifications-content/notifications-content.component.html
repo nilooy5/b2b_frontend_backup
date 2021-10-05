@@ -1,0 +1,29 @@
+<div class="bg-white">
+
+    <div *ngIf="notificationList">
+        <div class="d-flex notification" [ngStyle]="{'background-color' : notification.is_seen === 0 ? '#e6eaf2' : '#fff'}"
+             *ngFor="let notification of notificationList" (click)="$event.stopPropagation()">
+
+            <div class="d-flex notification__content" (click)="onClickNotification(notification)">
+                <section class="pt-1">
+                    <img class="user-img" alt="User Logo" [src]="notification.image"
+                         onerror="this.src='https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/sheba_xyz/png/default-service.png'">
+                </section>
+                <section style="padding-left: 15px">
+                    <p class="info">{{ notification.title }}</p>
+                    <span class="time">{{ notification.created_at }}</span>
+                </section>
+            </div>
+            <span class="float-right notification__mark-as-read" *ngIf="notification.is_seen === 0">
+            <a matTooltip="Mark as Read" matTooltipPosition="before" (click)="onClickRead(notification.id)">
+                <span class="circle"></span>
+            </a>
+        </span>
+        </div>
+    </div>
+
+    <div *ngIf="!notificationList">
+        <p class="p-30 mb-0">No Notifications Available</p>
+    </div>
+
+</div>

@@ -1,0 +1,154 @@
+@import "src/scss/variables";
+
+:host ::ng-deep {
+  .mat-button-wrapper {
+    font-weight: 600;
+  }
+}
+
+.carousel-indicators > li {
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+.overlayDiv{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.3);
+}
+.overlayText{
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.36;
+  color: white;
+}
+.trialButton{
+  width: 300px;
+  height: 70px;
+  border-radius: 3px;
+  background-color: #437ff5;
+  z-index: 3;
+  font-size: 24px;
+  color: white;
+}
+
+.overlayInner{
+}
+.btnRow{
+  padding-top: 60px
+}
+@media screen and (max-width: 768px) {
+  .overlayText{
+    font-size: 24px;
+    line-height: 1.5;
+    color: white;
+    font-weight: normal;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-bottom: 30px;
+  }
+  :host ::ng-deep {
+    .mat-button-wrapper {
+      font-weight: 500 !important;
+    }
+  }
+  .trialButton{
+    width: 200px;
+    height: 40px;
+    font-size: 14px;
+    z-index: 100;
+  }
+  .overlayInner{
+    padding: 30px;
+    text-align: center;
+    margin-top: 10px
+  }
+  .btnDiv{
+    text-align: center;
+  }
+  .btnRow{
+    padding: 0;
+  }
+  .carousel-indicators > li {
+    display: none;
+  }
+  .carousel-inner{
+    width: 100%;
+    height: 300px;
+  }
+  img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+}
+
+
+.header {
+
+  &-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &-column {
+    @media screen and (max-width: 768px) {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+
+  &-banner {
+    height: 540px;
+    width: auto;
+    background-size: cover;
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-repeat: no-repeat;
+    //background-image: url("../../../../../assets/img/landing/banner/main-banner.jpg");
+    //background-position: top;
+    background-position: right;
+
+    @media screen and (max-width: 768px)  {
+      height: 300px;
+    }
+
+    &__title {
+      font-size: 56px;
+      font-weight: 600;
+      line-height: 1.36;
+      color: #fff;
+      padding-bottom: 60px;
+
+      @media screen and (max-width: 768px)  {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 1.5;
+        text-align: center;
+        padding-bottom: 40px;
+      }
+    }
+
+    &__button {
+      border-radius: 3px;
+      background-color: #437ff5;
+      font-size: 24px;
+      padding: 17px 68px;
+      color: white;
+
+      @media screen and (max-width: 768px)  {
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+        padding: 2px 46px;
+      }
+    }
+  }
+
+}

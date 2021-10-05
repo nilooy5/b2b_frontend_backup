@@ -1,0 +1,56 @@
+.header-container {
+  background-color: #fff;
+  box-shadow: 0 1px 5px 0 rgba(19, 34, 64, 0.1);
+  border-radius: 10px;
+  padding: 17px 30px;
+}
+
+.user {
+  &-img {
+    border-radius: 50%;
+    height: 65px;
+    margin-right: 16px;
+    width: 65px;
+    object-fit: cover;
+  }
+  &-name {
+    margin-bottom: 8px;
+    font-size: 18px;
+    line-height: 1.56;
+    color: rgba(10, 15, 20, 0.75);
+  }
+}
+
+.button--primary--outline {
+  display: flex;
+  justify-content: center;
+  border: solid 1px #4373f5;
+  color: #437ff5;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 0;
+  height: 40px;
+  min-height: 0;
+
+  &:active, &:focus, &:hover {
+    background-color: #4373f5;
+    color: #fff;
+  }
+
+  &:disabled {
+    background-color: #fff;
+    color: #4373f5;
+  }
+
+  &:first-of-type {
+    margin-right: 16px;
+    width: 140px;
+  }
+
+  &:last-of-type {
+    width: 120px
+  }
+
+
+}

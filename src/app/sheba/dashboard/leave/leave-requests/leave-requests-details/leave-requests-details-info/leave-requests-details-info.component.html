@@ -1,0 +1,105 @@
+<div class="main-content">
+    <div class="content-title">Leave Info</div>
+    <div class="contents">
+        <div class="container-fluid">
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Status</div>
+                <div class="field-row__data col-md-8 text-capitalize">
+                    <span class="reqStatus"
+                          [ngClass]="{
+                               'reqStatus--pending': requestDetails.leave.status === 'pending',
+                               'reqStatus--accepted': requestDetails.leave.status === 'approved',
+                               'reqStatus--rejected': requestDetails.leave.status === 'rejected'
+                          }">
+                        {{requestDetails.leave.status}}
+                    </span>
+                </div>
+            </div>
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Name</div>
+                <div class="field-row__data col-md-8">
+                    <div class="employeeCard">
+                        <div class="employeeCard-pic">
+                            <img [src]="requestDetails.leave.pro_pic" alt="">
+                        </div>
+                        <div class="employeeCard-details">
+                            <div class="employeeCard-details-name">{{requestDetails.leave.name}}</div>
+                            <div class="employeeCard-details-data">{{requestDetails.department.designation}}, {{requestDetails.department.designation}}</div>
+                            <div class="employeeCard-details-data">{{requestDetails.leave.mobile}}</div> <!-- TODO: Number not specified-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Employee ID</div>
+                <div class="field-row__data col-md-8">{{requestDetails.id}}</div>
+            </div>
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Date</div>
+                <div class="field-row__data col-md-8">{{requestDetails.leave.period}}</div>
+            </div>
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Days</div>
+                <div class="field-row__data col-md-8">{{requestDetails.leave.total_days}} Days</div>
+            </div>
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Type</div>
+                <div class="field-row__data col-md-8">{{requestDetails.leave.type}}</div>
+            </div>
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Balance</div>
+                <div class="field-row__data col-md-8">{{requestDetails.leave.left}} {{requestDetails.leave.type}} left</div>  <!--TODO: What type of days left not specified-->
+            </div>
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Note</div>
+                <div class="field-row__data col-md-8">{{requestDetails.leave.note}}</div>
+            </div>
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Attachment</div>
+                <div class="field-row__data col-md-8">
+                    <div class="attachments">
+                        <ng-container *ngIf="attachments.length; else notAvailable">
+                            <div>
+                                <ngx-gallery [options]="attachmentsOption" [images]="attachments" #onlyPreviewGallery></ngx-gallery>
+                            </div>
+                            <div class="d-flex" *ngFor="let item of attachments">
+                                <div (click)="openPreview()" class="attachments__segment">
+                                    <span class="material-icons">
+                                        visibility
+                                    </span>
+                                    <span>View</span>
+                                </div>
+                                <div (click)="downloadAttachment(item.big)" class="attachments__segment">
+                                    <span class="material-icons">
+                                        get_app
+                                    </span>
+                                    <span>Download</span>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <ng-template #notAvailable>
+                            Attachment Not Available
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Substitute</div>
+                <div class="field-row__data col-md-8">
+                    <ng-container *ngIf="requestDetails.leave.substitute; else notSubAvailable">
+                        <div class="employeeCard">
+                            <div class="employeeCard-pic">
+                                <img [src]="requestDetails.leave.substitute.pro_pic" alt="">
+                            </div>
+                            <div class="employeeCard-details">
+                                <div class="employeeCard-details-name">{{requestDetails.leave.substitute.name}}</div>
+                                <div class="employeeCard-details-data">{{requestDetails.leave.substitute.mobile}}</div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <ng-template #notSubAvailable>No Substitute Available</ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

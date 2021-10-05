@@ -1,0 +1,114 @@
+@import "../../../../../../../../src/scss/variables";
+@import "../../../../../../../../src/scss/colors";
+
+.basic-info {
+  &-container {
+    margin-bottom: 20px;
+  }
+
+  &__button {
+    padding: 0;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: $font-weight-semiBold;
+    color: #437ff5;
+    background-color: transparent;
+    border: 1px solid transparent;
+  }
+
+  .budget-input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    //border-left-color: transparent;
+    //border: none;
+
+    //&:hover {
+    //  border: none;
+    //}
+  }
+
+  //.input-group {
+  //  border: solid 1px #bbc0cc;
+  //  border-radius: 10px;
+  //
+  //  &:hover {
+  //    border: solid 1.5px $input-focus-border-color;
+  //    &:focus {
+  //      border: solid 1.5px $primary;
+  //    }
+  //  }
+  //
+  //  &:focus {
+  //    border: solid 1.5px $primary;
+  //    outline: 0;
+  //
+  //    &:hover {
+  //      border: solid 1.5px $input-focus-border-color;
+  //    }
+  //  }
+  //}
+
+
+  .input-group-text {
+    //border-color: transparent;
+    border-radius: 10px 0 0 10px;
+    //border: solid 1px;
+    border-right-color: transparent;
+    //border-left-color: #bbc0cc;
+    //border-top-color: #bbc0cc;
+    //border-bottom-color: #bbc0cc;
+    //border: solid 1.5px #bbc0cc;
+
+  }
+
+  textarea[id="rfqDescription"] {
+    padding: 20px;
+    margin-bottom: 10px;
+    min-height: 160px;
+
+    &::-webkit-input-placeholder {
+      font-size: 24px;
+      color: #484b4f;
+    }
+    &::-moz-placeholder {
+      font-size: 24px;
+      color: #484b4f;
+    }
+    &:-moz-placeholder {
+      font-size: 24px;
+      color: #484b4f;
+    }
+    &:-ms-input-placeholder {
+      font-size: 24px;
+      color: #484b4f;
+    }
+
+    &:focus {
+      &::-webkit-input-placeholder {
+        color: transparent;
+      }
+      &::-moz-placeholder {
+        color: transparent;
+      }
+      &:-moz-placeholder {
+        color: transparent;
+      }
+      &:-ms-input-placeholder {
+        color: transparent;
+      }
+    }
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  input[id='budget']::-webkit-outer-spin-button,
+  input[id='budget']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number][id='budget'] {
+    -moz-appearance: textfield;
+  }
+}
+

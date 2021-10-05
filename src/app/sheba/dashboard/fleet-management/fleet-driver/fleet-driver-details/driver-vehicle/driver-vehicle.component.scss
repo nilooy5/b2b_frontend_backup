@@ -1,0 +1,23 @@
+@import "../../../../../../../scss/variables";
+
+h5 {
+  font-weight: 400;
+}
+
+.vehicle-card {
+  background-color: $white;
+  padding: 16px;
+  border-radius: 4px;
+  img {
+    height: 50px;
+    width: 50px;
+    border-radius: 4px;
+    margin-right: 20px;
+  }
+  .vehicle-info {
+    font-size: 14px;
+    p {
+      margin-bottom: 10px;
+    }
+  }
+}

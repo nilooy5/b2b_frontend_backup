@@ -1,0 +1,53 @@
+::ng-deep {
+  .mat-tooltip {
+    background-color: #437ff5;
+    font-size: 11px;
+    color: #ffffff;
+    padding: 2px 5px;
+  }
+}
+
+.img-left {
+  width: 3rem;
+}
+
+.notification {
+  position: relative;
+  background-color: #e6eaf2;
+  padding: 10px 0 10px 15px;
+  cursor: pointer;
+  &__content {
+    p {
+      margin-bottom: 0;
+    }
+    .user-img {
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+    }
+
+    .info {
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(0, 0, 0, 0.8);
+      margin-bottom: 5px;
+    }
+    .time {
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+  &__mark-as-read {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+}
+
+.circle:before {
+  content: ' \25CF';
+  height: 8px;
+  width: 8px;
+  color: #bbc0cc;
+}

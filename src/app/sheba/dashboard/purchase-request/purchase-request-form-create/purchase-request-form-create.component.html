@@ -1,0 +1,113 @@
+
+<h3>General Info</h3>
+
+<div class="purchase-request-form">
+
+    <div class="form--create">
+        <form class="form--create__form" [formGroup]="generalInformation">
+            <div class="container">
+                <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label">Name</label>
+                    <div class="col-md-8">
+                        <input placeholder="Form name" class="form-control" id="name" type="text" formControlName="name" required>
+                        <!--<p class="employee-add__error-message" *ngIf="showgErrorMsg && generalInformation.get('name').hasError('required')">
+                         Name is required
+                        </p>-->
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="shortDescription" class="col-md-4 col-form-label">Short Description</label>
+                    <div class="col-md-8">
+                    <textarea placeholder="Write short description" class="form-control" id="shortDescription" type="text"
+                              formControlName="shortDescription" required></textarea>
+                        <!--  <p class="employee-add__error-message" *ngIf="showgErrorMsg && generalInformation.get('shortDescription').hasError('required')">
+                          Short Description is required
+                          </p>-->
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+<h3>Table Builder</h3>
+
+<div class="purchase-request-form">
+    <div class="purchase-request-form-section">
+        <div *ngIf="!showTableColumn">
+            <h3>Create purchase request table format</h3>
+            <button class="button button-primary button-outline" (click)="addColumn()">
+                Add Columns
+            </button>
+        </div>
+
+        <div class="purchase-request-form-table__builder" *ngIf="showTableColumn" >
+           <div class="row" *ngFor="let element of tableBuilderForm; let i = index" [formGroup]="element.tableBuilder">
+               <div class="col-2 purchase-request-form-column align-self-center">
+                   Column {{ i }}
+               </div>
+               <div class="col-5">
+                   <input class="form-control" id="columnName" type="text" formControlName="columnName" placeholder="Column name"required>
+               </div>
+               <div class="col-4">
+                   <div class="form-group">
+                       <div class="select--primary employee-add__select">
+                           <select name="columnType" id="columnType" formControlName="columnType" required>
+                               <option disabled selected>Column Type</option>
+                               <option [value]="columnType" *ngFor="let columnType of columnTypes">{{columnType}}</option>
+                           </select>
+                           <i class="material-icons">keyboard_arrow_down</i>
+                       </div>
+                    <!--   <p class="employee-add__error-message" *ngIf="showgErrorMsg/* && columnTypes.get('columnType').hasError('required')*/">
+                           Role is required
+                       </p>-->
+                   </div>
+               </div>
+               <div class="col-1">
+                   <button class="button button-outline delete-row-button" (click)="deleteRow(i)">
+                       <i class="material-icons">clear</i>
+                   </button>
+               </div>
+           </div>
+        </div>
+
+        <div class="row d-flex justify-content-end" *ngIf="showTableColumn">
+
+<!--            <div class="col-3 pr-0">-->
+<!--                <button class="button button-outline preview-button" (click)="previewTable()">-->
+<!--                    Preview Table-->
+<!--                </button>-->
+<!--            </div>-->
+
+            <div class="col-1">
+                <button class="button button-outline add-row-button" (click)="addRow()">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<h3>Additional Questions</h3>
+
+<div class="purchase-request-form">
+    <div class="purchase-request-form-section">
+        <app-questions (update)="handleQuestionUpdates($event)"></app-questions>
+    </div>
+</div>
+
+<div class="row d-flex justify-content-end">
+    <div class="purchase-request-forms__action">
+        <button class="button button-primary purchase-request-forms__create-button " (click)="submitPurchaseRequestForm()">
+            Save Form
+        </button>
+    </div>
+</div>
+
+
+
+

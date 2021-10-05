@@ -1,0 +1,14 @@
+@import 'src/scss/variables';
+
+:host ::ng-deep {
+  .form-container__dropdown {
+    .ng-select-container {
+      height: 40px;
+      border: solid 1px $grey-medium;
+      background-color: $grey-light;
+    }
+    .ng-dropdown-panel {
+      z-index: 1;
+    }
+  }
+}

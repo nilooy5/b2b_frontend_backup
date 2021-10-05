@@ -1,0 +1,16 @@
+<div class="d-flex outerDiv">
+    <div class="container align-self-center">
+        <div class="row justify-content-around">
+            <div class="col-md-8 title">
+                {{contents[feature].title}}
+            </div>
+            <div class="col-md-4 divBtn" [routerLink]="['/', 'auth', 'sign-up']">
+                <button mat-button class="trialButton">{{contents[feature].buttonLabel}}</button>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%;height: 100%; position: absolute; top: 0; left: 0">
+        <img class="tile1" src="../../../../../assets/img/landing/miscellaneous/tile.svg" alt="tile top">
+        <img class="tile2" src="../../../../../assets/img/landing/miscellaneous/tile.svg" alt="tile top">
+    </div>
+</div>

@@ -1,0 +1,114 @@
+@import "../../../../../../scss/variables";
+@import "../../../../../../scss/journey";
+
+.ball {
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  color: $black60;
+}
+
+.procurement-tender-invite {
+  &__search {
+    max-width: 600px;
+    margin: 60px auto 0 auto;
+  }
+  &__button {
+    font-size: 14px;
+  }
+}
+
+.selected-vendors {
+  background-color: $white;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 600px;
+  li {
+    border: 1px solid $light_dirt_grey;
+    border-radius: 5px;
+    list-style: none;
+    padding: 16px;
+    margin-bottom: 10px;
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 16px;
+    }
+    p, h6 {
+      margin: 0;
+    }
+  }
+  &__close-btn {
+    background-color: $cream_grey;
+    color: $red;
+    height: 30px;
+    width: 30px;
+    padding: 1px 0 0 0;
+  }
+}
+
+.invite-confirm-action {
+  button {
+    padding: 10px 30px;
+  }
+}
+
+.skip-invite {
+  text-align: center;
+
+  p {
+    color: $black40;
+    font-size: 18px;
+    margin-bottom: 60px;
+    &:before {
+      content: '';
+      display: inline-block;
+      height: 10px;
+      width: 80px;
+      border-top: 1.5px solid #e6e6e6;
+      position: relative;
+      top: 3px;
+      left: -5px;
+    }
+    &:after {
+      content: '';
+      display: inline-block;
+      height: 10px;
+      width: 80px;
+      border-top: 1.5px solid #e6e6e6;
+      position: relative;
+      top: 3px;
+      left: 5px;
+    }
+  }
+  a {
+    color: $theme-font-color;
+    font-size: 18px;
+  }
+}
+
+.addVendor {
+  h3 {
+    font-size: 24px;
+    text-align: center;
+    color: $black60;
+    margin-bottom: 24px;
+  }
+
+  .button-outline.button-primary {
+    border: solid 1px #2f38f1;
+    color: #2f38f1;
+  }
+  .button-semi-small {
+    &-primary {
+      font-size: 14px;
+    }
+    &-semi-small {
+      padding: 7px 30px;
+    }
+  }
+}
+
+
+

@@ -1,0 +1,75 @@
+<div class="main-table-block" *ngIf="show_biddings" style="margin-bottom: 50px;">
+    <table mat-table class="main-table-theme" [dataSource]="dataSource">
+        <ng-container matColumnDef="vendorName">
+            <th mat-header-cell *matHeaderCellDef style="width: 30%">
+                Vendor Name <i class="fas fa-sort pl-2 cursor-pointer" (click)="sort('sort_by_name')"></i>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <span class="bidding-vendor-info"> <img [src]="element.service_provider.image" alt="vendor image">
+                    <span class="vendor-name" >{{ element.service_provider.name }}</span>
+                </span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="vendorMobile" style="width: 20%">
+            <th mat-header-cell *matHeaderCellDef>Vendor Mobile</th>
+            <td mat-cell *matCellDef="let element">
+                <span class="bidding-vendor-info">
+                    <span class="vendor-name" >{{ element.service_provider.mobile }}</span>
+                </span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ratings">
+            <th mat-header-cell *matHeaderCellDef style="width: 10%">
+                Ratings <i class="fas fa-sort pl-2 cursor-pointer" (click)="sort('sort_by_rating')"></i>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <span class="bidding-ratings"> <i class="material-icons">grade</i>
+                    <span class="rating-number"> {{ element.service_provider.rating }} </span>
+                </span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef style="width: 12%"> Type</th>
+            <td mat-cell *matCellDef="let element">
+                <span class="bidding-status" >{{ element.service_provider.status }}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="quotation">
+            <th mat-header-cell *matHeaderCellDef style="width: 15%">
+                Quotation <i class="fas fa-sort pl-2 cursor-pointer" (click)="sort('sort_by_price')"></i>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <span class="bidding-price-quotation" > <span class="bidding-taka-sign">৳</span> {{ element.price }}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef style="width: 18%"></th>
+            <td mat-cell *matCellDef="let element" (click)="redirectToQuotationDetails(element.id)">
+                <span id="actionColumnContents"> View Quotation  <i class="material-icons">keyboard_arrow_right</i> </span>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row, columns: displayedColumns;" style="cursor: pointer"></tr>
+    </table>
+</div>
+
+<div *ngIf="show_biddings === false">
+    <div class="container-fluid no-bidding-container">
+        <div class="row">
+            <div class="col-md-12 bg-white no-bidding-content">
+                <img class="no-bidding-img" src="../../../../../assets/svg/no_rfq_list.svg" alt="Success">
+                <p class="no-bidding-heading">Waiting for 1st quotaion?</p>
+                <p class="no-bidding-text">
+                    Please wait for sometime. Vendors are yet to submit any proposal in your tender.
+                </p>
+                <button class="btn btn-primary no-bidding-btn" (click)="redirectToInvite()" >Invite Vendors</button>
+            </div>
+        </div>
+    </div>
+</div>

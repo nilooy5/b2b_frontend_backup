@@ -1,0 +1,28 @@
+<div class="testimonial" [ngClass]="{blue: page === 'home'}">
+    <div class="container">
+        <ngx-slick-carousel class="carousel" [ngClass]="{blueTheme: page === 'home', whiteTheme: page ==='feature'}"
+                            #slickModal="slick-carousel" [config]="slideConfig">
+
+            <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+                <div class="row testimonial-section">
+                    <div class="col-md-6 d-flex justify-content-center d-block d-md-none">
+                        <h1>{{ slide.heading }}</h1>
+                    </div>
+                    <div class="col-md-6 testimonial-section__image p-60">
+                        <div style="position: relative;">
+                            <img *ngIf="page === 'home'" src="../../../../../assets/img/landing/miscellaneous/comma-white.svg" class="img-fluid comma-home" alt="">
+                            <img *ngIf="page === 'feature'" src="../../../../../assets/img/landing/miscellaneous/comma-blue.svg" class="img-fluid comma-feature" alt="">
+                            <img [src]="slide.image" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-6 testimonial-section p-60" [ngClass]="{feature: page === 'feature', home: page === 'home'}">
+                        <h1>{{ slide.heading }}</h1>
+                        <p class="user__comment"> {{ slide.comment }}</p>
+                        <p class="user__name">{{ slide.name }}</p>
+                        <span class="user__designation">{{ slide.designation }}</span>
+                    </div>
+                </div>
+            </div>
+        </ngx-slick-carousel>
+    </div>
+</div>

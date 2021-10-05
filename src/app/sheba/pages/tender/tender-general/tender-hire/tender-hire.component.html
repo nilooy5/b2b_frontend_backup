@@ -1,0 +1,13 @@
+<div class="bg-grey-light">
+    <div class="proposal-breadcrumb">
+        <div class="container">
+            <span [routerLink]="['/', 'tender', 'list']">All RFQ Posts</span>
+            <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+            <span [routerLink]="['/', 'tender', 'list']">Tender Details</span>
+            <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+            <span class="proposal-breadcrumb__active">Participate</span>
+        </div>
+    </div>
+
+    <router-outlet></router-outlet>
+</div>

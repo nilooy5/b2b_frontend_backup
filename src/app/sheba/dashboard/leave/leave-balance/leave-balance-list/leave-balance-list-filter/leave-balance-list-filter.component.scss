@@ -1,0 +1,16 @@
+@import "../../../../attendance/attendance-monthly/attendance-monthly-list/attendance-monthly-list-filter/attendance-monthly-list-filter.component";
+
+.mat-button {
+  font-size: 16px;
+  background: white;
+  span {
+    color: #437ff5;
+  }
+  a {
+    font-weight: 600;
+  }
+}
+
+.search-input {
+  margin-left: 20px;
+}

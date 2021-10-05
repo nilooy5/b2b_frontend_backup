@@ -1,0 +1,23 @@
+<div class="bg-white company-evaluation-container">
+
+    <div class="header">
+        <h3 class="text-center">Update Company Evaluation</h3>
+        <hr>
+    </div>
+
+    <div class="questions">
+        <app-questions [initialQuestions]="receivedCompanyQuestions" (update)="handleQuestionUpdates($event)" ></app-questions>
+    </div>
+
+</div>
+
+<div class="company-evaluation-footer" [ngClass]="{ 'open': isSidebarOpen}">
+    <div class="d-flex justify-content-between">
+        <button class="button button--link" (click)="redirectToRfqDetails()">
+            <i class="material-icons">keyboard_backspace</i>
+            <span>Back</span>
+        </button>
+        <button class="button button--filled" (click)="updateCompanyEvaluation()">Save Question Set</button>
+    </div>
+</div>
+

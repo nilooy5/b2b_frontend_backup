@@ -1,0 +1,48 @@
+<div class="calendar-container">
+    <div class="calendar-container-inner">
+        <div class="calendar-header " [ngClass]="ViewClass()">
+            <div class="calendar-header-item" *ngFor=" let date of dates">
+            <span *ngIf="viewType==='month'" class="calendar-text heading">
+                <span>{{date|date:'MMM'}}</span>
+                <span>{{date|date:'d'}}</span>
+            </span>
+                <ng-template [ngIf]="viewType==='week'">
+                    <span>{{date|date:'EEE'}}</span>
+                    <span>{{date|date:'d'}}</span>
+                </ng-template>
+                <ng-template [ngIf]="viewType==='day'">
+                    <span>{{date|date:'hh aa'}}</span>
+                </ng-template>
+                <div #ruler class="calendar-header-item-after"></div>
+            </div>
+        </div>
+        <div class="calendar-items" *ngIf="viewItems" #viewContent>
+            <div class="calendar-item" *ngFor="let item of viewItems">
+                <div class="calendar-item-inner">
+                    <div class="calendar-item-inner-grid " [ngClass]="ViewClass()">
+                        <div class="calendar-item-inner-grid-item" cdkDragLockAxis="x" cdkDrag mwlResizable
+                             [enableGhostResize]="true"
+                             [resizeEdges]="{bottom: false, right: true, top: false, left: true}"
+                             (resizeEnd)="onResizeEnd($event)"
+                             cdkDragBoundary=".calendar-item-inner-grid" (cdkDragEnded)="dropped($event)"
+                             *ngFor="let trip of item.trips;let i=index"
+                             [ngStyle]="getGridItemClass(trip,i)"
+                             [routerLink]="['/','dashboard','fleet-management','assignments',trip.id,'details']">
+                            <div class="grid-item">
+                                <div class="grid-item-text" cdkDragHandle>
+                                    {{trip.member.name}}
+                                </div>
+                                <div cdkDragHandle class="grid-item-content"
+                                     title="{{trip.start_date|date}} {{trip.start_date|date:'shortTime'}} - {{trip.end_date|date}} {{trip.end_date|date:'shortTime'}}">
+                                    <span>{{trip.start_date|date}} {{trip.start_date|date:'shortTime'}}</span>
+                                    <span>-</span>
+                                    <span>{{trip.end_date|date}} {{trip.end_date|date:'shortTime'}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

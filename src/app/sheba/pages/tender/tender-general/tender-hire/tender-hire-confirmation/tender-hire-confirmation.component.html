@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="d-flex flex-column flex-fill align-items-center">
+        <div class=" BG ">
+            <div class="d-flex flex-column flex-fill bd-highlight align-items-center ">
+                <img *ngIf="confirmationType !='NotFound'" [src]="icon" class="check mb-2">
+                <h2 class="mt-4 Order-accepted-succe">{{ message }}</h2>
+                <p class="Client-will-review-y mt-2" *ngIf="confirmationType !='NotFound'">
+                    Client will review your proposal and communicate at your given number.
+                    You will be notified immediately when the client sends you a hire request. For more details call
+                    16516.
+                </p>
+                <a *ngIf="confirmationType === 'Accepted'" [routerLink]="['/tender','list']" class="btn Rectangle mt-3">View Open Tenders </a>
+                <a *ngIf="confirmationType === 'Rejected'" [routerLink]="['/tender','list']" class="btn btn-primary accept mt-3"> View Open Tenders </a>
+                <a *ngIf="confirmationType === 'NotFound'" [routerLink]="['/tender','list']" class="btn btn-primary accept mt-3"> View Open Tenders </a>
+                <a (click)="tryAgain()">
+                    <button *ngIf="confirmationType === 'Failed'" class="btn btn-primary accept mt-3"> Try Again </button>
+                </a>
+                <a *ngIf="confirmationType === 'Denied'" [routerLink]="['/tender','list']" class="btn Rectangle mt-3"> View Open Tenders </a>
+            </div>
+        </div>
+    </div>`
+</div>

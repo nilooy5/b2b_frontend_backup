@@ -1,0 +1,85 @@
+@import 'src/scss/variables';
+
+
+::ng-deep .mat-dialog-container {
+  border-radius: 10px ;
+}
+
+.confirm-modal {
+  text-align: center;
+  padding: 0 50px 50px 50px;
+
+  img {
+    margin-bottom: 40px;
+  }
+  h4 {
+    margin-bottom: 20px;
+    font-size: $fs-header-4;
+    font-weight: $font-weight-semiBold;
+    line-height: 1.4;
+    color: $black-80;
+    font-family: $font-poppins !important;
+  }
+  p {
+    font-size: 16px;
+    margin-bottom: 55px;
+    line-height: 1.5;
+    color: rgba(10, 15, 20, 0.75);
+    font-family: $font-poppins;
+  }
+
+  .perform {
+    background: none;
+    border: none;
+    border-radius: 10px;
+    width: 150px;
+    height: 48px;
+    font-family: $font-poppins;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    color: #ffffff;
+    &-no {
+      background-color: $status-green;
+    }
+    &-yes {
+      background-color: $status-red;
+    }
+  }
+
+  .error {
+    background: none;
+    border: none;
+    border-radius: 8px;
+    width: 180px;
+    height: 40px;
+    font-family: $font-poppins;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    &-try-again {
+      background-color: $primary;
+      color: $white;
+    }
+    &-close {
+      border: solid 2px #86afff;
+      color: #437ff5;
+    }
+  }
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.close-button{
+  background: none;
+  border: none;
+}
+
+.close-icon {
+  margin-right: 5px;
+  margin-top: 12px;
+  color: #bbc0cc;
+}

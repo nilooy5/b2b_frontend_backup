@@ -1,0 +1,27 @@
+@import "../../../../../../src/scss/variables";
+.quick-purchase__cart {
+  border: 1px solid $light_bluish_grey;
+  padding: 15px;
+  border-radius: 4px;
+  background-color: $white;
+  margin-bottom: 100px;
+  .quick-purchase__cart-content {
+    padding: 20px 0 80px 0;
+    text-align: center;
+  }
+}
+.price {
+  font-family: Rubik, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.amount {
+  color: $spice-red;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+.taka-sign {
+  font-family: $font-hind-siliguri;
+}

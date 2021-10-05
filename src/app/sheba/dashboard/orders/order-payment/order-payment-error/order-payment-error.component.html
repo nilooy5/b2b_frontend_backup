@@ -1,0 +1,7 @@
+<div class="flex justify-content-center text-danger align-items-center flex-column" style="height:400px">
+    <h5 class="w-100 text-center mb-5">{{errorMessage}}</h5>
+    <button class="button button-outline button-primary" [routerLink]="['/','dashboard','orders',order.id]"
+            (click)="onDetailsClick()" *ngIf="order">View
+        Order
+    </button>
+</div>

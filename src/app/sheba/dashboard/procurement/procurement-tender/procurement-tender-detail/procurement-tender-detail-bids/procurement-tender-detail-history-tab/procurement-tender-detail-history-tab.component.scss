@@ -1,0 +1,72 @@
+@import '../../../../../../../../scss/variables';
+
+$hiring_request_status_default: #0c99f7;
+$hiring_request_status_pending: #ff8219;
+$hiring_request_status_accepted: #12b886;
+$hiring_request_status_rejected: #fa5252;
+
+::ng-deep {
+  .mat-header-row {
+    background-color: #a7b1cc;
+  }
+  table {
+
+    &.designer-table {
+
+      thead {
+        tr {
+          th.mat-header-cell {
+            font-size: 14px !important;
+            font-weight: 500 !important;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          td.mat-cell {
+            font-size: 14px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.main-content-block {
+  .main-title {
+    padding: 10px 0 8px 0;
+    h3 {
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  .hiring-request-status {
+    width: 85px;
+    height: 18px;
+    margin: 0;
+    font-size: 12px;
+    color: $white;
+    border-radius: 3px;
+    background-color: $hiring_request_status_default;
+    text-align: center;
+    display: inline-block;
+    padding: 0 !important;
+    text-transform: capitalize;
+
+    &.pending {
+      background-color: $hiring_request_status_pending;
+    }
+
+    &.accepted {
+      background-color: $hiring_request_status_accepted;
+    }
+
+    &.rejected {
+      background-color: $hiring_request_status_rejected;
+    }
+
+  }
+}

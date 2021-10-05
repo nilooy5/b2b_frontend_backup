@@ -1,0 +1,107 @@
+@import "../../../../../../../src/scss/variables";
+@import "../../../../../../../src/scss/form_components";
+
+.service-cart-item {
+  border: 1px solid $light_grey;
+  border-radius: 4px;
+  padding: 16px 24px;
+  margin-bottom: 15px;
+  .service-cart-item__img {
+    height: 50px;
+    width: 50px;
+    border-radius: 4px;
+  }
+  .service-cart-item__info {
+    flex-grow: 1;
+    padding: 0 16px;
+    p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    ul.service-cart-item__breakdown {
+      position: relative;
+      padding-left: 20px;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        border-left: 4px solid $cream_grey;
+        height: 100%;
+      }
+      li {
+        font-size: 1rem;
+        color: $mid_grey;
+      }
+    }
+
+  }
+  .service-cart-item__price {
+    font-size: 1.25rem;
+    margin-right: 24px;
+  }
+  .service-cart-item__edit {
+    .service-cart-item__edit__counter {
+      display: flex;
+      flex-direction: row-reverse;
+      button {
+        height: 30px;
+        width: 30px;
+        padding: 5px;
+        i {
+          font-size: 1rem;
+        }
+      }
+      input {
+        height: 30px;
+        max-width: 90px;
+        background-color: #f5f5f5;
+        border: none;
+        font-size: 1rem;
+        margin: 0 10px;
+        text-align: center;
+        padding: 3px;
+        position: relative;
+        top: 1px;
+        border-radius: 4px;
+        &:disabled {
+          background-color: #f5f5f5;
+        }
+      }
+    }
+    .service-cart-item__edit__remove {
+      button {
+        margin-left: 16px;
+        color: $spice-red;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        background-color: #f5f5f5;
+        padding: 0;
+        text-align: center;
+        padding-top: 5px;
+        i {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  .taka-sign {
+    font-family: $font-hind-siliguri;
+  }
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input[id='quantity']::-webkit-outer-spin-button,
+input[id='quantity']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number][id='quantity'] {
+  -moz-appearance: textfield;
+}

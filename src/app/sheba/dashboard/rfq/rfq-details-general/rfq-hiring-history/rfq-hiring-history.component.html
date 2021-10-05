@@ -1,0 +1,79 @@
+<div class="main-table-block" *ngIf="show_history" style="margin-bottom: 50px;">
+    <table mat-table class="main-table-theme" [dataSource]="dataSource">
+        <ng-container matColumnDef="service_provider">
+            <th mat-header-cell *matHeaderCellDef style="width: 30%">
+                Service Provider
+            </th>
+            <td mat-cell *matCellDef="let element">
+               <span class="history-text"> {{ element.service_provider.name }} </span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef style="width: 20%">
+                Date
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <span class="history-text"> {{ element.created_at }} </span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="quotation">
+            <th mat-header-cell *matHeaderCellDef style="width: 12%">
+                Quotation
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <span class="history-text"> <span class="history-taka">৳</span>{{ element.quotation_price }}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="requested">
+            <th mat-header-cell *matHeaderCellDef style="width: 12%">
+                Requested
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <span class="history-text"><span class="history-taka">৳</span>{{ element.requested_price }}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef style="width: 11%">
+                Status
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <div class="p-0 m-0" [ngSwitch]="element.status">
+                    <span class="hiringStatus accepted" *ngSwitchCase="'Accepted'"> {{ element.status }} </span>
+                    <span class="hiringStatus pending" *ngSwitchCase="'Pending'"> {{ element.status }} </span>
+                    <span class="hiringStatus rejected" *ngSwitchCase="'Rejected'"> {{ element.status }} </span>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef style="width: 15%"></th>
+            <td mat-cell *matCellDef="let element">
+                <span *ngIf="element.status === 'Accepted'" id="actionColumnContents" (click)="viewOrder(element.id)" >
+                    View Order <i class="material-icons">keyboard_arrow_right</i>
+                </span>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row, columns: displayedColumns;" style="cursor: pointer"></tr>
+    </table>
+</div>
+
+<div *ngIf="show_history === false">
+    <div class="container-fluid no-history-container">
+        <div class="row">
+            <div class="col-md-12 bg-white no-history-content">
+                <img class="no-history-img" src="../../../../../assets/svg/no_rfq_list.svg" alt="Success">
+                <p class="no-history-heading">No hiring request sent yet!</p>
+                <p class="no-history-text">
+                    Check the hiring logs from here once your send hire request to vendor from received quotations.
+                </p>
+                <button class="btn btn-primary no-history-btn" (click)="redirectToBidding()">View Quotations</button>
+            </div>
+        </div>
+    </div>
+</div>

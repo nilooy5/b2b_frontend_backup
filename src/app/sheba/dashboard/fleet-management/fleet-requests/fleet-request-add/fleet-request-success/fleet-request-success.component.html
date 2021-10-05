@@ -1,0 +1,29 @@
+<div class="b2b-breadcrumb">
+    <a [routerLink]="['/','dashboard','fleet-management','assignments']">Fleet Management</a><span>/</span>
+    <a [routerLink]="['/','dashboard','fleet-management','requests']">Requests</a> <span>/</span>
+    <span>Create</span>
+</div>
+<div class="main-content-container">
+    <div class="main-content-block">
+        <div class="content-block-content align-items-center bg-white p-40">
+            <div class="content-block-image mb-4">
+                <img src="" [src]="'/assets/img/statics/sent_illustration.png'" alt="">
+            </div>
+            <div class="content-block-title mb-4">
+                Request placed successfully
+            </div>
+<!--            <div class="content-block-sub-title">-->
+<!--                lorem ipsum dolor sit amet consectetur adipiscing elit-->
+<!--            </div>-->
+            <div class="content-block-actions">
+                <button class="button button-primary mr-4"
+                        [routerLink]="['/','dashboard','fleet-management','requests',requestId,'details']">View
+                    Details
+                </button>
+                <button class="button button-primary button-outline"
+                        [routerLink]="['/','dashboard','fleet-management','requests']"> Add Another
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+@import "src/scss/variables";
+
+.no-vendor {
+  &-container {
+    padding: 50px 60px;
+    display: flex;
+    flex-direction: column;;
+    align-items: center;
+    text-align: center;
+  }
+
+  &-image {
+    margin-bottom: 15px;
+  }
+
+  &-message {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(10, 15, 20, 0.75);
+    text-align: center;
+  }
+
+  &-button {
+    border-radius: 8px !important;
+    font-size: 14px;
+    font-weight: $font-weight-bold;
+    line-height: 1.29;
+    text-align: center;
+    min-height: 0;
+    border: solid 1.5px $primary;
+    color: #437ff5;
+    padding: 10px 46px;
+  }
+}
+
+
+.vendor {
+
+  &__list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-bottom: 0;
+    justify-content: center;
+    &-item {
+      list-style: none;
+      flex: 0 0 33.33%;
+      padding: 0 20px 20px 0;
+
+      @media only screen and (max-width: 1100px) {
+        flex: 0 0 50%;
+      }
+    }
+
+  }
+
+  &-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #f7f9fc;
+    border-radius: 10px;
+    position: relative;
+    max-height: 93px;
+    cursor: pointer;
+
+    &-active {
+      border: solid 1.5px $primary;
+
+      &::before,
+      &::after {
+        content: '';
+        border-color: transparent;
+        border-style: solid;
+      }
+
+      &::after {
+        position: absolute;
+        top: 0;
+        right: 5px;
+        content: '\2713';
+        font-size: 18px;
+        line-height: 22px;
+        font-weight: bold;
+        color: white;
+      }
+
+      &::before {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        //border-radius: 0;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-width: 15px;
+        border-color: $primary;
+        //border-left-color: green;
+        //border-top-color: green;
+      }
+    }
+
+    &__image {
+      height: 60px;
+      width: 60px;
+      border-radius: 5px;
+      margin-right: 20px;
+      object-fit: cover;
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .name {
+        color: rgba(0, 0, 0, 0.8);
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 1.5;
+        margin-bottom: 5px;
+      }
+
+      .phone {
+        color: rgba(10, 15, 20, 0.75);
+        line-height: 1.57;
+        font-size: 14px;
+        margin-bottom: 0;
+        word-break: break-all;
+      }
+    }
+  }
+
+}

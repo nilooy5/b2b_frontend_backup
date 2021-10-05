@@ -1,0 +1,31 @@
+@import "../rfq-orders-details.component";
+@import "../../../../../../../../scss/colors";
+
+.fields {
+  padding-bottom: 15px;
+
+  &__label {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: $black-80;
+    padding-bottom: 10px;
+  }
+
+  &__data {
+    font-size: 14px;
+    line-height: 1.57;
+    color: rgba(10, 15, 20, 0.75);
+  }
+
+  &:last-of-type {
+    padding-bottom: 0;
+  }
+}
+
+.tender-details-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #437ff5;
+  cursor: pointer;
+}

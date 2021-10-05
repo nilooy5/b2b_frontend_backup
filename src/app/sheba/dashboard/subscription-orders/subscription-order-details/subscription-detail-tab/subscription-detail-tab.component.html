@@ -1,0 +1,65 @@
+<div class="main-content-container">
+    <div class="main-content-block">
+        <div class="row">
+            <div class="col-md-4">
+                <h6 class="py-3">General Info</h6>
+                <div class="p-30 bg-white">
+<!--                    <div class="flex w-100 justify-content-start align-items-start mb-4">-->
+<!--                        <div class="flex flex-column align-items-start">-->
+<!--                            <div class="mat-subheader mb-2 fw-5" style="font-size:14px">Procurement</div>-->
+<!--                            <a href="#" style="color: #2f38f1; font-size: 16px; font-weight: 500"># {{procument}}</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <div class="flex w-100 justify-content-start align-items-start mb-4">
+                        <div class="flex flex-column align-items-start">
+                            <div class="mat-subheader mb-2 fw-5"  style="font-size:14px">Price</div>
+                            <span class="text-muted" style="font-size: 14px;">৳{{price}}</span>
+                        </div>
+                    </div>
+                    <div class="flex w-100 justify-content-start align-items-start mb-4">
+                        <div class="flex flex-column align-items-start">
+                            <div class="mat-subheader mb-2 fw-5"  style="font-size:14px">Duration</div>
+                            <span class="text-muted" style="font-size: 14px;">{{duration}}</span>
+                        </div>
+                    </div>
+                    <div class="flex w-100 justify-content-start align-items-start mb-4">
+                        <div class="flex flex-column  align-items-start">
+                            <div class="mat-subheader mb-2 fw-5"  style="font-size:14px">Order Complete</div>
+                            <span class="text-muted" style="font-size: 14px;">{{completedOrder}} out of {{totalOrder}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div *ngIf="additionalInfo">
+                    <h6 class="py-3">Additional Information</h6>
+
+                    <div class="layout__card" style="margin-bottom: 30px">
+                        <div class="p-4" style="word-break: break-word">
+                            <p>{{ additionalInfo }}</p>
+                        </div>
+                    </div>
+
+<!--                    <div class="layout__card" >-->
+<!--                        <p >{{ additionalInfo }}</p>-->
+<!--                    </div>-->
+                </div>
+
+            </div>
+
+            <div class="col-md-8">
+                <h6 class="py-3">Service Details</h6>
+                <div class="layout__card" style="margin-bottom: 30px">
+                    <div class="p-4">
+                        <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(description)"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

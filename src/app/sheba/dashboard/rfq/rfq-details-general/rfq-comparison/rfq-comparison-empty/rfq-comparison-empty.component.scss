@@ -1,0 +1,43 @@
+@import 'src/scss/variables';
+
+
+.empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 5% 10% 6% 10%;
+
+  .image {
+    margin-bottom: 32px;
+  }
+
+  .title {
+    font-size: $fs-header-3;
+    font-weight: $font-weight-semiBold;
+    line-height: 1.33;
+    text-align: center;
+    color: $black-80;
+    margin-bottom: 13px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    color: rgba(10, 15, 20, 0.75);
+    margin-bottom: 15px;
+  }
+
+  .button-invite {
+    border-radius: 8px;
+    background: $primary;
+    color: $white;
+    font-size: 16px;
+    font-weight: $font-weight-semiBold;
+    min-height: 0;
+    padding: 8px 77px;
+  }
+
+
+}

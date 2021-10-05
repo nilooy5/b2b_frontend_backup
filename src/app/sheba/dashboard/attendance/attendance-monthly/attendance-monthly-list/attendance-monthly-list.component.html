@@ -1,0 +1,83 @@
+<app-attendance-monthly-list-filter
+    [departments]="departments"
+    [filteredAttendances]="filteredAttendances"
+    [totalAttendancesCount]="totalAttendancesCount"
+    [limit]="getLimit()"
+    [dataOffset]="dataOffset"
+    [currentLength]="currentLength"
+    [sort]="sortObj"
+    (filterEmitter)="setFilteredAttendancesList($event)"
+    (searchInputEmitter)="handleSearch($event)"
+    (alphabeticFilter)="handleAlphabeticSort($event)">
+</app-attendance-monthly-list-filter>
+<div class="main-table-block ipad-design">
+<!--<div class="main-content-container">-->
+<!--    <div class="main-content-block">-->
+<!--        <div class="main-content-table">-->
+<!--            <table id="table" *ngIf = "(filteredAttendances.length && dataSource)" mat-table [dataSource]="dataSource" class="table designer-table">-->
+            <table  *ngIf = "(filteredAttendances.length && dataSource)" mat-table class="main-table-theme" [dataSource]="dataSource">
+                <ng-container matColumnDef="employeeName">
+                    <th mat-header-cell *matHeaderCellDef style="width: 24%;" > Employee </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>{{ element.member.name }}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="department">
+                    <th mat-header-cell *matHeaderCellDef> Department </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>{{ element.department.name }}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="days">
+                    <th mat-header-cell *matHeaderCellDef> Days &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>{{ element.attendance.working_days }}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="present">
+                    <th mat-header-cell *matHeaderCellDef>
+                        Present
+                        <i class="fas fa-sort pl-2 cursor-pointer" (click)="sortPresent()"></i>
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>{{ element.attendance.present }}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="on_leave">
+                    <th mat-header-cell *matHeaderCellDef>
+                        On Leave
+                        <i class="fas fa-sort pl-2 cursor-pointer" (click)="sortOnLeave()"></i>
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>{{ element.attendance.on_leave }}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="absent">
+                    <th mat-header-cell *matHeaderCellDef>
+                        Absent
+                        <i class="fas fa-sort pl-2 cursor-pointer" (click)="sortAbsent()"></i>
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>{{ element.attendance.absent }}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element" id="actionsColumnContent">
+                        <i class="material-icons">keyboard_arrow_right</i>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+                <tr mat-row *matRowDef="let row, columns: displayedColumns;" (click)="redirectToAttendanceDetails(row)" style="cursor: pointer"></tr>
+            </table>
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+</div>

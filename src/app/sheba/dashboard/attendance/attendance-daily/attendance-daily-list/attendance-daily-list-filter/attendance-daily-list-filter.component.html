@@ -1,0 +1,87 @@
+<div class="d-flex mx-0 filter-ipad-design" style="padding-bottom: 15px">
+    <mat-form-field class="attendance_datepicker datePicker" appearance="outline">
+        <span class="datepicker-date-text">Date</span>
+        <input matInput class="dateInput" [matDatepicker]="myDatepicker" [max]="maxDate" (dateChange)="selectDate($event)"  placeholder="Current Date">
+        <span class="attendance_datepicker__toggle">
+                    <mat-datepicker-toggle [for]="myDatepicker" matsuffix>
+                        <mat-icon matDatepickerToggleIcon><i class="material-icons">date_range</i></mat-icon>
+                    </mat-datepicker-toggle>
+                </span>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="sorting__status">
+        <label>
+            <select (change)="selectCheckInStatus($event)">
+                <option hidden>Check in</option>
+                <option *ngFor="let status of check_in_statuses" [value]="status.key">
+                    {{ status.title }}
+                </option>
+            </select>
+            <i class="material-icons">keyboard_arrow_down</i>
+        </label>
+    </div>
+
+    <div class="sorting__status">
+        <label>
+            <select (change)="selectCheckOutStatus($event)">
+                <option hidden>Check out</option>
+                <option *ngFor="let status of check_out_statuses" [value]="status.key">
+                    {{ status.title }}
+                </option>
+            </select>
+            <i class="material-icons">keyboard_arrow_down</i>
+        </label>
+    </div>
+
+    <div class="sorting__department">
+        <label>
+            <select (change)="selectDepartment($event)" style="width: 155px;">
+                <option hidden>Department</option>
+                <option value="all" *ngIf="departments.length">All</option>
+                <option *ngFor=" let department of departments"
+                        [value]="department.id">{{ department.name }}</option>
+                <option *ngIf="!departments.length" disabled>No Departments Available</option>
+            </select>
+            <i class="material-icons">keyboard_arrow_down</i>
+        </label>
+    </div>
+
+    <div class="search-input ml-auto">
+        <i class="material-icons">search</i>
+<!--        <input type="text" class="form-control" placeholder="Search" (keyup)="search($event)">-->
+        <input type="text" class="form-control" placeholder="Search" (input)="search($event)">
+    </div>
+</div>
+
+<div class="row mx-0 justify-content-between">
+
+    <div class="col px-0 align-self-center">
+        <h5 class="mb-0">{{ totalAttendancesCount }} Records found</h5>
+    </div>
+
+    <div class="col px-0 d-flex justify-content-end">
+
+<!--        <div class="sorting__alphabetically mr-20">-->
+<!--            <select (change)="alphabeticSort($event)">-->
+<!--                <option hidden>Sort: Name (Alphabetically)</option>-->
+<!--                <option value="ascending">Sort: Name (A-Z)</option>-->
+<!--                <option value="descending">Sort: Name (Z-A)</option>-->
+<!--            </select>-->
+<!--            <i class="material-icons">keyboard_arrow_down</i>-->
+<!--        </div>-->
+        <div class="align-self-center pr-3">
+            <span class="pagination_number"> {{ dataOffset }} - {{ currentLength }} of {{ totalAttendancesCount }} </span>
+        </div>
+        <div id="next-previous-button" class="d-flex">
+            <button class="btn" id="prev-button" [class.disabled]="isPreviousPageUnavailable()" (click)="previousPage()">
+                <i class="material-icons">keyboard_arrow_left</i>
+            </button>
+            <button class="btn" id="next-button" [class.disabled]="isNextPageUnavailable()" (click)="nextPage()">
+                <i class="material-icons">keyboard_arrow_right</i>
+            </button>
+        </div>
+
+    </div>
+
+</div>

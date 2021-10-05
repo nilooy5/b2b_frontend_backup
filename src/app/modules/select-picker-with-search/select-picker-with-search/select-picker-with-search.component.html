@@ -1,0 +1,29 @@
+<div class="form-item horizontal" [tabIndex]="0">
+    <div #inputItem class="select-picker-input d-block">
+        <mat-form-field appearance="outline" [ngStyle]="inputStyle">
+            <mat-select [formControl]="selector" (click)="showDrop(inputItem,templateItem)"
+                        (focus)="showDrop(inputItem,templateItem)" [tabIndex]="tabIndex"
+                        [placeholder]="placeholder" class="select-picker-selector" [aria-label]="placeholder"
+            >
+                <mat-option *ngFor="let item of items" [value]="item[bindValue]">{{item[bindTitle]}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <ng-template #templateItem>
+        <div class="select-picker" cdkTrapFocus>
+            <div class="form-item horizontal">
+                <mat-form-field appearance="outline">
+                    <input id="searchElement" [(ngModel)]="search" matInput placeholder="Search ..."
+                           (keyup)="onKeydown($event)" (blur)="OnBlur()">
+                    <span matSuffix><i class="material-icons">search</i></span>
+                </mat-form-field>
+            </div>
+            <div class="select-picker-items" role="listbox">
+                <app-select-picker-item *ngFor="let item of items|filter:queryFields:search" [item]="item"
+                                        [bindTitle]="bindTitle" (click)="OnClick(item)"
+                                        [bindSubtitle]="bindSubtitle" [bindImage]="bindImage"></app-select-picker-item>
+            </div>
+        </div>
+    </ng-template>
+</div>

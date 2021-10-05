@@ -1,0 +1,49 @@
+<div class="">
+    <div class="main-content-container">
+        <div class="main-content-block">
+            <!--            <div class="main-content-inner-block">-->
+            <!--                <div class="main-content-inner-block-left">-->
+            <!--                    <ul class="main-content-inner-block-nav">-->
+            <!--                        <li class="main-content-inner-block-nav-item">-->
+            <!--                            <a routerLinkActive="active" [routerLink]="['.']">General</a>-->
+            <!--                        </li>-->
+            <!--                        <li class="main-content-inner-block-nav-item">-->
+            <!--                            <a routerLinkActive="active" [routerLink]="['.', 'schedule']">Schedule</a>-->
+            <!--                        </li>-->
+            <!--                        <li class="main-content-inner-block-nav-item">-->
+            <!--                            <a routerLinkActive="active" [routerLink]="['.', 'history']">History</a>-->
+            <!--                        </li>-->
+            <!--                    </ul>-->
+            <!--                </div>-->
+            <!--                <div class="main-content-inner-block-content" style="padding: 16px">-->
+            <!--                    <router-outlet></router-outlet>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <div class="main-tab-block">
+                <div class="main-tab">
+                    <ul class="main-tab-list">
+                        <li class="main-tab-item"><a routerLinkActive="active"
+                                                     [routerLink]="['.','general']"><span>General</span></a>
+                        </li>
+                        <li class="main-tab-item"><a routerLinkActive="active"
+                                                     [routerLink]="['.','schedule']"><span>Schedule</span>
+                            <!--                            <span class="badge badge-secondary badge-pill">{{form.items.length}}</span>-->
+                        </a></li>
+                        <li class="main-tab-item"><a routerLinkActive="active"
+                                                     [routerLink]="['.','history']"><span>History</span>
+                            <!--                            <span class="badge badge-secondary badge-pill">{{form.inspections.length}}</span>-->
+                        </a></li>
+                        <li class="main-tab-item"><a routerLinkActive="active"
+                                                     [routerLink]="['.','items']"><span>Items</span>
+                            <!--                            <span class="badge badge-secondary badge-pill">{{form.inspections.length}}</span>-->
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="main-tab-content">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

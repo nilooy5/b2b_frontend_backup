@@ -1,0 +1,20 @@
+
+.login {
+  &-title {
+    width: 100%;
+    text-align: center;
+  }
+
+  &-sub-title {
+    text-align: center;
+  }
+  &-form{
+    margin: 60px 0 80px;
+  }
+}
+.block{
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

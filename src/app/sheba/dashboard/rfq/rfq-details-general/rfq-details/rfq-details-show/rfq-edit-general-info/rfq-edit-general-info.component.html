@@ -1,0 +1,48 @@
+<div mat-dialog-content>
+    <div class="dialog-content-inner">
+        <div class="rfq-general-info-edit-modal">
+          <div class="rfq-general-info-edit-header">
+              <p class="rfq-general-info-edit-header-content">General Informations</p>
+          </div>
+           <div class="rfq-general-info-edit-content">
+               <div class="edit-form-field">
+                   <p>Maximum Number of Participant</p>
+                   <mat-form-field appearance="none">
+                       <mat-select formControlName="number_of_participants">
+<!--                           <mat-option>10 participants</mat-option>-->
+<!--                           <mat-option>20 participants</mat-option>-->
+<!--                           <mat-option>30 participants</mat-option>-->
+                       </mat-select>
+                   </mat-form-field>
+               </div>
+               <div class="edit-form-field">
+                   <p>Last date of submission</p>
+                   <div class="date-picker w-100">
+                       <mat-datepicker #lastDateOfSubmission></mat-datepicker>
+                       <input class="form-control"  id="lastDateOfSubmission"
+                              matInput [matDatepicker]="lastDateOfSubmission"
+                              (focus)="lastDateOfSubmission.open()"
+                              [min]="minDate" formControlName="last_date_of_submission"readonly>
+                       <span class="vehicle-add__date-picker__toggle">
+                            <mat-datepicker-toggle matSuffix [for]="lastDateOfSubmission"></mat-datepicker-toggle>
+                        </span>
+                   </div>
+               </div>
+               <div class="edit-form-field">
+                   <p>Delivery Date</p>
+                   <div class="date-picker w-100">
+                       <app-material-date-range-picker
+                           [initialDateRange]="deliveryTimelineObj"
+                           (selectedDateRange)="handleDeliveryTimeline($event)"></app-material-date-range-picker>
+                   </div>
+               </div>
+               <div class="edit-form-field">
+                   <p>Payment Option</p>
+               </div>
+           </div>
+            <div class="rfq-general-info-edit-footer">
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+@import "../../../../../../../src/scss/variables";
+
+.attachment {
+  padding: 24px;
+  .attachment__item {
+    padding: 16px 0;
+    border-bottom: 1px solid #e5ebfa;
+    font-size: 12px;
+    .attachment__buttons {
+      a {
+        color: $theme-color;
+        margin-left: 10px;
+        i {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+.button-small {
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 6px 25px;
+  text-transform: uppercase;
+  line-height: 1.29;
+  height: auto;
+  font-weight: 500;
+}
+

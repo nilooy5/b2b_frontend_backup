@@ -1,0 +1,16 @@
+<form [formGroup]="dateRangeForm">
+    <label class="m-0 d-block" for="date-ranger-picker-material"></label>
+    <input readonly type="text" ngxDaterangepickerMd
+           id="date-ranger-picker-material"
+           formControlName="selectedDateRange"
+           class="form-control"
+           [placeholder]="placeholder"
+           [showDropdowns]="showDropdowns"
+           [showCancel]="showCancelButton"
+           [autoApply]="autoApply"
+           [minDate]="minimumDate"
+           [opens]="calendarOpeningPosition"
+           [drops]="calendarDropPosition"
+           [locale]="locale"
+           (change)="onSelectDate()" />
+</form>

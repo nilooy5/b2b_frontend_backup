@@ -1,0 +1,21 @@
+.schedule-picker {
+  &__slot {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #1dbe7e;
+    cursor: pointer;
+    span {
+      text-transform: lowercase;
+      color: rgba(0, 0, 0, 0.5) !important;
+    }
+    &.active {
+      background-color: rgba(29, 190, 126, 0.05);
+      border: 1px solid #1dbe7e;
+      span {
+        color: #1dbe7e !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<div class="navigation-container">
+        <div class="navigation-inner" [ngClass]="{open: open}">
+            <nav mat-tab-nav-bar>
+                <a mat-tab-link
+                   *ngFor="let link of navigationLinks"
+                   [routerLink]="link.path"
+                   [queryParams]="link.queryParams"
+                   routerLinkActive="active" #rla="routerLinkActive"
+                   [active]="rla.isActive">
+                    {{link.label}}
+                </a>
+            </nav>
+            <div id="breadcrumbHtml" [innerHTML]="routeNavHtml"></div>
+        </div>
+</div>

@@ -1,0 +1,91 @@
+
+$flex_align: (
+        'start':'flex-start',
+        'end':'flex-end',
+        'space-between':'space-between',
+        'space-around':'space-around',
+        'center':'center',
+        'stretch':'stretch'
+);
+
+//Flex Classes
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  @for $i from 1 to 10 {
+    &-#{$i*10} {
+      &:not(:last-child) {
+        padding-right: 5px;
+        flex: 1 $i*10%;
+      }
+      &:last-child {
+        flex: 1 $i*10%;
+      }
+    }
+  }
+  &-column {
+    flex-direction: column;
+    &-wrap {
+      flex-flow: column wrap;
+    }
+  }
+  &-grow {
+    @for $i from 0 through 10 {
+      &-#{$i*10} {
+        flex-grow: $i*10;
+      }
+    }
+  }
+  &-shrink {
+    @for $i from 0 through 10 {
+      &-#{$i*10} {
+        flex-shrink: $i*10;
+      }
+    }
+  }
+  &-full {
+    flex-grow: 1;
+    &-height {
+      height: 100vh;
+    }
+  }
+  @for $i from 0 through 10 {
+    &-#{$i*10} {
+      width: $i*10%;
+    }
+  }
+  &-item {
+    width: 100%;
+    flex: 1 auto;
+    display: flex;
+  }
+  &-wrap {
+    flex-wrap: wrap;
+  }
+  &-nowrap {
+    flex-wrap: nowrap;
+  }
+  // Flex Align Classes
+  @each $aligns,
+  $align-content in $flex_align {
+    &-#{$aligns} {
+      justify-content: #{$align-content};
+      @each $al,
+      $al-ct in $flex_align {
+        &-#{$al} {
+          justify-content: #{$align-content};
+          align-items: #{$al-ct};
+        }
+      }
+    }
+    &-align-#{$aligns} {
+      align-self: #{$align-content};
+    }
+    &-just-#{$aligns} {
+      justify-self: #{$align-content};
+    }
+  }
+}

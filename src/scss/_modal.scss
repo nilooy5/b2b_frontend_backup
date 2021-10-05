@@ -1,0 +1,19 @@
+@import "../../src/scss/variables";
+
+.generic-modal {
+  text-align: center;
+  .generic-modal__header {
+    border-bottom: 1px solid $light-grey;
+    position: relative;
+    p {
+      margin: 15px auto;
+      text-align: center;
+      font-size: 18px;
+    }
+    .close {
+      position: absolute;
+      top: 0;
+      right: 24px;
+    }
+  }
+}

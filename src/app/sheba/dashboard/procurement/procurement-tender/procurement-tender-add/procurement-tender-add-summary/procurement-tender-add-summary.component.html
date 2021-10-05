@@ -1,0 +1,324 @@
+<div class="layout__card">
+    <div class="row procurement-summary">
+        <div class="col-md-3 procurement-summary__title align-self-center">
+            <h3>
+                Summary
+            </h3>
+        </div>
+
+        <div class="col-md-9 procurement-summary__btn">
+            <div class="float-right">
+                <button class="btn button--primary--outline procurement-summary__btn__draft" (click)="inviteVendors(0)">
+                    <span>Invite Vendors</span>
+                </button> &nbsp; &nbsp;
+                <button class="btn button--primary--outline procurement-summary__btn__draft" [disabled]="submitting"
+                        (click)="submitProcurement(0)">
+                    <span *ngIf="!savingAsDraft;else loader">Save as Draft</span>
+                    <ng-template #loader><span><i class="fas fa-spinner fa-spin" style="font-size: 20px"></i></span></ng-template>
+                </button> &nbsp; &nbsp;
+                <button class="btn button--primary--filled procurement-summary__btn__publish" [disabled]="submitting" (click)="submitProcurement(1)">
+                    <span *ngIf="!publishing;else loader">Publish</span>
+                    <ng-template #loader><span><i class="fas fa-spinner fa-spin" style="font-size: 20px"></i></span></ng-template>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
+
+<div class="main-content-container" id="print-container">
+    <div class="main-content-block">
+        <div class="row">
+
+            <!-- START: General Information -->
+
+            <div class="general-information" [ngClass]="status === false ? 'col-md-12' : 'col-md-5'">
+
+                <div class="d-flex mb-1 general-information__info">
+                    <div class="mr-auto">
+                        <h6 class="py-3">General Information</h6>
+                    </div>
+                    <div class="align-self-center">
+                        <button class="btn button--primary--outline procurement-summary__btn__edit print-edit-btn"
+                                [routerLink]="['/', 'dashboard', 'procurement', 'create']" [queryParams]="{route: 'summary'}">
+                            Edit
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white general-information__card">
+                    <div class="row">
+                        <div [ngClass]="status === false ? 'col-md-5' : 'col-md-12 order-last'">
+
+                            <div class="d-flex flex-column mb-2 general-information__card__section">
+                                <h5 class="fw-4 text-muted"> Number of Participate </h5>
+                                <p> {{ generalInformation.no_of_vendors }} </p>
+                            </div>
+
+                            <div class="d-flex flex-column mb-2 general-information__card__section">
+                                <h5 class="fw-4 text-muted"> Last Date of Submission </h5>
+                                <p> {{ generalInformation.last_date_of_submission | date: 'dd/MM/yyyy' }} </p>
+                            </div>
+
+                            <div class="d-flex flex-column mb-2 general-information__card__section">
+                                <h5 class="fw-4 text-muted"> Delivery Date </h5>
+                                <p>
+                                    {{ generalInformation.delivery_date.from | date: 'dd/MM/yyyy' }} -
+                                    {{ generalInformation.delivery_date.to | date: 'dd/MM/yyyy'}}
+                                </p>
+                            </div>
+
+                            <div class="d-flex flex-column general-information__card__section">
+                                <h5 class="fw-4 text-muted"> Payment Option </h5>
+                                <p> {{ generalInformation.payment_option }} </p>
+                            </div>
+
+                        </div>
+
+                        <div [ngClass]="status === false ? 'col-md-5' : 'col-md-12 order-first'">
+
+                            <div class="d-flex flex-column mb-2 general-information__card__section">
+                                <h5 class="fw-4 text-muted"> RFQ Title </h5>
+                                <p> {{ generalInformation.title }} </p>
+                            </div>
+
+                            <div class="d-flex flex-column mb-2 general-information__card__section">
+                                <h5 class="fw-4 text-muted"> Labels </h5>
+                                <p> {{ generalInformation.labels }} </p>
+                            </div>
+
+                            <div class="d-flex flex-column mb-2 general-information__card__section" *ngIf="!generalInformation.is_advanced">
+                                <h5 class="fw-4 text-muted"> Additional Information </h5>
+                                <p style="font-weight: 400"> {{ additionalInformation }} </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="attached-documents" *ngIf="generalInformation.attachments.length > 0">
+
+                    <div class="d-flex mb-1">
+                        <div class="pr-2">
+                            <h6 class="py-3">Documents</h6>
+                        </div>
+                        <div class="align-self-center">
+                            <span class="attached-documents__amount" style="">{{ generalInformation.attachments.length }}</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white attached-documents__card">
+                        <div *ngIf="generalInformation.attachments.length">
+                            <div *ngFor="let item of generalInformation.attachments" class="attached-documents__item d-flex justify-content-between">
+                                <span>{{ limitString(item.name) }}</span>
+
+                                <div class="attached-documents__item-buttons">
+                                    <a (click)="viewImage(item.file)">
+                                        <i class="material-icons">remove_red_eye</i>
+                                    </a>
+                                    <a [href]="item.file" target="_blank" [download]="item.name"><i
+                                        class="material-icons">file_download</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- END: Generation Information -->
+
+
+
+            <!-- START: If Procurement Type is ADVANCED   -->
+
+            <div class="col-md-7 advanced-rfq" *ngIf="status === true">
+
+                <!-- START: Price Quotation -->
+
+                <div class="pb-5 price-quotation" *ngIf="generalInformation.needs_price_quotation === true">
+                    <div class="d-flex mb-3 price-quotation__info">
+                        <div class="mr-auto">
+                            <h6>Price Quotation</h6>
+                        </div>
+                        <div class="align-self-center">
+                            <button class="btn button--primary--outline procurement-summary__btn__edit print-edit-btn"
+                                    [routerLink]="['/', 'dashboard', 'procurement', 'create', 'price-quotation']"
+                                    [queryParams]="{route: 'summary'}" >
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+
+                    <mat-table class="table-margin-bottom" #table [dataSource]="priceQuotationDataSource">
+
+                        <ng-container matColumnDef="serialNo">
+                            <mat-header-cell *matHeaderCellDef>SL NO</mat-header-cell>
+                            <mat-cell *matCellDef="let row; let i = index">
+                                <span>{{ i + 1 }}</span>
+                            </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="itemName">
+                            <mat-header-cell *matHeaderCellDef> Item Name / Description</mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                                <span> {{ row.title }} </span>
+                            </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="specification">
+                            <mat-header-cell *matHeaderCellDef> Specification </mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                                <span> {{ row.short_description }} </span>
+                            </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="unit">
+                            <mat-header-cell *matHeaderCellDef> Unit </mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                                <span> {{ row.unit }} </span>
+                            </mat-cell>
+                        </ng-container>
+
+
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+                    </mat-table>
+                </div>
+
+                <!-- END: Price Quotation-->
+
+
+                <!-- START: Technical Evaluation -->
+
+                <div class="pb-5 technical-evaluation" *ngIf="generalInformation.needs_technical_evaluation === true">
+                    <div class="d-flex mb-3 technical-evaluation__info">
+                        <div class="mr-auto">
+                            <h6>Technical Evaluation</h6>
+                        </div>
+                        <div class="align-self-center">
+                            <button class="btn button--primary--outline procurement-summary__btn__edit print-edit-btn"
+                                    [routerLink]="['/', 'dashboard', 'procurement', 'create', 'technical-evaluation']"
+                                    [queryParams]="{route: 'summary'}">
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white technical-evaluation__card">
+                        <div *ngFor="let item of technicalEvaluationQuestions">
+                            <div class="flex w-100 justify-content-start align-items-start pb-4 pt-3">
+                                <div class="w-50">
+                                    <div class="mat-subheader mb-2 technical-evaluation__card__title">
+                                        {{ item.title }}
+                                    </div>
+
+                                    <section *ngIf="item.type === 'text'" >
+                                        <mat-form-field>
+                                            <input matInput class="form-control" type="text" placeholder="Short answer" [disabled]="true">
+                                        </mat-form-field>
+                                    </section>
+
+                                    <section *ngIf="item.type === 'textarea'">
+                                        <mat-form-field>
+                                            <input matInput class="form-control" type="text" placeholder="Long" [disabled]="true">
+                                        </mat-form-field>
+                                    </section>
+
+                                    <section *ngIf="item.type === 'radio'">
+                                        <div *ngFor="let option of item.options; let o = index;" style="padding-top: 25px;">
+                                            <mat-radio-button [disabled]="true">
+                                                {{ option }}
+                                            </mat-radio-button>
+                                        </div>
+
+                                    </section>
+
+                                    <section *ngIf="item.type === 'checkbox'">
+                                        <div *ngFor="let option of item.options; let o = index;" style="padding-top: 25px;">
+                                            <mat-checkbox [disabled]="true">
+                                                {{ option }}
+                                            </mat-checkbox>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- END: Technical Evaluation -->
+
+
+                <!-- START: Company Evaluation-->
+
+                <div class="pb-5 company-evaluation" *ngIf="generalInformation.needs_company_evaluation === true">
+                    <div class="d-flex mb-3 company-evaluation__info">
+                        <div class="mr-auto">
+                            <h6>Company Evaluation</h6>
+                        </div>
+                        <div class="align-self-center">
+                            <button class="btn button--primary--outline procurement-summary__btn__edit print-edit-btn"
+                                    [routerLink]="['/', 'dashboard', 'procurement', 'create', 'company-evaluation']"
+                                    [queryParams]="{route: 'summary'}">
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white company-evaluation__card">
+                        <div *ngFor="let item of companyEvaluationQuestions">
+                            <div class="flex w-100 justify-content-start align-items-start pb-4 pt-3">
+                                <div class="w-50">
+                                    <div class="mat-subheader mb-2 company-evaluation__card__title">
+                                        {{ item.title }}
+                                    </div>
+
+                                    <section *ngIf="item.type === 'text'">
+                                        <mat-form-field>
+                                            <input matInput class="form-control" type="text" placeholder="Short answer" [disabled]="true">
+                                        </mat-form-field>
+                                    </section>
+
+                                    <section *ngIf="item.type === 'textarea'">
+                                        <mat-form-field>
+                                            <input matInput class="form-control" type="text" placeholder="Long" [disabled]="true">
+                                        </mat-form-field>
+                                    </section>
+
+                                    <section *ngIf="item.type === 'radio'">
+                                        <div *ngFor="let option of item.options; let o = index;" style="padding-top: 25px;">
+                                            <mat-radio-button [disabled]="true">
+                                                {{ option }}
+                                            </mat-radio-button>
+                                        </div>
+
+                                    </section>
+
+                                    <section *ngIf="item.type === 'checkbox'">
+                                        <div *ngFor="let option of item.options; let o = index;" style="padding-top: 25px;">
+                                            <mat-checkbox [disabled]="true">
+                                                {{ option }}
+                                            </mat-checkbox>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- END: Company Evaluation -->
+
+            </div>
+
+            <!-- END: If Procurement Type is ADVANCED -->
+
+        </div>
+    </div>
+</div>
+<!--<app-procurement-tender-add-summary-invoice></app-procurement-tender-add-summary-invoice>-->
+

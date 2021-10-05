@@ -1,0 +1,21 @@
+<div mat-dialog-title>
+    <h5 class="modal-title" style="display: inline" id="optionsModalLabel">Select Form</h5>
+    <button type="button" class="close" (click)="close()">
+        <i class="material-icons">close</i>
+    </button>
+</div>
+<div mat-dialog-content>
+    <div class="dialog-content-inner purchase-request-forms__section row">
+        <div class="col-4" *ngFor="let form of forms; let i = index">
+            <app-purchase-request-form-select-card [form]="form" [index]="i" [selected]="selected === i" (select)="selectForm($event)" (closeModal)="closeModal($event)"></app-purchase-request-form-select-card>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions style="box-shadow: 0 -4px 10px 0 rgba(0, 0, 0, 0.1);">
+    <div class="d-flex justify-content-end align-items-end" style="width: 100%">
+        <button class="btn button--primary--filled" style="padding: 10px 54px; font-weight: 400;" (click)="next()">
+            Next
+<!--            <i class="material-icons">chevron_righ</i>-->
+        </button>
+    </div>
+</div>

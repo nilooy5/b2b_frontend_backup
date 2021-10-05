@@ -1,0 +1,125 @@
+@import "../../../../../../../../src/scss/variables";
+
+.mat-button {
+  width: 120px !important;
+  margin-left: 24px;
+  color: white;
+  background: #437ff5;
+}
+
+:host ::ng-deep {
+  .mat-button .mat-button-wrapper {
+    font-family: $font-lato !important;
+    font-weight: bold;
+  }
+}
+
+/*.mat-header-cell {
+  font-size: 14px;
+  background: red;
+}*/
+
+table {
+  font-size: 12px;
+
+  tr {
+    .colonSign {
+      width: 28px;
+      padding-left: 8px;
+    }
+  }
+}
+
+.buttonsRow {
+  margin-top: 24px;
+  justify-content: flex-end;
+
+  &__col {
+    justify-content: flex-end;
+  }
+}
+
+.workorder {
+  &__name {
+    color: #303030;
+    font-family: $font-lato;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  &__id {
+    margin-left: 10px;
+    font-family: $font-lato;
+    font-size: 10px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, .8);
+  }
+}
+
+.termsAndConditions {
+  font-family: $font-rubik;
+  margin-left: 15px;
+  margin-right: 15px;
+
+  &__title {
+    color: rgba(0, 0, 0, .8);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+
+  &__content {
+    border-radius: 5px;
+    background: white;
+    font-size: 14px;
+    color: rgba(0, 0, 0, .6);
+    line-height: 1.57;
+    padding: 25px;
+
+    ul {
+      margin-left: 15px;
+
+      li {
+        list-style: disc;
+      }
+    }
+  }
+}
+
+.address {
+  margin-top: 24px;
+
+  &__to {
+
+    &__label {
+      color: #323232;
+      font-size: 14px;
+      font-family: $font-lato;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    &__content {
+      color: #323232;
+      font-size: 12px;
+      font-family: $font-lato;
+      padding-left: 0;
+    }
+  }
+}
+
+.mat-footer-cell  {
+  background: white;
+  border: 0;
+
+  &__box {
+    margin: 8px;
+  }
+}
+
+.breakdown {
+  line-height: 2.5;
+  font-weight: bold;
+  font-family: $font-lato;
+  background: white;
+}

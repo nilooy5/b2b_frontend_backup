@@ -1,0 +1,136 @@
+<div class="fuel-add">
+    <h4>Request Vehicle</h4>
+    <br>
+
+    <form [formGroup]="fuelInformation" class="container">
+        <h5>Fuel Entry Details</h5>
+        <div class="fuel-add__form">
+            <div class="form-group row">
+                <label for="vehicle" class="col-md-4 col-form-label">Vehicle</label>
+                <div class="col-md-8">
+                    <div class="select--primary fuel-add__select" *ngIf="vehicles">
+                        <!--<select name="vehicleType" id="vehicle" formControlName="vehicle" required>-->
+                            <!--<option *ngFor="let vehicle of vehicles" [value]="vehicle.id">{{vehicle.vehicle_model}}</option>-->
+                        <!--</select>-->
+                        <app-select-picker-with-search formControlName="vehicle" [items]="vehicles"
+                                                       id="vehicle"
+                                                       placeholder="Select Vehicle"
+                                                       [queryFields]="'vehicle_model,vehicle_type,license_number'"
+                                                       [bindImage]="'vehicle_image'" [bindTitle]="'license_number'"
+                                                       [bindSubtitle]="'vehicle_model,vehicle_type'"
+                                                       bindValue="id"></app-select-picker-with-search>
+                    </div>
+                    <p class="fuel-add__error-message" *ngIf="showFuelInformationError && fuelInformation.get('vehicle').hasError('required')">Vehicle is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="date" class="col-md-4 col-form-label">Date</label>
+                <div class="col-md-3">
+                    <div class="fuel-add__date-picker">
+                        <mat-datepicker #dateOfBirthPicker></mat-datepicker>
+                        <input class="form-control"
+                               (focus)="dateOfBirthPicker.open()"
+                               matInput [matDatepicker]="dateOfBirthPicker"
+                               placeholder="DD / MM / YYYY"
+                               id="date" formControlName="date" required>
+                        <span class="fuel-add__date-picker__toggle"><mat-datepicker-toggle matSuffix [for]="dateOfBirthPicker"></mat-datepicker-toggle></span>
+                    </div>
+                    <p class="fuel-add__error-message" *ngIf="showFuelInformationError && fuelInformation.get('date').hasError('required')">Date is required</p>
+                </div>
+                <div class="col-md-3">
+                    <div class="fuel-add__date-picker">
+                        <input [min]="fuelInformation.get('time').value==''?today:null"
+                               class="form-control"
+                               matInput id="time"
+                               formControlName="time"
+                               (focus)="dt2.open()"
+                               [owlDateTime]="dt2"
+                               placeholder="Pick Time">
+                        <span class="fuel-add__date-picker__toggle" style="color: #737374; top: 10px" [owlDateTimeTrigger]="dt2" matSuffix><i class="material-icons">schedule</i></span>
+                        <owl-date-time pickerType="timer" #dt2></owl-date-time>
+                    </div>
+                    <p class="fuel-add__error-message" *ngIf="showFuelInformationError && fuelInformation.get('time').hasError('required')">Time is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="fuel_type" class="col-md-4 col-form-label">Fuel Type/Grade</label>
+                <div class="col-md-8">
+                    <div class="select--primary fuel-add__select">
+                        <select name="vehicleType" id="fuel_type" formControlName="fuel_type" required>
+                            <option *ngFor="let fuel of fuelTypes" [value]="fuel" style="text-transform: capitalize">{{fuel}}</option>
+                        </select>
+                        <i class="material-icons">keyboard_arrow_down</i>
+                    </div>
+                    <p class="fuel-add__error-message" *ngIf="showFuelInformationError && fuelInformation.get('fuel_type').hasError('required')">Fuel Type is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="quantity" class="col-md-4 col-form-label">Quantity</label>
+                <div class="col-md-8">
+                    <input placeholder="e.g. 15 Liters" class="form-control" id="quantity" type="number" formControlName="quantity" required>
+                    <p class="fuel-add__error-message" *ngIf="showFuelInformationError && fuelInformation.get('quantity').hasError('required')">Quantity is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="price" class="col-md-4 col-form-label">Total Price</label>
+                <div class="col-md-8">
+                    <input placeholder="e.g. 5,000 BDT" class="form-control" id="price" type="number" formControlName="price" required>
+                    <p class="fuel-add__error-message" *ngIf="showFuelInformationError && fuelInformation.get('price').hasError('required')">Price is required</p>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <!--Additional Details-->
+
+        <h5>Additional Details</h5>
+        <div class="fuel-add__form">
+            <div class="form-group row">
+                <label for="vendor_name" class="col-md-4 col-form-label">Vendor Name</label>
+                <div class="col-md-8">
+                    <input placeholder="Vendor Name" class="form-control" id="vendor_name" type="text" formControlName="vendor_name">
+                    <p class="fuel-add__error-message" *ngIf="showFuelInformationError && fuelInformation.get('vendor_name').hasError('required')">Vendor Name is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="vendor_address" class="col-md-4 col-form-label">Vendor Address</label>
+                <div class="col-md-8">
+                    <textarea placeholder="Write address" class="form-control" id="vendor_address" rows="3" type="text" formControlName="vendor_address"></textarea>
+                    <p class="fuel-add__error-message" *ngIf="showFuelInformationError && fuelInformation.get('vendor_address').hasError('required')">Vendor Address is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="vendor_reference" class="col-md-4 col-form-label">Reference</label>
+                <div class="col-md-8">
+                    <input placeholder="e.g. invoice number, transaction ID, etc." class="form-control" id="vendor_reference" type="text" formControlName="vendor_reference" >
+                    <p class="fuel-add__error-message" *ngIf="showFuelInformationError && fuelInformation.get('vendor_reference').hasError('required')">Reference is required</p>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <!--Upload Photo/Document-->
+
+        <h5>Upload Photo/Document</h5>
+        <app-file-upload-drag [noUpload]="true" (selected)="handleFiles($event)"></app-file-upload-drag>
+        <br>
+
+        <h5>Comment</h5>
+        <div class="row">
+            <div class="col-md-12">
+                <textarea placeholder="Write address" class="form-control" id="comment" rows="3" type="text" formControlName="comment"></textarea>
+                <p class="fuel-add__error-message" *ngIf="showFuelInformationError && fuelInformation.get('comment').hasError('required')">Comment is required</p>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <!--submit-->
+
+        <div class="row justify-content-end">
+            <div class="col-md-3">
+                <button class="btn button--filled btn-block" (click)="submitFuel()">Save Fuel Entry</button>
+            </div>
+        </div>
+    </form>
+</div>

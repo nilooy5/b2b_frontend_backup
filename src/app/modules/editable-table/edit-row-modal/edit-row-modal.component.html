@@ -1,0 +1,26 @@
+<div mat-dialog-content>
+    <div class="dialog-content-inner">
+        <div class="generic-modal">
+            <div class="generic-modal__header">
+                <p>SMS Template</p>
+                <button type="button" class="close" (click)="close()">
+                    <i class="material-icons">close</i>
+                </button>
+            </div>
+            <form class="editable__form" *ngIf="rowInformation" [formGroup]="rowInformation">
+                <div class="row">
+                    <div class="col" *ngFor="let item of data; let i = index">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="" formControlName="{{i}}" [value]="item">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </form>
+
+            <div style="padding: 16px; display: block">
+                <button class="btn btn-block button--filled" (click)="submit()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+

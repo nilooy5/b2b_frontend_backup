@@ -1,0 +1,26 @@
+<div class="quick-purchase__payment">
+    <div class="order-success">
+        <img src="../../../../../assets/img/general-root/sucess-request.png" alt="">
+        <h3>Order Placed Successfully!</h3>
+        <p> Your service provider will contact you soon or you can also contact him/her from order list.</p>
+<!--        <a href="tel:16516" class="btn"><i class="material-icons">call</i> Service Provider - 01677816516</a>-->
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+               <app-order-bill [showActionButton]="false" [orderId]="orderService.OrderDetails.order_id"></app-order-bill>
+            </div>
+
+            <div class="col-md-6">
+                <app-order-payment [orderID]="orderService.OrderDetails.order_id"></app-order-payment>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="text-center" style="margin-top: 20px">
+        <a href="#" [routerLink]="['/','dashboard','orders', orderService.OrderDetails.order_id]" class="btn button--primary--filled" style="padding: 10px 16px; margin-right: 16px">Order Details</a>
+        <a href="#" class="btn button--primary--outline" style="padding: 10px 16px">Back to Dashboard</a>
+    </div>
+</div>

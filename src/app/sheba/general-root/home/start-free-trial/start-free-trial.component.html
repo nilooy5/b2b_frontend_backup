@@ -1,0 +1,33 @@
+<div class="noDisplay">
+    <div class="d-flex outerDiv">
+        <div class="container align-self-center">
+            <div class="row justify-content-around">
+                <div class="col-md-4 ">
+                    <h4 class="title">
+                        Start your free trial
+                    </h4>
+                </div>
+                <div class="col-md-5">
+
+                </div>
+            </div>
+            <div class="row justify-content-around d-flex align-content-between flex-wrap">
+                <div class="col-md-6 buttonRow">
+                    <p class="subtitle">
+                        Membership renews @BDT 4999/Month after 6 months of usage.
+                        Migrate to a free user again anytime.
+                    </p>
+                </div>
+                <div class="col-md-3 divBtn">
+                    <button mat-button class="trialButton"
+                            [routerLink]="['/', 'auth', 'sign-up']"
+                            [queryParams]="{reference: 'Start_REG_Top_Banner'}">Start Managing</button>
+                </div>
+            </div>
+        </div>
+        <div class="backdrop">
+            <img class="tile1" src="../../../../../assets/img/landing/miscellaneous/tile.svg" alt="tile top">
+            <img class="tile2" src="../../../../../assets/img/landing/miscellaneous/tile.svg" alt="tile bottom">
+        </div>
+    </div>
+</div>

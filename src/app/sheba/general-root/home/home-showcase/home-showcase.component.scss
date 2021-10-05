@@ -1,0 +1,49 @@
+@import "../../../../../../src/scss/variables";
+
+.landing__section {
+  .landing__showcase {
+    &-card {
+      img {
+        width: 67px;
+        height: auto;
+        margin-bottom: 24px;
+      }
+
+      h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      &--center-aligned {
+        text-align: center;
+      }
+
+      &--left-aligned {
+        text-align: left;
+      }
+    }
+  }
+
+  &.light {
+    width: 100%;
+    max-width: 100%;
+    h1 {
+      opacity: 0.8;
+      font-size: 24px;
+      color: #000000;
+    }
+    .row{
+      padding: -1px;
+    }
+    .procedure{
+      padding: 30px;
+    }
+    padding: 30px;
+  }
+}
+
+

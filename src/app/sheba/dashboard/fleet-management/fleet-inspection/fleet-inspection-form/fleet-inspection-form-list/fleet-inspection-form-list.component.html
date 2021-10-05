@@ -1,0 +1,24 @@
+<div class="main-content-container">
+    <div class="main-content-block">
+        <div class="row" *ngIf="formList && formList.length;else noItem">
+            <div class="col-md-4 form-block-container" *ngFor="let item of formList">
+                <div class="form-block">
+                    <div class="form-block-title">
+                        {{item.title|titlecase}}
+                    </div>
+                    <div class="form-block-description">
+                        {{item.short_description}}
+                    </div>
+                    <div class="form-block-action">
+                        <button class="button-primary button button-semi-small button-outline"
+                                [routerLink]="['.',item.id,'details']">View
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ng-template #noItem>
+            <app-no-item [showAction]="false" heading="No form item added" ></app-no-item>
+        </ng-template>
+    </div>
+</div>

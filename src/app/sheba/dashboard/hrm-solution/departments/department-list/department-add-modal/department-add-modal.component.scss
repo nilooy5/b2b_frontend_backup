@@ -1,0 +1,19 @@
+@import "../../../../../../../../src/scss/variables";
+
+.editable__form {
+  width: 100%;
+  padding: 30px;
+  .sub-label {
+    display: block;
+    color: $black60;
+    font-size: 12px;
+  }
+  textarea, input {
+    border: solid 1.5px #d3d8e6;
+    background-color: #fafbfc;
+    border-radius: 4px;
+    margin-right: 5px;
+    font-size: 14px;
+    padding: 12px 16px;
+  }
+}

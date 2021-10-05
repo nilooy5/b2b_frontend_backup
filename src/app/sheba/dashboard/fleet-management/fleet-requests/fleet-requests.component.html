@@ -1,0 +1,20 @@
+<div class="nav-menu-inner" [ngClass]={open:open} *ngIf="this.tab === 'requests' || this.tab === 'approvals'">
+    <nav mat-tab-nav-bar>
+        <a mat-tab-link
+           [routerLink]="['/','dashboard','fleet-management','requests', 'approvals']"
+           routerLinkActive="active" #rla="routerLinkActive"
+           [active]="this.tab === 'approvals'">
+            Approval Requests
+        </a>
+        <a mat-tab-link
+           [routerLink]="['/','dashboard','fleet-management','requests']"
+           routerLinkActive="active" #rla="routerLinkActive"
+           [active]="this.tab === 'requests'">
+            Trip Request
+        </a>
+    </nav>
+</div>
+
+<br>
+
+<router-outlet></router-outlet>

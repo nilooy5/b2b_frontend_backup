@@ -1,0 +1,114 @@
+<div class="main-content-container">
+    <div class="main-content-block pb-0">
+        <div class="flex flex-column align-items-start w-100">
+            <div class="">
+                <app-fleet-inspection-failed-item-list-filter [formList]="forms" (OnFilterEvents)="filterData($event)"></app-fleet-inspection-failed-item-list-filter>
+            </div>
+            <div class="flex align-items-center justify-content-start ">
+                <div class="flex flex-column align-items-center justify-content-center mr-20">
+                    <h1 class="w-500 text-primary">{{data.pending}}</h1>
+                    <p>Need Action</p>
+                </div>
+                <div class="flex flex-column align-items-center justify-content-center">
+                    <h1 class="w-500 text-warning">{{data.open}}</h1>
+                    <p>Open Issues</p>
+                </div>
+            </div>
+            <div class="flex justify-content-end w-100">
+                <app-pagination [showRecordNumber]="false" (pageEvent)="paginate($event)" [total]="data.list.length"
+                                [currentPage]="1"
+                                [pageSize]="1"></app-pagination>
+            </div>
+        </div>
+    </div>
+    <div class="main-content-block">
+        <div class="main-content-table">
+            <table *ngIf="(data.list.length && dataSource);else noData" mat-table [dataSource]="dataSource"
+                   class="table  designer-table top-cell">
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef>Date</th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="flex flex-column align-items-start justify-content-start">
+                            <div class="sheba-title-small">{{element.date}}</div>
+                            <span class="mat-caption">{{element.time}}</span>
+                            <span class="anchor mat-caption"
+                                  (click)="showItem(element)">Submission #{{element.id}}</span>
+                        </div>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="vehicle">
+                    <th mat-header-cell *matHeaderCellDef>Vehicle</th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="flex flex-column align-items-start">
+                            <div class="sheba-title-small">{{element.vehicle.vehicle_model}}</div>
+                            <div class="horizontal-bullets">
+                                <div class="status small" [ngClass]="{active:element.vehicle.status==='active'}"><i class="material-icons">brightness_1</i></div>
+                                <span>{{element.vehicle.status|titlecase}}</span>
+                                <span>{{element.vehicle.vehicle_type|titlecase}}</span>
+                                <span>{{element.vehicle.assigned_to}}</span>
+                            </div>
+                        </div>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="item">
+                    <th mat-header-cell *matHeaderCellDef>Item</th>
+                    <td mat-cell
+                        *matCellDef="let element">
+                        <div class="flex flex-column align-items-start">
+                            <div class="sheba-title-small">
+                                {{element.title}} <span class="text-muted">(Fail)</span>
+                            </div>
+                            <span class="mat-caption">
+                               <i class="far fa-clipboard mr-2"></i> {{element.inspection_form_title}}
+                            </span>
+                        </div>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="remarks">
+                    <th mat-header-cell *matHeaderCellDef>Remarks</th>
+                    <td mat-cell *matCellDef="let element" class="center">
+                        <span *ngIf="element.comment;else noRemarks"><i [title]="element.comment"
+                                                                        class="material-icons">
+insert_comment
+</i></span>
+                        <ng-template #noRemarks><span>N/A</span></ng-template>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions" stickyEnd>
+                    <th mat-header-cell *matHeaderCellDef>
+                        <div class="flex align-items-center">
+                            Stage
+                        </div>
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="center">
+                        <a class="" (click)="showItem(element)">
+                            <ng-template [ngIf]="element.status=='Pending'">
+                                <div class="align-items-center flex">
+                                    <div class="mat-badge mat-badge-danger">Pending</div>
+                                </div>
+                            </ng-template>
+                            <ng-template [ngIf]="element.status=='Acknowledged'">
+                            <span class="flex align-items-center"><i
+                                    class="material-icons mr-2">thumb_up</i> Acknowledged</span>
+                            </ng-template>
+                            <ng-template [ngIf]="element.status=='has_issue'">
+                                <div class="flex align-items-center">
+                                    <div
+                                            class="anchor">
+                                        #Issue {{element.issue_id}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </a>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+            </table>
+            <ng-template #noData>
+                <app-no-item heading="No Failed Item Found" [showAction]="false"></app-no-item>
+            </ng-template>
+        </div>
+    </div>
+</div>

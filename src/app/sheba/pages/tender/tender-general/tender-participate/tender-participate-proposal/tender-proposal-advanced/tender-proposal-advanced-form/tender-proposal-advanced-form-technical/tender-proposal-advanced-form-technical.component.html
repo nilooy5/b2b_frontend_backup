@@ -1,0 +1,62 @@
+<div class="eval-form">
+    <div class="eval-form__title">
+        <h4>Give Technical Information</h4>
+    </div>
+    <div class="container eval-form__body">
+        <div class="row">
+            <div *ngFor="let item of evaluations; let i = index" class="col-md-12 question mb-30">
+                <div class="question__title">
+                    {{ item.title }} <span class="required">*</span>
+                </div>
+
+                <div *ngIf="item.input_type === 'text'" class="mt-20">
+                    <input [value]="findStoredValue(item.field_id)"
+                           matInput
+                           class="form-container__control"
+                           type="text"
+                           placeholder="Short answer"
+                           (input)="emitOnFormChange(i, $event, undefined)">
+                </div>
+
+                <div *ngIf="item.input_type === 'textarea'" class="mt-20">
+                    <textarea [value]="findStoredValue(item.field_id)"
+                              matInput
+                              class="form-container__control"
+                              type="text"
+                              placeholder="Long Answer"
+                              rows="5"
+                              (input)="emitOnFormChange(i, $event, undefined)"></textarea>
+                </div>
+
+                <div *ngIf="item.input_type === 'radio'" class="mt-20">
+                    <div *ngFor="let option of item.options; let o = index;">
+                        <mat-radio-button
+                            [value]="findStoredValue(item.field_id)"
+                            [checked]="getCheckedValue(option, item.field_id)"
+                            (input)="emitOnFormChange(i, $event , option)">
+                            {{ option }}
+                        </mat-radio-button>
+                    </div>
+                </div>
+
+                <div *ngIf="item.input_type === 'checkbox'" class="mt-20">
+                    <div *ngFor="let option of item.options; let o = index;">
+                        <mat-checkbox
+                            [value]="findStoredValue(item.field_id)"
+                            [checked]="getCheckedValue(option, item.field_id)"
+                            (input)="emitOnFormChange(i, $event, option)">
+                            {{ option }}
+                        </mat-checkbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="eval-footer">
+            <button mat-button [disabled]="!isFormValid" (click)="sendTechEval()">
+                <span *ngIf="nextStateIndex === (totalStates - 1); else defaultLabel">Submit</span>
+                <ng-template #defaultLabel>Next</ng-template>
+            </button>
+        </div>
+    </div>
+</div>

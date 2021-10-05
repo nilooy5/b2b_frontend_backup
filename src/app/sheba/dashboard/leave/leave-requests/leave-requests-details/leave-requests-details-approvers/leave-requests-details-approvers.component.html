@@ -1,0 +1,38 @@
+<div class="confirmation-box"
+     [ngStyle]="{'display': approvalDetails.status.toLowerCase() !== 'pending' ? 'none' : 'flex !important' }">
+    <div class="texts">
+        Are you sure to reject this leave request?
+    </div>
+    <div class="buttons">
+        <button mat-button class="action" (click)="approveOrRejectRequest('accepted')">Approve</button>
+        <button mat-button class="action action--reject" (click)="approveOrRejectRequest('rejected')">Reject</button>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="content-title">Approver (s)</div>
+    <div class="contents">
+        <div class="d-flex approver-card" *ngFor="let item of approvalDetails.approvers; let i = index">
+            <div class="approver-card__serial">
+                Approver {{i + 1}}
+            </div>
+            <div class="employeeCard">
+                <div class="employeeCard-pic">
+                    <img [src]="item.profile_pic" alt="">
+                </div>
+                <div class="employeeCard-details">
+                    <div class="employeeCard-details-name">{{item.name}}</div>
+                    <div class="employeeCard-details-data">{{item.designation}}, {{item.department}}</div>
+                    <div class="employeeCard-details-data mt-8">
+                        <span class="reqStatus text-capitalize"
+                              [ngClass]="{'reqStatus--pending': item.status === 'pending',
+                                          'reqStatus--accepted': item.status === 'approved',
+                                          'reqStatus--rejected': item.status === 'rejected'}">
+                            {{item.status}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

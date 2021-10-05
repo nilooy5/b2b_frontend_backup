@@ -1,0 +1,73 @@
+<div class="main-content-container">
+
+    <form [formGroup]="form" (submit)="submit()">
+        <div class="main-content-block">
+            <div class="sheba-title">
+                New Form
+            </div>
+            <div class="form">
+                <div class="form-group row">
+                    <div class="form-item-label col-md-4 ">
+                        <label for="title" class="required">Title</label>
+                    </div>
+                    <div class="form-item horizontal col-md-8">
+                        <mat-form-field appearance="outline">
+                            <input type="text" formControlName="title" matInput id="title" placeholder="Title">
+                        </mat-form-field>
+                        <span class="mat-error" *ngIf="formInputInvalid('title')">
+                                <span *ngIf="form.get('title').hasError('required')">Form title is required</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="form-item-label col-md-4">
+                        <label for="Details">Description</label>
+                    </div>
+                    <div class="form-item col-md-8 horizontal">
+                        <mat-form-field appearance="outline">
+                            <textarea [cdkTextareaAutosize]="true" cdkAutosizeMinRows="3" type="text" matInput
+                                      id="Details" formControlName="short_description"
+                                      placeholder="Write description ...."></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="sheba-title">
+                Item Checklist
+            </div>
+            <div class="form-actions">
+                <button type="button" class="button button-primary" [matMenuTriggerFor]="menu"><i
+                        class="fa fa-plus"></i> <span
+                        class="pl-2">Add Inspection Item</span></button>
+                <mat-menu #menu="matMenu" [class]="'button-menu'">
+                    <button mat-menu-item type="button" (click)="pushVariable('radio')">Pass/Fail item</button>
+                    <button mat-menu-item type="button" (click)="pushVariable('text')">Free Text</button>
+                    <button mat-menu-item type="button" (click)="pushVariable('number')">Meter Reading</button>
+                </mat-menu>
+            </div>
+            <app-fleet-inspection-form-item *ngFor="let item of getControls();let i=index" [formGroup]="item"
+                                            [index]="i"
+                                            (FormEvents)="OnItemEvent($event)"></app-fleet-inspection-form-item>
+            <div class="form-actions mt-4" *ngIf="getControls().length">
+                <button type="button" class="button button-primary button-semi-small" [matMenuTriggerFor]="menu2"><i
+                        class="fa fa-plus"></i></button>
+                <mat-menu #menu2="matMenu" [class]="'button-menu'">
+                    <button mat-menu-item type="button" (click)="pushVariable('radio')">Pass/Fail item</button>
+                    <button mat-menu-item type="button" (click)="pushVariable('text')">Free Text</button>
+                    <button mat-menu-item type="button" (click)="pushVariable('number')">Meter Reading</button>
+                </mat-menu>
+            </div>
+            <div class="form-actions justify-content-end mt-4" *ngIf="getControls().length">
+                <button type="submit" class="button button-primary">
+                    <span>Save Form</span>
+                    <ng-template [ngIf]="submitting">
+                        <div class="absolute-spinner primary">
+                            <mat-spinner mode="indeterminate" [diameter]="20"></mat-spinner>
+                        </div>
+                    </ng-template>
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>

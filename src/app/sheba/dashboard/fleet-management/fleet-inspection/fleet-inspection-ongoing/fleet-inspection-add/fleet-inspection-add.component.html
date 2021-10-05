@@ -1,0 +1,155 @@
+<div class="main-content-container">
+    <div class="main-content-block">
+        <form [formGroup]="form" (submit)="submit()">
+            <div class="sheba-title mb-10">
+                Select Inspection Form
+            </div>
+            <mat-divider></mat-divider>
+            <app-block-select formControlName="form_template_id" [items]="forms"></app-block-select>
+            <div class="sheba-title mb-10">
+                Form Details
+            </div>
+            <mat-divider></mat-divider>
+            <div class="inner-form">
+                <div class="form-group row">
+                    <div class="form-item-label col-md-4">
+                        <label for="VehicleType" class="required">Vehicle Type</label>
+                    </div>
+                    <div class="form-item horizontal col-md-8">
+                        <mat-form-field appearance="outline">
+                            <mat-select formControlName="vehicle_type" (selectionChange)="setVehicles()"
+                                        placeholder="Select Vehicle Type"
+                                        id="VehicleType">
+                                <mat-option *ngFor="let item of vehicleTypes" [value]="item">
+                                    {{item|hyphenStrip|titlecase}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="form-item-label col-md-4">
+                        <label  class="required">Vehicle</label>
+                    </div>
+                    <div class=" col-md-8">
+                        <app-select-picker-with-search formControlName="vehicle_id" [items]="vehicles"
+                                                       placeholder="Select Vehicle"
+                                                       [queryFields]="'license_number,vehicle_model'"
+                                                       [bindImage]="'vehicle_image'" [bindTitle]="'license_number'"
+                                                       [bindSubtitle]="'vehicle_model,vehicle_type'"
+                                                       bindValue="id"></app-select-picker-with-search>
+                    </div>
+                </div>
+            </div>
+            <div class="sheba-title mb-10">
+                Schedule
+            </div>
+            <mat-divider></mat-divider>
+            <div class="inner-form">
+                <div class="form-group row">
+                    <div class="form-item-label col-md-4">
+                        <label for="InspectionScheduleType" class="required">Type</label>
+                    </div>
+                    <div class="form-item horizontal col-md-8">
+                        <mat-form-field appearance="outline">
+                            <mat-select formControlName="schedule_type"
+                                        placeholder="Select Schedule Type"
+                                        id="InspectionScheduleType"
+                                        (selectionChange)="this.form.get('schedule_type_value').setValue(null)">
+                                <mat-option *ngFor="let item of inspectionScheduleType" [value]="item">
+                                    {{item|hyphenStrip|titlecase}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="form-item-label col-md-4">
+                        <label for="Date" class="required">Date/Day</label>
+                    </div>
+                    <div class="form-item horizontal col-md-8">
+                        <mat-form-field appearance="outline" *ngIf="form.get('schedule_type').value=='once'">
+                            <input id="Date" (focus)="picker.open()" matInput formControlName="schedule_type_value"
+                                   [matDatepicker]="picker"
+                                   placeholder="Select A Date"
+                                   [min]="today"
+                            >
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <app-only-date-picker formControlName="schedule_type_value" placeholder="Select dates"
+                                              *ngIf="form.get('schedule_type').value=='monthly'"></app-only-date-picker>
+                        <mat-form-field appearance="outline" *ngIf="form.get('schedule_type').value=='weekly'">
+                            <mat-select formControlName="schedule_type_value" placeholder="Select days" multiple>
+                                <mat-option *ngFor="let item of weekDays"
+                                            [value]="item.toLowerCase()">{{item}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="form-item-label col-md-4">
+                        <label for="time" class="required">Time</label>
+                    </div>
+                    <div class="form-item col-md-8 horizontal">
+                        <mat-form-field appearance="outline">
+                            <input [min]="form.get('schedule_type').value=='once'?today:null" matInput id="time"
+                                   formControlName="schedule_time" (focus)="dt2.open()"
+                                   [owlDateTime]="dt2" placeholder="Date Time">
+                            <span [owlDateTimeTrigger]="dt2" matSuffix><i class="material-icons">today</i></span>
+                            <owl-date-time pickerType="timer" #dt2></owl-date-time>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="sheba-title mb-10">
+                Inspector
+            </div>
+            <mat-divider></mat-divider>
+            <div class="inner-form">
+                <div class="form-group row">
+                    <div class="form-item-label col-md-4">
+                        <label for="Department" class="required">Departments</label>
+                    </div>
+                    <div class="form-item horizontal col-md-8">
+                        <mat-form-field appearance="outline">
+                            <mat-select formControlName="department_id"
+                                        placeholder="Select Department"
+                                        id="Department" (selectionChange)="setEmployees()">
+                                <mat-option *ngFor="let item of departments" [value]="item.name">
+                                    {{item.name|hyphenStrip|titlecase}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="form-item-label col-md-4">
+                        <label for="Employee" class="required">Inspector</label>
+                    </div>
+                    <div class="form-item horizontal col-md-8">
+                        <mat-form-field appearance="outline">
+                            <mat-select formControlName="inspector_id"
+                                        placeholder="Select Inspector "
+                                        id="Employee">
+                                <mat-option *ngFor="let item of employees" [value]="item.id">
+                                    {{item.name|hyphenStrip|titlecase}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="form-item mt-4">
+                <button class="button button-primary " type="submit">
+                    <span>Create Inspection</span>
+                    <ng-template [ngIf]="submitting">
+                        <div class="absolute-spinner primary">
+                            <mat-spinner mode="indeterminate" [diameter]="20"></mat-spinner>
+                        </div>
+                    </ng-template>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+.tender-breadcrumb {
+  background: white;
+  font-size: 14px;
+  border: solid 1px #edeff4;
+  padding: 14px 0;
+  cursor: pointer;
+
+  .container {
+    padding: 0;
+  }
+
+  &__active {
+    color: rgba(0, 0, 0, 0.5);
+    cursor: text;
+  }
+}
+
+.container-fluid {
+  background: #f8f8fb;
+}
+.tender-description {
+  padding: 0;
+}
+.tender-apply {
+  padding: 0;
+}
+.main-content {
+  background: #f8f8fb;
+}
+
+@media screen and (max-width: 768px) {
+  .tender-apply {
+    padding: 0 15px 20px;
+  }
+  .tender-breadcrumb {
+    padding: 15px;
+  }
+}

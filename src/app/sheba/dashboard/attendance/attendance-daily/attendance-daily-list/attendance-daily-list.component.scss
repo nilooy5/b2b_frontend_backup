@@ -1,0 +1,90 @@
+@import "../../../../../../scss/variables";
+
+.attendanceStatus {
+  color: #FFFFFF!important;
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  //font-family: $font-rubik;
+  font-family: Poppins;
+  &.onTime {
+    background: #2ba660;
+  }
+  &.late {
+    background: #fa5252;
+  }
+  &.leftEarly {
+    background: #ff8219;
+  }
+  &.absent {
+    //background: #b3b7cc;
+    background: #2a2b32;
+  }
+  &.leftTimely{
+    background: #29b9cf;
+  }
+  &.onLeave{
+    background: #b3b7cc;
+  }
+}
+.material-icons {
+  color: #437ff5;
+}
+.noteIcon {
+  font-size: 100px;
+  color: #12b886;
+}
+
+.closeButton {
+  color: #437ff5;
+  border-color: #437ff5;
+  background: white;
+  width: 200px;
+  height: 50px;
+  margin-bottom: 44px;
+  margin-top: 53px;
+}
+.modal-footer {
+  border-top: none;
+}
+
+.modal-dialog {
+  max-width: 700px;
+}
+
+.r-design{
+  border: 1.2px solid #4373f5;
+  border-radius: 50%;
+  padding: 0 6px;
+  color: #4373f5;
+  font-weight: 500;
+}
+
+.checkout_width{
+  width: 220px;
+  margin-top: 10px;
+}
+
+::ng-deep .my-custom-class .tooltip-inner {
+  max-width:400px;
+  width:242px;
+  background:#000;
+  border-radius:5px;
+  color:#fff;
+  padding:14px;
+  line-height:24px;
+  text-align:left;
+  font-family:Poppins;
+  font-size:14px
+}
+
+@media screen and (max-width: 768px) {
+  .ipad-design{
+    overflow-x: scroll;
+  }
+  .checkout_width{
+    width: 215px;
+    margin-top: 10px;
+    margin-right: 45px;
+  }
+}

@@ -1,0 +1,24 @@
+@import "../../../scss/variables";
+.payment-method {
+  background-color: $white;
+  border: 1.5px solid $cream_grey;
+  border-radius: 5px;
+  padding: 10px 0;
+  margin-bottom: 15px;
+  cursor: pointer;
+
+  &:hover {
+    border: 1.5px solid $primary;
+  }
+
+  P {
+    text-align: center;
+    margin: 0;
+
+    img {
+      margin-bottom: 15px;
+      height: 35px;
+      width: auto;
+    }
+  }
+}

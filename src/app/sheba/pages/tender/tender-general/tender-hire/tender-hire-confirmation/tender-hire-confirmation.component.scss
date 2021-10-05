@@ -1,0 +1,87 @@
+
+@media only screen and (max-width: 600px) {
+  .BG {
+    background-color: var(--white);
+    padding: 50px 15px 50px 15px !important;
+  }
+  .Rectangle{
+    margin-bottom: 30px!important;
+  }
+
+  .works-item-space{
+    margin-top: 50px;
+  }
+}
+
+.check {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+.Order-accepted-succe {
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--black);
+}
+.Client-will-review-y {
+  max-width: 650px;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.57;
+  letter-spacing: normal;
+  text-align: center;
+  color: rgba(10, 15, 20, 0.75);
+}
+
+.Rectangle {
+  max-width: 220px;
+  max-height: 40px;
+  border-radius: 8px;
+  background-color: #edf2ff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: center;
+  color: #437ff5;
+}
+
+// .flex-column{
+//   padding: 80px 160px 80px 160px;
+// }
+.BG {
+  max-width: 970px;
+  border-radius: 10px;
+  background-color: var(--white);
+  padding: 80px 160px 80px 160px;
+}
+.container{
+  padding-bottom: 30px;;
+}
+.accept{
+  width: 220px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--primary);
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--white);
+}

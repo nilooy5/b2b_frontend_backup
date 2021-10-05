@@ -1,0 +1,17 @@
+<div class="landing__section--even">
+  <div class="container landing__section" [ngClass]="{light: theme == 'light'}">
+    <h1 class="landing__section__title" style="text-align: center; margin-bottom: 60px">{{data.title}}</h1>
+
+    <div class="row">
+      <div class="col-md-4 landing__showcase-card procedure"
+           [class.landing__showcase-card--center-aligned]="cardAlignment === 'center'"
+           [class.landing__showcase-card--left-aligned]="cardAlignment === 'left'"
+           *ngFor="let item of data.data">
+        <img *ngIf="!item.image" src="../../../../../assets/img/general-root/report.png" alt="">
+        <img *ngIf="item.image" [src]="item.image" alt="">
+        <h3>{{item.title}}</h3>
+        <p>{{item.text}}</p>
+      </div>
+    </div>
+  </div>
+</div>

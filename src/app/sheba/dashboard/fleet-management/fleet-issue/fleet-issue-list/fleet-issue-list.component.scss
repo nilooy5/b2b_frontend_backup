@@ -1,0 +1,55 @@
+@import "../../../../../../../src/scss/variables";
+
+.vehicle-info {
+  display: flex;
+  margin-bottom: 0;
+  li {
+    color: $black60;
+    list-style: circle inside $black60;
+    margin-left: 10px;
+  }
+  span i {
+    font-size: 12px;
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+    &.active {
+      color: $active_color;
+    }
+    &.inactive {
+      color: $inactive_color;
+    }
+  }
+}
+
+.link {
+  color: $theme-color;
+}
+
+.issue-info {
+  .issue-status-badge {
+    display: inline-block;
+    padding: 1px 8px;
+    background-color: grey;
+    color: $white;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-left: 10px;
+    &.open {
+      background-color: $status-orange;
+    }
+    &.overdue {
+      background-color: $status-red;
+    }
+    &.process {
+      background-color: $status-blue;
+    }
+    &.closed {
+      background-color: $status-green;
+    }
+  }
+  .issue-description {
+    color: $black60;
+    font-size: 12px;
+  }
+}

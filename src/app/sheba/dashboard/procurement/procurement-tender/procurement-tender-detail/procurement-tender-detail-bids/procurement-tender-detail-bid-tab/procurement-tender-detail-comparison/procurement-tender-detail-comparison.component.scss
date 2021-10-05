@@ -1,0 +1,93 @@
+@import "../../../../../../../../../scss/variables";
+@import "../../../../../../../../../scss/layouts";
+
+.bid-compare-table {
+  position: relative;
+  &__header-item {
+    padding: 0 16px;
+  }
+  &__nav {
+    position: absolute;
+    right: -20px;
+    top: 55px;
+    display: block;
+    font-size: 1.2rem;
+    border-radius: 50% !important;
+    width: 40px;
+    height: 40px;
+    min-height: 40px;
+    z-index: 3;
+
+    &.nav-left {
+      left: -5px;
+      right: auto;
+    }
+  }
+}
+
+.example-container {
+  height: auto;
+  width: 100%;
+  overflow: auto;
+  border-radius: 4px;
+}
+
+#compareTable {
+  table {
+    width: auto;
+  }
+  th.mat-column-position, td.mat-column-position {
+    padding-left: 8px;
+  }
+  .mat-table-sticky {
+    //border-right: 1px solid #e0e0e0;
+  }
+  .mat-table-sticky {
+    //border-left: 1px solid #e0e0e0;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+
+:host ::ng-deep {
+  tr.mat-row:first-child {
+    display: none !important;
+  }
+  #compareTable {
+    thead {
+      display: none !important;
+    }
+    td.mat-cell {
+      font-size: 14px;
+      border: 1.5px solid #d2d8e6;
+      &.title-row {
+        border: none;
+        &:first-child{
+          background-color: $white !important;
+          border-left: 1.5px solid #d2d8e6;
+        }
+        &:last-child {
+          border-right: 1.5px solid #d2d8e6;
+        }
+      }
+
+    }
+    td.mat-cell.mat-table-sticky {
+      padding: 0 !important;
+    }
+
+    td.mat-cell.cdk-column-0.mat-column-0.mat-table-sticky.ng-star-inserted {
+      background-color: $compare_table_header;
+      align-self: start;
+      left: -1px !important;
+    }
+  }
+}
+

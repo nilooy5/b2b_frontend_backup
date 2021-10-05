@@ -1,0 +1,44 @@
+<div class="bg-color">
+    <div class="container">
+        <div class="d-flex flex-row">
+            <div class="mt-5 p-1 d-flex align-items-center flex-column flex-fill">
+                <h1 class="header-text text-center">
+                    Latest Tenders
+                </h1>
+            </div>
+        </div>
+
+        <div class="top-padding">
+            <ngx-slick-carousel class="carousel custom-slick" [config]="slideConfig">
+                <div ngxSlickItem *ngFor="let tender of tenders" class="slide" >
+                    <div class="card" [ngStyle]="{'border-left': tender.colorCode}" [routerLink]="['/tender/list', tender.id]">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {{ tender.title }}
+                            </h5>
+                            <p class="card-text">
+                                {{ tender.description.length >= 74? tender.description.substr(0, 70) +'...' :tender.description }}
+                            </p>
+                            <h5 class="Title-of-the-RFQ-pos">
+                                {{ tender.estimated_price | currency: 'BDT':'symbol-narrow': '1.0' }}
+                            </h5>
+                            <p class="tiny-text">
+                                <img src="/assets/svg/icons/rfq/time.svg" class="time">
+                                <span style="margin-left: 2px;">{{tender.created_at}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </ngx-slick-carousel>
+        </div>
+
+        <div class="p-4 mt-2 d-flex flex-column  align-items-center">
+            <a [routerLink]="['/tender/list']">
+                <button class="BG mt-6 mb-4 btn btn-primary"  > View All Tenders </button>
+            </a>
+
+        </div>
+
+    </div>
+</div>
+

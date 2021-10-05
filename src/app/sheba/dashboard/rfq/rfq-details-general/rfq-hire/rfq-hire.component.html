@@ -1,0 +1,48 @@
+<ng-container>
+    <div class="container-fluid">
+        <div *ngIf="show_alert" style="margin-left: -15px;margin-right: -15px">
+            <p>
+                <ngb-alert type="custom">
+                    <img class="info-icon" src="../../../../../../assets/svg/hire_info_icon.svg" alt="Success">
+                    You are about to hire the vendor for this tender. A work order will be generated once the vendor accept your request
+                </ngb-alert>
+            </p>
+        </div>
+        <div class="row hire-details-header-container">
+            <div class="col-md-12 bg-white hire-details-header-content">
+                <div class="row" style="padding: 30px 30px 15px 30px;">
+                    <div class="col-md-6 p-0">
+                        <p class="hire-details-header-title">Tender</p>
+                        <p class="hire-details-header-value">{{ quotationDetails.title }}</p>
+                    </div>
+                    <div class="col-md-6 p-0 d-flex">
+                        <div>
+                            <img class="vendor-image" [src]="quotationDetails.vendor.logo" alt="vendor image">
+                        </div>
+                        <div>
+                            <p class="hire-details-header-title"> Vendor </p>
+                            <p>
+                                <span class="hire-details-header-value" style="font-weight: normal">
+                                    {{ quotationDetails.vendor.name }}
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<div *ngIf="quotationDetails.type === 'basic'">
+    <app-rfq-hire-basic [quotationDetails]="quotationDetails"
+                        [rfqID]="rfq_id" >
+    </app-rfq-hire-basic>
+</div>
+
+<div *ngIf="quotationDetails.type === 'advanced'">
+    <app-rfq-hire-advance [quotationDetails]="quotationDetails"
+                          [rfqID]="rfq_id">
+    </app-rfq-hire-advance>
+</div>
+

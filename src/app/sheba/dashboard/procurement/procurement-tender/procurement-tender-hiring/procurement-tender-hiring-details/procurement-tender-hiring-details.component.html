@@ -1,0 +1,197 @@
+<div class="b2b-breadcrumb">
+    <a [routerLink]="['/','dashboard','procurement']">RFQ</a><span> / </span>
+    <a [routerLink]="['/','dashboard','procurement']">List</a><span> / </span>
+    <span>Hiring Request / </span>
+    <span>Details</span>
+</div>
+
+
+<div class="layout__card">
+    <div class="row procurement-hiring-details">
+
+        <div class="col-md-4 procurement-hiring-details__info">
+            <div class="d-flex">
+                <section class="pr-1">
+                    <img alt="Vendor Logo" [src]="hiringRequestDetails.vendor.logo" onerror="this.src='https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/sheba_xyz/png/default-service.png'">
+                </section>
+                <section class="procurement-hiring-details__info__title">
+                    <h5>Vendor</h5>
+                    <h6>
+                        {{ hiringRequestDetails.vendor.name }}
+                    </h6>
+                </section>
+            </div>
+        </div>
+        <div class="col-md-2 procurement-hiring-details__info">
+            <div class="procurement-hiring-details__info__title">
+                <h5>Quotation</h5>
+                <div class="d-flex">
+                    <section>
+                        <h6 class="procurement-hiring-details__info__quotation">
+                            ৳{{ hiringRequestDetails.price }}
+                        </h6>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 procurement-hiring-details__info">
+            <div class="procurement-hiring-details__info__title">
+                <h5>Requested On</h5>
+                <div class="d-flex">
+                    <section>
+                        <h6 class="procurement-hiring-details__info__requested_on">
+                            {{ hiringRequestDetails.created_at }}
+                        </h6>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 procurement-hiring-details__info align-self-center">
+            <div class="float-right procurement-hiring-details__btn">
+                <button class="button button-outline button-primary mr-2 procurement-hiring-details__btn__publish" (click)="onViewQuotation()">
+                    View Quotation
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="main-content-container" *ngIf="hiringRequestDetails.type === 'advanced'">
+
+    <div class="main-content-block">
+
+        <div class="main-title" *ngIf="dataSource.length">
+            <h3>Price Quotation</h3>
+        </div>
+
+        <div class="main-content-table">
+            <table id="table" mat-table [dataSource]="priceQuotationDataSource" class="table designer-table">
+
+                <ng-container matColumnDef="serialNo">
+                    <th mat-header-cell *matHeaderCellDef>SL NO</th>
+                    <td mat-cell *matCellDef="let element; let i = index">
+                        <span>
+                            {{ i + 1 }}
+                        </span>
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef>  </td>
+
+                </ng-container>
+
+                <ng-container matColumnDef="itemName">
+                    <th mat-header-cell *matHeaderCellDef>Item Name / Description</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>
+                            {{ element.itemName }}
+                        </span>
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef>  </td>
+
+                </ng-container>
+
+                <ng-container matColumnDef="specification">
+                    <th mat-header-cell *matHeaderCellDef>Specification</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>
+                            {{ element.specification }}
+                        </span>
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef>  </td>
+
+                </ng-container>
+
+                <ng-container matColumnDef="unit">
+                    <th mat-header-cell *matHeaderCellDef>Unit</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>
+                            {{ element.unit }}
+                        </span>
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef>
+                    </td>
+
+                </ng-container>
+
+                <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef>Price</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>
+                            {{ unitPrice(element) }}
+                        </span>
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef>
+                         <span class="total-title">
+                             <span class="d-flex justify-content-end total-title_subtotal"> Subtotal</span>
+                             <span class="d-flex justify-content-end total-title_grand-total"> Grand Total</span>
+                         </span>
+
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="total_price">
+                    <th mat-header-cell *matHeaderCellDef>Total Price</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>
+                            {{ element.price }}
+                        </span>
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef>
+                        <span class="total-price">
+                            <span> {{ hiringRequestDetails.price }}</span>
+                            <span> {{ hiringRequestDetails.price }} </span>
+                        </span>
+                    </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+                <tr mat-footer-row *matFooterRowDef="displayColumns"></tr>
+
+            </table>
+            <div class="no-driver" *ngIf="!dataSource.length">
+                <p>No Hiring Request Available.</p>
+            </div>
+        </div>
+
+        <div class="no-driver" *ngIf="!dataSource || dataSource === undefined">
+            <p>No Hiring Request Available</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="terms-policy">
+    <div class="row ">
+
+        <div class="col-md-6">
+
+            <div class="terms-policy__main-title">
+                <h3>Terms and Conditions</h3>
+            </div>
+
+            <div class="layout__card">
+                <div class="terms-policy__card">
+                    <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(termsContent)"></p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="terms-policy__main-title">
+                <h3>Policy</h3>
+            </div>
+
+            <div class="layout__card">
+                <div class="terms-policy__card">
+                    <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(policyContent)"></p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

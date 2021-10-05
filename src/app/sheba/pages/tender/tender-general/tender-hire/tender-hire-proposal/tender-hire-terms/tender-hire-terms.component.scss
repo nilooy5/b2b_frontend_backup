@@ -1,0 +1,77 @@
+@media only screen and (max-width: 600px) {
+  .By-accepting-I-agre {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    color: rgba(10, 15, 20, 0.75);
+    display: block!important;
+  }
+
+}
+.hire-term-card {
+  min-height: 50px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: var(--white);
+}
+.both-side-padding{
+  padding: 0px 14px 0px 14px;
+}
+.Portlet {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: var(--black);
+}
+.side-padding{
+  padding: 30px 48px 48px 30px;
+}
+.Rectangle {
+  margin-top: 20px;
+  border-radius: 8px;
+  border: solid 0.5px #b3f2ff;
+  background-color: #e1fbff;
+}
+.info {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+.A-simple-info-alert {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  color: #005566;
+}
+.bottom-padd{
+  padding-bottom: 110px;
+}
+.round-padding{
+  padding-left: 12px;
+}
+.In-order-to-create-a {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: var(--black);
+}
+
+.By-accepting-I-agre {
+  display: none;
+}

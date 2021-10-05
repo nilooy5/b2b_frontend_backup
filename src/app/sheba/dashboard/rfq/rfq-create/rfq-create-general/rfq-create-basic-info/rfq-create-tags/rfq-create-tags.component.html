@@ -1,0 +1,58 @@
+<!--<mat-form-field class="example-chip-list">-->
+<!--    <mat-chip-list #chipList aria-label="Fruit selection">-->
+<!--        <mat-chip-->
+<!--            *ngFor="let fruit of fruits"-->
+<!--            [selectable]="selectable"-->
+<!--            [removable]="removable"-->
+<!--            (removed)="remove(fruit)">-->
+<!--            {{fruit}}-->
+<!--             <i id="close-material-chips-icon" matChipRemove *ngIf="removable" class="material-icons">close</i>-->
+<!--        </mat-chip>-->
+<!--        <input-->
+<!--            placeholder="New fruit..."-->
+<!--            #fruitInput-->
+<!--            [formControl]="fruitCtrl"-->
+<!--            [matAutocomplete]="auto"-->
+<!--            [matChipInputFor]="chipList"-->
+<!--            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"-->
+<!--            (matChipInputTokenEnd)="add($event)">-->
+<!--    </mat-chip-list>-->
+<!--    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">-->
+<!--        <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">-->
+<!--            {{fruit}}-->
+<!--        </mat-option>-->
+<!--    </mat-autocomplete>-->
+<!--</mat-form-field>-->
+
+
+
+<mat-form-field [floatLabel]="'never'" appearance="outline">
+    <mat-chip-list #chipList aria-label="Fruit selection">
+        <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
+                  [removable]="removable" (removed)="removeTag(tag)">
+            {{ tag }}
+            <i id="close-material-chips-icon" matChipRemove *ngIf="removable" class="material-icons">close</i>
+        </mat-chip>
+        <input matInput placeholder="Enter tender tags"
+               id="tags"
+               #chipsInput
+               [formControl]='tagsInputCtrl'
+               [matChipInputFor]="chipList"
+               [matAutocomplete]="auto"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (focus)="onFocus()"
+               (blur)="onBlur()"
+               (matChipInputTokenEnd)="addTags($event)">
+    </mat-chip-list>
+
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngIf="isSearching" class="is-loading">Searching...</mat-option>
+        <mat-option *ngIf="isFocused" class="is-loading">Please type 1 or more letters</mat-option>
+        <ng-container *ngIf="isListAvailable">
+            <mat-option id="tagsList" *ngFor="let tag of filteredTags" [value]="tag.name">
+                <span>{{ tag.name }}</span>
+            </mat-option>
+        </ng-container>
+    </mat-autocomplete>
+</mat-form-field>

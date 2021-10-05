@@ -1,0 +1,22 @@
+<div class="d-flex flex-column bd-highlight">
+    <div class="text-right bd-highlight">
+        <img (click)="onNoClick()" src="/assets/svg/cross_black.svg" class="cross mt-3 mr-3">
+    </div>
+    <div class="bd-highlight text-center mt-3">
+        <img [src]="data.icon" class="confirm">
+    </div>
+    <div class="bd-highlight This-is-a-successful text-center mt-4">{{data.title}}</div>
+    <div class="bd-highlight Your-service-provide text-center">{{ data.description }}</div>
+    <div class="bd-highlight text-center">
+        <button class="BG-yes" *ngIf="data?.type == 'fail'" (click)="onNoClick()">{{ data.button_2 }}</button>
+        <button (click)="onNoClick()" *ngIf="data?.type =='success' || data?.type =='fail'" class="BG">{{ data.button_1 }}</button>
+
+        <a target="_blank" href="{{ data.link }}" download *ngIf="data?.type =='failed_for_error'">
+            <button class="BG-yes download">
+                <i class="fa fa-download"></i> {{ data.button_1 }}
+            </button>
+        </a>
+        <br>
+        <button class="button button--primary--outline btn-without-border" *ngIf="data?.type == 'failed_for_error'" (click)="onNoClick()">{{ data.button_2 }}</button>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+@import "../../../../../../src/scss/variables";
+
+.purchase-request-forms-details-header{
+  opacity: 0.8;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.purchase-request-forms-details{
+  padding-top: 30px;
+  margin-bottom: 30px;
+
+  h4{
+    opacity: 0.6;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+  }
+
+  p{
+    opacity: 0.8;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+  }
+
+  &-table{
+    thead{
+      border-bottom: 1px solid #f5f7fc;
+
+      tr{
+        th{
+          opacity: 0.8;
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+    }
+
+    tbody{
+      tr{
+        td{
+          opacity: 0.8;
+          font-size: 14px;
+          font-weight: 400;
+          color: #000000;
+
+          input {
+            border: 1.5px solid $theme-light-grey;
+            background-color: #fafbfc;
+            padding: 20px 16px;
+          }
+
+          textarea{
+            border: 1.5px solid $theme-light-grey;
+            background-color: #fafbfc;
+            padding: 20px 16px;
+          }
+
+        }
+      }
+    }
+  }
+
+  .purchase-request-forms__create-button{
+    padding: 8px 40px;
+  }
+}

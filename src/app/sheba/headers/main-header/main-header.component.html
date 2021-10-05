@@ -1,0 +1,59 @@
+<a class="header-notice" href="http://campaign.sbusiness.xyz/" target="_blank">
+    <div class="header-notice__title">
+        <app-badge [badge]="noticeBadge"></app-badge>&nbsp;&nbsp;Resources to help you and your business through a global pandemic
+        <img class="header-notice__arrow" src="assets/svg/right-arrow.svg" alt="Arrow">
+    </div>
+</a>
+
+<div class="container p-0">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" routerLink="/"> <img [src]="'/assets/img/statics/sBusiness.png'" routerLink="/" class="shebaLogo" alt=""></a>
+        <button class="navbar-toggler" type="button" (click)="showPhoneNavMenu = !showPhoneNavMenu" aria-expanded="showPhoneNavMenu" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse phone-nav" id="navbarSupportedContent" [class.show]="showPhoneNavMenu">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown d-flex align-items-center">
+                    <mat-menu #solutionMenu="matMenu">
+                        <a mat-menu-item class="solutionsBtn borderBottom dropdownItems" (click)="redirectToFeatureLanding('facility')">Facility Management</a>
+                        <a mat-menu-item class="solutionsBtn borderBottom dropdownItems" (click)="redirectToFeatureLanding('fleet')">Fleet Management</a>
+                        <a mat-menu-item class="solutionsBtn borderBottom dropdownItems" (click)="redirectToFeatureLanding('rfq')">Request Quotation</a>
+                        <a mat-menu-item class="solutionsBtn borderBottom dropdownItems" (click)="redirectToFeatureLanding('topup')">Mobile Top-up</a>
+                        <a mat-menu-item class="solutionsBtn dropdownItems" [routerLink]="['/', 'digigo']">HRM Solution</a>
+                    </mat-menu>
+
+                    <button class="nav-link mat-button solutionsBtn d-flex" [matMenuTriggerFor]="solutionMenu">
+                        Solutions <div class="chevron"></div>
+                    </button>
+                </li>
+
+                <li *ngFor="let item of navLinks" class="nav-item d-flex align-items-center">
+                    <a class="nav-link" *ngIf="item.label !== 'Stories'"
+                       [ngClass]="{'button button--primary--filled navigation-button':item.isButton}"
+                       [routerLink]="item.path" [queryParams]="item.queryParams">
+                        <i [class]="item.icon" *ngIf="item.icon"></i>
+                        <span *ngIf="item.label === 'Log in'; else notLogin"
+                              style="color: #437ff5">{{item.label}}</span>
+                        <ng-template #notLogin>{{item.label}}</ng-template>
+                    </a>
+
+                    <a class="nav-link" *ngIf="item.label === 'Stories'"
+                       [ngClass]="{'button button-primary button-jumbo button--nav':item.isButton}"
+                       [href]="item.path" target="_blank">
+                        <span>{{item.label}}</span>
+                    </a>
+                </li>
+
+                <li class="nav-item d-flex align-items-center">
+                    <a class="nav-link" *ngIf=" checkCurrentRoute(currentRoute); else tender" [routerLink]="['/', 'tender']">Tender</a>
+                    <ng-template #tender>
+                        <a class="nav-link button button-primary button-jumbo button--nav" id="all-tender-btn" [routerLink]="['/', 'tender', 'list']">
+                            View all tenders
+                        </a>
+                    </ng-template>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

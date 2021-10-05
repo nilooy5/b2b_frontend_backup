@@ -1,0 +1,11 @@
+<nav mat-tab-nav-bar class="layout__card layout__card--base" *ngIf="tabVisible">
+    <a mat-tab-link
+       *ngFor="let link of navLinks"
+       [routerLink]="link.link"
+       (click)="activeLinkIndex = link.index"
+       [active]="link.index === activeLinkIndex">
+        {{link.label}}
+    </a>
+</nav>
+
+<router-outlet></router-outlet>

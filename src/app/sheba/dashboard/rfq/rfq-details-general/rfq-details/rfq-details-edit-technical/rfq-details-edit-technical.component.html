@@ -1,0 +1,23 @@
+<div class="bg-white technical-evaluation-container">
+
+    <div class="header">
+        <h3 class="text-center">Update Technical Evaluation</h3>
+        <hr>
+    </div>
+
+    <div class="questions">
+        <app-questions [initialQuestions]="receivedTechnicalQuestions" (update)="handleQuestionUpdates($event)" ></app-questions>
+    </div>
+
+</div>
+
+<div class="technical-evaluation-footer" [ngClass]="{ 'open': isSidebarOpen}">
+    <div class="d-flex justify-content-between">
+        <button class="button button--link" (click)="redirectToRfqDetails()">
+            <i class="material-icons">keyboard_backspace</i>
+            <span>Back</span>
+        </button>
+        <button class="button button--filled" (click)="updateTechnicalEvaluation()">Save Question Set</button>
+    </div>
+</div>
+

@@ -1,0 +1,34 @@
+<div class="flex justify-content-between">
+    <div class="flex align-items-center">
+        <div class="form-item horizontal mr-2">
+            <mat-form-field appearance="outline">
+                <mat-select [(ngModel)]="filter.filter" placeholder="Select Group" (selectionChange)="emitFilter()">
+                    <mat-option *ngFor="let item of groups" [value]="item.value"> Group: {{item.label}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-item horizontal mr-2">
+            <mat-form-field appearance="outline">
+                <input matInput (focus)="picker.open()" [matDatepicker]="picker" [(ngModel)]="filter.startDate"
+                                                          placeholder="Choose a date">
+                <mat-datepicker-toggle class="in-form" matSuffix [for]="picker">
+                    <span class="material-icons" matDatepickerToggleIcon>arrow_drop_down</span>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker (closed)="emitFilter()" panelClass="chevron-picker"></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="form-item horizontal mr-2">
+            <mat-form-field appearance="outline">
+                <mat-select [(ngModel)]="filter.viewType" placeholder="Select View Type" (selectionChange)="emitFilter()">
+                    <mat-option *ngFor="let item of viewTypes" [value]="item.value"> View: {{item.label}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-item horizontal">
+            <mat-form-field appearance="outline">
+                <i class="material-icons" matPrefix>search</i>
+                <input type="text" matInput placeholder="Search" (keyup)="emitFilter()" [(ngModel)]="filter.query">
+            </mat-form-field>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div mat-dialog-content>
+    <div class="dialog-content-inner">
+        <div style="text-align: right">
+            <button class="close-button" (click)="buttonClick('close')"><span class="material-icons close-icon">close</span>
+            </button>
+        </div>
+        <div class="confirm-modal">
+            <img *ngIf="data.type === 'confirm'" src="../../../../../../../assets/svg/confirm_img_modal.svg" alt="Success">
+            <img *ngIf="data.type === 'failure'" src="../../../../../../../assets/svg/failure.svg" alt="Failure">
+
+            <h4> {{ data.title }} </h4>
+
+            <p> {{ data.text }} </p>
+
+            <div *ngIf="data.type === 'confirm'" class="action-buttons">
+                <button class="perform perform-no" (click)="buttonClick('close')"> {{ data.actionTextOne }} </button>
+                <button class="perform perform-yes" (click)="buttonClick('yes')"> {{ data.actionTextTwo }} </button>
+            </div>
+            <div *ngIf="data.type === 'failure'" class="action-buttons">
+                <button class="error error-try-again" (click)="buttonClick('try-again')"> {{ data.actionTextOne }} </button>
+                <button class="error error-close" (click)="buttonClick('close')"> {{ data.actionTextTwo }} </button>
+            </div>
+        </div>
+    </div>
+</div>

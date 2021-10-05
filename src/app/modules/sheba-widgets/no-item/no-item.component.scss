@@ -1,0 +1,15 @@
+.no-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  flex-flow: column;
+
+  .heading {
+    font-size: 2rem;
+    color: darken(white, 50%);
+    letter-spacing: .3rem;
+    margin-bottom: 40px;
+    text-shadow: 1px 4px 6px white, 0 0 0 #000000, 1px 4px 6px white;
+  }
+}

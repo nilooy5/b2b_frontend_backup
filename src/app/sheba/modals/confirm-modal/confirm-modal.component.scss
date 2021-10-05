@@ -1,0 +1,38 @@
+@import 'src/scss/variables';
+
+
+::ng-deep .mat-dialog-container {
+  border-radius: 10px ;
+}
+
+.confirm-modal {
+  text-align: center;
+  padding: 50px;
+
+  img {
+    margin-bottom: 40px;
+  }
+  h4 {
+    margin-bottom: 15px;
+    font-size: $fs-header-4;
+    font-weight: $font-weight-semiBold;
+    line-height: 1.4;
+    color: $black-80;
+  }
+  p {
+    font-size: 16px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: rgba(10, 15, 20, 0.75);
+  }
+
+  .close-btn {
+    padding: 8px 59px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: $primary;
+    border: solid 1px $primary;
+  }
+}

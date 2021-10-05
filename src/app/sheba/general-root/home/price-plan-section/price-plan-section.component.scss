@@ -1,0 +1,51 @@
+@import "../../../../../../src/scss/variables";
+
+.price-plan-card {
+  text-align: center;
+  padding: 40px;
+  z-index: 5;
+  padding-bottom: 100px;
+  h2 {
+    font-size: 28px;
+    font-weight: 500;
+  }
+  p {
+    font-size: 16px;
+    color: $mid_grey;
+    max-width: 250px;
+    margin: 15px auto;
+  }
+
+  .price-plan-card__amount {
+    font-size: 28px;
+    color: $theme-color;
+    font-weight: 400;
+  }
+
+  .old-amount {
+    text-decoration: line-through;
+    color: $mid_grey;
+    font-size: 24px;
+  }
+
+  button {
+    position: absolute;
+    bottom: 40px;
+    left: calc(50% - 78px );
+  }
+
+  &.selected {
+    .price-plan-card__amount {
+      font-size: 42px;
+    }
+  }
+}
+.price-plan-card--active {
+  transform: scale(1.2);
+  padding: 30px;
+  z-index: 10;
+}
+
+.taka-sign {
+  font-family: $font-hind-siliguri;
+}

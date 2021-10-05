@@ -1,0 +1,14 @@
+<div class="image-file-input--preview" *ngIf="showPreview">
+    <img *ngIf="type === 'person'" [src]="previewSource || 'https://i.ibb.co/bXqhnhG/user.png'" alt="">
+    <img *ngIf="type !== 'person'" [src]="previewSource || 'https://i.ibb.co/9hG0G31/image-placeholder.png'" alt="">
+    <input type="file" class="image-file-input__input" (change)="OnChange($event)">
+    <button class="image-file-input__btn">Browse</button>
+</div>
+
+<div class="image-file-input" *ngIf="!showPreview">
+
+    <input type="file" class="image-file-input__input" (change)="OnChange($event)" placeholder="No file chosen" aria-label="No file chosen"
+           aria-describedby="button-addon2" style="width: 100%; z-index: 100;">
+    <button class="image-file-input__btn file-upload" id="button-addon2">Browse</button>
+    <p>{{ selectedFile ? selectedFile.name : 'No file chosen'}}</p>
+</div>

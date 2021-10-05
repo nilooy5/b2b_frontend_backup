@@ -1,0 +1,31 @@
+@import "../rfq-orders-details.component";
+@import "../../../../../../../../scss/colors";
+
+.fields {
+  padding-bottom: 25px;
+  &__label {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: $black-80;
+    padding-bottom: 4px;
+  }
+
+  &__data {
+    font-size: 14px;
+    line-height: 1.71;
+    color: rgba(10, 15, 20, 0.75);
+
+    .id {
+      border-radius: 4px;
+      color: #437ff5;
+      background-color: #e1e9fc;
+      width: fit-content;
+      padding: 0 14px;
+      font-weight: 500;
+    }
+  }
+  &:last-of-type {
+    padding-bottom: 0;
+  }
+}

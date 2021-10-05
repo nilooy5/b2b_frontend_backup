@@ -1,0 +1,13 @@
+<div mat-dialog-title>
+    <span class="sheba-title">Add An Acknowledgement Note *</span>
+</div>
+<div mat-dialog-content>
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Note</mat-label>
+        <textarea matInput cdkTextareaAutosize [cdkAutosizeMinRows]="4" [(ngModel)]="note"></textarea>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions [align]="'end'">
+    <button class="button button-primary button-semi-small button-outline mr-20" [mat-dialog-close]="false">Cancel</button>
+    <button class="button button-primary button-semi-small" (click)="submit()">Submit</button>
+</div>

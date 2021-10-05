@@ -1,0 +1,57 @@
+<div class="d-flex pb-30 mx-0">
+    <div class="filtering">
+        <label>
+            <select class="filtering__select" (change)="selectStatus($event)">
+                <option value="all">All</option>
+                <option *ngFor="let status of announcementStatuses | keyvalue"
+                        [value]="status.key" [selected]="status.key == 'Ongoing'">
+                    {{ status.value }}
+                </option>
+            </select>
+            <i class="filtering__arrow-icon material-icons">keyboard_arrow_down</i>
+        </label>
+    </div>
+
+    <div class="filtering">
+        <label>
+            <select class="filtering__select" (change)="selectType($event)">
+                <option hidden>Type</option>
+                <option value="all">All</option>
+                <option *ngFor="let type of announcementTypes  | keyvalue" [value]="type.key">
+                    {{ type.value }}
+                </option>
+            </select>
+            <i class="filtering__arrow-icon material-icons">keyboard_arrow_down</i>
+        </label>
+    </div>
+
+    <div class="search ml-auto">
+        <i class="search__icon material-icons">search</i>
+        <label>
+            <input type="text" class="form-control search__input" placeholder="Search" (keyup)="search($event)">
+        </label>
+    </div>
+
+    <div class="ml-0">
+        <a class="btn button--filled" [routerLink]="['/','dashboard','announcements','create']">
+            Create Announcement
+        </a>
+    </div>
+</div>
+
+<div class="d-flex justify-content-between align-items-center pb-20">
+
+    <h5 class="total-info mb-0">{{ totalAnnouncementsCount }} Records found</h5>
+
+    <div class="pagination-button">
+        <button class="pagination-button__previous"
+                [class.disabled]="isPreviousPageUnavailable()" (click)="previousPage()">
+            <i class="material-icons">keyboard_arrow_left</i>
+        </button>
+        <button class="pagination-button__next"
+                [class.disabled]="isNextPageUnavailable()" (click)="nextPage()">
+            <i class="material-icons">keyboard_arrow_right</i>
+        </button>
+    </div>
+
+</div>

@@ -1,0 +1,49 @@
+<div mat-dialog-content>
+    <div class="dialog-content-inner">
+        <div class="sms-edit-modal">
+            <div class="sms-edit-modal__header">
+                <p>SMS Template</p>
+                <button type="button" class="close" (click)="close()">
+                    <i class="material-icons">close</i>
+                </button>
+            </div>
+
+            <form class="editable__form" *ngIf="templateData" [formGroup]="templateForm">
+                <div class="form-group form-add-group row" style="border: none">
+                    <label for="is_published" class="col-sm-3 col-form-label">Status</label>
+                    <div class="col-md-9 custom-swich" style="text-align: left">
+                        <mat-slide-toggle [checked]="templateData.is_published === 1 ? true : false " id="is_published" formControlName="is_published" (change)="changeStatus($event)"></mat-slide-toggle>
+                    </div>
+                </div>
+                <div class="form-group form-add-group row" style="border: none">
+                    <label for="template" class="col-md-3 col-form-label">SMS</label>
+                    <div class="col-md-9">
+                        <textarea [(ngModel)]="template" #sms class="form-control" name="template" id="template" formControlName="template" cols="30" rows="6"></textarea>
+                        <p *ngIf="templateError" style="color: red; font-size: 14px">{{templateError}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group form-add-group row" style="border: none">
+                    <div class="col-md-9 offset-md-3" style="text-align: left">
+                        <span style="font-weight: 500">Variables: </span>
+                        <span *ngFor="let variable of variables" class="variable-chips" (click)="insertVariable(variable, sms)"> {{variable}} </span>
+                        <span class="variable-info" matTooltip="Click on these variables and it will appear in the SMS textbox"><i class="material-icons">info</i></span>
+                    </div>
+                </div>
+
+                <div class="form-group form-add-group row" style="border: none">
+                    <div class="col-md-9 offset-md-3" style="text-align: left">
+                        <p class="cost-msg">{{templateData.cost}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group form-add-group row" style="border: none">
+                    <div class="col-md-9 offset-md-3" style="text-align: left">
+                        <button class="form-button" mat-button matStepperNext style="margin: 0" (click)="update()">UPDATE</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

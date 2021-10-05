@@ -1,0 +1,27 @@
+.button {
+  min-height: 40px;
+  padding: 10px;
+}
+
+.fleet-request__action {
+  padding: 16px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    margin-bottom: 0;
+    flex-grow: 1;
+  }
+  button {
+    font-size: 14px;
+    padding: 10px 32px;
+    color: white;
+    margin-left: 10px;
+    &.approve-btn {
+      background-color: #12b886;
+    }
+    &.reject-btn {
+      background-color: #fa5252;
+    }
+  }
+}

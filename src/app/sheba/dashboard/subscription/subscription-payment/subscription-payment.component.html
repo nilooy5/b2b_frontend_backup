@@ -1,0 +1,30 @@
+<div class="quick-purchase__payment">
+    <div class="order-success">
+        <img src="../../../../../assets/img/general-root/sucess-request.png" alt="">
+        <h3>Order Placed Successfully!</h3>
+        <p> Your service provider will contact you soon or you can also contact him/her from order list.</p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <app-sheba-bill [items]="billItems"></app-sheba-bill>
+            </div>
+
+            <div class="col-md-6">
+                <div class="layout__window">
+                    <div class="layout__window__header d-flex justify-content-between">
+                        <span>Select Payment Options</span>
+                        <span style="font-size: 14px; font-weight: 400"><i class="material-icons" style="font-size: 14px; position: relative; top: 1px; color: #12b372; margin-right: 5px" >lock</i> Safe & Secure</span>
+                    </div>
+                    <app-sheba-payment [orderID]="orderID" [clearUrl]="billClearUrl"></app-sheba-payment>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center" style="margin-top: 20px">
+        <a href="#" [routerLink]="['/','dashboard','subscriptions', orderID]" class="btn button--primary--filled" style="padding: 10px 16px; margin-right: 16px">Subscription Details</a>
+        <a href="#" class="btn button--primary--outline" style="padding: 10px 16px">Back to Dashboard</a>
+    </div>
+</div>

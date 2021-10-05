@@ -1,0 +1,127 @@
+@import "variables";
+
+.alert {
+  display: flex;
+  flex: 1 1 auto;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  @include border-radius(4px);
+  max-width: 100%;
+
+  &-danger {
+    .pre-icon {
+      > svg path {
+        fill: darken($danger, 10%);
+      }
+    }
+  }
+
+  &-success {
+    .pre-icon {
+      > svg path {
+        fill: $brand-success;
+      }
+    }
+  }
+
+  &-info {
+    color: $text-color;
+    background-color: transparentize($theme-color, .8);
+    border-color: transparentize($theme-color,.7);
+
+    &-inherit {
+      display: inherit;
+    }
+
+    .pre-icon {
+      > svg path {
+        fill: darken($theme-color, 10%);
+      }
+    }
+  }
+
+  .pre-icon {
+    display: flex;
+    flex-grow: 0;
+    padding-right: 10px;
+
+    > svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    align-items: center;
+    justify-content: center;
+    justify-self: stretch;
+    align-self: stretch;
+  }
+
+  .content {
+    display: flex;
+    flex: 1 80%;
+    flex-grow: 100;
+    padding-right: 5px;
+    overflow: hidden;
+    min-width: 80px;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+  }
+
+  .close {
+    display: flex;
+    align-self: flex-start;
+    justify-content: center;
+    align-items: center;
+    justify-self: stretch;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 1;
+    width: 24px;
+    font-weight: bold;
+  }
+
+  &.tp {
+    padding: 5px 0;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 80%;
+    font-weight: normal;
+    background-color: transparent;
+    box-shadow: none;
+    justify-content: flex-start;
+  }
+
+  &-position {
+    position: fixed;
+    padding: 0 10px;
+    width: 100%;
+    max-width: 360px;
+    z-index: 12;
+
+    &.bottom {
+      bottom: 10px;
+    }
+
+    &.right {
+      right: 0;
+    }
+
+    &.top {
+      top: 70px;
+    }
+
+    &.left {
+      left: 0;
+    }
+  }
+}
+
+.badge {
+  &-primary {
+    background-color: $theme-color;
+  }
+}

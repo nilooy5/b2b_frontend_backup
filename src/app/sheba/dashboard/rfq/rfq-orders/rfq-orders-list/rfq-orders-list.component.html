@@ -1,0 +1,17 @@
+<div *ngIf="initialOrderCount !== 0; else noOrder">
+    <app-rfq-orders-list-filter [tenderOrderStatuses]="tenderOrderStatuses"
+                                [totalOrdersCount]="totalOrders"
+                                [limit]="getLimit()"
+                                [dataOffset]="dataOffset"
+                                [currentLength]="currentLength"
+                                [sortColumn]="sortObj"
+                                (filterEmitter)="setFilteredSubscriptionOrders($event)"
+                                (alphabeticFilter)="handleAlphabeticSort($event)"></app-rfq-orders-list-filter>
+
+    <app-rfq-orders-list-table [dataSource]="dataSource"
+                               [filteredTenderOrderList]="filteredTenderOrderList"
+                               (sortByColumnEmitter)="receiveSortByColumn($event)"></app-rfq-orders-list-table>
+</div>
+<ng-template #noOrder>
+    <app-rfq-orders-list-empty></app-rfq-orders-list-empty>
+</ng-template>

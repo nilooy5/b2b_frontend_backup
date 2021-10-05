@@ -1,0 +1,47 @@
+@import "../../../../../../src/scss/variables";
+
+:host ::ng-deep {
+  #table {
+    thead {
+      tr {
+        th.mat-header-cell {
+          font-size: 14px;
+          font-weight: bold;
+          padding: 16px 20px !important;
+          font-family: $font-lato !important;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td.mat-cell {
+          font-size: 14px;
+          padding: 16px 20px !important;
+          font-family: $font-lato !important;
+        }
+      }
+    }
+  }
+}
+
+.main-content-container {
+  height: 75vh;
+  position: relative;
+
+  i {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 28px;
+    color: $theme-font-color;
+    padding-right: 20px;
+  }
+}
+
+.no-expense {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+

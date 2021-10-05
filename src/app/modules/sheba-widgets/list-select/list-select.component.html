@@ -1,0 +1,36 @@
+<div class="flex w-100 flex-column p-30">
+    <div class="list-title ">
+        <h4>{{title}}</h4>
+        <div class="list-action">
+            <div class="input-group search-input input-group--primary">
+                <div class="input-group-prepend">
+                    <i class="material-icons">search</i>
+                </div>
+                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="query"
+                       (keyup)="onSearch()" aria-describedby="List Search">
+            </div>
+        </div>
+    </div>
+    <div class="list-separator"></div>
+    <div class="list-contents">
+        <div class="list-items">
+            <div class="list-item" *ngFor="let item of data"
+                 [ngClass]="{'active':selectedItem&&(item[bindValue]===selectedItem[bindValue])}">
+                <div class="list-item-inner">
+                    <div class="profile-image-avatar mr-3">
+                        <img [lazyLoad]="item[bindImage]" alt="" [defaultImage]="appConfig.defaultImage">
+                    </div>
+                    <div class="flex flex-column align-items-start">
+                        <span class="list-item-title">{{item[bindTitle]|titlecase}}</span>
+                        <span class="list-item-sub-title">{{item[bindSubTitle]|titlecase}}</span>
+                    </div>
+                    <input class="list-item-radio" type="radio" [(ngModel)]="selectedItem" [value]="item"
+                           (change)="onSelect()">
+                    <span class="list-item-checked"
+                          [ngClass]="{'active':selectedItem&&(item[bindValue]===selectedItem[bindValue])}"><i
+                            class="fa fa-check"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

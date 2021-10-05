@@ -1,0 +1,26 @@
+.select-list-item {
+  display: flex;
+  width: 100%;
+  padding: 15px;
+  cursor: pointer;
+
+  &.active {
+    background-color: darken(white, 3%);
+  }
+
+  &.selected {
+    background-color: darken(white, 2%);
+  }
+
+  &-text {
+    padding-left: 10px;
+
+    & .title {
+
+    }
+
+    & .sub-title {
+      color: darken(white, 20%);
+    }
+  }
+}

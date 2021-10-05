@@ -1,0 +1,33 @@
+@import "../../../../../../../../src/scss/variables";
+
+.driver-card {
+  background-color: $white;
+  padding: 16px;
+  border-radius: 4px;
+  img {
+    height: 80px;
+    width: 80px;
+    border-radius: 4px;
+    margin-right: 20px;
+  }
+  .driver-info {
+    font-size: 20px;
+    p {
+      margin-bottom: 10px;
+      &.driver-info__nnumber {
+        color: $mid_grey;
+        font-size: 16px;
+        span {
+          color: $black60;
+        }
+        i {
+          font-size: 20px;
+          position: relative;
+          top: 4px;
+          margin-right: 10px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

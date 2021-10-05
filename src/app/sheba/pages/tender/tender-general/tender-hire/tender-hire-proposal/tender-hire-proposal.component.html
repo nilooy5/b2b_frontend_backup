@@ -1,0 +1,22 @@
+<div class="container">
+    <app-tender-hire-job-details [jobDetail]="tenderHireDetails"></app-tender-hire-job-details>
+
+    <app-tender-hire-requested-info [jobDetail]="tenderHireDetails"></app-tender-hire-requested-info>
+
+    <app-tender-hire-terms [jobDetail]="tenderHireDetails"></app-tender-hire-terms>
+</div>
+
+<div class="d-flex justify-content-center align-items-center proposal-footer">
+    <div class="container">
+        <div class="d-flex bd-highlight">
+            <div class="p-2 flex-fill bd-highlight By-accepting-I-agre">By accepting, I agree to all the terms and condition</div>
+            <div class="flex-fill">
+                <div class="example-button-row" >
+                    <button (click)="rejectProposal()" class="btn reject" style="background-color: #edf2ff;" > Reject</button>
+                    <button (click)="acceptProposal()" class="btn btn-primary accept ml-3"> Accept </button>
+                </div>
+            </div>
+          </div>
+    </div>
+</div>
+

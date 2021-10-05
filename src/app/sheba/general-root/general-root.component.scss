@@ -1,0 +1,29 @@
+.content {
+  display: block;
+  z-index: 1;
+}
+.general-root{
+  padding-top: 140px;
+}
+app-main-header {
+  z-index: 1000;
+  display: block;
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  background-color: white;
+  -webkit-box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+app-main-footer {
+  z-index: 5;
+}
+@media screen and (max-width: 768px) {
+  .general-root{
+    padding-top: 130px;
+  }
+}

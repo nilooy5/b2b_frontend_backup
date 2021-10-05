@@ -1,0 +1,71 @@
+<div class="wrapper">
+    <div class="message-input-container">
+        <div class="file-name" *ngIf="uploadedAttachment !== null">{{ limitString(uploadedAttachment.name) }}
+            <button class="btn button--inline" (click)="clearAttachment()"><i class="material-icons close-icon">close</i></button></div>
+
+        <div class="message-input d-flex align-items-start">
+            <!-- <input id="text-message" type="text" placeholder="Type your message here"> -->
+            <textarea id="text-message" class="align-self-center"
+                      cdkTextareaAutosize style="overflow: hidden; flex-grow: 1" [formControl]="sentMessage"
+                      placeholder="Type your message here"></textarea>
+
+            <div class="attachment-button" id="attach-icon">
+                <input #myFileInput type="file" (click)="myFileInput.value = null" (change)="onFileChange($event)">
+                <i class="material-icons">attach_file</i>
+            </div>
+            <button [disabled]="isDisabled" id="send-button" class="button button--primary--filled justify-content-center"
+                    (click)="storeMessageAttachment()">
+                <span *ngIf="!isLoading">Send</span>
+                <mat-spinner *ngIf="isLoading" [diameter]="15"></mat-spinner>
+            </button>
+        </div>
+    </div>
+    <div class="message-section" #scrollMe >
+
+        <div class="messages-container-s2" *ngFor="let item of messages">
+
+            <!-- Other message-->
+            <div class="inbox-message-s2" *ngIf="item.commentator_type === 'Partner'">
+                <div class="inbox-message-left-s2">
+                    <div class="inbox-message-image-container-s2">
+                        <img class="inbox-message-image-s2" [lazyLoad]="item.user.image" [defaultImage]="appConfig.defaultImage" alt="">
+<!--                        <img class="inbox-message-image-s2" src="https://image.ibb.co/cjZqGK/message_profile_4.jpg">-->
+                    </div>
+                </div>
+                <div class="inbox-message-right-s2">
+                    <div class="inbox-message-body-s2">
+                            {{ item.comment }}
+                    </div>
+                    <span class="inbox-message-time-s2">
+                        {{ item.created_at }}
+                    </span>
+                </div>
+            </div>
+
+            <!-- Your message-->
+            <div class="inbox-message-s2-you" *ngIf="item.commentator_type === 'Business'">
+
+                <div class="inbox-message-left-s2-you">
+                    <div class="inbox-message-image-container-s2-you">
+                        <img class="inbox-message-image-s2-you" [lazyLoad]="item.user.image" [defaultImage]="appConfig.defaultImage" alt="">
+<!--                        <img class="inbox-message-image-s2-you" src="https://image.ibb.co/cjZqGK/message_profile_4.jpg">-->
+                    </div>
+                </div>
+
+                <div class="inbox-message-right-s2-you">
+                    <div class="inbox-message-body-s2-you">
+                        {{ item.comment }}
+                    </div>
+                    <span class="inbox-message-time-s2-you">
+                        {{ item.created_at }}
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>

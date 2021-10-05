@@ -1,0 +1,36 @@
+<div mat-dialog-content>
+    <div class="dialog-content-inner">
+        <div class="generic-modal">
+            <div class="generic-modal__header">
+                <p>Add Department</p>
+                <button type="button" class="close" (click)="close()">
+                    <i class="material-icons">close</i>
+                </button>
+            </div>
+
+            <form class="editable__form" [formGroup]="departmentInformation" (submit)="submit()">
+                <div class="form-group form-add-group row" style="border: none">
+                    <label for="name" class="col-sm-4 col-form-label">Department Name</label>
+                    <div class="col-md-8 custom-swich" style="text-align: left">
+                        <input type="text" class="form-control" formControlName="name" name="name" id="name" placeholder="Write a name">
+                        <p class="error-message" *ngIf="showFormValidationError && departmentInformation.get('name').hasError('required')">Department Name is required</p>
+                    </div>
+                </div>
+                <div class="form-group form-add-group row" style="border: none">
+                    <label for="description" class="col-md-4 col-form-label">Short Description</label>
+                    <div class="col-md-8">
+                        <textarea  class="form-control" placeholder="Write short description…" name="description" id="description" formControlName="description" cols="30" rows="6"></textarea>
+                            <p class="error-message" *ngIf="showFormValidationError && departmentInformation.get('description').hasError('required')">Department Description is required</p>
+                    </div>
+                </div>
+
+                <div class="form-group form-add-group row" style="border: none">
+                    <div class="col-md-8 offset-md-4" style="text-align: left">
+                        <button class="form-button" mat-button matStepperNext style="margin: 0" type="submit">Create Department</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

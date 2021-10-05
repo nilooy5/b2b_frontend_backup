@@ -1,0 +1,40 @@
+<div class="sidebar" [ngClass]="{open: !open}">
+    <div class="sidebar-header" [class.hidden]="!showChildRoutes">
+        <a href="/">
+            <img [src]="'/assets/img/statics/sBusiness.png'" alt="">
+        </a>
+    </div>
+    <div class="sidebar-content" *ngIf="showContent" [ngClass]="{hidden:!showChildRoutes}">
+        <div class="sidebar-nav">
+            <ul class="sidebar-nav-items" *ngIf="CanUserAccess !== null">
+                <li class="sidebar-nav-item"
+                    [class.active]="item.isActive && current_path==='/dashboard'"
+                    [class.hidden]="!item.userAccess"
+                    [class.open]="open"
+                    *ngFor="let item of navLinks" [routerLinkActive]="!item.isActive?'active':''">
+                    <a (click)="handleClick(item)" [ngClass]="{open:open}">
+                        <mat-icon class="sidebar-nav-icon" *ngIf="item.icon" [svgIcon]="'icon_'+item.icon"></mat-icon>
+                        <span class="sidebar-nav-text" [ngClass]="{open:open}">{{item.label}}
+                            <span *ngIf="item.badge" class= "sidebar-nav-text--badge" [ngClass]="{open:open}">{{item.badge}}</span>
+                        </span>
+
+                    </a>
+
+                    <ul class="sidebar-nav-items-inner" *ngIf="item.children && item.children.length" [ngClass]="{open:showChildRoutes}">
+                        <li class="sidebar-nav-item" *ngFor="let inItem of item.children"
+                            [ngClass]="{
+                                hidden: !inItem.userAccess,
+                                open:open
+                            }">
+                            <a [routerLink]="inItem.path" [routerLinkActive]="!item.isActive?'active':''">
+                                <span class="sidebar-nav-text" [ngClass]="{open:open}">{{inItem.label}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="sidebar-footer">
+    </div>
+</div>

@@ -1,0 +1,14 @@
+@import "../../../../../../../scss/variables";
+
+.info-section {
+  margin-top: 20px;
+  h1 {
+    font-size: 28px;
+    font-weight: 400;
+    color: $theme-font-color;
+  }
+  p {
+    font-size: 14px;
+    color: $black60;
+  }
+}

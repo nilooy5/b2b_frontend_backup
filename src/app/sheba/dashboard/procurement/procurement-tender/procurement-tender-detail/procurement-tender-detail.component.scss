@@ -1,0 +1,91 @@
+@import '../../../../../../scss/layouts';
+@import '../../../../../../scss/variables';
+
+$procurement_status_accepted: #12b886;
+$procurement_status_default: #0c99f7;
+
+.layout__card {
+  margin-bottom: 30px;
+  padding: 35px 30px;
+}
+
+.button {
+  border-color: #2f38f1;
+  color: #2f38f1;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 18px;
+  min-height: 40px;
+}
+
+.procurement-details {
+  &__info {
+
+    h5 {
+      color: $black60;
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    &__title {
+      font-size: 16px;
+      word-break: break-all;
+    }
+
+    .procurement-status {
+      margin: 0;
+      font-size: 12px;
+      font-weight: normal;
+      color: $white;
+      border-radius: 3px;
+      background-color: $procurement_status_default;
+      text-align: center;
+      display: inline-block;
+      padding: 3px 8px;
+      text-transform: capitalize;
+      &.accepted {
+        background-color: $procurement_status_accepted;
+      }
+    }
+
+  }
+
+  &__btn {
+
+    &__publish {
+      width: 160px;
+      height: 40px;
+      color: #2f38f1;
+    }
+
+    &__kebab {
+      padding: 10px 17px;
+    }
+  }
+
+
+
+  &__menu__item {
+    color: $theme-blue;
+    margin-right: 10px;
+    i {
+      font-size: 20px;
+      position: relative;
+      top: 2px;
+    }
+  }
+}
+
+.divBtn{
+  position: absolute;
+  right: 60px;
+  top: 112px;
+}
+
+
+
+
+
+
+
+

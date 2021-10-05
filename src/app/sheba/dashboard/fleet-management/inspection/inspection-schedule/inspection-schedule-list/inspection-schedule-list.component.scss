@@ -1,0 +1,41 @@
+@import "../../../../../../../scss/variables";
+
+.vehicle-info {
+  display: flex;
+  margin-bottom: 0;
+  li {
+    color: $black60;
+    list-style: circle inside $black60;
+    margin-left: 10px;
+  }
+  span i {
+    font-size: 12px;
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+    &.active {
+      color: $active_color;
+    }
+    &.inactive {
+      color: $inactive_color;
+    }
+  }
+}
+.vehicle-info__img {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+
+.link {
+  color: $theme-color;
+}
+
+.due-badge {
+  color: $white !important;
+  font-size: 12px;
+  font-weight: 400;
+  background-color: $inactive_color;
+  border-radius: 10px;
+}
+

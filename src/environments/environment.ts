@@ -1,0 +1,21 @@
+export const environment = {
+    production: false,
+    endpoint: 'https://api.dev-sheba.xyz/',
+    site_url: 'http://b2b.sheba.test/',
+    accounts_url: 'https://accounts.dev-sheba.xyz/',
+    account_kit_url: 'https://accountkit.dev-sheba.xyz/',
+    api_url: 'https://api.dev-sheba.xyz/',
+    sheba_api_url: 'https://api.dev-sheba.xyz/',
+    partner_url: 'https://partners.dev-sheba.xyz/',
+    bondhu_url: 'https://bondhu.dev-sheba.xyz/',
+    customer_web_url: 'https://www.dev-sheba.xyz/',
+    topup_url: 'https://topup.dev-sheba.xyz/',
+    socket_url: 'https://socket.dev-sheba.xyz/',
+    google_analytics_id: 'UA-45794762-10',
+    amplitude_id: '369fc5e1e0332a14adb254fb12a7ec32',
+    crisp_id: '7bc2209b-76e6-4ef3-b85d-cd9e0d8b6fe5',
+    sentry_key: 'https://cdc4144315294a3f838ecb7c3e674308@sentry.io/3037560',
+    help_url: 'http://help.dev-sheba.xyz/',
+    s3_url: 'https://cdn-business.s3.ap-south-1.amazonaws.com/dev/',
+    account_kit_app_id: 'sheba'
+};

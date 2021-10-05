@@ -1,0 +1,9 @@
+<ngb-pagination [collectionSize]="paginationData.total_tenders" [page]="paginationData.current_page"
+                [maxSize]="5" [rotate]="true" [ellipses]="true" [boundaryLinks]="false" (pageChange)="changePage($event)">
+    <ng-template ngbPaginationPrevious>
+        <i class="fas fa-chevron-left" style="font-size: 12px"></i>
+    </ng-template>
+    <ng-template ngbPaginationNext>
+        <i class="fas fa-chevron-right" style="font-size: 12px"></i>
+    </ng-template>
+</ngb-pagination>

@@ -1,0 +1,280 @@
+@import '../../../../../../../scss/layouts';
+@import '../../../../../../../scss/variables';
+
+$procurement_status_accepted: #12b886;
+$procurement_status_default: #0c99f7;
+
+
+::ng-deep {
+
+  .mat-form-field {
+    padding-top: 5px;
+    width: 100%;
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-wrapper{
+    border-bottom: 1.5px solid $theme-light-grey;
+    padding: 0 !important;
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0 !important;
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-underline {
+    height: 0 !important;
+  }
+
+  .mat-row:last-child {
+    border-bottom: none;
+  }
+
+  .mat-row {
+    padding: 5px 0;
+  }
+
+  .mat-subheader {
+    padding: 0 !important;
+  }
+
+  /* START: Radio Button */
+  .mat-radio-button.mat-radio-disabled.mat-radio-checked .mat-radio-outer-circle,
+  .mat-radio-button.mat-radio-disabled .mat-radio-outer-circle {
+    border-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .mat-radio-button.mat-radio-disabled .mat-radio-label-content {
+    color: rgba(0, 0, 0, 0.8);
+  }
+  /* END: Radio Button */
+
+
+  /* START: Checkbox */
+  .mat-checkbox-disabled:not(.mat-checkbox-checked) .mat-checkbox-frame {
+    border-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .mat-checkbox-disabled .mat-checkbox-label {
+    color: rgba(0, 0, 0, 0.8);
+  }
+  /* END: Checkbox */
+}
+
+input {
+  border: none;
+  padding: 20px 16px;
+  border-radius: 0;
+  border-bottom: 1.5px solid $theme-light-grey;
+  &.small:disabled {
+    font-size: 16px;
+  }
+  &:disabled {
+    border-bottom: none;
+    background: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.8);
+  }
+  &:focus{
+    outline: none;
+  }
+}
+
+mat-header-row {
+  border-bottom: none;
+}
+
+mat-header-cell {
+  font-size: 16px;
+  background-color: #a7b1cc;
+  color: #fff;
+
+  &:first-child{
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+
+  &:last-child{
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+}
+
+.mat-form-field-wrapper {
+  padding: 0 !important;
+}
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: #fff;
+}
+
+.__error-message {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: $red;
+  margin: 0 ;
+}
+
+.layout__card {
+  margin-bottom: 30px;
+  padding: 35px 30px;
+}
+
+.basic-rfq {
+  .general-information,
+  .other-information {
+
+    &__info {
+      h6 {
+        font-size: 14px;
+        margin-top: 0.5rem;
+      }
+    }
+
+    &__card {
+      padding: 35px 50px 30px 50px !important;
+
+      &__section {
+        h5 {
+          padding: 7px 0 5px 0;
+          font-size: 14px;
+        }
+        p {
+          color: rgba(0, 0, 0, 0.8);
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+    }
+
+  }
+
+  .other-information {
+
+    &__info {
+      h6 {
+        font-size: 14px;
+        margin-top: 0.5rem;
+      }
+    }
+
+    &__edit-btn,
+    &__submit-btn {
+      width: 80px;
+      height: auto;
+      border-radius: 3px;
+      padding: 3px;
+      border: solid 1px #2f38f1;
+      background-color: #ffffff;
+    }
+
+    &__card {
+      padding: 35px 50px 30px 50px !important;
+
+      &__section {
+        .date-submission__date-picker {
+          position: relative;
+          padding-right: 0;
+          .date-submission__date-picker__toggle {
+            position: absolute;
+            top: 0;
+            right: 2px;
+          }
+          input:disabled ~ ::ng-deep.date-submission__date-picker__toggle {
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.advanced-rfq {
+  margin-top: 1.2rem !important;
+
+  .additional-information{
+
+    &__info {
+      h6 {
+        font-size: 14px;
+        margin-top: 0.5rem;
+      }
+    }
+
+    &__card {
+      padding: 35px 50px 30px 50px !important;
+      p {
+          color: rgba(0, 0, 0, 0.8);
+          font-size: 16px;
+          font-weight: normal;
+        }
+    }
+
+  }
+
+  .price-quotation,
+  .technical-evaluation,
+  .company-evaluation {
+    &__info {
+      h6 {
+        font-size: 14px;
+        margin-top: 0.5rem;
+      }
+    }
+
+    &__card {
+      padding: 30px 40px 30px 40px !important;
+
+      &__title {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.attached-documents {
+  padding-top: 30px;
+
+  h6 {
+    margin-bottom: 0;
+  }
+
+  &__amount {
+    padding: 2px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  &__card {
+    padding: 30px !important;
+  }
+
+  &__item {
+    padding: 16px 0;
+    border-bottom: 1px solid #e5ebfa;
+    font-size: 12px;
+    &-buttons {
+      a {
+        color: $theme-color;
+        margin-left: 10px;
+        i {
+          font-size: 16px;
+        }
+      }
+    }
+
+  }
+}
+
+
+
+
+
+
+
+
+

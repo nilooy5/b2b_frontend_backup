@@ -1,0 +1,332 @@
+<div class="main-content-container" id="print-container">
+    <div class="main-content-block">
+        <div class="row">
+
+            <div class="col-md-5 basic-rfq">
+                <!-- General Information -->
+                <div class="general-information">
+                    <div class="d-flex mb-3 general-information__info">
+                        <div class="mr-auto">
+                            <h6>General Information</h6>
+                        </div>
+                    </div>
+
+                    <div class="bg-white general-information__card">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div *ngIf="procurementDetails.labels.length > 0" class="d-flex flex-column mb-3 general-information__card__section">
+                                    <h5 class="fw-4 text-muted"> Labels </h5>
+                                    <p> {{ labels }} </p>
+                                </div>
+
+                                <div class="d-flex flex-column mb-3 general-information__card__section">
+                                    <h5 class="fw-4 text-muted"> Work Duration </h5>
+                                    <p>
+                                        {{ procurementDetails.start_date }} - {{ procurementDetails.end_date }}
+                                    </p>
+                                </div>
+
+                                <div class="d-flex flex-column general-information__card__section">
+                                    <h5 class="fw-4 text-muted"> Payment Option </h5>
+                                    <p> {{ procurementDetails.payment_options }} </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Information -->
+                <div class="other-information">
+
+                    <div class="d-flex mt-3 mb-2 other-information__info">
+                        <div class="mr-auto">
+                            <h6 class="py-3">Other Information</h6>
+                        </div>
+                        <div class="align-self-center">
+                            <button class="btn button--primary--outline other-information__edit-btn print-edit-btn"
+                                    (click)="otherInformationFormEnable = true"
+                                    *ngIf="!otherInformationFormEnable">
+                                Edit
+                            </button>
+                            <button class="btn button--primary--outline other-information__submit-btn"
+                                    (click)="onSubmitOtherInformation()"
+                                    *ngIf="otherInformationFormEnable">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="bg-white other-information__card">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="d-flex flex-column mb-4 other-information__card__section">
+                                    <h5 class="fw-4 text-muted">
+                                        Number of Participate
+                                    </h5>
+                                    <div [formGroup]="otherInformation">
+                                        <input [disableFormControl]="!otherInformationFormEnable"
+                                               formControlName="numberOfParticipate" style="padding: 0"
+                                               required>
+                                        <p class="__error-message" *ngIf="fc.numberOfParticipate.touched
+                                                                                        && fc.numberOfParticipate.errors
+                                                                                        && fc.numberOfParticipate.errors.required">
+                                            Number of Participate is required
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-column mb-3 other-information__card__section">
+                                    <h5 class="fw-4 text-muted">
+                                        Created on
+                                    </h5>
+                                    <p>
+                                        {{ procurementDetails.created_at }}
+                                    </p>
+                                </div>
+
+                                <div class="d-flex flex-column mb-3 other-information__card__section">
+                                    <h5 class="fw-4 text-muted">
+                                        Posted on
+                                    </h5>
+                                    <p>
+                                        {{ isRFQPublished === null ? 'Not Published Yet' : isRFQPublished }}
+                                    </p>
+                                </div>
+
+                                <div class="d-flex w-100 other-information__card__section">
+                                    <div [formGroup]="otherInformation">
+
+                                        <h5 class="fw-4 text-muted">
+                                            Last Date of Submission
+                                        </h5>
+
+                                        <div class="date-submission__date-picker">
+                                            <mat-datepicker #lastDateOfSubmissionPicker></mat-datepicker>
+                                            <input class="form-control"
+                                                   (focus)="lastDateOfSubmissionPicker.open()"
+                                                   matInput [matDatepicker]="lastDateOfSubmissionPicker"
+                                                   placeholder="DD / MM / YYYY"
+                                                   id="modelYear" formControlName="lastDateOfSubmission"
+                                                   [disableFormControl]="!otherInformationFormEnable" style="padding: 0"
+                                                   required readonly>
+                                            <span class="date-submission__date-picker__toggle">
+                                                                <mat-datepicker-toggle matSuffix [for]="lastDateOfSubmissionPicker">
+                                                                </mat-datepicker-toggle>
+                                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="attached-documents" *ngIf="procurementDetails.attachments.length > 0">
+
+                    <div class="d-flex mb-1">
+                        <div class="pr-2">
+                            <h6 class="py-3">Documents</h6>
+                        </div>
+                        <div class="align-self-center">
+                            <span class="attached-documents__amount" style="">{{ procurementDetails.attachments.length }}</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white attached-documents__card">
+                        <div *ngIf="procurementDetails.attachments.length">
+                            <div *ngFor="let item of procurementDetails.attachments" class="attached-documents__item d-flex justify-content-between">
+                                <span>{{ limitString(item.title) }}</span>
+
+                                <div class="attached-documents__item-buttons">
+                                    <a (click)="viewImage(item.file)">
+                                        <i class="material-icons">remove_red_eye</i>
+                                    </a>
+                                    <a [href]="item.file" target="_blank" [download]="item.title"><i
+                                        class="material-icons">file_download</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7 advanced-rfq" >
+
+                <!--  Additional Information IF RFQ is Basic -->
+                <div class="pb-5 additional-information" *ngIf="procurementDetails.long_description !== null">
+                    <div class="d-flex mb-3 additional-information__info">
+                        <div class="mr-auto">
+                            <h6>Additional Information</h6>
+                        </div>
+                    </div>
+
+                    <div class="bg-white additional-information__card">
+                        <p> {{ procurementDetails.long_description }} </p>
+                    </div>
+                </div>
+
+                <!-- Price Quotation -->
+                <div class="pb-5 price-quotation" *ngIf="procurementDetails.price_quotation !== null">
+
+                    <div class="d-flex mb-3 price-quotation__info">
+                        <div class="mr-auto">
+                            <h6>Price Quotation</h6>
+                        </div>
+                    </div>
+
+                    <mat-table class="table-margin-bottom" #table [dataSource]="priceQuotationDataSource">
+
+                        <ng-container matColumnDef="serialNo">
+                            <mat-header-cell *matHeaderCellDef>SL NO</mat-header-cell>
+                            <mat-cell *matCellDef="let row; let i = index">
+                                <span> {{ i + 1 }}</span>
+                            </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="itemName">
+                            <mat-header-cell *matHeaderCellDef>Item Name / Description</mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                                <span> {{ row.itemName }} </span>
+                            </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="specification">
+                            <mat-header-cell *matHeaderCellDef> Specification</mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                                <span> {{ row.specification }} </span>
+                            </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="unit">
+                            <mat-header-cell *matHeaderCellDef> Unit</mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                                <span> {{ row.unit }} </span>
+                            </mat-cell>
+                        </ng-container>
+
+
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+                    </mat-table>
+
+                </div>
+
+                <!-- Technical Evaluation -->
+                <div class="pb-5 technical-evaluation" *ngIf="procurementDetails.technical_evaluation !== null">
+                    <div class="d-flex mb-3 technical-evaluation__info">
+                        <div class="mr-auto">
+                            <h6>Technical Evaluation</h6>
+                        </div>
+                    </div>
+
+                    <div class="bg-white technical-evaluation__card">
+                        <div *ngFor="let item of technicalEvaluationQuestions">
+                            <div class="flex w-100 justify-content-start align-items-start pb-4 pt-3">
+                                <div class="w-50">
+                                    <div class="mat-subheader mb-2 technical-evaluation__card__title">
+                                        {{ item.title }}
+                                    </div>
+
+                                    <section *ngIf="item.input_type === 'text'">
+                                        <mat-form-field>
+                                            <input matInput class="form-control" type="text" placeholder="Short answer"
+                                                   [disabled]="true">
+                                        </mat-form-field>
+                                    </section>
+
+                                    <section *ngIf="item.input_type === 'textarea'">
+                                        <mat-form-field>
+                                            <input matInput class="form-control" type="text" placeholder="Long Answer"
+                                                   [disabled]="true">
+                                        </mat-form-field>
+                                    </section>
+
+                                    <section *ngIf="item.input_type === 'radio'">
+                                        <div *ngFor="let option of item.options; let o = index;"
+                                             style="padding-top: 25px;">
+                                            <mat-radio-button [disabled]="true">
+                                                {{ option }}
+                                            </mat-radio-button>
+                                        </div>
+                                    </section>
+
+                                    <section *ngIf="item.input_type === 'checkbox'">
+                                        <div *ngFor="let option of item.options; let o = index;"
+                                             style="padding-top: 25px;">
+                                            <mat-checkbox [disabled]="true">
+                                                {{ option }}
+                                            </mat-checkbox>
+                                        </div>
+                                    </section>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Company Evaluation-->
+                <div class="pb-5 company-evaluation" *ngIf="procurementDetails.company_evaluation !== null">
+                    <div class="d-flex mb-3 company-evaluation__info">
+                        <div class="mr-auto">
+                            <h6>Company Evaluation</h6>
+                        </div>
+                    </div>
+                    <div class="bg-white company-evaluation__card">
+                        <div *ngFor="let item of companyEvaluationQuestions">
+                            <div class="flex w-100 justify-content-start align-items-start pb-4 pt-3">
+                                <div class="w-50">
+                                    <div class="mat-subheader mb-2 technical-evaluation__card__title">
+                                        {{ item.title }}
+                                    </div>
+
+                                    <section *ngIf="item.input_type === 'text'">
+                                        <mat-form-field>
+                                            <input matInput class="form-control" type="text" placeholder="Short answer"
+                                                   [disabled]="true">
+                                        </mat-form-field>
+                                    </section>
+
+                                    <section *ngIf="item.input_type === 'textarea'">
+                                        <mat-form-field>
+                                            <input matInput class="form-control" type="text" placeholder="Long"
+                                                   [disabled]="true">
+                                        </mat-form-field>
+                                    </section>
+
+                                    <section *ngIf="item.input_type === 'radio'">
+                                        <div *ngFor="let option of item.options; let o = index;"
+                                             style="padding-top: 25px;">
+                                            <mat-radio-button [disabled]="true">
+                                                {{ option }}
+                                            </mat-radio-button>
+                                        </div>
+
+                                    </section>
+
+                                    <section *ngIf="item.input_type === 'checkbox'">
+                                        <div *ngFor="let option of item.options; let o = index;"
+                                             style="padding-top: 25px;">
+                                            <mat-checkbox [disabled]="true">
+                                                {{ option }}
+                                            </mat-checkbox>
+                                        </div>
+                                    </section>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

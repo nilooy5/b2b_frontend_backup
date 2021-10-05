@@ -1,0 +1,11 @@
+<div class="container-content pb-4" *ngFor="let masterCategory of categories">
+    <h3>{{ masterCategory.name }}</h3>
+    <div class="row">
+        <div class="col-md-3" *ngFor="let secondaryCategories of masterCategory.filtered_children.slice(0, 4)">
+            <app-secondary-category-showcase [secondaryCategories]="secondaryCategories"></app-secondary-category-showcase>
+        </div>
+    </div>
+
+    <app-secondary-category-list *ngIf="masterCategory.filtered_children.length > 4"
+                                    [masterCategory]="masterCategory"></app-secondary-category-list>
+</div>

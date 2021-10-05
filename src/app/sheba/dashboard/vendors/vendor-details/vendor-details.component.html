@@ -1,0 +1,41 @@
+<div class="main-content-container">
+    <div class="main-title-block">
+        <div class="b2b-breadcrumb">
+            <a [routerLink]="['/','dashboard','vendors']"> Vendors</a> <span>/</span> <span>{{vendor.name}}</span>
+        </div>
+        <div class="main-title-actions">
+            <button class="button button-outline button-primary" [routerLink]="['/','dashboard','quick-purchase']">
+                Create Order
+            </button>
+        </div>
+    </div>
+    <div class="main-content-block" *ngIf="vendor">
+        <div class="main-content-inner-block">
+            <div class="main-content-inner-block-left">
+                <div class="main-content-inner-block-head">
+                    <div class="image-block circle">
+                        <img [src]="vendor.logo" [alt]="vendor.name">
+                    </div>
+                    <h3 class="mat-title">{{vendor.name}}</h3>
+                </div>
+                <ul class="main-content-inner-block-nav">
+                    <li class="main-content-inner-block-nav-item">
+                        <a routerLinkActive="active" [routerLink]="['.','company-info']">Company Info</a>
+                    </li>
+                    <li class="main-content-inner-block-nav-item">
+                        <a routerLinkActive="active" [routerLink]="['.','spoc-info']">Spoc Profile</a>
+                    </li>
+                    <!--          <li class="main-content-inner-block-nav-item">-->
+                    <!--            <a routerLinkActive="active" [routerLink]="['.','others']">Others</a>-->
+                    <!--          </li>-->
+                    <!--          <li class="main-content-inner-block-nav-item">-->
+                    <!--            <a routerLinkActive="active" [routerLink]="['.','reset-password']">Reset Password</a>-->
+                    <!--          </li>-->
+                </ul>
+            </div>
+            <div class="main-content-inner-block-content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

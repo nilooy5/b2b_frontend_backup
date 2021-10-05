@@ -1,0 +1,74 @@
+@import "../../../../../../scss/variables";
+
+.fuel-add {
+  padding-bottom: 100px;
+  h4, h5 {
+    font-weight: 400 !important;
+    font-family: 'Rubik', Roboto, "Helvetica Neue", sans-serif;
+  }
+}
+
+textarea {
+  border: 1.5px solid $theme-light-grey;
+  background-color: #fafbfc;
+  padding: 20px 16px;
+}
+
+.fuel-add__form {
+  background-color: $white;
+  font-family: $theme-font;
+  margin-top: 20px;
+  border-radius: 4px;
+  padding: 40px 20px 60px 20px;
+  input, textarea {
+    border: 1.5px solid $theme-light-grey;
+    background-color: #fafbfc;
+    padding: 20px 16px;
+  }
+  .form-group {
+    margin: 0;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+  button {
+    background-color: $theme-font-color;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 42px;
+    color: $white;
+    margin-left: 10px;
+    margin-top: 20px;
+    i {
+      position: relative;
+      font-size: 20px;
+      top: 5px;
+    }
+  }
+}
+
+.fuel-add__select {
+  select {
+    border: 1.5px solid $theme-light-grey;
+    background-color: #fafbfc;
+    padding: 8px 16px;
+    min-height: 0;
+  }
+  i {
+    top: 12px;
+  }
+}
+
+.fuel-add__date-picker {
+  position: relative;
+  .fuel-add__date-picker__toggle {
+    position: absolute;
+    top: 0;
+    right: 10px;
+  }
+}
+
+.fuel-add__error-message {
+  font-size: 14px;
+  color: $red;
+  margin: 0;
+}

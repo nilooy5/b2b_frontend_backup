@@ -1,0 +1,217 @@
+@import "src/scss/variables";
+@import "src/scss/colors";
+
+.tender {
+
+  &-container {
+    margin-bottom: 30px;
+  }
+
+  &-card {
+    box-shadow: 0 0 5px 0 rgba(19, 34, 64, 0.1);
+    padding: 30px 0 30px 30px;
+    cursor: pointer;
+    border-bottom: solid 1px #d8d8d8;
+
+    @media only screen and (max-width: 768px) {
+      padding: 30px 0 30px 15px;
+      margin-bottom: 15px;
+      border-bottom: none;
+      border-radius: 10px !important;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      background: $grey-light;
+    }
+
+    &:first-of-type {
+      border-radius: 10px 10px 0 0;
+      @media only screen and (max-width: 767px) {
+        border-radius: 0;
+      }
+
+    }
+
+    &:last-of-type {
+      border-radius: 0 0 10px 10px;
+      @media only screen and (max-width: 767px) {
+        border-radius: 0;
+      }
+    }
+
+    &__title {
+      font-size: 24px;
+      font-weight: 600;
+      color: $black-80;
+      line-height: 1.33;
+    }
+
+    &__description {
+      font-size: 14px;
+      line-height: 1.57;
+      color: rgba(10, 15, 20, 0.75);
+      margin-bottom: 10px;
+
+      @media only screen and (max-width: 767px) {
+        margin-bottom: 15px;
+      }
+    }
+
+    &__price {
+      h2 {
+        color: $black-80;
+        font-size: $fs-header-2;
+        font-weight: $font-weight-semiBold;
+        line-height: 1.5;
+        margin-bottom: 0;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1.25;
+        color: rgba(10, 15, 20, 0.75);
+        margin-bottom: 0;
+
+        @media only screen and (max-width: 767px) {
+          display: none;
+        }
+      }
+    }
+
+    &__labels {
+      display: flex;
+      margin-bottom: 15px;
+
+      p {
+        background-color: $grey-medium;
+        margin-right: 10px;
+        margin-bottom: 0;
+        color: $white;
+        padding: 0 10px;
+        line-height: 1.33;
+        font-size: 12px;
+        font-weight: 500;
+        border-radius: 15px;
+      }
+    }
+
+    &__additional-info {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+
+      &__content{
+        display: flex;
+        align-items: center;
+        flex: 0 50%;
+        padding-right: 11px;
+
+        @media only screen and (max-width: 767px) {
+          margin-bottom: 10px;
+          flex: 0 100%;
+
+            &:last-of-type {
+              margin-bottom: 0;
+            }
+        }
+
+        img {
+          height: 24px;
+          margin-right: 10px;
+
+          @media only screen and (max-width: 767px) {
+            height: 20px;
+          }
+        }
+        p {
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.57;
+          color: rgba(10, 15, 20, 0.75);
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &__status-info {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+
+      &__content {
+        display: flex;
+        align-items: center;
+        padding: 0 5px;
+        margin-right: 20px;
+        border-radius: 2px;
+        max-height: 100%;
+        height: 20px;
+
+        img {
+          height: 18px;
+          margin-right: 5px;
+        }
+        p {
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 1.5;
+          color: #fff;
+          margin-bottom: 0;
+        }
+      }
+
+    }
+
+    &__seal {
+      background-color: #111964;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 2px 10px 15px;
+      border-radius: 100px 0 0 100px;
+
+      &-image {
+        margin-right: 6px;
+      }
+
+      &-title {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.33;
+        color: $white;
+        margin-bottom: 0;
+
+        @media only screen and (max-width: 767px) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.row {
+  &-title {
+    margin-bottom: 15px
+  }
+
+  &-description {
+    @media only screen and (max-width: 767px) {
+      padding-right: 15px;
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 786px) {
+  .tender-card__status-info__content {
+    margin-bottom: 10px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}

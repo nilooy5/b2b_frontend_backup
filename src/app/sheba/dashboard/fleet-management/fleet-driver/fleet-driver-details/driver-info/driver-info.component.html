@@ -1,0 +1,87 @@
+<div class="driver-info">
+    <h5>General Information</h5>
+    <form class="editable__form" *ngIf="generalInformationData" [formGroup]="generalInformation">
+        <ng-template matStepLabel>General Information</ng-template>
+        <div class="form-group form-add-group row">
+            <label for="driverId" class="col-sm-4 col-form-label">Driver ID</label>
+            <div class="col-sm-8">
+                <input placeholder="Driver ID" class="form-control" id="driverId" formControlName="driverId" [disableFormControl]="true" required>
+            </div>
+        </div>
+        <div class="form-group form-add-group row">
+            <label for="driverName" class="col-sm-4 col-form-label">Driver Name</label>
+            <div class="col-sm-8">
+                <input placeholder="Driver ID" class="form-control" id="driverName" formControlName="driverName" [disableFormControl]="!generalInformationEnable" required>
+            </div>
+        </div>
+        <div class="form-group form-add-group row">
+            <label for="dateOfBirth" class="col-sm-4 col-form-label">Date of Birth</label>
+            <div class="editable__date-picker col-sm-8">
+                <mat-datepicker #dateOfBirthPicker></mat-datepicker>
+                <input class="form-control"
+                       (focus)="dateOfBirthPicker.open()"
+                       matInput [matDatepicker]="dateOfBirthPicker"
+                       placeholder="DD / MM / YYYY"
+                       id="dateOfBirth" formControlName="dateOfBirth"
+                       [disableFormControl]="!generalInformationEnable" required>
+                <span class="editable__date-picker__toggle">
+                    <mat-datepicker-toggle matSuffix [for]="dateOfBirthPicker"></mat-datepicker-toggle></span>
+            </div>
+        </div>
+        <div class="form-group form-add-group row">
+            <label for="bloodGroup" class="col-sm-4 col-form-label">Blood Group</label>
+            <div class="col-md-8">
+                <div class="select--primary editable__select">
+                    <select name="driverDepartment" id="bloodGroup" formControlName="bloodGroup" [disableFormControl]="!generalInformationEnable" required>
+                        <option value="a+" selected>A+</option>
+                        <option value="b+">B+</option>
+                        <option value="o+">O+</option>
+                        <option value="ab+">AB+</option>
+                        <option value="a-">A-</option>
+                        <option value="b-">B-</option>
+                        <option value="o-">O-</option>
+                        <option value="ab-">AB-</option>
+                    </select>
+                    <i class="material-icons">keyboard_arrow_down</i>
+                </div>
+            </div>
+        </div>
+        <div class="form-group form-add-group row">
+            <label for="nid" class="col-sm-4 col-form-label">NID</label>
+            <div class="col-sm-8">
+                <input placeholder="NID" class="form-control" id="nid" formControlName="nid" [disableFormControl]="!generalInformationEnable" required>
+                <div class="info-attachment d-flex" *ngIf="!generalInformationEnable">
+                    <span>{{limitString(generalInformationData.nid_image_front.split('/').pop())}}</span>
+                    <span>
+                        <a [href]="generalInformationData.nid_image_front" target="_blank"><i class="material-icons">remove_red_eye</i></a>
+                        <a [href]="generalInformationData.nid_image_front" download><i class="material-icons">file_download</i></a>
+                    </span>
+                </div>
+                <div class="info-attachment d-flex" *ngIf="!generalInformationEnable">
+                    <span>{{limitString(generalInformationData.nid_image_back.split('/').pop())}}</span>
+                    <span>
+                        <a [href]="generalInformationData.nid_image_back" target="_blank"><i class="material-icons">remove_red_eye</i></a>
+                        <a [href]="generalInformationData.nid_image_back" download><i class="material-icons">file_download</i></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group form-add-group row">
+            <label for="typeOfContract" class="col-sm-4 col-form-label">Type of Contract</label>
+            <div class="col-md-8">
+                <div class="select--primary editable__select">
+                    <select name="driverDepartment" id="typeOfContract" formControlName="typeOfContract" [disableFormControl]="!generalInformationEnable" required>
+                        <option value="monthly" selected>Monthly</option>
+                        <option value="weekly">Weekly</option>
+                    </select>
+                    <i class="material-icons">keyboard_arrow_down</i>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex container">
+            <button class="form-button" mat-button matStepperNext *ngIf="!generalInformationEnable" (click)="generalInformationEnable = true">Edit</button>
+            <button class="form-button" mat-button matStepperNext *ngIf="generalInformationEnable" (click)="submitGeneralInfo()">Submit</button>
+        </div>
+    </form>
+
+</div>

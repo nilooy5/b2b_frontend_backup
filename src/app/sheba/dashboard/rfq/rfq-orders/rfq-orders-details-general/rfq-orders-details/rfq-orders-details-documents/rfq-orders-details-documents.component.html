@@ -1,0 +1,32 @@
+<div class="section">
+    <div class="section-head">Documents</div>
+    <div class="section-body d-flex flex-column">
+        <div *ngIf="order.attachments.length; else docsEmpty">
+            <div *ngFor="let item of order.attachments" class="document d-flex justify-content-between">
+                <div class="document-texts d-flex flex-column">
+                    <div class="document-texts__filename">{{item.title}}</div>
+                    <!--<div class="document-texts__specs">
+                        file size
+                        <span class="material-icons">
+                            fiber_manual_record
+                        </span>
+                        Terms & Condition
+                    </div>-->
+                </div>
+                <div class="document-buttons d-flex">
+                    <button (click)="downloadDocument(item.file)" mat-button>
+                        <span class="button-icon material-icons">
+                            remove_red_eye
+                        </span>
+                    </button>
+                    <button (click)="downloadDocument(item.file)" mat-button>
+                        <span class="button-icon material-icons">
+                            get_app
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <ng-template #docsEmpty>No documents attached</ng-template>
+    </div>
+</div>

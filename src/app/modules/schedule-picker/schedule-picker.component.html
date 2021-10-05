@@ -1,0 +1,11 @@
+<div id="SchedulePicker" class="schedule-picker row">
+    <ng-container *ngFor="let time of times; let i = index">
+        <div class="col-md-3" style="padding: 10px" *ngIf="time.is_available && time.is_valid">
+            <div class="schedule-picker__slot"
+                 [class.active]="selectedTime ? time.key == selectedTime.key : false"
+                 (click)="selectSlot(time)">
+                {{time.start.split(' ')[0]}} <span>{{time.start.split(' ')[1]}}</span>
+            </div>
+        </div>
+    </ng-container>
+</div>

@@ -1,0 +1,129 @@
+<div class="proposal-form"  [formGroup]="proposalForm">
+    <div class="proposal-form__title">Submit Your Proposal</div>
+    <div class="proposal-form__body">
+        <div class="section-label">Proposal</div>
+        <div class="proposal-form__body__proposal">
+            <div class="">
+                <div  class = "input-label">
+                    Your proposed quotation <span>*</span>
+                </div>
+                <div class="input-group d-flex flex-nowrap mb-30">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text budget-input budget-input--icon" id="basic-addon1">
+                        <img src="../../../../../../../../../assets/svg/bdt.svg" alt="">
+                    </span>
+                    </div>
+                    <input
+                        [value]="storageValues? storageValues.price : null"
+                        type="number"
+                        name="rfqBudget"
+                        id="rfqBudget"
+                        class="form-container__control budget-input"
+                        placeholder="Ex. 1000"
+                        formControlName="price"
+                        required="required">
+                </div>
+            </div>
+            <div class="mb-30">
+                <div  class = "input-label">
+                    Your proposal in details <span>*</span>
+                </div>
+                <textarea [value]="storageValues ? storageValues.proposal : null"
+                          type="text"
+                          name="rfqDetails"
+                          id="rfqDetails"
+                          class="form-container__control"
+                          placeholder="Enter details for RFQ"
+                          formControlName="proposal"
+                          rows="5"
+                          required="required"></textarea>
+            </div>
+            <div class="attachment">
+                Attachment (optional)
+            </div>
+            <div class="hint mb-20">
+                Files have to be less than 5mb.
+            </div>
+            <div class="col-md-12 attachment-dropper">
+                <app-tender-proposal-attachment (attachmentEvent)="receiveAttachments($event)"></app-tender-proposal-attachment>
+            </div>
+        </div>
+
+
+        <div class="section-label">Company Information</div>
+        <div class="d-flex flex-wrap">
+            <div class="col-md-12 companyInfoInputs">
+                <div  class = "input-label">
+                    Company Name <span>*</span>
+                </div>
+                <div class="input-group d-flex mb-30">
+                    <input
+                        [value]="storageValues ? storageValues.company_name : null"
+                        type="text"
+                        name="companyName"
+                        id="companyName"
+                        class="form-container__control"
+                        placeholder="Your company name"
+                        formControlName="company_name"
+                        required="required">
+                </div>
+            </div>
+            <div class="col-md-6 companyInfoInputs">
+                <div  class = "input-label">
+                    Your Name <span>*</span>
+                </div>
+                <div class="input-group d-flex mb-30">
+                    <input
+                        [value]="storageValues ? storageValues.name : null"
+                        type="text"
+                        name="bidderName"
+                        id="bidderName"
+                        class="form-container__control"
+                        placeholder="Your company name"
+                        formControlName="name"
+                        required="required">
+                </div>
+            </div>
+            <div class="col-md-6 companyInfoInputs">
+                <div  class = "input-label">
+                    Company Phone Number <span>*</span>
+                </div>
+                <div class="input-group d-flex mb-30">
+                    <input
+                        [value]="storageValues ? storageValues.company_phone : null"
+                        type="tel"
+                        name="companyContactNo"
+                        id="companyContactNo"
+                        class="form-container__control"
+                        placeholder="Your company's contact no."
+                        formControlName="company_phone"
+                        required="required"
+                        [ngClass]="{ 'error': !companyPhoneValid && proposalFormControls.company_phone.touched }"
+                        (keyup)="verify_phone($event)">
+                    <div class="error-container" *ngIf="!companyPhoneValid && proposalFormControls.company_phone.touched"
+                         style="margin-top: 10px;">
+                        <span class="error-container__text" style="">Please enter a valid Bangladeshi phone number</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 companyInfoInputs">
+                <div  class = "input-label">
+                    Company/Personal Email (Optional)
+                </div>
+                <div class="input-group d-flex mb-30">
+                    <input
+                        [value]="storageValues ? storageValues.email : null"
+                        type="text"
+                        name="companyEmail"
+                        id="companyEmail"
+                        class="form-container__control"
+                        placeholder="Your/Company's email"
+                        formControlName="email">
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center proposal-footer">
+            <button mat-button [disabled]="checkFormValidity()" (click)="sendForm()">Next</button>
+        </div>
+    </div>
+</div>

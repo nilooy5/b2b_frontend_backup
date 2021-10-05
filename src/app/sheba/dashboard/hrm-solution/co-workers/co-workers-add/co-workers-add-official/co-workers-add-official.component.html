@@ -1,0 +1,73 @@
+<div class="co-workers-add__header">
+    <h5>Other Official Information</h5>
+</div>
+
+<hr class="co-workers-add__divider">
+
+<div class="co-workers-add__controls" [formGroup]="officialInfoForm">
+
+    <!-- Date of Joining-->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="join_date" class="form-container__label">
+                Date of joining
+            </label>
+        </div>
+        <div class="col-lg-9">
+            <div class="date-picker w-100">
+                <mat-datepicker #join_date></mat-datepicker>
+                <input class="form-container__control date-input" id="join_date" [matDatepicker]="join_date"
+                       (focus)="join_date.open()" formControlName="join_date" placeholder="Ex : 05 / 01 / 2019" readonly>
+                <span class="date-picker__toggle">
+                    <mat-datepicker-toggle matSuffix [for]="join_date"></mat-datepicker-toggle>
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Grade -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="grade" class="form-container__label"> Grade </label>
+        </div>
+        <div class="col-lg-9">
+            <input type="text" name="grade" id="grade" class="form-container__control" formControlName="grade" placeholder="Ex : 1">
+        </div>
+    </div>
+
+    <!-- Employee Type -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="employee_type" class="form-container__label"> Employee Type </label>
+        </div>
+        <div class="col-lg-9">
+            <ng-select id="employee_type" class="form-container__dropdown" placeholder="Select Employee Type"
+                       [searchable]="false" [clearable]="false" formControlName="employee_type">
+                <ng-option *ngFor="let type of employeeTypes" [value]="type.key"> {{ type.value }} </ng-option>
+            </ng-select>
+        </div>
+    </div>
+
+    <!-- Previous Institution -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="previous_institution" class="form-container__label"> Previous Institution </label>
+        </div>
+        <div class="col-lg-9">
+            <input type="text" name="previous_institution" id="previous_institution" class="form-container__control"
+                   placeholder="Ex : ABC" formControlName="previous_institution">
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="row">
+        <div class="offset-lg-3 col-lg-9">
+            <button class="button button--filled submit-info" (click)="submitOfficialInformation()" [disabled]="isSaving">
+                <span  *ngIf="!isSaving;else loader"> Save </span>
+                <ng-template #loader><span><i class="fas fa-spinner fa-spin" style="font-size: 20px"></i></span></ng-template>
+            </button>
+        </div>
+    </div>
+
+</div>

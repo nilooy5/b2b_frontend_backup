@@ -1,0 +1,45 @@
+<svg width="31.585999999999995" height="31.585999999999995" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_1">
+   <path id="svg_2" d="m29.331,2.256l-27.072,0c-1.249,0 -2.259,1.009 -2.259,2.255l0,22.565c0,1.244 1.01,2.255 2.259,2.255l27.072,0c1.242,0 2.255,-1.011 2.255,-2.255l0,-22.565c0,-1.246 -1.013,-2.255 -2.255,-2.255zm-18.543,1.694c0.623,0 1.126,0.502 1.126,1.128c0,0.623 -0.503,1.125 -1.126,1.125s-1.129,-0.502 -1.129,-1.125c0,-0.626 0.506,-1.128 1.129,-1.128zm-3.454,0c0.623,0 1.129,0.502 1.129,1.128c0,0.623 -0.506,1.125 -1.129,1.125c-0.625,0 -1.131,-0.503 -1.131,-1.125c0,-0.626 0.506,-1.128 1.131,-1.128zm-3.387,0c0.623,0 1.129,0.502 1.129,1.128c0,0.623 -0.506,1.125 -1.129,1.125c-0.621,0 -1.126,-0.503 -1.126,-1.125c0,-0.626 0.505,-1.128 1.126,-1.128zm25.384,23.126l-27.072,0l0,-19.154l27.072,0c0,0 0,19.154 0,19.154zm0,-21.411l-15.795,0l0,-1.128l15.795,0c0,0 0,1.128 0,1.128z"/>
+   <g id="svg_3"/>
+   <g id="svg_4"/>
+   <g id="svg_5"/>
+   <g id="svg_6"/>
+   <g id="svg_7"/>
+   <g id="svg_8"/>
+   <g id="svg_9"/>
+   <g id="svg_10"/>
+   <g id="svg_11"/>
+   <g id="svg_12"/>
+   <g id="svg_13"/>
+   <g id="svg_14"/>
+   <g id="svg_15"/>
+   <g id="svg_16"/>
+   <g id="svg_17"/>
+  </g>
+  <g id="svg_18"/>
+  <g id="svg_19"/>
+  <g id="svg_20"/>
+  <g id="svg_21"/>
+  <g id="svg_22"/>
+  <g id="svg_23"/>
+  <g id="svg_24"/>
+  <g id="svg_25"/>
+  <g id="svg_26"/>
+  <g id="svg_27"/>
+  <g id="svg_28"/>
+  <g id="svg_29"/>
+  <g id="svg_30"/>
+  <g id="svg_31"/>
+  <g id="svg_32"/>
+  <text font-weight="bold" stroke="#000" transform="matrix(0.541850327837082,0,0,0.34652423858642567,-1.6055054219213183,12.283354088664053) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="21" id="svg_33" y="14.045042" x="14.580218" stroke-width="0" fill="#000000">404</text>
+  <text stroke="#000" transform="matrix(0.8452675342559814,0,0,1.1316871643066406,0.4617797024548054,-3.288063883781433) " xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="3" id="svg_34" y="24.01862" x="4.655873" fill-opacity="null" stroke-opacity="null" stroke-width="0" fill="#000000">Page Not Found</text>
+ </g>
+</svg>

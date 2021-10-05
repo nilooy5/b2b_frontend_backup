@@ -1,0 +1,367 @@
+<mat-horizontal-stepper class="vehicle-add__stepper container" [linear]="isLinear" #stepper *ngIf="!showConfirmation">
+    <mat-step [stepControl]="vehicleInformation">
+        <form class="vehicle-add__form " [formGroup]="vehicleInformation">
+            <ng-template matStepLabel>Vehicle Information</ng-template>
+            <div class="form-group row">
+                <label for="vehicleImage" class="col-md-4 col-form-label">Vehicle Photo</label>
+                <div class="col-md-8">
+
+                    <app-image-file-input id="vehicleImage" [showPreview]="true" formControlName="vehicleImage" [type]="'item'"></app-image-file-input>
+                    <p class="vehicle-add__error-message" *ngIf="showVehicleInformationError && vehicleInformation.get('vehicleImage').hasError('required')">Photo is required</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="vehicleType" class="col-md-4 col-form-label">Vehicle Type</label>
+                <div class="col-md-8">
+                    <div class="select--primary vehicle-add__select">
+                        <select name="vehicleType" id="vehicleType" formControlName="vehicleType" required>
+                            <option value="hatchback" selected>Hatchback</option>
+                            <option value="sedan">Sedan</option>
+                            <option value="suv">SUV</option>
+                            <option value="passenger_van">Passenger Van</option>
+                            <option value="others">Others</option>
+                        </select>
+                        <i class="material-icons">keyboard_arrow_down</i>
+                    </div>
+                    <p class="vehicle-add__error-message"
+                       *ngIf="showVehicleInformationError && vehicleInformation.get('vehicleType').hasError('required')">
+                        Vehicle Type is required</p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="modelYear" class="col-md-4 col-form-label">Vehicle Model Year</label>
+                <div class="col-md-8">
+                    <input placeholder="e.g. 2012" class="form-control" id="modelYear" type="number"
+                           formControlName="modelYear" required>
+                    <p class="vehicle-add__error-message"
+                       *ngIf="showVehicleInformationError && vehicleInformation.get('modelYear').hasError('required')">
+                        Model Year is required</p>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="companyName" class="col-md-4 col-form-label">Vehicle Brand Name</label>
+                <div class="col-md-8">
+                    <input placeholder="e.g. Toyota" class="form-control" id="companyName" type="text"
+                           formControlName="companyName" required>
+                    <p class="vehicle-add__error-message"
+                       *ngIf="showVehicleInformationError && vehicleInformation.get('companyName').hasError('required')">
+                        Company Name is required</p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="modelName" class="col-md-4 col-form-label">Model Name</label>
+                <div class="col-md-8">
+                    <input placeholder="e.g. Land cruiser prado" class="form-control" id="modelName" type="text"
+                           formControlName="modelName" required>
+                    <p class="vehicle-add__error-message"
+                       *ngIf="showVehicleInformationError && vehicleInformation.get('modelName').hasError('required')">
+                        Model Name is required</p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="seatCapacity" class="col-md-4 col-form-label">Seat Capacity</label>
+                <div class="col-md-8">
+                    <input placeholder="e.g. 4" class="form-control" id="seatCapacity" type="number"
+                           formControlName="seatCapacity" required>
+                    <p class="vehicle-add__error-message"
+                       *ngIf="showVehicleInformationError && vehicleInformation.get('seatCapacity').hasError('required')">
+                        Seat Capacity is required</p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="vehicleDepartment" class="col-md-4 col-form-label">Vehicle Department</label>
+                <div class="col-md-8">
+                    <div class="select--primary vehicle-add__select">
+                        <select name="vehicleDepartment" id="vehicleDepartment" formControlName="vehicleDepartment"
+                                required>
+                            <option value="" selected disabled>Select Department</option>
+                            <option *ngFor="let department of departments" [value]="department.id"
+                                    selected>{{department.name}}</option>
+                        </select>
+                        <i class="material-icons">keyboard_arrow_down</i>
+                    </div>
+                    <p class="vehicle-add__error-message"
+                       *ngIf="showVehicleInformationError && vehicleInformation.get('vehicleDepartment').hasError('required')">
+                        Department is required</p>
+                </div>
+            </div>
+
+
+            <div class="d-flex justify-content-end container">
+                <button matStepperNext (click)="showVehicleInformationError = true">Next <i
+                        class="material-icons">chevron_right</i></button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="registrationInformation">
+        <form class="vehicle-add__form" [formGroup]="registrationInformation">
+            <ng-template matStepLabel>Registration Information</ng-template>
+            <div class="form-group row">
+                <label for="licenseNumber" class="col-md-4 col-form-label">License Number</label>
+                <div class="col-md-8">
+                    <input placeholder="License Number" class="form-control" id="licenseNumber"
+                           formControlName="licenseNumber" required>
+                    <p class="vehicle-add__error-message"
+                       *ngIf="showRegistrationInformationError && registrationInformation.get('licenseNumber').hasError('required')">
+                        License Number is required</p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="fitnessStartDate" class="col-md-4 col-form-label">License End Date</label>
+                <div class="col-md-8">
+                    <div class="vehicle-add__date-picker">
+                        <mat-datepicker #licenseEdDatePicker></mat-datepicker>
+                        <input class="form-control"
+                               (focus)="licenseEdDatePicker.open()"
+                               matInput [matDatepicker]="licenseEdDatePicker"
+                               placeholder="DD / MM / YYYY"
+                               id="licenseEndDate" formControlName="licenseEndDate" required>
+                        <span class="vehicle-add__date-picker__toggle"><mat-datepicker-toggle matSuffix
+                                                                                              [for]="licenseEdDatePicker"></mat-datepicker-toggle></span>
+                    </div>
+                    <p class="vehicle-add__error-message"
+                       *ngIf="showRegistrationInformationError && registrationInformation.get('licenseEndDate').hasError('required')">
+                        License End Date is required</p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="licenseImage" class="col-md-4 col-form-label">Licence Plate Photo</label>
+                <div class="col-md-8">
+                    <app-image-file-input id="licenseImage" [showPreview]="false" formControlName="licenseImage"></app-image-file-input>
+                    <p class="vehicle-add__error-message"
+                       *ngIf="showRegistrationInformationError && registrationInformation.get('licenseImage').hasError('required')">
+                        License Number is required</p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="taxTokenNumber" class="col-md-4 col-form-label">Tax Token Number</label>
+                <div class="col-md-8">
+                    <input placeholder="Tax Token Number" class="form-control" id="taxTokenNumber" formControlName="taxTokenNumber" required>
+                    <p class="vehicle-add__error-message" *ngIf="showRegistrationInformationError && registrationInformation.get('taxTokenNumber').hasError('required')">
+                        Tax Token Number is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="taxTokenImage" class="col-md-4 col-form-label">Tax Token Document</label>
+                <div class="col-md-8">
+                    <app-image-file-input id="taxTokenImage" [showPreview]="false" formControlName="taxTokenImage"></app-image-file-input>
+                    <p class="vehicle-add__error-message"
+                       *ngIf="showRegistrationInformationError && registrationInformation.get('taxTokenImage').hasError('required')">
+                        Tax Token Number is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="fitnessStartDate" class="col-md-4 col-form-label">Fitness Starts</label>
+                <div class="col-md-8">
+                    <div class="vehicle-add__date-picker">
+                        <mat-datepicker #fitnessStartDatePicker></mat-datepicker>
+                        <input class="form-control"
+                               (focus)="fitnessStartDatePicker.open()"
+                               matInput [matDatepicker]="fitnessStartDatePicker"
+                               placeholder="DD / MM / YYYY"
+                               id="fitnessStartDate" formControlName="fitnessStartDate" required>
+                        <span class="vehicle-add__date-picker__toggle"><mat-datepicker-toggle matSuffix
+                                                                                              [for]="fitnessStartDatePicker"></mat-datepicker-toggle></span>
+                    </div>
+                    <p class="vehicle-add__error-message"
+                       *ngIf="showRegistrationInformationError && registrationInformation.get('fitnessStartDate').hasError('required')">
+                        Start Date is required</p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="fitnessEndDate" class="col-md-4 col-form-label">Fitness Ends</label>
+                <div class="col-md-8">
+                    <div class="vehicle-add__date-picker">
+                        <mat-datepicker #fitnessEndDatePicker></mat-datepicker>
+                        <input class="form-control"
+                               (focus)="fitnessEndDatePicker.open()"
+                               matInput [matDatepicker]="fitnessEndDatePicker"
+                               placeholder="DD / MM / YYYY"
+                               id="fitnessEndDate" formControlName="fitnessEndDate" required>
+                        <span class="vehicle-add__date-picker__toggle"><mat-datepicker-toggle matSuffix
+                                                                                              [for]="fitnessEndDatePicker"></mat-datepicker-toggle></span>
+                    </div>
+                    <p class="vehicle-add__error-message"
+                       *ngIf="showRegistrationInformationError && registrationInformation.get('fitnessEndDate').hasError('required')">
+                        End Date is required</p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="fitnessDocument" class="col-md-4 col-form-label">Fitness Document</label>
+                <div class="col-md-8">
+                    <app-image-file-input id="fitnessDocument" [showPreview]="false" formControlName="fitnessDocument"></app-image-file-input>
+                    <p class="vehicle-add__error-message" *ngIf="showRegistrationInformationError && registrationInformation.get('fitnessDocument').hasError('required')">
+                        Fitness Document is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="insuranceNumber" class="col-md-4 col-form-label">Insurance</label>
+                <div class="col-md-8">
+                    <input placeholder="Insurance Number" class="form-control" id="insuranceNumber" formControlName="insuranceNumber" required>
+                    <p class="vehicle-add__error-message" *ngIf="showRegistrationInformationError && registrationInformation.get('insuranceNumber').hasError('required')">
+                        Insurance Number is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="insuranceDocument" class="col-md-4 col-form-label">Insurance Document</label>
+                <div class="col-md-8">
+                    <app-image-file-input id="insuranceDocument" [showPreview]="false" formControlName="insuranceDocument"></app-image-file-input>
+                    <p class="vehicle-add__error-message"
+                       *ngIf="showRegistrationInformationError && registrationInformation.get('insuranceDocument').hasError('required')">
+                        License Number is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="insuranceDate" class="col-md-4 col-form-label">Insurance Valid Till</label>
+                <div class="col-md-8">
+                    <div class="vehicle-add__date-picker">
+                        <mat-datepicker #insuranceDatePicker></mat-datepicker>
+                        <input class="form-control"
+                               (focus)="insuranceDatePicker.open()"
+                               matInput [matDatepicker]="insuranceDatePicker"
+                               placeholder="DD / MM / YYYY"
+                               id="insuranceDate" formControlName="insuranceDate" required>
+                        <span class="vehicle-add__date-picker__toggle"><mat-datepicker-toggle matSuffix
+                                                                                              [for]="insuranceDatePicker"></mat-datepicker-toggle></span>
+                    </div>
+                    <p class="vehicle-add__error-message"
+                       *ngIf="showRegistrationInformationError && registrationInformation.get('insuranceDate').hasError('required')">
+                        Insurance Date is required</p>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end container">
+                <button matStepperPrevious><i class="material-icons">chevron_left</i> Back</button>
+                <button matStepperNext (click)="showRegistrationInformationError = true">Next <i
+                        class="material-icons">chevron_right</i></button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="otherInformation">
+        <form class="vehicle-add__form container" [formGroup]="otherInformation">
+            <ng-template matStepLabel>Other Information</ng-template>
+            <div class="form-group row">
+                <label for="transmissionType" class="col-md-4 col-form-label">Transmission Type</label>
+                <div class="col-md-8">
+                    <div class="select--primary vehicle-add__select">
+                        <select name="transmissionType" id="transmissionType" formControlName="transmissionType"
+                                required>
+                            <option value="auto" selected>Auto</option>
+                            <option value="manual">Manual</option>
+                        </select>
+                        <i class="material-icons">keyboard_arrow_down</i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="has_vendor" class="col-md-4 col-form-label">Owner</label>
+                <div class="col-md-8">
+                    <mat-radio-group id="has_vendor" aria-labelledby="example-radio-group-label"
+                                     style="margin-bottom: 15px"
+                                     class="boxed-radio-group" formControlName="has_vendor"
+                                     (change)="hasVendorChange()">
+                        <mat-radio-button [value]="0" color="primary"
+                                          class="example-radio-button boxed-radio example-radio-group-one">
+                            Own
+                        </mat-radio-button>
+
+                        <mat-radio-button color="primary" [value]="1" class="example-radio-button boxed-radio">
+                            Vendor
+                        </mat-radio-button>
+
+                    </mat-radio-group>
+                </div>
+            </div>
+            <ng-template [ngIf]="hasVendor">
+                <div class="form-group row">
+                    <label for="vendor_id" class="col-md-4">Vendor</label>
+                    <div class="col-md-8">
+                        <app-select-picker-with-search formControlName="vendor_id" [items]="vendors"
+                                                       id="vendor_id"
+                                                       placeholder="Select vendor"
+                                                       [queryFields]="'name,mobile'"
+                                                       [bindImage]="'logo'" [bindTitle]="'name'"
+                                                       [bindSubtitle]="'mobile'"
+                                                       bindValue="id"></app-select-picker-with-search>
+                    </div>
+                </div>
+            </ng-template>
+            <div class="form-group row">
+                <label for="driver" class="col-md-4 col-form-label">Driver</label>
+                <div class="col-md-8">
+                    <app-select-picker-with-search formControlName="driver" [items]="drivers"
+                                                   id="driver"
+                                                   placeholder="Select Driver"
+                                                   [bindImage]="'picture'" [bindTitle]="'name'"
+                                                   [queryFields]="'name,mobile'"
+                                                   [bindSubtitle]="'mobile'"
+                                                   bg="#fafbfc"
+                                                   bindValue="id"></app-select-picker-with-search>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="is_form_template" class="col-md-4 col-form-label">Need Inspection?</label>
+                <div class="col-md-8">
+                    <mat-radio-group id="is_form_template" aria-labelledby="example-radio-group-label"
+                                     style="margin-bottom: 15px"
+                                     class="boxed-radio-group" formControlName="has_form_template"
+                                     (change)="hasFormTemplateChange()">
+                        <mat-radio-button id="requestFor" [value]="0" color="primary"
+                                          class="example-radio-button boxed-radio example-radio-group-one">
+                            No
+                        </mat-radio-button>
+
+                        <mat-radio-button color="primary" [value]="1" class="example-radio-button boxed-radio">
+                            Yes
+                        </mat-radio-button>
+
+                    </mat-radio-group>
+                </div>
+            </div>
+            <ng-template [ngIf]="hasFormTemplate">
+                <div class="form-group row">
+                    <label for="form_template_id" class="col-md-4">Form Template</label>
+                    <div class="form-item horizontal col-md-8">
+                        <mat-form-field appearance="outline">
+                            <mat-select placeholder="Form Template" id="form_template_id" #select
+                                        formControlName="form_template_id" (click)="showFormTemplateSelect(select)">
+                                <mat-option *ngFor="let item of formTemplates"
+                                            [value]="item.id">{{item.title}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </ng-template>
+            <div class="d-flex justify-content-end container">
+                <button matStepperPrevious><i class="material-icons">chevron_left</i> Back</button>
+                <button matStepperNext (click)="submitVehicle()">Submit</button>
+            </div>
+        </form>
+    </mat-step>
+</mat-horizontal-stepper>
+
+<app-confirm-message *ngIf="showConfirmation" (viewDetailsEmitter)="viewDetails()" [type]="confirmType"
+                     [title]="confirmTitle" [text]="confirmMessage"></app-confirm-message>

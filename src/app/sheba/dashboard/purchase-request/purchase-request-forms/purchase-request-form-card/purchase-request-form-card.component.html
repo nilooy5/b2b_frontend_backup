@@ -1,0 +1,12 @@
+<div class="purchase-request-forms-card layout__card">
+    <h6 class="purchase-request-forms-card__header">{{form.title}}</h6>
+    <p class="purchase-request-forms-card__description">
+        {{form.short_description}}
+    </p>
+
+    <div class="purchase-request-forms-card__action">
+        <button class="button button-outline purchase-request-forms-card__button" (click)="viewFormDetail(form.id)">
+            View
+        </button>
+    </div>
+</div>

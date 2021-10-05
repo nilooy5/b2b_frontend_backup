@@ -1,0 +1,66 @@
+<div class="procurement-order-details">
+    <div class="layout__card" style="margin-bottom: 30px; padding: 20px 30px">
+        <div class="row">
+            <div class="col-md-2 procurement-order-details__info">
+                <h5>Order</h5>
+                <div class="pt-2">
+                    <h6 class="procurement-order-details__info__title" style="margin-bottom: 5px;">
+                        ID #{{ orderDetail.procurement_id }}
+                    </h6>
+                    <p class="procurement-status" [ngStyle]="{'background-color': orderDetail.color}">
+                        {{ orderDetail.procurement_status }}
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-5 procurement-order-details__info">
+                <h5>Service/Product</h5>
+                <div class="d-flex pt-1">
+                    <section class="procurement-order-details__service-section">
+                        <h6 class="procurement-order-details__info__title">
+                            {{ orderDetail.procurement_title }}
+                        </h6>
+                    </section>
+                </div>
+            </div>
+            <div class="col-md-5 procurement-order-details__info">
+                <h5>Service Provider</h5>
+                <div class="d-flex pt-1">
+                    <section>
+                        <img alt="Vendor Logo" [src]="orderDetail.vendor.logo"
+                             onerror="this.src='https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/sheba_xyz/png/default-service.png'">
+                    </section>
+                    <section class="procurement-order-details__service-section">
+                        <h6 class="procurement-order-details__info__title" id="service-provider-title">
+                            {{ orderDetail.vendor.name }}
+                        </h6>
+                        <p  id="service-provider-info">
+                            <span class="partner-rating">
+                                <span class="rating">
+                                    <i class="material-icons">star</i>
+                                    {{ orderDetail.vendor.rating }}
+                                </span>
+                                <span class="rating-amount">
+                                    ({{ orderDetail.vendor.total_rating }} Ratings)
+                                </span>
+                            </span>
+                            <span class="partner-phone dot-before">{{ orderDetail.vendor.mobile }}</span>
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav mat-tab-nav-bar class="layout__card layout__card--base">
+    <a mat-tab-link
+       *ngFor="let link of tabLinks"
+       [routerLink]="link.link"
+       [queryParams]="{bid: link.queryParams}"
+       (click)="activeTabIndex = link.index"
+       [active]="link.index === activeTabIndex">
+        {{ link.label }}
+    </a>
+</nav>
+
+<router-outlet></router-outlet>

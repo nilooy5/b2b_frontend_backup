@@ -1,0 +1,78 @@
+@import '../../../../../../../../../scss/variables';
+
+
+.layout__card {
+  margin-bottom: 10px;
+  padding: 35px 30px;
+}
+
+.vendor-information {
+
+  &__info {
+
+    img {
+      height: 50px;
+      width: 50px;
+      border-radius: 4px;
+      margin-right: 10px;
+      border: solid 1px rgba(0, 0, 0, 0.05);
+    }
+
+    &__title {
+      h5 {
+        color: $black40;
+        font-size: 14px;
+      }
+      h6 {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+
+    &__vendor-name {
+      font-size: 16px;
+      color: rgba(0, 0, 0, 0.8);
+      font-weight: normal;
+      margin-bottom: 1px;
+    }
+
+    &__quotation-link {
+      padding: 0;
+      font-size: 14px;
+      color: $theme-font-color;
+      font-weight: 500;
+      i {
+        font-size: 19px;
+        position: relative;
+        top: 5px;
+      }
+    }
+
+    &__quotation {
+      font-size: 20px !important;
+    }
+
+  }
+
+  &__btn {
+    .button--primary--filled {
+      font-size: 16px;
+      font-weight: 500;
+      background-color: $theme-font-color;
+    }
+  }
+
+}
+
+.main-content-block {
+  .main-title {
+    padding: 10px 0 8px 0;
+    h3 {
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+}
+

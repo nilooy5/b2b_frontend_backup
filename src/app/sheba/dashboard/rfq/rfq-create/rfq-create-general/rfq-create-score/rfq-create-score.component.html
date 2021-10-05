@@ -1,0 +1,29 @@
+<div class="d-flex flex-column p-20 rfq-score">
+
+    <div class="d-flex justify-content-center mb-10">
+        <circle-progress
+            [percent]="totalPercent"
+            [radius]="50"
+            [outerStrokeWidth]="12"
+            [innerStrokeWidth]="12"
+            [outerStrokeColor]="'#12b886'"
+            [innerStrokeColor]="'#bbc0cc'"
+            [animation]="true"
+            [animationDuration]="300"
+        ></circle-progress>
+
+    </div>
+
+    <h5 class="h5-title text-center mb-20 rfq-score__title">Score higher number for better quotation</h5>
+
+    <div class="d-flex justify-content-between align-items-center mb-20" *ngFor="let requirement of requirements | keyvalue: disableAlphabeticSorting">
+        <mat-checkbox disabled [checked]="requirement.value.isChecked">{{ requirement.value.title }}</mat-checkbox>
+        <ng-template [ngIf]="!requirement.value.isChecked">
+            <span class="align-self-start m-0 rfq-score__item-score" [@removeScore]>{{ requirement.value.score }}</span>
+        </ng-template>
+        <ng-template [ngIf]="requirement.value.isChecked">
+            <span class="align-self-start m-0 rfq-score__item-score rfq-score__item-score-bold" [@addScore]>+{{ requirement.value.score }}</span>
+        </ng-template>
+    </div>
+
+</div>

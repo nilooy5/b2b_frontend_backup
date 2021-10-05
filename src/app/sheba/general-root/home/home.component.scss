@@ -1,0 +1,22 @@
+@import "../../../../../src/scss/variables";
+@import "../../../../../src/scss/layouts";
+@import "../../../../../src/scss/form_components";
+
+.landing__section {
+  padding-top: 80px;
+  padding-bottom: 100px;
+  position: relative;
+}
+.landing__section--odd {
+  background-color: $light_bluish_grey;
+}
+.landing__section--even {
+  background-color: $white;
+}
+.landing__section__title {
+  font-size: 36px;
+  margin-bottom: 35px;
+}
+.landing__section__description {
+  font-size: 16px;
+}

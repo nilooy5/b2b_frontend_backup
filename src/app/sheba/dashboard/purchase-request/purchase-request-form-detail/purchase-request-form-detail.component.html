@@ -1,0 +1,71 @@
+<h3 class="purchase-request-forms-details-header">General Information</h3>
+
+<div class="purchase-request-forms-details layout__card">
+    <div class="row mb-3">
+        <div class="col-2">
+            <h4>Name</h4>
+        </div>
+        <div class="col-8">
+            <p>{{ details.title }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            <h4>Short Description</h4>
+        </div>
+        <div class="col-8">
+            <p>
+                {{ details.short_description }}
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<h3 class="purchase-request-forms-details-header">Column Info</h3>
+
+<div class="purchase-request-forms-details layout__card">
+    <table class="table table-borderless purchase-request-forms-details-table">
+        <thead>
+        <tr>
+            <th></th>
+            <th scope="col">Column Name</th>
+            <th scope="col">Column Type</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let item of details.items; let index = i">
+            <td style="color: #000; opacity: 0.6;" class="align-self-center">Column {{ index }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.type }}</td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="details.questions && details.questions > 0">
+    <h3 class="purchase-request-forms-details-header">Additional Questions</h3>
+
+    <div class="purchase-request-forms-details layout__card">
+
+        <div class="purchase-request-forms-details-question" *ngFor="let question of details.questions;">
+            <p>
+                {{ question.question }}
+            </p>
+
+            <input placeholder="Answer" class="form-control" disabled>
+            <!--<textarea placeholder="Long answer" class="form-control" type="text" disabled></textarea>-->
+        </div>
+    </div>
+</div>
+
+
+
+<div class="purchase-request-forms-details" *ngIf="router.url === '/dashboard/purchase-request/form-detail'">
+    <button class="button button-primary purchase-request-forms__create-button " (click)="editForm(details.id)">
+        Edit
+    </button>
+</div>

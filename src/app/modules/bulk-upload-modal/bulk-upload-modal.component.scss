@@ -1,0 +1,125 @@
+.bulk-upload-modal{
+  margin: 0 auto;
+
+  &-header{
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+    opacity: 0.8;
+  }
+
+  &-clear-btn{
+    background: transparent;
+    border: 0;
+    opacity: 0.8;
+    font-size: 20px;
+    color: #000000;
+  }
+
+  .modal-body{
+    padding: 15px 24px 5px 24px;
+
+    p{
+      opacity: 0.8;
+      font-size: 14px;
+      font-weight: 400;
+      color: #000000;
+    }
+
+    ul{
+      list-style-type: disc;
+      padding-left: 24px;
+
+      li{
+        list-style-type: disc;
+        opacity: 0.8;
+        font-size: 14px;
+        font-weight: 400;
+        color: #000000;
+        padding-bottom: 10px;
+      }
+    }
+  }
+
+  .modal-body-footer{
+    padding: 15px 24px 10px 24px;
+    //width: 100%;
+    border-top: solid 1px #d3d8e6;
+
+    a{
+      font-size: 14px;
+      font-weight: 400;
+      text-align: center;
+      color: #3242d6;
+      text-decoration: underline;
+    }
+
+    .upload-btn-wrapper{
+      position: relative;
+      width: 200px;
+
+      .file-upload-btn{
+        border-radius: 3px;
+        background-color: #3242d6;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+        color: #ffffff;
+        padding: 5px 10px;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+
+      .file-upload-field{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        width: 85px;
+        z-index: 1;
+        opacity: 0;
+      }
+    }
+
+    .cancel-upload-btn{
+      border-radius: 3px;
+      border: solid 1px #bbc0cc;
+      background-color: #ffffff;
+      opacity: 0.8;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+      color: #000000;
+    }
+  }
+
+  .change-btn-wrapper{
+    position: relative;
+
+    .file-upload-field{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      width: 85px;
+      z-index: 1;
+      opacity: 0;
+    }
+
+    .change-upload-btn{
+      border-radius: 3px;
+      border: solid 1px #3242d6;
+      background-color: #ffffff;
+      opacity: 0.8;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+      color: #3242d6;
+      padding: 6px 20px;
+    }
+
+  }
+
+}

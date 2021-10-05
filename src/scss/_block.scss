@@ -1,0 +1,54 @@
+.block {
+  display: flex;
+  flex-flow: column;
+
+  &-login {
+    width: 100%;
+    max-width: 450px;
+    display: block;
+  }
+
+  &-image {
+    display: flex;
+    min-width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.list-block {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  &-item {
+    font-weight: 500;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    &:not(:last-of-type) {
+      border-bottom: 2px solid rgba(0, 0, 0, .07);
+    }
+
+    &-title {
+      display: flex;
+      width: 30%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 1.1rem;
+      opacity: 0.8;
+      line-height: 3.3;
+    }
+
+    &-text {
+
+    }
+  }
+}

@@ -1,0 +1,99 @@
+<div class="quotation-form">
+    <div class="quotation-form__title">
+        <h4>Give Price Quotation</h4>
+    </div>
+    <div class="quotation-form__body">
+
+        <!--table-start-->
+        <div class="main-content-table extra-small-screen">
+
+            <table id="table" mat-table [dataSource]="dataSource" class="table designer-table">
+
+                <ng-container matColumnDef="serialNo">
+                    <th mat-header-cell *matHeaderCellDef>SL NO</th>
+                    <td mat-cell *matCellDef="let element; let i = index">
+                        <span>{{ i + 1}}</span>
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="itemName">
+                    <th mat-header-cell *matHeaderCellDef>Item Name / Description</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.title}}
+                        <!--<mat-form-field  appearance="outline" floatLabel="{{ element.editing ? 'float' : 'never'}}">
+                            <input matInput [formControl]="element.validator.controls['typeName']" type="text">
+                        </mat-form-field>-->
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="specification">
+                    <th mat-header-cell *matHeaderCellDef>Specification</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.short_description}}
+                        <!--<mat-form-field appearance="outline" floatLabel="{{ element.editing ? 'float' : 'never'}}">
+                            <input matInput [formControl]="element.validator.controls['totalDays']" type="number">
+                        </mat-form-field>-->
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef>
+                    </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="unit">
+                    <th mat-header-cell *matHeaderCellDef>Unit</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.unit}}
+                        <!--<button  *ngIf="element.editing" mat-icon-button focusable="false"  (click)="confirmRow(element)">
+                            <i class="material-icons form-field form-field-submit">check</i>
+                        </button>
+                        <button *ngIf="!element.editing" mat-icon-button focusable="false" (click)="editRow(element)">
+                            <i class="material-icons form-field form-field-edit" >mode_edit</i>
+                        </button>
+                        <button  mat-icon-button focusable="false" (click)="deleteRow(element)">
+                            <i class="material-icons form-field form-field-delete">close</i>
+                        </button>-->
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef>
+                        Total
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef>Price</th>
+                    <td mat-cell *matCellDef="let element; let i = index">
+                        <input
+                            [value]="findStoredValue(element.field_id)"
+                            type="number"
+                            name="itemPrice"
+                            id="itemPrice"
+                            class="form-container__control"
+                            placeholder="Price"
+                            required="required"
+                            (input)="emitOnFormChange(i, $event)">
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef>
+                        {{numericFormat.numberWithCommas(totalPrice)}}
+                    </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+                <tr mat-footer-row *matFooterRowDef="displayColumns"></tr>
+            </table>
+        </div>
+
+        <!--table-end-->
+
+        <div class="d-flex justify-content-center align-items-center quotation-footer">
+            <button mat-button [disabled]="!isFormValid" (click)="sendQuoteForm()">
+                <span *ngIf="nextStateIndex === (totalStates - 1); else defaultLabel">Submit</span>
+                <ng-template #defaultLabel>Next</ng-template>
+            </button>
+        </div>
+    </div>
+</div>

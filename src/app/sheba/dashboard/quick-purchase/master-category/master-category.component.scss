@@ -1,0 +1,15 @@
+.content{
+  padding: 30px;
+}
+
+#noServices {
+  height: 35em;
+  position: relative;
+  h3 {
+    margin: 0 -50% 0 0 ;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+  }
+}

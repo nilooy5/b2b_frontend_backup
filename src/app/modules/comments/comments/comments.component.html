@@ -1,0 +1,43 @@
+<div class="comments-title">
+    <span class="comments-title-text">{{title}}</span>
+</div>
+<div class="comments-container">
+    <div class="comments-form">
+        <div class="comments-form-image">
+            <div class="profile-image-avatar circle">
+                <img [lazyLoad]="user.pro_pic" [defaultImage]="appConfig.defaultImage" alt="">
+            </div>
+        </div>
+        <div class="comments-form-fields">
+            <form [formGroup]="form" (submit)="submit()">
+                <div class="form-item">
+                    <mat-form-field appearance="outline">
+                            <textarea [cdkTextareaAutosize]="true"
+                                      cdkAutosizeMinRows="3"
+                                      matInput placeholder="Type your comment here…" formControlName="comment"
+></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="">
+                    <button class="button button-primary button-semi-small">Add Comment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="comments-list">
+        <div class="comments-item" *ngFor="let item of comments">
+            <div class="comments-item-image">
+                <div class="profile-image-avatar circle"><img [lazyLoad]="item.user.image" [defaultImage]="appConfig.defaultImage" alt=""></div>
+            </div>
+            <div class="comments-item-comment">
+                <div class="comments-item-title">
+                    <div class="comments-item-title-text">{{item.user.name}}</div>
+                    <div class="comments-item-date">{{getCommentDate(item.created_at)}}</div>
+                </div>
+                <div class="comments">
+                    {{item.comment}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

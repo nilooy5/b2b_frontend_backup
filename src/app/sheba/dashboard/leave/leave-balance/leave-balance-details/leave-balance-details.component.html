@@ -1,0 +1,34 @@
+<div class="container-fluid topBanner">
+    <div class="row">
+        <div class="col-md-12 breadcrumbLeaveBalance">
+            <div>
+                <a [routerLink]="['/', 'dashboard', 'leave', 'balance']">Leave Balance</a><span>&nbsp;/</span>&nbsp;Details
+            </div>
+
+            <div class="breadcrumb-buttons">
+                <button (click)="downloadPDF(leave_balance_details.employee_id)" *ngIf="leave_balance_details.leaves.length" class="button button--primary--outline breadcrumb-buttons__outline">
+                    Download PDF
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <app-leave-balance-details-info [leaveBalanceInfo]="leave_balance_details"></app-leave-balance-details-info>
+        </div>
+        <div class="col-md-6">
+            <app-leave-balance-details-summary [leaveBalanceSummary]="leave_balance_details"></app-leave-balance-details-summary>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <app-leave-balance-details-table [leaveBalanceTable]="leave_balance_details"></app-leave-balance-details-table>
+        </div>
+    </div>
+</div>

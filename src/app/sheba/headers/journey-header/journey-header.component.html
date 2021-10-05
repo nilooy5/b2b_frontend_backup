@@ -1,0 +1,8 @@
+<div class="btn btn-block journey-header" [style.padding]="padding" >
+    {{title}}
+    <!--(click)="openCart()"-->
+    <button class="btn service_cart" *ngIf="showCart" (click)="openCart()" data-toggle="modal" data-target="#cartModal">
+        <i class="material-icons">shopping_cart</i>
+        <span class="badge badge-pill badge-danger">{{ getCounter() }}</span>
+    </button>
+</div>

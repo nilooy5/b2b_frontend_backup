@@ -1,0 +1,53 @@
+<div class="main-content-container">
+    <div class="main-title-block">
+        <div class="main-title">
+            <h4 class="font-weight-normal">Company Info</h4>
+        </div>
+        <div class="main-title-actions">
+            <div class="flex justify-content-end">
+                <button class="button button-outline button-primary" (click)="showUpdate=!showUpdate">
+                    <span *ngIf="!showUpdate;else cancel">Edit Company</span>
+                    <ng-template #cancel>
+                        <span>Cancel</span>
+                    </ng-template>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="main-content-block">
+        <div class="list-block" *ngIf="!showUpdate;else companyUpdater">
+            <div class="list-block-item">
+                <span class="list-block-item-title">Name</span>
+                <span class="list-block-item-text">{{company.name}}</span>
+            </div>
+            <div class="list-block-item">
+                <span class="list-block-item-title">Sub Domain</span>
+                <span class="list-block-item-text">{{company.sub_domain}}</span>
+            </div>
+            <div class="list-block-item">
+                <span class="list-block-item-title">Tag line</span>
+                <span class="list-block-item-text">{{company.tagline}}</span>
+            </div>
+            <div class="list-block-item">
+                <span class="list-block-item-title">Company Type</span>
+                <span class="list-block-item-text">{{company.company_type}}</span>
+            </div>
+            <div class="list-block-item">
+                <span class="list-block-item-title">Address</span>
+                <span class="list-block-item-text">{{company.address}}</span>
+            </div>
+            <div class="list-block-item">
+                <span class="list-block-item-title">Employee Size</span>
+                <span class="list-block-item-text">{{company.employee_size}}</span>
+            </div>
+            <div class="list-block-item">
+                <span class="list-block-item-title">Wallet</span>
+                <span class="list-block-item-text">{{company.wallet|currency:'৳':'symbol':'1.1-2'}}</span>
+            </div>
+        </div>
+        <ng-template #companyUpdater>
+            <app-company-update-flat [company]="company"
+                                     (UpdateComplete)="updateCompany($event)"></app-company-update-flat>
+        </ng-template>
+    </div>
+</div>

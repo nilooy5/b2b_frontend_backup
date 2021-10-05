@@ -1,0 +1,32 @@
+<div class="confirmation-container">
+
+    <img *ngIf="confirmationType === 'Success'" class="img-fluid confirmation-image" src="../../../../../../assets/svg/invite-success.svg" alt="">
+    <img *ngIf="confirmationType === 'Failed'"  class="img-fluid confirmation-image" src="../../../../../../assets/svg/invite-failed.svg" alt="">
+
+    <h6 class="confirmation-title">
+        <ng-template [ngIf]="confirmationType === 'Success'">Invitation sent successfully!</ng-template>
+        <ng-template [ngIf]="confirmationType === 'Failed'">Invitation not sent!</ng-template>
+    </h6>
+
+    <p class="confirmation-subtitle">
+        <ng-template [ngIf]="confirmationType === 'Success'">
+            Great! Your preferred vendors will get a link in SMS & email to participate in this Tender.
+            You can invite more vendors or change the publication status to public anytime from Tender details to get more quotations.
+        </ng-template>
+        <ng-template [ngIf]="confirmationType === 'Failed'">
+            Something went wrong. Sorry, we could not send invitation message to your selected vendors. Please try again.
+        </ng-template>
+    </p>
+
+   <div class="confirmation-buttons">
+       <ng-template [ngIf]="confirmationType === 'Success'">
+           <a class="button button--primary--filled" [routerLink]="['/', 'dashboard', 'rfq', 'list', tenderId, 'details']">View Tender Details</a>
+           <a class="button button--primary--outline" [routerLink]="['/', 'dashboard', 'rfq', 'list', tenderId, 'invitations']">View Invited Vendor List</a>
+       </ng-template>
+       <ng-template [ngIf]="confirmationType === 'Failed'">
+           <a class="button button--primary--filled" [routerLink]="['/', 'dashboard', 'create', 'invite']">Try Again</a>
+           <a class="button button--primary--outline" [routerLink]="['/', 'dashboard', 'rfq', 'list', tenderId, 'details']">View Tender Details</a>
+       </ng-template>
+   </div>
+
+</div>

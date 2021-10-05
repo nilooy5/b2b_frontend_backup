@@ -1,0 +1,45 @@
+<div class="main-content-container">
+    <div class="main-title-block">
+        <div class="main-title">
+            <h4 class="font-weight-normal">My Account</h4>
+        </div>
+        <div class="main-title-actions">
+            <div class="flex justify-content-end"><a class="button button-outline button-primary" target="_blank"
+                                                     [href]="account_url+'profile?token='+user.token">Edit Profile</a>
+            </div>
+        </div>
+    </div>
+    <div class="main-content-block">
+        <div class="list-block">
+            <div class="list-block-item">
+                <span class="list-block-item-title">Name</span>
+                <span class="list-block-item-text">{{user.name}}</span>
+            </div>
+            <div class="list-block-item">
+                <span class="list-block-item-title">Mobile Number</span>
+                <span class="list-block-item-text">{{user.mobile}}</span>
+            </div>
+            <div class="list-block-item">
+                <span class="list-block-item-title">Email</span>
+                <span class="list-block-item-text">{{user.email}}</span>
+            </div>
+            <div class="list-block-item">
+                <span class="list-block-item-title">Designation</span>
+                <span class="list-block-item-text">{{user.designation}}</span>
+            </div>
+            <div class="list-block-item">
+                <span class="list-block-item-title">Address</span>
+                <span class="list-block-item-text">{{user.address}}</span>
+            </div>
+            <div class="list-block-item">
+                <span class="list-block-item-title">Date of birth</span>
+                <span class="list-block-item-text">{{user.date_of_birth|date}}</span>
+            </div>
+            <div class="list-block-item">
+                <span class="list-block-item-title">Password</span>
+                <span class="list-block-item-text">****</span>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+    <app-vehicle-card [vehicleData]="vehicleData"></app-vehicle-card>
+
+    <div class="main-content-container">
+        <div class="main-content-block">
+            <div class="main-content-inner-block">
+                <div class="main-content-inner-block-left">
+                    <ul class="main-content-inner-block-nav">
+                        <li class="main-content-inner-block-nav-item">
+                            <a routerLinkActive="active" [routerLink]="['.', 'info']">Vehicle Info</a>
+                        </li>
+                        <li class="main-content-inner-block-nav-item">
+                            <a routerLinkActive="active" [routerLink]="['.', 'assignment']">Assignment</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="main-content-inner-block-content" style="padding: 0">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

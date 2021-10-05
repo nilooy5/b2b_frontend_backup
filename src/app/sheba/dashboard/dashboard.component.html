@@ -1,0 +1,45 @@
+<div class="dashboard">
+    <app-mobile-view-modal *ngIf="showBetterExperienceModal"></app-mobile-view-modal>
+    <div class="dashboard-header" *ngIf="user">
+        <app-dashboard-header [title]="title" [user]="user" class="w-100" (logoutEvent)="logout()"></app-dashboard-header>
+    </div>
+
+    <!--  Route Navigation  -->
+    <ng-container *ngIf="showNavigation">
+        <app-route-navigation-bar [navigationLinks]="navLinks" [routeNavHtml]="routeNavHtml"></app-route-navigation-bar>
+    </ng-container>
+
+    <!-- Breadcrumb  -->
+    <ng-container *ngIf="showBreadcrumb">
+        <app-breadcrumb [breadcrumbList]="breadCrumb" [htmlMarkup]="htmlMarkup"></app-breadcrumb>
+    </ng-container>
+
+    <!-- Feature Settings  -->
+    <ng-container *ngIf="showFeatureSettings">
+        <app-feature-settings [settingsTitle]="settingsTitle" [settingsItems]="settingsItems"></app-feature-settings>
+    </ng-container>
+
+    <div class="dashboard-sidebar " [ngClass]="{open:open}">
+        <app-dashboard-side-bar #dashboardSideBarComponent [open]="open"></app-dashboard-side-bar>
+        <button class="dashboard-toggle bottom" (click)="toggleDashboard()">
+            <i class="fas fa-angle-right">
+            </i>
+        </button>
+
+    </div>
+    <div class="dashboard-content"  [ngClass]="{open:open}">
+        <div class="notification" *ngIf="showNotification">
+            <a class="notification__content" (click)="onClickNotification(notificationContent)">
+                <section>
+                    <p class="info">{{ notificationContent.title }}</p>
+                </section>
+            </a>
+            <i class="material-icons" (click)="clearNotification()">clear</i>
+        </div>
+
+        <router-outlet></router-outlet>
+    </div>
+    <div class="dashboard-footer">
+
+    </div>
+</div>

@@ -1,0 +1,177 @@
+.outer-container {
+  position: relative;
+
+  .dots-left {
+    position: absolute;
+    top: 0;
+    left: -40px;
+  }
+}
+
+.main-contents {
+  font-family: "Poppins", sans-serif;
+
+  .content-row {
+    margin-bottom: 50px;
+  }
+
+  .mobile-title {
+    display: none;
+  }
+
+  .texts {
+    &__title {
+      font-size: 44px;
+      font-weight: 600;
+      color: #111111;
+      margin-bottom: 30px;
+    }
+
+    &__description {
+      font-size: 16px;
+      color: #4a4a4a;
+      margin-bottom: 35px;
+    }
+
+    &__description-mobile {
+      display: none;
+    }
+
+    &__buttons {
+      display: flex;
+      margin-bottom: 50px;
+
+      .button {
+        font-size: 18px;
+        font-weight: 500;
+        width: 200px;
+        height: 50px;
+
+        &--trial {
+          color: white;
+          background: #437ff5;
+          border-radius: 5px;
+          margin-right: 16px;
+          box-shadow: 0 8px 10px 0 rgba(0, 55, 82, 0.16);
+        }
+
+        &--call {
+          color: #4373f5;
+          background: rgba(67,115,245, 0.1);
+          border-radius: 10px !important;
+          font-weight: 600;
+
+          &:hover {
+            box-shadow: 0 8px 10px 0 rgba(0, 55, 82, 0.16);
+          }
+        }
+      }
+    }
+
+    &__icons {
+      display: flex;
+      margin-bottom: 8px;
+      cursor: pointer;
+
+      &__playstore {
+        margin-right: 30px;
+      }
+    }
+
+    &__icons-mobile {
+      display: none;
+    }
+
+    &__notes {
+      font-size: 16px;
+      color: #4a4a4a;
+    }
+  }
+
+  .app-screen {
+
+    .digigo-app {
+      width: 100%;
+      position: relative;
+      z-index: 100;
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px){
+
+  .main-contents {
+
+    .content-row {
+      margin-bottom: 0;
+    }
+
+    .mobile-title {
+      display: flex;
+      margin-bottom: 16px;
+
+      .col-md-12 {
+        text-align: center;
+        font-size: 24px;
+        font-weight: 600;
+      }
+    }
+
+    .texts {
+
+      &__title {
+        display: none;
+      }
+
+      &__description {
+        display: none;
+      }
+
+      &__description-mobile {
+        display: flex;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      &__buttons {
+        flex-direction: column;
+        align-items: center;
+
+        .button--trial {
+          margin-right: 0;
+          margin-bottom: 15px;
+          border-radius: 10px !important;
+        }
+      }
+
+      &__icons {
+        display: none;
+      }
+
+      &__icons-mobile {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 38px;
+      }
+
+      &__notes {
+        display: none
+      }
+    }
+
+    .app-screen {
+
+      .digigo-app {
+        width: 100%;
+      }
+    }
+  }
+
+  .outer-container {
+
+    .dots-left {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+<div [ngSwitch]="currentState">
+    <app-tender-proposal-advanced-form-info *ngSwitchCase="'form'"
+                                            [tender]="tender"
+                                            (proposalFormEmitter)="receiveForm($event)"
+                                            (stepIncrementer)="incrementState($event)"
+                                            [totalStates]="totalStates"
+                                            [nextStateIndex]="stateIndex"
+                                            (lastStepAlert)="receiveLastStepAlert($event)"></app-tender-proposal-advanced-form-info>
+    <app-tender-proposal-advanced-form-quotation *ngSwitchCase="'quotation'"
+                                                 [tender] = "tender"
+                                                 (quoteFormEmitter)="receiveQuotation($event)"
+                                                 (stepIncrementer)="incrementState($event)"
+                                                 [totalStates]="totalStates"
+                                                 [nextStateIndex]="stateIndex"
+                                                 (lastStepAlert)="receiveLastStepAlert($event)"></app-tender-proposal-advanced-form-quotation>
+    <app-tender-proposal-advanced-form-company *ngSwitchCase="'companyEval'"
+                                               [tender] = "tender"
+                                               (companyEvalFormEmitter)="receiveCompanyEvalForm($event)"
+                                               (stepIncrementer)="incrementState($event)"
+                                               [totalStates]="totalStates"
+                                               [nextStateIndex]="stateIndex"
+                                               (lastStepAlert)="receiveLastStepAlert($event)"></app-tender-proposal-advanced-form-company>
+    <app-tender-proposal-advanced-form-technical *ngSwitchCase="'techEval'"
+                                                 [tender] = "tender"
+                                                 (techEvalFormEmitter)="receiveTechEvalForm($event)"
+                                                 (stepIncrementer)="incrementState($event)"
+                                                 [totalStates]="totalStates"
+                                                 [nextStateIndex]="stateIndex"
+                                                 (lastStepAlert)="receiveLastStepAlert($event)"></app-tender-proposal-advanced-form-technical>
+</div>
+
+<!--<button mat-button color="primary" (click)="submitProposal()">SUBMIT</button>
+{{stateIndex}}-->

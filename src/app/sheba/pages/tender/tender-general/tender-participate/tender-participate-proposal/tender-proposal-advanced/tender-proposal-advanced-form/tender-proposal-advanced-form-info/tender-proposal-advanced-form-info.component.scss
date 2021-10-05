@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600,500&display=swap');
+@import "src/scss/colors";
+@import "../../../tender-proposal-basic/tender-proposal-basic.component";
+
+.proposal-footer {
+  width: unset;
+  height: unset;
+  bottom: unset ;
+  left: unset ;
+  position: inherit !important;
+  margin: 20px 0 10px;
+  background: transparent;
+  box-shadow: none !important;
+
+  .mat-button {
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    background: #4373f5;
+
+    &:disabled {
+      background: $grey-medium;
+      border-color: $grey-medium;
+      cursor: not-allowed;
+      color: $white;
+    }
+  }
+}

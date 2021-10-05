@@ -1,0 +1,47 @@
+<div mat-dialog-title class="shadowed-dialog-title">
+    <h5 class="pr-2">Select Inspection Form</h5>
+    <div class="actions">
+        <div class="form-item horizontal">
+            <mat-form-field appearance="outline">
+                <span matPrefix><i class="material-icons">search</i></span>
+                <input type="text" name="search" [(ngModel)]="search" matInput placeholder="Search...">
+            </mat-form-field>
+        </div>
+    </div>
+</div>
+<div mat-dialog-content style="
+    background-color: rgb(252, 252, 252);">
+    <ng-template [ngIf]="!loaded">
+        <div class="flex w-100 p-20">
+            <mat-spinner color="primary" diameter="20"></mat-spinner>
+        </div>
+    </ng-template>
+    <div class="list-select-form">
+
+        <div class="list-contents">
+            <div class="list-items">
+                <div class="list-item" *ngFor="let item of forms|filter:'title':search"
+                     [ngClass]="{'active':selectedItem&&(item.id===selectedItem.id)}">
+                    <div class="list-item-inner">
+                        <div class=" list-item-content">
+                            <span class="list-item-title">{{item.title|titlecase}}</span>
+                            <span class="list-item-sub-title">{{item.short_description|titlecase|stripper:200}}</span>
+                        </div>
+                        <input class="list-item-radio" type="radio" [(ngModel)]="selectedItem" [value]="item"
+                               (change)="onSelect()">
+                        <span class="list-item-checked"
+                              [ngClass]="{'active':selectedItem&&(item.id===selectedItem.id)}"><i
+                                class="fa fa-check"></i></span>
+                        <a mat-button class="list-item-action" target="_blank"
+                           [routerLink]="['dashboard','fleet-management','inspection','forms',item.id,'details']"
+                           color="primary">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions [align]="'end'" class="shadowed-dialog-action">
+    <button  mat-raised-button class="mr-2 m-big" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="primary" class="m-big" (click)="selectItem()">Select</button>
+</div>

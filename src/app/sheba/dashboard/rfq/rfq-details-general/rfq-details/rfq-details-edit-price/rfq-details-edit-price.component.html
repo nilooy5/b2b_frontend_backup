@@ -1,0 +1,24 @@
+<div class="bg-white price-quotation-container">
+
+    <div class="header">
+        <h3 class="text-center">Update Price Quotation</h3>
+        <hr>
+    </div>
+
+    <div class="quotations">
+        <app-editable-table-inline [quotationList]="receivedQuotationList" [tableData]="tableInitialData"
+                                   (quotationListChange)="handleQuotationList($event)"></app-editable-table-inline>
+    </div>
+
+</div>
+
+
+<div class="price-quotation-footer" [ngClass]="{ 'open': isSidebarOpen}">
+    <div class="d-flex justify-content-between">
+        <button class="button button--link" (click)="redirectToRfqDetails()">
+            <i class="material-icons">keyboard_backspace</i>
+            <span>Back</span>
+        </button>
+        <button class="button button--filled" (click)="updatePriceQuotation()">Save Price Quotation</button>
+    </div>
+</div>

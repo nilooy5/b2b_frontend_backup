@@ -1,0 +1,119 @@
+@import '../../../../../../scss/layouts';
+@import '../../../../../../scss/variables';
+
+:host ::ng-deep {
+    .mat-tab-link {
+      color: rgba(0, 0, 0, 0.6);
+      &:focus {
+        color: #2f38f1;
+      }
+    }
+
+    .mat-tab-label-active {
+      color: #2f38f1;
+      opacity: 1;
+    }
+
+    .mat-ink-bar {
+      height: 3px;
+      border-radius: 100px 100px 0 0;
+    }
+
+    .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+      background-color: #2f38f1;
+    }
+
+}
+
+.procurement-order-details {
+  &__info {
+    h5 {
+      color: $black40;
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    #service-provider {
+      margin-bottom: 0 !important;
+    }
+
+    #service-provider-title {
+      margin-bottom: 2px;
+    }
+
+    #service-provider-info {
+      margin-bottom: 0;
+    }
+
+    &__title {
+      color: $black80;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    img {
+      height: 50px;
+      width: 50px;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .partner-phone {
+      color: $black60;
+      font-size: 12px;
+      font-weight: normal;
+    }
+
+    .category-name {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .partner-rating {
+      font-size: 12px;
+      .rating {
+        color: #ff8219;
+        font-weight: 500;
+        i {
+          font-size: 12px;
+          position: relative;
+          top: 2px;
+        }
+      }
+      .rating-amount {
+        color: $black40;
+      }
+    }
+
+    .procurement-status {
+      margin: 0;
+      font-size: 12px;
+      color: $white;
+      border-radius: 4px;
+      text-align: center;
+      display: inline-block;
+      padding: 0 9px;
+      text-transform: capitalize;
+    }
+  }
+
+  &__service-section {
+    padding-top: 2px;
+  }
+}
+
+.dot-before {
+  position: relative;
+  margin-left: 15px;
+  &:before {
+    content: ' ';
+    height: 4px;
+    width: 4px;
+    background-color: $black60;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    left: -10px;
+  }
+}

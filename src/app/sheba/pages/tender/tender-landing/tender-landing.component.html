@@ -1,0 +1,22 @@
+<div id="parentDiv" (window:resize)="onResize($event)" >
+    <div id="section-1">
+        <app-tender-landing-cover [deviceResolution]="isMobileDevice"></app-tender-landing-cover>
+   </div>
+    <div id="section-2">
+       <app-tender-landing-business [deviceResolution]="isMobileDevice" [statisticsData]="statistics"></app-tender-landing-business>
+    </div>
+    <div id="section-3">
+       <app-latest-tenders *ngIf="tenders.length>0" [tendersData]="tenders"></app-latest-tenders>
+    </div>
+    <div id="section-4">
+       <app-landing-how-works [deviceResolution]="isMobileDevice"></app-landing-how-works>
+    </div>
+    <div id="section-5">
+       <app-what-people-say [deviceResolution]="isMobileDevice"></app-what-people-say>
+    </div>
+     <div id="section-6">
+       <app-top-catagories [deviceResolution]="isMobileDevice" [categoriesData]="categories"></app-top-catagories>
+   </div>
+   <app-bottom-slider-tenders *ngIf="isBottomSlide && tenders.length>0" [deviceResolution]="isMobileDevice"  [tendersData]="tenders"></app-bottom-slider-tenders>
+</div>
+

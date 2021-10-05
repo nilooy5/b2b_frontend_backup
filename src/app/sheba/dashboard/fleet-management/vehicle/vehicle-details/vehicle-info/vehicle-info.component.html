@@ -1,0 +1,388 @@
+<mat-tab-group [dynamicHeight]="true">
+    <mat-tab label="General Info">
+        <form class="vehicle-add__form " [formGroup]="vehicleInformation">
+            <ng-template matStepLabel>Vehicle Information</ng-template>
+            <div class="form-group form-add-group row">
+                <label for="vehicleId" class="col-sm-4 col-form-label">Vehicle ID</label>
+                <div class="col-sm-8">
+                    <input placeholder="Car" class="form-control" id="vehicleId" formControlName="vehicleId"
+                           [disableFormControl]="true" required>
+                </div>
+            </div>
+            <div class="form-group form-add-group row">
+                <label for="modelYear" class="col-sm-4 col-form-label">Vehicle Model Year</label>
+                <div class="vehicle-add__date-picker col-sm-8">
+                    <mat-datepicker #modelYearPicker></mat-datepicker>
+                    <input class="form-control"
+                           (focus)="modelYearPicker.open()"
+                           matInput [matDatepicker]="modelYearPicker"
+                           placeholder="DD / MM / YYYY"
+                           id="modelYear" formControlName="modelYear"
+                           [disableFormControl]="!vehicleInformationFormEnable" required>
+                    <span class="vehicle-add__date-picker__toggle"><mat-datepicker-toggle matSuffix
+                                                                                          [for]="modelYearPicker"></mat-datepicker-toggle></span>
+                </div>
+            </div>
+            <div class="form-group form-add-group row">
+                <label for="companyName" class="col-sm-4 col-form-label">Company Name</label>
+                <div class="col-sm-8">
+                    <input placeholder="Toyota" class="form-control" id="companyName" formControlName="companyName"
+                           [disableFormControl]="!vehicleInformationFormEnable" required>
+                </div>
+            </div>
+            <div class="form-group form-add-group row">
+                <label for="modelName" class="col-sm-4 col-form-label">Model Name</label>
+                <div class="col-sm-8">
+                    <input placeholder="Land cruiser prado" class="form-control" id="modelName"
+                           formControlName="modelName" [disableFormControl]="!vehicleInformationFormEnable" required>
+                </div>
+            </div>
+            <div class="form-group form-add-group row">
+                <label for="seatCapacity" class="col-sm-4 col-form-label">Seat Capacity</label>
+                <div class="col-sm-8">
+                    <input placeholder="2012" class="form-control" id="seatCapacity" formControlName="seatCapacity"
+                           [disableFormControl]="!vehicleInformationFormEnable" required>
+                </div>
+            </div>
+            <!--<div class="form-group form-add-group row">-->
+            <!--<label for="vehicleDepartment" class="col-sm-4 col-form-label">Department</label>-->
+            <!--<div class="col-sm-8">-->
+            <!--<input placeholder="2012" class="form-control" id="vehicleDepartment" formControlName="vehicleDepartment" [disableFormControl]="!vehicleInformationFormEnable" required>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="form-group form-add-group row">
+                <label for="vehicleDepartment" class="col-sm-4 col-form-label">Department</label>
+                <div class="col-md-8">
+                    <div class="select--primary editable__select">
+                        <select name="vehicleDepartment" id="vehicleDepartment" formControlName="vehicleDepartment"
+                                [disableFormControl]="!vehicleInformationFormEnable" required>
+                            <option *ngFor="let department of departments"
+                                    [value]="department.id">{{department.name}}</option>
+                        </select>
+                        <i class="material-icons">keyboard_arrow_down</i>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex container">
+                <button mat-button matStepperNext *ngIf="!vehicleInformationFormEnable"
+                        (click)="vehicleInformationFormEnable = true">Edit
+                </button>
+                <button mat-button matStepperNext *ngIf="vehicleInformationFormEnable"
+                        (click)="submitVehicleInformation()">Submit
+                </button>
+            </div>
+        </form>
+    </mat-tab>
+    <mat-tab label="Registration Info">
+        <ng-template mat-tab-label>
+            Registration Info
+            <i *ngIf="isDue(registerInformationData)" class="material-icons registration-info-indicator">
+                brightness_1
+            </i>
+        </ng-template>
+        <form class="vehicle-add__form " [formGroup]="registerInformation">
+            <ng-template matStepLabel>Vehicle Information</ng-template>
+            <div class="form-group form-add-group row">
+                <label for="registrationNumber" class="col-sm-3 col-form-label">Registration No</label>
+                <div class="col-sm-9">
+                    <input placeholder="2012" class="form-control" id="registrationNumber" formControlName="registrationNumber" [disableFormControl]="!registerInformationFormEnable" required>
+                </div>
+
+            </div>
+            <div class="form-group form-add-group row">
+                <label for="taxToken" class="col-sm-3 col-form-label">Tax Token</label>
+                <div class="col-sm-9">
+                    <input placeholder="Toyota" class="form-control" id="taxToken" formControlName="taxToken"
+                           [disableFormControl]="!registerInformationFormEnable" required>
+                </div>
+                <div class="offset-4">
+                    <div class="info-attachment d-flex" *ngIf="registerInformationData.tax_token_image && !registerInformationFormEnable">
+                        <span>{{limitString(registerInformationData.tax_token_image.split('/').pop())}}</span>
+                        <span>
+                            <a [href]="registerInformationData.tax_token_image" target="_blank"><i class="material-icons">remove_red_eye</i></a>
+                            <a [href]="registerInformationData.tax_token_image" download><i class="material-icons">file_download</i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-add-group row">
+                <label class="col-sm-3 col-form-label" for="fitnessStartDate" >Fitness</label>
+                <div class="col-sm-2 vehicle-add__date-picker ">
+                    <mat-datepicker #fitnessStartDatePicker></mat-datepicker>
+                    <input class="form-control small"
+                           (focus)="fitnessStartDatePicker.open()"
+                           matInput [matDatepicker]="fitnessStartDatePicker"
+                           placeholder="DD / MM / YYYY"
+                           id="fitnessStartDate" formControlName="fitnessStartDate"
+                           [disableFormControl]="!registerInformationFormEnable" required>
+                    <span class="vehicle-add__date-picker__toggle"><mat-datepicker-toggle matSuffix
+                                                                                          [for]="fitnessStartDatePicker"></mat-datepicker-toggle></span>
+                </div>
+                <div class="col-sm-1" style="max-width: 6%; padding-left: 20px">-</div>
+                <div class="col-sm-2 vehicle-add__date-picker">
+                    <mat-datepicker #fitnessEndDatePicker></mat-datepicker>
+                    <input class="form-control small"
+                           (focus)="fitnessEndDatePicker.open()"
+                           matInput [matDatepicker]="fitnessEndDatePicker"
+                           placeholder="DD / MM / YYYY"
+                           id="fitnessEndDate" formControlName="fitnessEndDate"
+                           [disableFormControl]="!registerInformationFormEnable" required>
+                    <span class="vehicle-add__date-picker__toggle"><mat-datepicker-toggle matSuffix
+                                                                                          [for]="fitnessEndDatePicker"></mat-datepicker-toggle></span>
+                </div>
+                <div class="col-sm-2">
+                    <span *ngIf="registerInformationData.fitness_paper_due_status !== ''"
+                          class="due-status" [ngClass]="dueStatus(registerInformationData.fitness_paper_due_status)">
+                        <span class="dot-before" [ngClass]="dueStatusDot(registerInformationData.fitness_paper_due_status)">
+                            {{ registerInformationData.fitness_paper_due_status }}
+                        </span>
+                    </span>
+                </div>
+                <div class="offset-4">
+                    <div class="info-attachment d-flex" *ngIf="registerInformationData.fitness_paper_image && !registerInformationFormEnable">
+                        <span>{{limitString(registerInformationData.fitness_paper_image.split('/').pop())}}</span>
+                        <span>
+                            <a [href]="registerInformationData.fitness_paper_image" target="_blank"><i class="material-icons">remove_red_eye</i></a>
+                            <a [href]="registerInformationData.fitness_paper_image" download><i class="material-icons">file_download</i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-add-group row">
+                <label for="insuranceDate" class="col-sm-3 col-form-label">License End Date</label>
+                <div class="vehicle-add__date-picker col-sm-2">
+                    <mat-datepicker #licenseEndDatePicker></mat-datepicker>
+                    <input class="form-control"
+                           (focus)="licenseEndDatePicker.open()"
+                           matInput [matDatepicker]="licenseEndDatePicker"
+                           placeholder="DD / MM / YYYY"
+                           id="licenseEndDate" formControlName="licenseEndDate"
+                           [disableFormControl]="!registerInformationFormEnable" required>
+                    <span class="vehicle-add__date-picker__toggle"><mat-datepicker-toggle matSuffix
+                                                                                          [for]="licenseEndDatePicker"></mat-datepicker-toggle></span>
+                </div>
+                <div class="col-sm-7">
+                    <div *ngIf="registerInformationData.license_paper_due_status !== ''">
+                        <span class="due-status" [ngClass]="dueStatus(registerInformationData.license_paper_due_status)">
+                        <span class="dot-before" [ngClass]="dueStatusDot(registerInformationData.license_paper_due_status)">
+                            {{ registerInformationData.license_paper_due_status }}
+                        </span>
+                    </span>
+                    </div>
+                </div>
+                <div class="offset-4">
+                    <div class="info-attachment d-flex" *ngIf="registerInformationData.license_number_image && !registerInformationFormEnable">
+                        <span>{{limitString(registerInformationData.license_number_image.split('/').pop())}}</span>
+                        <span>
+                            <a [href]="registerInformationData.license_number_image" target="_blank"><i class="material-icons">remove_red_eye</i></a>
+                            <a [href]="registerInformationData.license_number_image" download><i class="material-icons">file_download</i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-add-group row">
+                <label for="insuranceDate" class="col-sm-3 col-form-label">Insurance Valid Till</label>
+                <div class="vehicle-add__date-picker col-sm-2">
+                    <mat-datepicker #insuranceDatePicker></mat-datepicker>
+                    <input class="form-control"
+                           (focus)="insuranceDatePicker.open()"
+                           matInput [matDatepicker]="insuranceDatePicker"
+                           placeholder="DD / MM / YYYY"
+                           id="insuranceDate" formControlName="insuranceDate"
+                           [disableFormControl]="!registerInformationFormEnable" required>
+                    <span class="vehicle-add__date-picker__toggle"><mat-datepicker-toggle matSuffix
+                                                                                          [for]="insuranceDatePicker"></mat-datepicker-toggle></span>
+                </div>
+                <div class="col-sm-7">
+                    <div *ngIf="registerInformationData.insurance_paper_due_status !== ''">
+                        <span class="due-status" [ngClass]="dueStatus(registerInformationData.insurance_paper_due_status)">
+                        <span class="dot-before" [ngClass]="dueStatusDot(registerInformationData.insurance_paper_due_status)">
+                            {{ registerInformationData.insurance_paper_due_status }}
+                        </span>
+                    </span>
+                    </div>
+                </div>
+                <div class="offset-4">
+                    <div class="info-attachment d-flex" *ngIf="registerInformationData.insurance_paper_image && !registerInformationFormEnable">
+                        <span>{{limitString(registerInformationData.insurance_paper_image.split('/').pop())}}</span>
+                        <span>
+                            <a [href]="registerInformationData.insurance_paper_image" target="_blank"><i class="material-icons">remove_red_eye</i></a>
+                            <a [href]="registerInformationData.insurance_paper_image" download><i class="material-icons">file_download</i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex container">
+                <button mat-button matStepperNext *ngIf="!registerInformationFormEnable"
+                        (click)="registerInformationFormEnable = true">Edit
+                </button>
+                <button mat-button matStepperNext *ngIf="registerInformationFormEnable"
+                        (click)="submitRegisterInformation()">Submit
+                </button>
+            </div>
+        </form>
+    </mat-tab>
+    <mat-tab label="Specs">
+        <form class="vehicle-add__form " [formGroup]="specsInformation">
+            <ng-template matStepLabel>Vehicle Information</ng-template>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form--card" style="margin-bottom: 10px">
+                        <div class="form--card__title">
+                            <p>Dimensions</p>
+                        </div>
+                        <div class="form--card__contents">
+                            <div class="form-group form--card__field row">
+                                <label for="width" class="col-6 col-form-label"
+                                       style="text-align: right">Width(in)</label>
+                                <input placeholder="Car" class="col-6 form-control" id="width" formControlName="width"
+                                       [disableFormControl]="!specsInformationFormEnable" required>
+                            </div>
+                            <div class="form-group form--card__field row">
+                                <label for="height" class="col-6 col-form-label"
+                                       style="text-align: right">Height(in)</label>
+                                <input placeholder="Car" class="col-6 form-control" id="height" formControlName="height"
+                                       [disableFormControl]="!specsInformationFormEnable" required>
+                            </div>
+                            <div class="form-group form--card__field row">
+                                <label for="length" class="col-6 col-form-label"
+                                       style="text-align: right">Length(in)</label>
+                                <input placeholder="Car" class="col-6 form-control" id="length" formControlName="length"
+                                       [disableFormControl]="!specsInformationFormEnable" required>
+                            </div>
+                            <div class="form-group form--card__field row">
+                                <label for="cargoVolume" class="col-6 col-form-label" style="text-align: right">Cargo
+                                    Volume(ft<span style="font-size: 8px; position: relative;top: -3px">3</span>)</label>
+                                <input placeholder="Car" class="col-6 form-control" id="cargoVolume"
+                                       formControlName="cargoVolume" [disableFormControl]="!specsInformationFormEnable"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form--card" style="margin-bottom: 0">
+                        <div class="form--card__title">
+                            <p>Engine</p>
+                        </div>
+                        <div class="form--card__contents">
+                            <div class="form-group form--card__field row">
+                                <label for="engineSummary" class="col-6 col-form-label" style="text-align: right">Engine
+                                    Summary</label>
+                                <input placeholder="Engine Summary" class="col-6 form-control" id="engineSummary"
+                                       formControlName="engineSummary"
+                                       [disableFormControl]="!specsInformationFormEnable" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form--card" style="margin-bottom: 10px">
+                        <div class="form--card__title">
+                            <p>Weight</p>
+                        </div>
+                        <div class="form--card__contents">
+                            <div class="form-group form--card__field row">
+                                <label for="grossVehicleWeight" class="col-6 col-form-label" style="text-align: right">Gross
+                                    Vehicle Weight(kg)</label>
+                                <input placeholder="Car" class="col-6 form-control" id="grossVehicleWeight"
+                                       formControlName="grossVehicleWeight"
+                                       [disableFormControl]="!specsInformationFormEnable" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form--card" style="margin-bottom: 10px">
+                        <div class="form--card__title">
+                            <p>Performance</p>
+                        </div>
+                        <div class="form--card__contents">
+                            <div class="form-group form--card__field row">
+                                <label for="maxPayload" class="col-6 col-form-label" style="text-align: right">Max
+                                    Payload(kg)</label>
+                                <input placeholder="Car" class="col-6 form-control" id="maxPayload"
+                                       formControlName="maxPayload" [disableFormControl]="!specsInformationFormEnable"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form--card" style="margin-bottom: 0">
+                        <div class="form--card__title">
+                            <p>Transmission</p>
+                        </div>
+                        <div class="form--card__contents">
+                            <div class="form-group form--card__field row">
+                                <label for="TransmissonType" class="col-6 col-form-label" style="text-align: right">Transmission
+                                    Type</label>
+                                <input placeholder="Car"
+                                       class="col-6 form-control"
+                                       id="TransmissonType"
+                                       formControlName="TransmissonType"
+                                       [disableFormControl]="!specsInformationFormEnable"
+                                       [matAutocomplete]="auto"
+                                       required>
+                                <mat-autocomplete #auto="matAutocomplete">
+                                    <mat-option *ngFor="let option of TransmissonTypeOptions" [value]="option">
+                                        {{option}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </div>
+                            <div class="form-group form--card__field row">
+                                <label for="Wheels" class="col-6 col-form-label" style="text-align: right">Wheels &
+                                    Tires</label>
+                                <input placeholder="e.g. 4X4, 6X4, FWD, RWD" class="col-6 form-control" id="Wheels"
+                                       formControlName="Wheels" [disableFormControl]="!specsInformationFormEnable"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex container">
+                <button mat-button matStepperNext *ngIf="!specsInformationFormEnable"
+                        (click)="specsInformationFormEnable = true">Edit
+                </button>
+                <button mat-button matStepperNext *ngIf="specsInformationFormEnable" (click)="submitSpecsInformation()">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </mat-tab>
+    <mat-tab label="Driver">
+        <div class="p-30">
+            <div class="flat-card" *ngIf="handlerInformations.vendor">
+                <div class="sheba-title">Vendor</div>
+
+                <div class="flex w-100 justify-content-start">
+                    <div class="profile-image-avatar mr-20" style="border-radius: 4px;">
+                        <img [src]="handlerInformations.vendor.logo || 'https://i.ibb.co/9hG0G31/image-placeholder.png'" alt="">
+                    </div>
+                    <div class="flex flex-column align-items-start">
+                        <div>{{handlerInformations.vendor.name|titlecase}}</div>
+                        <div class="text-muted">{{handlerInformations.vendor.mobile}}</div>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+
+            <div class="flat-card" *ngIf="handlerInformations.driver">
+                <div class="sheba-title">Driver</div>
+                <div class="flex w-100 justify-content-between">
+                    <div class="flex justify-content-start">
+                        <div class="profile-image-avatar mr-20" style="border-radius: 50%;">
+                            <img [src]="handlerInformations.driver.image || 'https://i.ibb.co/bXqhnhG/user.png'" alt="">
+                        </div>
+                        <div class="flex flex-column align-items-start">
+                            <div>{{handlerInformations.driver.name|titlecase}}</div>
+                            <div class="text-muted">{{handlerInformations.driver.mobile}}</div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn button--outline" (click)="untagDriver()">Untag driver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>

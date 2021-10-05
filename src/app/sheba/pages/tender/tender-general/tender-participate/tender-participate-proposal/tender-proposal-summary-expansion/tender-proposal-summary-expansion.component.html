@@ -1,0 +1,48 @@
+<div class="expansion">
+
+    <div class="expansion__head d-flex justify-content-between" (click)="toggleDisplay()">
+        <div class="expansion__head__label">Job Details</div>
+        <div class="expansion__head__icon">
+            <span class="material-icons">
+                keyboard_arrow_down
+            </span>
+        </div>
+    </div>
+
+    <div class="expansion__highlights d-flex justify-content-between">
+        <div class="expansion__highlights__title">
+            {{ tenderDetails.title }}
+            <div *ngIf="!tenderDetails.title">
+                {{ tenderDetails.description.slice(0, 18 )}}...
+            </div>
+        </div>
+        <div class="expansion__highlights__budget">
+            <div class="expansion__highlights__budget__amount" *ngIf="tenderDetails.estimated_price">
+                ৳&nbsp;{{numericFormat.numberWithCommas(tenderDetails.estimated_price)}}</div>
+            <div *ngIf="!tenderDetails.estimated_price" class="budgetNull">To be fixed</div>
+        </div>
+    </div>
+
+    <div class="expansion__details" id="tenderDetails">
+        <div class="expansion__details__description col-md-8">{{ tenderDetails.description }}</div>
+        <div class="expansion__details__stats col-md-4 d-flex flex-column">
+            <div class="expansion__details__stats__stat d-flex" *ngIf = "tenderDetails.last_date_of_submission">
+                <img src="{{ tenderDetails.last_date_of_submission.icon }}" alt="" class="icon">
+                <div class="">Last date of submission - {{ tenderDetails.last_date_of_submission.date }}</div>
+            </div>
+            <div class="expansion__details__stats__stat d-flex" *ngIf = "tenderDetails.number_of_participants">
+                <img src="../../../../../../../assets/svg/icons/tender/participants.svg" alt="" class="icon">
+                <div class="">Participants - {{ tenderDetails.number_of_participants }}</div>
+            </div>
+            <div class="expansion__details__stats__stat d-flex" *ngIf = "tenderDetails.delivery_within">
+                <img src="{{ tenderDetails.delivery_within.icon }}" alt="" class="icon">
+                <div class="">Delivery within - {{ tenderDetails.delivery_within.date_range }}</div>
+            </div>
+            <div class="expansion__details__stats__stat d-flex" *ngIf = "tenderDetails.payment">
+                <img src="{{ tenderDetails.payment.icon }}" alt="" class="icon">
+                <div class="">Payment - {{ tenderDetails.payment.option }}</div>
+            </div>
+        </div>
+    </div>
+
+</div>

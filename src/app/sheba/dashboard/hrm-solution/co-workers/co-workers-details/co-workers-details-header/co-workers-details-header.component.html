@@ -1,0 +1,23 @@
+<div class="header-container">
+
+    <div class="d-flex align-items-center justify-content-between">
+
+        <div class="d-flex align-items-center">
+            <img class="img-fluid user-img" [src]="headerInfo.image" alt="Employee Image">
+            <div class="d-flex flex-column">
+                <p class="m-0 user-name"> {{ headerInfo.name }}</p>
+                <app-badge [badge]="badgeObj" *ngIf="headerInfo.status"></app-badge>
+            </div>
+        </div>
+
+        <div class="d-flex" *ngIf="headerInfo.status && headerInfo.status !== 'invited'">
+            <button class="button button--primary--outline deactivate" (click)="deactivate(buttonText)" [disabled]="postingToApi">
+                <span  *ngIf="!postingToApi;else loader"> {{ buttonText }} </span>
+                <ng-template #loader><span><i class="fas fa-spinner fa-spin" style="font-size: 20px"></i></span></ng-template>
+            </button>
+<!--            <button class="button button&#45;&#45;primary&#45;&#45;outline print" (click)="print()">Print</button>-->
+        </div>
+
+    </div>
+
+</div>

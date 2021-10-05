@@ -1,0 +1,15 @@
+<div class="row">
+
+    <div class="col-xl-7 col-lg-7">
+        <app-rfq-create-basic-info (showScoreBoard)="handleScoreBoardView()"></app-rfq-create-basic-info>
+        <app-rfq-create-additional-info></app-rfq-create-additional-info>
+        <app-rfq-create-advance-summary></app-rfq-create-advance-summary>
+        <app-rfq-create-attachment *ngIf="showAttachment" (showScoreBoard)="handleScoreBoardView()"></app-rfq-create-attachment>
+        <app-rfq-create-advance-options (showAttachment)="handleAttachmentView($event)"></app-rfq-create-advance-options>
+    </div>
+
+    <div class="col-xl-5 col-lg-5 score-column" *ngIf="showScoreBoard">
+        <app-rfq-create-score></app-rfq-create-score>
+    </div>
+
+</div>

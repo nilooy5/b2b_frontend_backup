@@ -1,0 +1,96 @@
+@import "../../../../../scss/variables";
+:host ::ng-deep {
+  .mat-button-wrapper {
+    //font-family: $font-lato !important;
+    font-weight: 600;
+  }
+}
+.topComponent {
+  padding-top: 80px;
+}
+.button{
+  width: 300px;
+  height: 70px;
+  border-radius: 3px;
+  background-color: #437ff5;
+  color: white;
+  font-weight: 600;
+  font-size: 20px !important;
+}
+.name{
+  //font-family: Lato, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #437ff5;
+}
+.heading{
+  //font-family: $font-opensans;
+  font-size: 3vw;
+  font-weight: 500;
+  line-height: 1.41;
+  letter-spacing: normal;
+  color: #333333;
+}
+.image{
+  width: 470px;
+  height: 470px;
+  object-fit: contain;
+}
+.btnDiv{
+  margin-top: 60px;
+}
+
+.modal-dialog {
+  max-width: 570px;
+}
+.modal-content {
+  border-radius: 3px;
+}
+
+.modal-header {
+  background-color: #f5f6fa;
+}
+.modal-body {
+  padding: 40px 60px 60px 60px;
+}
+
+.modal-header .close {
+  padding: 0;
+  margin: 0;
+}
+
+
+/*mobile view*/
+
+@media screen and (max-width: 768px) {
+.name{
+  font-size: 14px;
+}
+  .heading{
+    //font-family: $font-lato;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .image{
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+  .button{
+    width: 200px;
+    height: 40px;
+    font-size: 14px;
+  }
+  .topComponent {
+    padding-top: 30px;
+  }
+  .btnDiv{
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+  .heading {
+    margin-top: 8px;
+  }
+}

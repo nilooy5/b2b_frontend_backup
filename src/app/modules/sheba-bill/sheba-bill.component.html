@@ -1,0 +1,18 @@
+<div class="layout__window">
+    <div class="layout__window__header sheba-bill__header d-flex justify-content-between">
+        <span>Payment Details</span>
+    </div>
+    <div class="sheba-bill__body">
+        <section *ngFor="let item of items">
+            <p class="sheba-bill__item"
+               [ngStyle]="{'color': item.color || '#212121',
+               'font-weight': item.is_bold? '500':'400',
+               'border-bottom' : item.has_underline ? '1px solid rgba(0, 0, 0, 0.04)' : 'none',
+               'padding-bottom' : item.has_underline ? '16px' : '0'
+               }">
+                <span>{{item.title}}</span>
+                <span>{{item.amount|currency:'৳':'symbol':'1.1-2'}}</span>
+            </p>
+        </section>
+    </div>
+</div>

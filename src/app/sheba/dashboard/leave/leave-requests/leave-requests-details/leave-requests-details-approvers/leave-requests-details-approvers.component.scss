@@ -1,0 +1,61 @@
+@import "../leave-requests-details-info/leave-requests-details-info.component.scss";
+
+.confirmation-box {
+  padding: 22px 0 28px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  .texts {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 17px;
+  }
+  .buttons {
+    display: flex;
+    justify-content: center;
+
+    .action {
+      width: 120px;
+      height: 40px;
+      border-radius: 8px;
+      background-color: #12b886;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.25;
+      color: white;
+
+      &--reject {
+        background-color: #e75050;
+      }
+
+      &:first-of-type {
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+.approver-card {
+  padding: 15px 0;
+  border-bottom: solid 1px #d8d8d8;
+
+  &__serial {
+    margin-right: 40px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 2;
+  }
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.mt-8 {
+  margin-top: 8px;
+}

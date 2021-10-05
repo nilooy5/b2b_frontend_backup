@@ -1,0 +1,257 @@
+hr{
+  margin: 0;
+}
+
+.office-settings-attendance-edit{
+  &-container{
+    border-radius: 10px;
+    box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+    margin-bottom: 100px;
+  }
+
+  &-header{
+    margin: 0;
+    padding: 14px 30px;
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+  }
+  &-content{
+    padding: 0 30px;
+  }
+}
+
+.attendance-edit{
+  &-padding24{
+    padding: 24px 0px;
+  }
+
+  &-title{
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.43;
+    color: #484b4f;
+  }
+
+  &-value{
+    font-family: Poppins;
+    font-size: 14px;
+    line-height: 1.71;
+    font-weight: 500;
+    color: rgba(10, 15, 20, 0.75);
+  }
+
+  &-subvalue{
+    opacity: 0.4;
+    font-family: Poppins;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #000000;
+  }
+}
+
+#save-changes{
+  width: 170px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #4373f5;
+  color: #ffffff;
+  line-height: 1.29;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  margin-bottom: 40px;
+  &:disabled{
+    background-color: #bbc0cc;
+    cursor: not-allowed;
+  }
+}
+
+:host ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+  background-color: #437ff5;
+}
+
+:host ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #437ff5;
+}
+
+:host ::ng-deep .mat-checkbox-frame{
+  border-radius: 3px;
+  border-color: #b3b3b3;
+}
+
+:host ::ng-deep .mat-checkbox .mat-checkbox-inner-container{
+  height: 24px;
+  width: 24px;
+}
+
+:host ::ng-deep {
+  .main-table-theme {
+    border-spacing: 0 4px !important;
+    thead {
+      tr {
+        th.mat-header-cell{
+          padding-left: 10px;
+          font-family: Poppins !important;
+          font-weight: 500;
+          width: 25%;
+          &:first-of-type {
+            padding: 15px 0 15px 30px !important;
+            border-radius: 10px 0 0 10px;
+            width: 50%;
+          }
+          &:last-of-type {
+            border-radius: 0 10px 10px 0;
+            width: 25%;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        td.mat-cell {
+          background-color: #f7f9fc;
+          color: rgba(10, 15, 20, 0.75);
+          &:first-of-type {
+            padding: 0 20px !important;
+          }
+          &:last-of-type {
+            padding: 11px !important;
+          }
+        }
+        &:hover {
+          cursor: pointer;
+          box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+
+          & .actions-column {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+:host ::ng-deep {
+  .mat-input-element {
+
+    &:enabled {
+      color: rgba(0, 0, 0, 0.6);
+      font-family: Poppins !important;
+      font-size: 14px;
+    }
+
+    &:disabled {
+      color: rgba(0, 0, 0, 0.6);
+      font-family: Poppins !important;
+      font-size: 14px;
+    }
+  }
+
+  .mat-form-field-wrapper {
+    padding: 5px 0;
+  }
+
+  .mat-form-field-infix {
+    width: auto !important;
+    border: none;
+  }
+
+  .mat-form-field-appearance-outline {
+
+    .mat-form-field-wrapper {
+      margin: 0 !important;
+      width: 100%;
+    }
+
+    .mat-form-field-flex {
+      padding: 2px 0.75em 0 0.75em !important;
+    }
+
+    .mat-form-field-outline {
+      background-color: #f7f9fc;
+      border-radius: 5px;
+    }
+
+    &.mat-form-field-disabled {
+      .mat-form-field-outline {
+        border: none;
+        color: rgba(0, 0, 0, 0);
+        background-color: #f7f9fc;
+      }
+    }
+
+  }
+}
+
+.actions-column {
+  display: flex;
+}
+
+#add-ip-button {
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
+
+.add-new-row {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  color: #437ff5;
+}
+
+.opacity-0 {
+  opacity: 0;
+  transition: opacity 300ms;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.opacity-1 {
+  opacity: 1;
+}
+
+.perform {
+  width: 80px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: Poppins;
+  &-save {
+    background-color: #12b886;
+    color: #ffffff;
+  }
+  &-edit {
+    background-color: #e3ebfe;
+    color: #437ff5;
+  }
+  &-delete {
+    background-color: #ffe6e6;
+    color: #fa5252;
+    margin-left: 15px;
+  }
+  &-cancel {
+    width: 40px;
+    background-color: #ffe6e6;
+    color: #fa5252;
+    margin-left: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container-fluid{
+    width: 130%;
+  }
+  .col-md-9 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

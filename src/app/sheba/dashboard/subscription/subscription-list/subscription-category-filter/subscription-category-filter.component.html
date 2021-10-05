@@ -1,0 +1,49 @@
+<form class="row justify-content-between">
+    <div class="col-md-3">
+        <div class="select--primary">
+            <select name="" id="categoryFilter" (change)="selectCategory($event)">
+                <option value="0">All</option>
+                <option *ngFor="let category of subscriptions_categories"
+                        [value]="category.category_id">{{category.category_name}}</option>
+            </select>
+            <i class="material-icons">keyboard_arrow_down</i>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="input-group search-input input-group--primary">
+            <div class="input-group-prepend">
+                <i class="material-icons">search</i>
+            </div>
+            <input type="text" class="form-control" placeholder="Search" (keyup)="onChange($event)" aria-describedby="basic-addon1">
+        </div>
+    </div>
+</form>
+
+<div class="row justify-content-between">
+    <div class="col" style="align-items: center; display: flex;">
+        <h5 style="padding: 20px 0">{{totalSubscription}} Records found</h5>
+    </div>
+    <div class="col justify-content-end" style=" align-items: center; display: flex;">
+        <div style="display: flex;padding: 20px 20px 0 0;align-items: center;justify-content: center">
+            <div class="select--primary">
+                <select id="" (change)="sortByName($event)" style="padding: 5px 45px 5px 20px">
+                    <option value="0">Sort: Name (Alphabetic)</option>
+                    <option value="1">Sort: Name (A-Z)</option>
+                    <option value="2">Sort: Name (Z-A)</option>
+                </select>
+                <i class="material-icons">keyboard_arrow_down</i>
+            </div>
+            <div style="margin-left: 20px">
+                <span>{{ pagination.start }} - {{ pagination.end }} of {{ pagination.total }}</span>
+            </div>
+            <div style="padding-left: 20px;display: flex;align-items: center;justify-content: center">
+                <button class="btn border" (click)="previousPage()"><i class="material-icons">keyboard_arrow_left</i></button>
+                <button class="btn border" (click)="nextPage()"><i class="material-icons">keyboard_arrow_right</i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

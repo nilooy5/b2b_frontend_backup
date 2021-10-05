@@ -1,0 +1,22 @@
+<div class="feature-settings-container">
+
+    <div class="settings-icon" id="settings-icon">
+        <img src="../../../assets/svg/setting-2.svg" alt="">
+    </div>
+
+    <div class="settings-items">
+        <ul class="list-group" style="box-shadow: none;" >
+
+            <li class="list-group-item item-heading" *ngIf="settingsTitle">
+                {{ settingsTitle}}
+            </li>
+
+            <li class="list-group-item custom-item" *ngFor="let item of settingsItems" [routerLink]="item.path">
+                <i class="material-icons"> {{ item.iconName }} </i>
+                <span> {{ item.title }}</span>
+            </li>
+
+        </ul>
+    </div>
+
+</div>

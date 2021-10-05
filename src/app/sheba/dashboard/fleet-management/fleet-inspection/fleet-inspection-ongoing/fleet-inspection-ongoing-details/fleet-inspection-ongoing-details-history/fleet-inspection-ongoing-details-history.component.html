@@ -1,0 +1,61 @@
+<div class="d-flex ongoing-details-history justify-content-between align-items-center">
+    <h4>Recent Submissions</h4>
+    <button class="btn button--outline" [routerLink]="['/','dashboard', 'fleet-management', 'inspection','history']">View All</button>
+</div>
+<div class="main-content-block">
+    <div class="main-content-table" *ngIf="inspections">
+        <table *ngIf="(inspections.length && dataSource)" mat-table [dataSource]="dataSource"
+               class="table  designer-table">
+            <ng-container matColumnDef="vehicle">
+                <th mat-header-cell style="min-width: 30%" *matHeaderCellDef>Vehicle</th>
+                <td mat-cell *matCellDef="let element">
+                    <div class="d-flex" style="margin-top: 10px; margin-bottom: 10px">
+                        <img src="https://i.ibb.co/VqhqtZ8/image.png" class="vehicle-info__img" alt="">
+                        <div>
+                            <p style="margin-bottom: 3px">{{element.vehicle.vehicle_model}}</p>
+                            <p class="vehicle-info">
+                                 <span><i class="material-icons"
+                                          [class.active]="element.vehicle.status === 'active'"
+                                          [class.inactive]="element.vehicle.status === 'inactive'"
+                                 >brightness_1</i>{{element.vehicle.status}}</span>
+                            <li>{{element.vehicle.vehicle_type}}</li>
+                            <li>{{element.vehicle.assigned_to }}</li>
+                            </p>
+                        </div>
+                    </div>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="schedule">
+                <th mat-header-cell *matHeaderCellDef>Date</th>
+                <td mat-cell *matCellDef="let element">
+                    <p style="margin-bottom: 10px">{{element.schedule}}</p>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="failed_items">
+                <th mat-header-cell *matHeaderCellDef>Failed Items</th>
+                <td mat-cell *matCellDef="let element" style="text-align: right">
+                    <span class="badge badge-pill failed-items-badge"
+                          [class.active]="element.failed_items === 0"
+                          [class.inactive]="element.failed_items > 0"> {{element.failed_items}}</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="actions" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                    <button class="button button-flat button-fav"
+                            [routerLink]="['/','dashboard','fleet-management', 'submit-inspection', 'history', element.id]"><i
+                        class="fa fa-chevron-right"></i>
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+        </table>
+        <div class="no-driver" *ngIf="inspections && !inspections.length">
+            <p>No Inspections Available.</p>
+        </div>
+    </div>
+    <div class="no-driver" *ngIf="!inspections || inspections === undefined">
+        <p>No Inspections Available.</p>
+    </div>
+</div>

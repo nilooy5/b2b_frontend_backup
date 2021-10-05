@@ -1,0 +1,26 @@
+<div class="row" *ngFor="let item of personalInfo">
+    <div class="col-lg-4">
+        <p class="co-worker-details-info m-0">{{ item.label }}</p>
+    </div>
+    <div class="col-lg-8 d-flex justify-content-between align-items-center">
+        <p class="co-worker-details-info m-0">{{ item.info }}</p>
+        <div *ngIf="item.downloadable">
+            <button class="button button--primary--outline attachment-menu-button" [matMenuTriggerFor]="menu">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <mat-menu #menu="matMenu">
+                <a mat-menu-item class="attachment-menu-item" *ngIf="nidFrontImage" [href]="nidFrontImage" target="_blank">
+                    <i class="material-icons">visibility</i>
+                    <span>View Front</span>
+                </a>
+                <mat-divider></mat-divider>
+                <a mat-menu-item class="attachment-menu-item" *ngIf="nidBackImage" [href]="nidBackImage" target="_blank">
+                    <i class="material-icons">visibility</i>
+                    <span>View Back</span>
+                </a>
+            </mat-menu>
+        </div>
+    </div>
+    <hr style="width: 98%; border-color: rgba(0, 0, 0, 0.05);">
+</div>
+

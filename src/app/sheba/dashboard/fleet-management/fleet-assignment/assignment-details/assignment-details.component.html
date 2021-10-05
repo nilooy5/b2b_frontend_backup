@@ -1,0 +1,151 @@
+<div class="b2b-breadcrumb">
+    <a [routerLink]="['/','dashboard','fleet-management','assignments']">Fleet Management</a><span>/</span>
+    <a [routerLink]="['/','dashboard','fleet-management','assignments']">Assignments</a> <span>/</span>
+    <span>Detail</span>
+</div>
+<div class="main-content-container">
+    <div class="main-content-block">
+        <div class="row" *ngIf="tripRequest;else notFound">
+            <div class="col-md-6">
+                <div class="p-30 bg-white">
+                    <h3 class="mat-title">{{tripRequest.reason|titlecase}}</h3>
+                    <p>{{tripRequest.details}}</p>
+                    <div class="flex justify-content-start">
+                        <div class="pr-3">
+                            <div class="profile-image-avatar circle">
+                                <img [lazyLoad]="tripRequest.member.image" [defaultImage]="appConfig.defaultImage"
+                                     alt="">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="flex flex-column align-items-start">
+                                <h5 class="mat-subheader">{{tripRequest.member.name }}</h5>
+                                <span class="mat-caption pb-2">{{tripRequest.member.designation}}</span>
+<!--                                <span class="mat-body-1">10:50 am, May 1, 2019</span>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <app-comments (OnCommentUpdate)="OnComments($event)" [comments]="tripRequest.comments" title="Comments"
+                              [postUrl]="'trips/'+tripRequest.id+'/comments'"></app-comments>
+            </div>
+            <div class="col-md-6">
+                <div class="p-30 bg-white mb-30">
+                    <div class="flex flex-column align-items-start">
+                        <div class="text-uppercase mat-subheader text-muted mb-20 fw-5">Assignment type</div>
+                        <div class="flex align-items-start">
+                            <div class="flex mr-20">
+                                <div class="profile-image-avatar circle">
+                                    <img [lazyLoad]="tripRequest.vehicle.image" [defaultImage]="appConfig.defaultImage"
+                                         alt="">
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex flex-column align-items-start">
+                                    <span class="mat-sheba-title-1 fw-5">{{tripRequest.vehicle.name}}</span>
+                                    <span class="mat-caption pb-2 text-muted">{{tripRequest.vehicle.type}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="soft">
+                        <div class="text-uppercase mat-subheader text-muted mb-20 fw-5">Assigned Drivere</div>
+                        <div class="flex align-items-start">
+                            <div class="flex mr-20">
+                                <div class="profile-image-avatar circle">
+                                    <img [lazyLoad]="tripRequest.driver.image" [defaultImage]="appConfig.defaultImage"
+                                         alt="">
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex flex-column align-items-start">
+                                    <span class="mat-sheba-title-1 fw-5">{{tripRequest.driver.name}}</span>
+                                    <span class="mat-caption pb-2 text-muted">{{tripRequest.driver.mobile}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-30 bg-white">
+                    <div class="flex w-100 justify-content-start align-items-start mb-4">
+                        <div class="text-muted">
+                            <i class="material-icons">
+                                directions_car
+                            </i>
+                        </div>
+                        <div class="flex flex-column pl-4 align-items-start">
+                            <div class="text-uppercase mat-subheader text-muted mb-2 fw-5">Vehicle type</div>
+                            <span>{{tripRequest.vehicle_type|titlecase}}
+                                , {{tripRequest.no_of_seats ? tripRequest.no_of_seats : 1}} Seat</span>
+                        </div>
+                    </div>
+                    <div class="flex w-100 justify-content-start align-items-start mb-4">
+                        <div class="text-muted">
+                            <i class="material-icons">
+                                directions_car
+                            </i>
+                        </div>
+                        <div class="flex flex-column pl-4 align-items-start">
+                            <div class="text-uppercase mat-subheader text-muted mb-2 fw-5">Assignment type</div>
+                            <span>{{tripRequest.trip_type|hyphenStrip|titlecase}}</span>
+                        </div>
+                    </div>
+                    <div class="flex w-100 justify-content-start align-items-start mb-4">
+                        <div class="text-muted">
+                            <i class="material-icons">
+                                location_on
+                            </i>
+                        </div>
+                        <div class="flex flex-column pl-4 align-items-start">
+                            <div class="text-uppercase mat-subheader text-muted mb-2 fw-5">Pickup address</div>
+                            <span>{{tripRequest.pickup_address}}</span>
+                        </div>
+                    </div>
+                    <div class="flex w-100 justify-content-start align-items-start mb-4">
+                        <div class="text-muted">
+                            <i class="material-icons">
+                                location_on
+                            </i>
+                        </div>
+                        <div class="flex flex-column pl-4 align-items-start">
+                            <div class="text-uppercase mat-subheader text-muted mb-2 fw-5">Drop address</div>
+                            <span>{{tripRequest.dropoff_address}}</span>
+                        </div>
+                    </div>
+                    <div class="flex w-100 justify-content-start align-items-start mb-4">
+                        <div class="text-muted">
+                            <i class="material-icons">
+                                watch_later
+                            </i>
+                        </div>
+                        <div class="flex flex-column pl-4 align-items-start">
+                            <div class="text-uppercase mat-subheader text-muted mb-2 fw-5">Trip time</div>
+                            <span>{{tripRequest.start_date|date}} {{tripRequest.start_date|date:'shortTime'}} ({{differenceText()}})</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ng-template #notFound>
+            <div class="content-block-content align-items-center bg-white p-40">
+                <!--                <div class="content-block-image mb-4">-->
+                <!--                    <img src="" [src]="'/assets/img/statics/sent_illustration.png'" alt="">-->
+                <!--                </div>-->
+                <div class="content-block-title mb-4">
+                    Not Found
+                </div>
+                <div class="content-block-sub-title">
+                    lorem ipsum dolor sit amet consectetur adipiscing elit
+                </div>
+                <div class="content-block-actions">
+                    <!--                    <button class="button button-primary mr-4"-->
+                    <!--                            [routerLink]="['/','dashboard','fleet-management','assignments',request.id,'details']">View-->
+                    <!--                        Details-->
+                    <!--                    </button>-->
+                    <button class="button button-primary button-outline"
+                            [routerLink]="['/','dashboard','fleet-management','assignments']">View Assignments
+                    </button>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="container">
+    <app-driver-card [driverData]="driverData"></app-driver-card>
+
+    <div class="main-content-container">
+        <div class="main-content-block">
+            <div class="main-content-inner-block">
+                <div class="main-content-inner-block-left">
+                    <ul class="main-content-inner-block-nav">
+                        <li class="main-content-inner-block-nav-item">
+                            <a routerLinkActive="active" [routerLink]="['.', 'info']">General Info</a>
+                        </li>
+                        <li class="main-content-inner-block-nav-item">
+                            <a routerLinkActive="active" [routerLink]="['.', 'license']">License
+                            <i *ngIf="dueStatus !== ''" class="material-icons license-due-indicator ">brightness_1</i></a>
+                        </li>
+                        <li class="main-content-inner-block-nav-item">
+                            <a routerLinkActive="active" [routerLink]="['.', 'contact']">Contact</a>
+                        </li>
+                        <li class="main-content-inner-block-nav-item">
+                            <a routerLinkActive="active" [routerLink]="['.', 'experience']">Experience</a>
+                        </li>
+                        <li class="main-content-inner-block-nav-item">
+                            <a routerLinkActive="active" [routerLink]="['.', 'assignment']">Assignment</a>
+                        </li>
+                        <li class="main-content-inner-block-nav-item">
+                            <a routerLinkActive="active" [routerLink]="['.', 'vehicle']">Vehicle</a>
+                        </li>
+
+                        <li class="main-content-inner-block-nav-item">
+                            <a routerLinkActive="active" [routerLink]="['.', 'image-edit']">Edit Image</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="main-content-inner-block-content" style="padding: 0">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

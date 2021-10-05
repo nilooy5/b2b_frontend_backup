@@ -1,0 +1,46 @@
+<div class="testimonial feature">
+    <div class="container">
+        <ngx-slick-carousel  class="carousel feature"
+                             #slickModal="slick-carousel" [config]="slideConfig" >
+
+            <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+                <div class="row testimonial-section">
+                    <div class="col-md-6 d-flex justify-content-center d-block d-md-none">
+                        <h1>{{ slide.heading }}</h1>
+                    </div>
+                    <div class="col-md-6 testimonial-section__image p-85">
+                        <div style="position: relative;">
+                            <img src="../../../../../assets/svg/icons/digigo-landing/dots_pattern.svg" class="img-fluid comma-feature"  alt="">
+                            <img src="../../../../../assets/img/landing/miscellaneous/comma-blue.svg" class="comma-mobile"  alt="">
+                            <img [src]="slide.image" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-6 testimonial-section p-85 feature">
+                        <h1>{{ slide.heading }}</h1>
+                        <p class="user__comment"> {{ slide.comment }}</p>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="user__name">{{ slide.name }}</p>
+                                <span class="user__designation">{{ slide.designation }}</span>
+                            </div>
+                            <!--<div class="buttons">
+                                <div class="arrow-button">
+                                    <span class="material-icons">
+                                        keyboard_arrow_left
+                                    </span>
+                                </div>
+                                <div class="arrow-button">
+                                    <span class="material-icons">
+                                        keyboard_arrow_right
+                                    </span>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </ngx-slick-carousel >
+    </div>
+
+</div>

@@ -1,0 +1,12 @@
+.center-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 600px;
+  height: 100vh;
+  flex-flow: column;
+  img {
+    min-width: 300px;
+    margin-bottom: 40px;
+  }
+}

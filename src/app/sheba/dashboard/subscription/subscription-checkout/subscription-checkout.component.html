@@ -1,0 +1,109 @@
+<h1 style="font-weight: 400; font-size: 32px; margin-bottom: 36px">Checkout</h1>
+
+<div class="container service-checkout">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <!--service details-->
+                <section>
+                    <div class="service-checkout__header align-items-center d-flex justify-content-between">
+                        <span>Services</span>
+                        <a [routerLink]="['/', 'dashboard', 'order', 'subscription']" class="btn btn-link">Change</a>
+                    </div>
+
+                    <div id="accordion" class="service-list">
+                        <div class="card" *ngFor="let service of services; let i = index">
+                            <div class="card-header" [id]="'heading' + i">
+                                <button class="btn btn-block" data-toggle="collapse" [attr.data-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i" (click)="openedCollapse = i">
+                                    <i class="material-icons">{{openedCollapse === i ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</i>{{service.name}}
+                                    <span style="float: right" *ngIf="subscriptionService.Partner">
+                                        <span class="taka-sign" style="font-size: 16px">৳</span> {{subscriptionService.Partner.breakdown[i].discounted_price}}
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div [id]="'collapse'+i" class="collapse" [attr.aria-labelledby]="'heading' + i" data-parent="#accordion">
+                                <div class="card-body">
+                                    <ul>
+                                        <li>Quanitity: {{service.quantity}}</li>
+                                        <!--*ngFor="let options of service.options"-->
+                                        <div *ngIf="services[0].questions">
+                                            <li *ngFor="let question of services[0].questions; let i = index">
+                                                {{question.answers[services[0].option[i]]}}
+                                            </li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--partner details-->
+                <section *ngIf="partner">
+                    <div class="service-checkout__header align-items-center d-flex justify-content-between">
+                        <span>Partner</span>
+                        <a [routerLink]="['/', 'dashboard', 'order', 'subscription', 'partner']" class="btn btn-link">Change</a>
+                    </div>
+
+                    <div class="partner-details d-flex align-items-center">
+                        <img [src]="partner.logo"
+                             onerror="this.src='https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/sheba_xyz/png/default-service.png'">
+                        <div style="margin-left: 16px">
+                            <p class="checkout__partner-name">{{partner.name}}</p>
+                            <p class="checkout__partner-rating">{{partner.rating}} <i class="material-icons">star</i></p>
+                        </div>
+                    </div>
+                </section>
+                <!--schedule-->
+                <section>
+                    <div class="service-checkout__header align-items-center d-flex justify-content-between">
+                        <span>Schedule</span>
+                        <a [routerLink]="['/', 'dashboard', 'order', 'subscription', 'schedule']" class="btn btn-link">Change</a>
+                    </div>
+
+                    <p class="checkout__schedule" *ngFor="let date of dates">
+                        <span>{{getMonthDateWithMonth(date)}}</span>
+                        <span style="color: #cccccc">|</span>
+                        <span>{{time}}</span>
+                    </p>
+                </section>
+            </div>
+
+            <div class="col-md-5">
+                <div class="service-checkout__bill" *ngIf="partner">
+                    <div class="service-checkout__header align-items-center d-flex justify-content-between">
+                        <span>Payment Details</span>
+                    </div>
+
+                    <p class="service-checkout__bill__item">
+                        <span>Subtotal</span>
+                        <span><span class="taka-sign" style="font-size: 16px">৳</span> {{numberWithCommas(partner.discounted_price * dates.length  )}}</span>
+                    </p>
+                    <p class="service-checkout__bill__item" style="color: #00804c">
+                        <span>Discount</span>
+                        <span><span class="taka-sign" style="font-size: 16px">- ৳</span> {{numberWithCommas(calculateDiscount())}}</span>
+                    </p>
+                    <p class="service-checkout__bill__item" style="font-weight: 500 ">
+                        <span>Total</span>
+                        <span><span class="taka-sign" style="font-size: 16px">৳</span> {{numberWithCommas(getTotalPrice())}}</span>
+                    </p>
+
+
+                    <!--                    <div class="service-checkout__promo-form " *ngIf="(partner.discount == 0) && !orderService.Voucher">-->
+                    <!--                        <label for="promoInput">Promo Code</label>-->
+                    <!--                        <div class="d-flex justify-content-between">-->
+                    <!--                            <input type="text" class="form-control" id="promoInput" placeholder="Promo Code" style="text-transform: uppercase" [(ngModel)]="promoKey">-->
+                    <!--                            <button class="btn" (click)="applyPromo()">Add</button>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                </div>
+
+                <div class="service-checkout__submit-btn">
+                    <button class="btn btn-block button--primary--filled" (click)="placeOrder()">
+                        {{ placingOrder ? 'Loading..' : 'PLACE ORDER' }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

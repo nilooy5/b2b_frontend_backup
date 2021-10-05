@@ -1,0 +1,13 @@
+<div class="row" *ngFor="let item of financialInfo">
+    <div class="col-lg-4">
+        <p class="co-worker-details-info m-0">{{ item.label }}</p>
+    </div>
+    <div class="col-lg-8 d-flex justify-content-between align-items-center">
+        <p class="co-worker-details-info m-0">{{ item.info }}</p>
+        <div class="icons" *ngIf="item.downloadable">
+            <a [href]="tinCertificate" target="_blank"><i class="material-icons" >remove_red_eye</i></a>
+<!--            <a (click)="download()"> <i class="material-icons">file_download</i></a>-->
+        </div>
+    </div>
+    <hr style="width: 98%; border-color: rgba(0, 0, 0, 0.05);">
+</div>

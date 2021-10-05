@@ -1,0 +1,322 @@
+.list-card {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, .1);
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  .card-images {
+    display: flex;
+    width: 15%;
+    max-width: 80px;
+    min-width: 80px;
+    min-height: 70px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    align-self: stretch;
+    background: whitesmoke;
+    overflow: hidden;
+    position: relative;
+    justify-content: center;
+    z-index: 1;
+
+    .img-fluid {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      background: whitesmoke no-repeat center;
+      background-size: cover;
+      top: 0;
+    }
+  }
+
+  .card-block {
+    width: 70%;
+    min-width: 100px;
+    flex-grow: 100;
+    padding-left: 10px;
+
+    .card-title {
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h4 {
+        font-size: 1rem;
+        margin: 5px 0 7px;
+        font-weight: bold;
+        overflow: hidden;
+        position: relative;
+
+        &:first-letter {
+          text-transform: uppercase;
+        }
+
+        span {
+          display: block;
+          width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          -ms-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          @media (min-width: 900px) {
+            white-space: normal;
+          }
+
+          &:first-letter {
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 0;
+      flex-shrink: 100;
+      flex-wrap: wrap;
+      overflow: hidden;
+
+      span {
+        display: flex;
+        white-space: nowrap;
+        font-size: .9rem;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 5px;
+
+        > span:not(.label) {
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      &-block {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: flex-start;
+
+        .label-small {
+          border-right: .01rem solid rgba(0, 0, 0, .2);
+
+          &:last-child {
+            border-right: none;
+          }
+        }
+
+        &-center {
+          justify-content: center !important;
+        }
+
+        &-end {
+          justify-content: flex-end !important;
+        }
+
+        &-stretch {
+          justify-content: stretch !important;
+        }
+
+        &-space-around {
+          justify-content: space-around !important;
+        }
+
+        &-space-between {
+          justify-content: space-between !important;
+        }
+      }
+    }
+  }
+
+  .card-actions {
+    width: 40px;
+    min-width: 0;
+    display: flex;
+    align-self: stretch;
+    justify-self: flex-end;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-flow: column;
+    flex-shrink: 0;
+
+    .dropdown {
+      &.open {
+        .button {
+          z-index: 2;
+        }
+      }
+
+      .dropdown-menu {
+        display: block;
+        font-size: .9rem;
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transition: height .3s ease-in-out;
+        -moz-transition: height .3s ease-in-out;
+        -ms-transition: height .3s ease-in-out;
+        -o-transition: height .3s ease-in-out;
+        transition: height .3s ease-in-out;
+        //&-backdrop {
+        //  position: fixed;
+        //  width: 300vh;
+        //  height: 300vh;
+        //  left: -100vh;
+        //  top: -100vh;
+        //  z-index: -1;
+        //  display: flex;
+        //}
+        .list-group {
+          .list-group-item {
+            height: 0;
+            display: flex;
+            padding: 0 12px;
+
+            &:first-child {
+              padding-right: 36px;
+            }
+
+            justify-content: flex-start;
+
+            i {
+              padding-right: 10px;
+            }
+          }
+        }
+
+        &.open {
+          height: auto;
+          width: auto;
+          opacity: 1;
+          visibility: visible;
+          margin: 0;
+          padding: 0;
+          left: 100%;
+          transform: translateX(-100%);
+          top: 0;
+          z-index: 1;
+
+          .list-group {
+            .list-group-item {
+              height: auto;
+              padding: 12px 12px;
+
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.drop-panel {
+  .list-group {
+    .list-group-item {
+      display: flex;
+      padding: 0 12px;
+      min-height: 40px;
+      align-items: center;
+
+      &:first-child {
+        padding-right: 36px;
+      }
+
+      justify-content: flex-start;
+
+      i {
+        padding-right: 10px;
+      }
+    }
+  }
+}
+
+.list-content {
+  background-color: white;
+  padding: 20px;
+
+  &-half {
+    min-width: 300px;
+    width: 50%;
+  }
+
+  &-title {
+    padding: 40px 0 20px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+
+    &-text {
+      display: flex;
+      flex-flow: row wrap;
+
+      h3 {
+        padding: 30px 20px;
+      }
+    }
+
+    &-icon {
+      width: 120px;
+      height: 120px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        position: absolute;
+      }
+    }
+
+    &-between {
+      justify-content: space-between;
+    }
+
+    &-start {
+      justify-content: flex-start;
+    }
+
+    &-end {
+      justify-content: flex-end;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+    }
+
+    &-action {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: flex-end;
+      flex-grow: 100;
+    }
+  }
+
+  &-table {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    overflow-x: auto;
+    border: 1px solid rgba(0, 0, 0, 0.21);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+
+    table {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  &-details {
+
+  }
+}
+
+
+.no-result-text {
+
+}

@@ -1,0 +1,59 @@
+<div class="proposal-breadcrumb">
+    <div class="container">
+        <span [routerLink]="['/', 'tender', 'list']"> All RFQ Posts </span>
+        <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+        <span [routerLink]="['/', 'tender', 'list', tenderID]"> Tender Details </span>
+        <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+        <span class="proposal-breadcrumb__active"> Participate </span>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="container main-content">
+        <div class="success d-flex align-items-center flex-column">
+            <img *ngIf = "confirmationType === 'Successful'" src="../../../../../../../assets/svg/icons/rfq/publish.svg" class="success__img" alt="success image">
+            <img *ngIf = "confirmationType === 'Invited'" src="../../../../../../../assets/svg/icons/rfq/proposal_invited.svg" alt="">
+            <img *ngIf = "confirmationType === 'Verified'" src="../../../../../../../assets/svg/icons/rfq/proposal_verified_only.svg" alt="">
+            <img *ngIf = "confirmationType === 'AlreadySubmitted'" src="../../../../../../../assets/svg/icons/rfq/proposal_invited.svg" alt="">
+
+
+            <div class="success__message">
+                <span *ngIf = "confirmationType === 'Successful'">Proposal Submitted Successfully!</span>
+                <span *ngIf = "confirmationType === 'Invited'">Your Phone number is not authorized</span>
+                <span *ngIf = "confirmationType === 'Verified'">Few more steps</span>
+                <span *ngIf = "confirmationType === 'AlreadySubmitted'">Already Submitted</span>
+            </div>
+
+            <div class="success__details col-md-8 text-center">
+                <span *ngIf = "confirmationType === 'Successful'">
+                    Client will review your proposal and communicate at your given number.
+                    You will be notified immediately when the client sends you a hire request.
+                    For more details call 16516.
+                </span>
+                <span *ngIf = "confirmationType === 'Invited'">
+                    Client only accepts the proposal from the invited vendor and you probably tried with a different phone number.
+                    Submit the proposal with the phone number that has been invited. For more details call 16516
+                </span>
+                <span *ngIf = "confirmationType === 'Verified'">
+                    Client wants proposals only from sheba verified vendors.
+                    You can also verify and submit your proposal again. For more details call 16516
+                </span>
+                <span *ngIf = "confirmationType === 'AlreadySubmitted'">
+                    You already submit a proposal on this tender and those proposal on a working stage
+                </span>
+            </div>
+
+            <div class="success__button">
+                <button mat-button [routerLink]="['/', 'tender', 'list']"> View Other tenders </button>
+            </div>
+        </div>
+
+        <div class="success-footer d-flex">
+            <span class="material-icons-outlined info">info</span> &nbsp;
+            Want to see know all about Tenders? &nbsp; &nbsp;
+            <span class="link d-flex align-items-center" [routerLink]="['/', 'tender', 'list', tenderID]">
+                Go to Tender Details<span class="material-icons">arrow_right_alt</span>
+            </span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+<div (click)="selectSecondaryCategory()" class="secondary-category-card">
+    <img class="img-fluid secondary-category-card__image" [src]="secondaryCategory.thumb" alt=""
+         onerror="this.src='/assets/img/config/default.png'">
+    <p class ="secondary-category-card__title">{{ secondaryCategory.name }}</p>
+</div>

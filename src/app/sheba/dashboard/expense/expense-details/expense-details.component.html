@@ -1,0 +1,63 @@
+<div class="sorting__month">
+    <label style="position: relative">
+        <select (change)="selectMonth($event)" [(ngModel)]="currentMonthSelected">
+            <option *ngFor="let month of months"
+                    [value]="month.key">{{ month.title }}</option>
+        </select>
+        <i class="material-icons">keyboard_arrow_down</i>
+    </label>
+</div>
+
+<div class="p-30 bg-white">
+    <div class="expense-details">
+        <div class="row">
+            <div class="col-md-2">
+                <p class="expense-details__title">Employee Name</p>
+            </div>
+            <div class="col-md-10">
+                <p class="expense-details__info">{{ employeeDetails.basic_info.profile.name }}</p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-2">
+                <p class="expense-details__title">Designation</p>
+            </div>
+            <div class="col-md-10">
+                <p class="expense-details__info">{{ employeeDetails.basic_info.designation }}</p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-2">
+                <p class="expense-details__title">Department</p>
+            </div>
+            <div class="col-md-10">
+                <p class="expense-details__info">{{ employeeDetails.basic_info.department }}</p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-2">
+                <p class="expense-details__title">Amount</p>
+            </div>
+            <div class="col-md-10">
+                <p class="expense-details__info">{{ totalExpensesSum | number }}</p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-2">
+                <p class="expense-details__title">Expense</p>
+            </div>
+            <div class="col-md-10">
+                <app-expense-editable-table [expenseList]="expenseList"
+                                            [selectedMonth]="selectedMonth"></app-expense-editable-table>
+            </div>
+        </div>
+    </div>
+</div>

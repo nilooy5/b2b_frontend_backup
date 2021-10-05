@@ -1,0 +1,62 @@
+<div class="login-container">
+    <div class="container">
+        <div class="block">
+            <div class="block-login">
+                <div class="login-title">
+                    <h2>{{title}}</h2>
+                </div>
+                <div class="login-sub-title">
+                    <p>{{sub_title}}</p>
+                </div>
+                <div class="general-form-alert" #alertDiv></div>
+                <div class="login-form">
+                    <div class="general-form-content">
+                        <form [formGroup]="form" (submit)="submit()">
+                            <div class="form-item">
+                                <label for="email">Email</label>
+                                <input type="email" id="email"
+                                       placeholder="you@company.com"
+                                       class="form-control input--primary" formControlName="email">
+                                <span class="mat-error" *ngIf="formInputInvalid('email')">
+                            <span *ngIf="form.get('email').hasError('required')">Email is required</span>
+                            <span *ngIf="form.get('email').hasError('email')&&!form.get('email').hasError('required')">Invalid Email</span>
+                        </span>
+                            </div>
+                            <div class="form-item">
+                                <label for="password">Password</label>
+                                <input type="password" id="password"
+                                       placeholder="Password"
+                                       class="form-control input--primary" formControlName="password">
+                                <div class="mat-error" *ngIf="formInputInvalid('password')">
+                                    <span *ngIf="form.get('password').hasError('required')">Password is required</span>
+                                    <span *ngIf="form.get('password').hasError('minlength')&&!form.get('password').hasError('required')">Password must have minimum of 4 character</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-content-between form-item">
+                                <div class="checkbox">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="remember_me"
+                                               formControlName="remember_me">
+                                        <label class="custom-control-label" for="remember_me">Keep me logged in</label>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <a routerLink="/auth/forget-password" class="theme">Forgot your password?</a>
+                                </div>
+                            </div>
+                            <div class="flex mb-4">
+                                <button type="submit" class="button button-jumbo button-theme button-full">
+                                    <span *ngIf="!submitting;else loader">Submit</span>
+                                    <ng-template #loader><span><i class="fas fa-spinner fa-spin"></i></span></ng-template>
+                                </button>
+                            </div>
+                            <div class="flex pt-4 text-center w-100">
+                                <span>Didn't Have Account?  <a routerLink="/auth/sign-up" class="theme pl-2">SIGN UP</a></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

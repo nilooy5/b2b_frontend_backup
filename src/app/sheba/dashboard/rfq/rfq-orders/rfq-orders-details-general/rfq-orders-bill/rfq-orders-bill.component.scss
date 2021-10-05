@@ -1,0 +1,84 @@
+@import "../../../../../../../scss/variables";
+
+.main-content {
+  margin-bottom: 70px;
+}
+
+.content {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px 0 rgba(19, 34, 64, 0.1);
+
+  &-head {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    padding: 14px 30px;
+    border-bottom: solid 1px #d3d8e6;
+    color: rgba(0, 0, 0, .8);
+  }
+
+  &-body {
+    padding: 25px 30px;
+
+    .mat-button {
+      height: 40px;
+      border-radius: 8px;
+      color: white;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.25;
+      background: $primary;
+    }
+  }
+}
+
+.breakdown {
+
+  &__prices {
+    font-size: 14px;
+    line-height: 1.57;
+    color: rgba(10, 15, 20, 0.75);
+    padding-bottom: 11px;
+
+    &:last-of-type {
+      padding-bottom: 15px;
+    }
+  }
+
+  &__due {
+    font-size: 16px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, .8);
+    border-top: solid 1px #d3d8e6;
+    padding-top: 3px;
+  }
+}
+
+.pl-0 {
+  padding-left: 0;
+}
+
+.pr-0 {
+  padding-right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .tab-screen-design {
+    .col-md-5 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+
+    .col-md-7 {
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin-top: 20px;
+      margin-left: -15px;
+    }
+  }
+}

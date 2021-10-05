@@ -1,0 +1,238 @@
+hr{
+  margin: 0;
+}
+
+.rfq-quotation {
+  &-header {
+    background: #FFFFFF;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+    .vendor-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 5px;
+      border: solid 1px rgba(0, 0, 0, 0.05);
+      margin-right: 10px;
+    }
+    .vendor-name {
+      opacity: 0.8;
+      font-family: Poppins;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: #000000;
+      margin: 0;
+      word-break: break-word;
+    }
+  }
+}
+
+.vendor-rating {
+  display: flex;
+  color: #ff8219;
+  margin: 0;
+  &-icon{
+    font-size: 14px;
+    margin-top: 4px;
+    margin-right: 5px;
+  }
+  &-number{
+    font-size: 16px;
+    font-family: Poppins;
+    font-weight: 600;
+  }
+}
+
+.price {
+  &-title{
+    opacity: 0.6;
+    font-family: Poppins;
+    font-size: 14px;
+    color: #000000;
+  }
+  &-value{
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 20px;
+    color: #000000;
+    font-weight: 500;
+    word-break: break-word;
+  }
+  &-sign{
+    font-weight: 600;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.download-quote{
+  width: 200px;
+  height: 50px;
+  margin-right: 15px;
+  border: solid 1px #bbc0cc;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 600;
+  color: #437ff5 !important;
+  line-height: 1.33;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.hire{
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background-color: #4373f5;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.33;
+}
+
+.proposal-details{
+  &-container{
+    background: #FFFFFF;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+  }
+  &-header{
+    padding: 14px 30px;
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+  }
+  &-content{
+    padding: 22px 30px 34px 30px;
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 16px;
+    color: #000000;
+  }
+}
+
+.price-quotation{
+  &-container{
+    background: #FFFFFF;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+  }
+  &-header{
+    padding: 14px 30px;
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+  }
+  &-content{
+    padding: 30px;
+  }
+}
+
+.total-price {
+  opacity: 0.8;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+}
+
+:host ::ng-deep .main-table-theme {
+  border-spacing: 0 2px !important;
+}
+
+:host ::ng-deep .main-table-theme tbody tr td.mat-cell{
+  background-color: #f6f8fb;
+  color: rgba(10, 15, 20, 0.75);
+}
+
+:host ::ng-deep tr.mat-footer-row{
+  background-color: #f6f8fb;
+}
+
+.table {
+  &-sl-no {
+    width: 10%;
+    font-weight: 500 !important;
+  }
+  &-item {
+    width: 30%;
+    font-weight: 500 !important;
+  }
+  &-spec {
+    width: 30%;
+    font-weight: 500 !important;
+  }
+  &-unit {
+    width: 15%;
+    font-weight: 500 !important;
+  }
+  &-price {
+    width: 15%;
+    font-weight: 500 !important;
+  }
+}
+
+.evaluation{
+  &-container{
+    background: #FFFFFF;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+  }
+  &-header{
+    padding: 14px 30px;
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+  }
+  &-content{
+    padding: 15px 30px 15px 30px;
+  }
+  &-space{
+    padding: 15px 0;
+  }
+  &-question{
+    opacity: 0.8;
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+    line-height: 1.5;
+    margin-bottom: 15px !important;
+  }
+  &-answer{
+    font-family: Poppins;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(10, 15, 20, 0.75);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .download-quote {
+    margin-right: 0;
+    margin-left: 31px;
+    margin-bottom: 10px;
+  }
+  .hire{
+    margin-left: 31px;
+  }
+}

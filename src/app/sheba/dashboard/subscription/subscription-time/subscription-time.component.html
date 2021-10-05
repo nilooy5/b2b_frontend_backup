@@ -1,0 +1,21 @@
+<div class="journey__container container-fluid">
+    <app-journey-header title="Select Time" [showCart]="false"></app-journey-header>
+    <section class="container" style="max-width: 560px; margin: 0 auto; text-align: center">
+        <br><br>
+        <h5 style="font-size: 16px">Select your prefer time, expert will arrive by your selected time</h5>
+        <div class="row" *ngIf="times.length">
+            <ng-container *ngFor="let time of times">
+                <div class="col-md-3 col-6" *ngIf="time.valid" style="padding: 8px" >
+                    <div class="time-slot" (click)="!time.loading ? selectTime(time.time) : 1" [ngClass]="{selected: time.time === selectedTime}">
+                        <p *ngIf="!time.loading">{{getTimeString(time)[0]}} <span>{{getTimeString(time)[1]}}</span></p>
+                        <span *ngIf="time.loading"><i class="fas fa-spinner fa-spin"></i></span>
+                    </div>
+                </div>
+            </ng-container>
+
+        </div>
+        <div style="padding: 30px" *ngIf="!getValidTimes().length">
+            no valid time slots
+        </div>
+    </section>
+</div>

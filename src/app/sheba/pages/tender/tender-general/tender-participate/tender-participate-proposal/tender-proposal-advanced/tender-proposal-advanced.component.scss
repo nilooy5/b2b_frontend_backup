@@ -1,0 +1,16 @@
+.col-md-3, .col-md-9 {
+  padding: 0;
+}
+.forms-container {
+  margin-left: 30px;
+}
+
+@media screen and (max-width: 768px) {
+
+  .forms-container {
+    margin-left: 0;
+  }
+  .stepper {
+    padding: 15px;
+  }
+}

@@ -1,0 +1,32 @@
+<ng-container *ngIf="tenderDetails.code ===200">
+    <div class="proposal-breadcrumb">
+        <div class="container">
+            <span [routerLink]="['/', 'tender', 'list']">All RFQ Posts</span>
+            <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+            <span [routerLink]="['/', 'tender', 'list', tenderDetails.tender.id]">Tender Details</span>
+            <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+            <span class="proposal-breadcrumb__active">Participate</span>
+        </div>
+    </div>
+</ng-container>
+<div class="proposal bg-grey-light">
+    <div class="container">
+        <ng-container *ngIf="tenderDetails.code === 422">
+            <app-tender-proposal-access [tenderDetails]="tenderDetails"></app-tender-proposal-access>
+        </ng-container>
+        <ng-container *ngIf="tenderDetails.code === 200">
+            <app-tender-proposal-summary-expansion
+                [tenderDetails]="tenderDetails.tender"></app-tender-proposal-summary-expansion>
+
+            <ng-container *ngIf="tenderDetails.tender.type === 'basic'">
+                <app-tender-proposal-basic [tender]="tenderDetails.tender"></app-tender-proposal-basic>
+            </ng-container>
+
+            <ng-container *ngIf="tenderDetails.tender.type === 'advanced'">
+                <app-tender-proposal-advanced [tender]="tenderDetails.tender"></app-tender-proposal-advanced>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>
+
+

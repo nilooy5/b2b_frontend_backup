@@ -1,0 +1,71 @@
+<div *ngIf="show_phone_input_modal" mat-dialog-content>
+    <div class="dialog-content-inner">
+        <div style="text-align: right">
+            <button class="close-button" [mat-dialog-close]="true"><span class="material-icons close-icon">close</span>
+            </button>
+        </div>
+        <div class="verify-modal">
+            <img src="../../../../assets/svg/otp_number_verify.svg" alt="Verification">
+
+            <h4> {{ data.title }} </h4>
+
+            <p> {{ data.text }} </p>
+
+            <div class="input-group phone-input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">
+                        <span class="bd-green">
+                            <span class="bd-red"> </span>
+                        </span>  &nbsp; +88
+                    </span>
+                </div>
+                <input type="text" [(ngModel)]="phone_number" (input)="verify_phone($event)"
+                       class="form-control phone-input" placeholder="Ex. 01678242900" aria-label="Username"
+                       aria-describedby="basic-addon1">
+            </div>
+
+            <button class="btn btn-primary action-btn" (click)="continue()"
+                    [disabled]="!is_continue"> {{ data.actionText }} </button>
+        </div>
+        <div *ngIf="show_error" class="response-error">
+            <p class="m-0 response-error-text"> Request Failed With Status 500 </p>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="show_otp_pin_modal" mat-dialog-content>
+    <div class="dialog-content-inner">
+        <div style="text-align: right">
+            <button class="close-button" [mat-dialog-close]="true"><span class="material-icons close-icon">close</span>
+            </button>
+        </div>
+<!--        <div *ngIf="!timer_show" style="text-align: left">-->
+<!--            <span class="material-icons custom-backspace" (click)="backToPhoneInput()">keyboard_backspace</span>-->
+<!--        </div>-->
+        <div class="verify-modal">
+            <img style="margin-left: 20px;" src="../../../../assets/svg/otp_pin.svg" alt="Success">
+
+            <h4> Verify phone number </h4>
+
+            <p> Type the 4 digit OTP sent to “ {{ this.phone_number }} ” </p>
+
+            <button *ngIf="!timer_show" class="resend-otp-btn" (click)="resendOtp()"> Resend OTP </button>
+            <p *ngIf="timer_show && time_format" style="margin-top: -10px; margin-bottom: 0; font-size: 16px"> Resend code in <span style="color: #437ff5" > {{ time_format }} </span> </p>
+            <div class="pin-input-group">
+                <input (keypress)="numberOnly($event)" class="pin-input" id="pin_first" type="number" (input)="getPin($event, 1)"  maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}"/>
+                <input (keypress)="numberOnly($event)" class="pin-input" id="pin_second" type="number" (input)="getPin($event, 2)" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}"/>
+                <input (keypress)="numberOnly($event)" class="pin-input" id="pin_third" type="number" (input)="getPin($event, 3)" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}"/>
+                <input (keypress)="numberOnly($event)" class="pin-input" id="pin_fourth" type="number" (input)="getPin($event, 4)" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}"/>
+            </div>
+
+            <button class="btn btn-primary action-btn" style="margin-right: 13px;" (click)="submit()" [disabled]="!can_submit"> SUBMIT</button>
+        </div>
+        <div *ngIf="show_error && timer_show" class="response-error mt-2" >
+            <p class="m-0 response-error-text"> Something Went Wrong ! Please Try Again . </p>
+        </div>
+        <div *ngIf="show_error && !timer_show" class="response-error mt-2" >
+            <p class="m-0 response-error-text"> Invalid OTP! Please Try Again. </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+.cross {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.confirm {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.wait {
+  height: 28px;
+  opacity: 0.8;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--black);
+}
+
+.Are-you-sure-you-wan {
+  padding: 15px 100px 21px 100px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: rgba(10, 15, 20, 0.75);
+}
+
+.BG-no {
+  width: 150px;
+  height: 48px;
+  border-radius: 10px;
+  background-color: var(--success);
+}
+
+.BG-yes {
+  width: 150px;
+  height: 48px;
+  border-radius: 10px;
+  background-color: #e75050;
+}
+
+button {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 600;
+  border-color: white !important;
+  border-width: 0px !important;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--white);
+}

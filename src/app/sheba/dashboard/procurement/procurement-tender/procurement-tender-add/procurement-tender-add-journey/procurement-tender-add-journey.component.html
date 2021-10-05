@@ -1,0 +1,53 @@
+<div class="journey__container journey__container--no-padding">
+    <div class="journey__header--basic d-flex justify-content-center">
+        <div>
+            Add {{formTitle}}
+            <ng-template #popContent class="d-flex flex-column">
+                <div>Learn how to create a proper Request for Quotation</div>
+                <div class="playVideo d-flex align-items-center">
+                    <div class="d-flex"  data-toggle="modal" data-target="#myModal" style="cursor: pointer">
+                        <div class="material-icons">play_circle_filled</div>
+                        <div style="padding-top: 2px">Play Video</div>
+                    </div>
+                    <!-- The Modal -->
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <iframe src="https://www.youtube.com/embed/Oos4ojutOMM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <button type="button" class="btn" placement="right" [ngbPopover]="popContent" popoverClass="my-custom-class">
+                <i class="material-icons-outlined">info</i>
+            </button>
+        </div>
+    </div>
+    <hr>
+
+    <section style="padding: 10px 50px">
+        <router-outlet></router-outlet>
+
+        <!-- next button -->
+        <div style="padding-top: 3em">
+            <button class="btn button--primary--filled procurement-add__next-btn" (click)="next()">
+                NEXT
+                <i class="fas fa-chevron-right procurement-add__next-btn-icon"></i>
+            </button>
+        </div>
+
+    </section>
+</div>
+
+

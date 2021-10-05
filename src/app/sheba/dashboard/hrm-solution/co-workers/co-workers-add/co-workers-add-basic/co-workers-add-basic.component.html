@@ -1,0 +1,134 @@
+<div class="co-workers-add__header">
+    <h5>Basic Information of a Co-Worker</h5>
+</div>
+
+<hr class="co-workers-add__divider">
+
+<div class="co-workers-add__controls" [formGroup]="basicInfoForm">
+    <!-- Employee Photo -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="employee-photo" class="form-container__label"> Employee Photo </label>
+        </div>
+        <div class="col-lg-9">
+            <div class="d-flex align-items-center">
+                <div class="image-container">
+                    <img *ngIf="!imgURL" class="default-image" src="../../../../../../../assets/svg/upload_icon.svg" alt="Default Image">
+                    <img *ngIf="imgURL" class="user-image" [src]="imgURL"  alt="Employee Photo">
+                </div>
+                <div class="button-container">
+                    <input id="employee-photo" type="file" (change)="selectEmployeePhoto($event)">
+                    <button class="button button--outline browse-button"> Upload </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Name -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="name" class="form-container__label"> Name <span class="required-input">*</span> </label>
+        </div>
+        <div class="col-lg-9">
+
+            <input type="text" name="name" id="name" class="form-container__control"
+                   [ngClass]="{ 'error': showError && basicInfoFormControls.first_name.errors && basicInfoFormControls.first_name.errors.required
+                   || !basicInfoFormControls.first_name.valid && basicInfoFormControls.first_name.touched }"
+                   placeholder="Ex : Nujhat Tabassum" formControlName="first_name">
+
+            <div class="error-container" *ngIf="showError && basicInfoFormControls.first_name.errors && basicInfoFormControls.first_name.errors.required
+                        || !basicInfoFormControls.first_name.valid && basicInfoFormControls.first_name.touched">
+                <span class="error-container__text" style="">Name is required</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Email -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="email" class="form-container__label"> Email <span class="required-input">*</span> </label>
+        </div>
+        <div class="col-lg-9">
+            <input type="email" name="email" id="email" class="form-container__control"
+                   [ngClass]="{ 'error': showError && basicInfoFormControls.email.errors || !basicInfoFormControls.email.valid && basicInfoFormControls.email.touched }"
+                   placeholder="Ex : sheba@mail.com" formControlName="email">
+
+            <div class="error-container" *ngIf="showError && basicInfoFormControls.email.errors || !basicInfoFormControls.email.valid && basicInfoFormControls.email.touched">
+                <span class="error-container__text" *ngIf="basicInfoFormControls.email.errors.required">Email is required</span>
+                <span class="error-container__text" *ngIf="basicInfoFormControls.email.errors.email">Must be a valid email address</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Department -->
+    <div class="row form-container align-items-center mb-0">
+        <div class="col-lg-3">
+            <label for="department" class="form-container__label"> Department <span class="required-input">*</span> </label>
+        </div>
+        <div class="col-lg-9">
+            <ng-select id="department" class="form-container__dropdown" placeholder="Select Department"
+                       [class.ng-touched]="showError && basicInfoFormControls.department.errors"
+                       [searchable]="false" [clearable]="false" formControlName="department">
+                <ng-option *ngFor="let department of departments" [value]="department.id"> {{ department.name }} </ng-option>
+            </ng-select>
+            <div class="error-container" *ngIf="showError && basicInfoFormControls.department.errors
+            || !basicInfoFormControls.department.valid && basicInfoFormControls.department.touched">
+                <span class="error-container__text" *ngIf="basicInfoFormControls.department.errors.required">Department is required</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Small Info -->
+    <div class="row" style="margin-bottom: 24px">
+        <div class="offset-lg-3 col-lg-9">
+            <div class="small-info">
+                <img class="img-fluid" src="../../../../../../../assets/svg/info_blue.svg" alt="Info">
+                <span>Add departments to tag with co-worker. Add new department.
+                    <a [routerLink]="['/', 'dashboard', 'departments']">Add new department</a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Designation -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="designation" class="form-container__label"> Designation <span class="required-input">*</span> </label>
+        </div>
+        <div class="col-lg-9">
+            <input type="text" name="designation" id="designation" class="form-container__control"
+                   [ngClass]="{ 'error': showError && basicInfoFormControls.role.errors || !basicInfoFormControls.role.valid && basicInfoFormControls.role.touched }"
+                   placeholder="Ex: Product manager" formControlName="role">
+
+            <div class="error-container" *ngIf="showError && basicInfoFormControls.role.errors
+            || !basicInfoFormControls.role.valid && basicInfoFormControls.role.touched">
+                <span class="error-container__text" *ngIf="basicInfoFormControls.role.errors.required">Designation is required</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Manager -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="manager" class="form-container__label"> Manager </label>
+        </div>
+        <div class="col-lg-9">
+            <ng-select id="manager" class="form-container__dropdown" placeholder="Select Manager"
+                       [searchable]="false" [clearable]="false" formControlName="manager_employee">
+                <ng-option *ngFor="let manager of managers" [value]="manager.business_member_id"> {{ manager.profile.name }} </ng-option>
+            </ng-select>
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="row">
+        <div class="offset-lg-3 col-lg-9">
+            <button class="button button--filled submit-info" (click)="submitBasicInfo()" [disabled]="isSaving" style="width: 190px">
+                <span  *ngIf="!isSaving;else loader"> Save Co-Worker </span>
+                <ng-template #loader><span><i class="fas fa-spinner fa-spin" style="font-size: 20px"></i></span></ng-template>
+            </button>
+        </div>
+    </div>
+</div>

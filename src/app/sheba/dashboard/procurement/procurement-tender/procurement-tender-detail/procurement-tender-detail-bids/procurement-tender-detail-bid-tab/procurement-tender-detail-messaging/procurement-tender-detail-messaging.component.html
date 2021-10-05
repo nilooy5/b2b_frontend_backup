@@ -1,0 +1,62 @@
+<div class="layout__card">
+    <div class="row vendor-information">
+
+        <div class="col-md-6 vendor-information__info">
+            <div class="d-flex">
+                <section class="pt-1">
+                    <img alt="Vendor Logo" [src]="bidInfo.vendor.logo" onerror="this.src='https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/sheba_xyz/png/default-service.png'">
+                </section>
+                <section class="pt-2">
+                    <h6 class="vendor-information__info__vendor-name">
+                        {{ bidInfo.vendor.name }}
+                    </h6>
+                    <a (click)="onClickViewQuotation()"
+                       class="btn btn-link vendor-information__info__quotation-link" style="color: #2f38f1">
+                        <span>View Quotation</span>
+                        <i class="material-icons">
+                            keyboard_arrow_right
+                        </i>
+                    </a>
+                </section>
+            </div>
+        </div>
+
+        <div class="col-md-3 vendor-information__info">
+            <div class="vendor-information__info__title">
+                <h5>Quotation</h5>
+                <div class="d-flex">
+                    <section>
+                        <h6 class="vendor-information__info__quotation">
+                            ৳{{ bidInfo.price }}
+                        </h6>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 vendor-information__info" *ngIf="!bidInfo.is_awarded">
+            <div class="vendor-information__btn">
+                <button class="btn button--primary--filled w-100" (click)="onClickHire()">
+                    Hire
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="main-content-container">
+
+    <div class="main-content-block">
+
+        <div class="main-title">
+            <h3>Messaging</h3>
+        </div>
+
+        <app-messaging (OnMessageUpdate)="handleMessage($event)" [messages]="messages"
+                       [postUrl]="'bids/'+ bidId +'/comments'" [postAttachmentUrl]="'bids/'+ bidId +'/attachments'"></app-messaging>
+
+    </div>
+
+</div>

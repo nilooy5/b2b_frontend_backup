@@ -1,0 +1,161 @@
+<h1 style="font-weight: 400; font-size: 32px; margin-bottom: 36px">Checkout</h1>
+
+<div class="container service-checkout">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <!--Delivery Info details-->
+                <section [formGroup]="contactInfoForm">
+                    <div class="service-checkout__header align-items-center d-flex justify-content-between">
+                        <span>Contact Info</span>
+                    </div>
+
+                    <div style="padding: 0 16px">
+                        <div class="row form-container align-items-center mb-10">
+                            <div class="col-md-4">
+                                <label class="form-container__label m-0" for="name">Name</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input class="form-container__control" type="text" id="name"
+                                       [ngClass]="{ 'error': showValidationError && ContactInfoFormControls.delivery_name.errors
+                                       || !ContactInfoFormControls.delivery_name.valid && ContactInfoFormControls.delivery_name.touched }"
+                                       formControlName="delivery_name">
+
+                                <div class="error-container" *ngIf="showValidationError && ContactInfoFormControls.delivery_name.errors
+                                || !ContactInfoFormControls.delivery_name.valid && ContactInfoFormControls.delivery_name.touched">
+                                    <span class="error-container__text" *ngIf="ContactInfoFormControls.delivery_name.errors.required">Name is required</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row form-container align-items-center">
+                            <div class="col-md-4">
+                                <label class="form-container__label m-0" for="mobile">Phone Number</label>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="input-group d-flex flex-nowrap" style="max-width: 300px">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text phone-group" id="basic-addon1">
+                                            <div class="flag__square">
+                                                <span class="flag__circle"></span>
+                                            </div>
+                                            <span class="phone-group__title"> +88 </span>
+                                        </div>
+                                    </div>
+                                    <input type="tel" name="mobile" id="mobile" class="form-container__control phone-control"
+                                           [ngClass]="{ 'error': showValidationError && ContactInfoFormControls.mobile.errors || !ContactInfoFormControls.mobile.valid && ContactInfoFormControls.mobile.touched }"
+                                           placeholder="Ex. 01678242900" formControlName="mobile">
+                                </div>
+                                <div class="error-container" *ngIf="showValidationError && ContactInfoFormControls.mobile.errors
+                                || !ContactInfoFormControls.mobile.valid && ContactInfoFormControls.mobile.touched"
+                                     style="margin-top: 10px;">
+                                    <span class="error-container__text" style="">Please enter a valid Bangladeshi phone number</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--service details-->
+                <section *ngIf="orderService.Services">
+                    <div class="service-checkout__header align-items-center d-flex justify-content-between">
+                        <span>Services</span>
+                        <a [routerLink]="['/', 'dashboard', 'quick-purchase', 'select-service']" class="btn btn-link">Change</a>
+                    </div>
+
+                    <div id="accordion" class="service-list">
+                        <div class="card" *ngFor="let service of orderService.Services; let i = index">
+                            <div class="card-header" [id]="'heading' + i">
+                                <button class="btn btn-block" data-toggle="collapse" [attr.data-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i">
+                                    <i class="material-icons">keyboard_arrow_down</i>{{service.name}} <span style="float: right" *ngIf="orderService.Partner.breakdown[i]"> <span class="taka-sign" style="font-size: 16px">৳</span>{{orderService.Partner.breakdown[i].discounted_price}}</span>
+                                </button>
+                            </div>
+
+                            <div [id]="'collapse'+i" class="collapse" [attr.aria-labelledby]="'heading' + i" data-parent="#accordion">
+                                <div class="card-body">
+                                    <ul>
+                                        <li>Quanitity: {{service.quantity}}</li>
+                                        <!--*ngFor="let options of service.options"-->
+                                        <div *ngIf="service.questions">
+                                            <li *ngIf="service.questions.length === 1 && service.questions[0].input_type === 'selectbox'; else other_content">
+                                                {{service.questions[0].answers[service.options[0]]}}
+                                            </li>
+                                            <ng-template #other_content>
+                                                <li *ngFor="let question of service.questions; let i = index">
+                                                    {{question.answers[service.options[i]]}}
+                                                </li>
+                                            </ng-template>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--partner details-->
+                <section *ngIf="orderService.Partner">
+                    <div class="service-checkout__header align-items-center d-flex justify-content-between">
+                        <span>Partner</span>
+                        <a [routerLink]="['/', 'dashboard', 'quick-purchase', 'select-partner']" class="btn btn-link">Change</a>
+                    </div>
+
+                    <div class="partner-details d-flex align-items-center">
+                        <img [src]="orderService.Partner.logo"
+                             onerror="this.src='https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/sheba_xyz/png/default-service.png'">
+                        <div style="margin-left: 16px">
+                            <p class="checkout__partner-name">{{orderService.Partner.name}}</p>
+                            <p class="checkout__partner-rating">{{orderService.Partner.rating}} <i class="material-icons">star</i></p>
+                        </div>
+                    </div>
+                </section>
+                <!--schedule-->
+                <section>
+                    <div class="service-checkout__header align-items-center d-flex justify-content-between">
+                        <span>Schedule</span>
+                        <a [routerLink]="['/', 'dashboard', 'quick-purchase', 'schedule']" class="btn btn-link">Change</a>
+                    </div>
+
+                    <p class="checkout__schedule">
+                        <span>{{getMonthDateWithMonth(orderService.Date)}}</span> <span style="color: #cccccc">|</span> <span>{{orderService.Time.start + ' - ' + orderService.Time.end}}</span>
+                    </p>
+                </section>
+            </div>
+
+            <div class="col-md-5">
+                <div class="service-checkout__bill" *ngIf="orderService.Partner">
+                    <div class="service-checkout__header align-items-center d-flex justify-content-between">
+                        <span>Payment Details</span>
+                    </div>
+
+                    <p class="service-checkout__bill__item">
+                        <span>Subtotal</span>
+                        <span><span class="taka-sign" style="font-size: 16px">৳</span> {{numberWithCommas(orderService.Partner.discounted_price)}}</span>
+                    </p>
+                    <p class="service-checkout__bill__item" style="color: #00804c">
+                        <span>Discount</span>
+                        <span><span class="taka-sign" style="font-size: 16px">- ৳</span> {{numberWithCommas(calculateDiscount())}}</span>
+                    </p>
+                    <p class="service-checkout__bill__item" style="font-weight: 500 ">
+                        <span>Total</span>
+                        <span><span class="taka-sign" style="font-size: 16px">৳</span> {{numberWithCommas(getTotalPrice())}}</span>
+                    </p>
+
+
+                    <div class="service-checkout__promo-form " *ngIf="(orderService.Partner.discount == 0) && !orderService.Voucher">
+                        <label for="promoInput">Promo Code</label>
+                        <div class="d-flex justify-content-between">
+                            <input type="text" class="form-control" id="promoInput" placeholder="Promo Code" style="text-transform: uppercase" [(ngModel)]="promoKey">
+                            <button class="btn" (click)="applyPromo()">Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-checkout__submit-btn">
+                    <button class="btn btn-block button--primary--filled" (click)="placeOrder()">
+                        {{ placingOrder ? 'Loading..' : 'PLACE ORDER' }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

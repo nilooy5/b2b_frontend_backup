@@ -1,0 +1,73 @@
+@import "../../../../../../../scss/form_components";
+
+.search-input {
+  input {
+    padding: 16px 24px 16px 56px !important;
+    height: 60px !important;
+
+  }
+
+  .input-group-prepend {
+    top: 9px !important;
+  }
+}
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.create-rfq {
+  width: 200px;
+  height: 40px;
+}
+
+.select--primary-sort {
+  position: relative;
+
+  select {
+    padding: 16px 24px;
+    font-size: 18px;
+    margin: 0;
+    border: solid 1px #d3d8e6;
+    border-radius: 4px;
+    width: 100%;
+    min-height: 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+  }
+
+  i {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 24px;
+    pointer-events: none;
+  }
+}
+
+.select--primary{
+  position: relative;
+
+  select {
+    padding: 16px 24px;
+    font-size: 18px;
+    margin: 0;
+    border: solid 1px #d3d8e6;
+    border-radius: 4px;
+    width: 100%;
+    min-height: 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+  }
+
+  i {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    font-size: 24px;
+    pointer-events: none;
+  }
+}

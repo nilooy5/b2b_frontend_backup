@@ -1,0 +1,217 @@
+@import "../../../../../src/scss/variables";
+
+.sidebar {
+  display: flex;
+  flex-flow: column;
+  width: 230px;
+
+  &.open {
+    width: 60px;
+  }
+
+  &-header {
+    height: 120px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    padding: 30px 20px 0;
+
+    &.hidden {
+      opacity: 0;
+    }
+
+    img {
+      width: 100% !important;
+    }
+
+    h4 {
+      line-height: 80px;
+      text-align: center;
+    }
+  }
+
+  &-content {
+    display: block;
+    max-height: calc(100vh - 120px);
+    overflow: hidden;
+    overflow-y: auto;
+
+    &.hidden {
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      margin: 4px;
+      padding: 4px;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      width: 6px;
+      height: 6px;
+      background-color: #aaa;
+      outline: 1px solid slategrey
+    }
+
+    &::-webkit-scrollbar-button {
+      background-color: #ddd;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-corner {
+      width: 5px;
+      height: 5px;
+    }
+  }
+
+  &-nav {
+    &-items {
+      &-inner {
+        max-height: 0;
+        overflow: hidden;
+        -webkit-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        -ms-transition: all .3s ease-in-out;
+        -o-transition: all .3s ease-in-out;
+        transition: all .3s ease-in-out;
+        display: none;
+
+        &.open {
+          display: block;
+        }
+
+        .sidebar-nav-item {
+          a {
+            padding-left: 60px;
+
+            &.active {
+              color: $theme-color;
+            }
+
+            &.hidden {
+              display: none;
+            }
+          }
+        }
+
+      }
+    }
+
+    &-item {
+      width: 60px;
+      -webkit-transition: all .3s ease-in-out;
+      -moz-transition: all .3s ease-in-out;
+      -ms-transition: all .3s ease-in-out;
+      -o-transition: all .3s ease-in-out;
+      transition: all .3s ease-in-out;
+
+      &.open {
+        width: 100%;
+      }
+
+      a {
+        width: calc(100% - 2px);
+        height: 60px;
+        display: flex;
+        flex-flow: row nowrap;
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        font-weight: 400;
+
+        & .sidebar-nav-icon {
+          svg path {
+            fill: #0b0b0b;
+          }
+        }
+
+        &:hover {
+          background-color: darken(white, 2%);
+        }
+      }
+
+      &.hidden {
+        display: none;
+      }
+
+      &.active {
+        > a {
+          color: $theme-color;
+
+          //&:after {
+          //  content: '';
+          //  width: 6px;
+          //  height: 100%;
+          //  position: absolute;
+          //  left: 0;
+          //  top: 0;
+          //  z-index: 2;
+          //  background-color: $theme-color;
+          //  border-radius: 0 10px 10px 0;
+          //}
+
+          & .sidebar-nav-icon {
+            svg path {
+              fill: $theme-color !important;
+            }
+          }
+        }
+
+        & .sidebar-nav-items-inner {
+          max-height: 100vh;
+        }
+      }
+    }
+
+    &-icon {
+      font-size: 1rem;
+      display: flex;
+      width: 60px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-text {
+      flex-grow: 100;
+      overflow: hidden;
+      -ms-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 3.21;
+      padding-right: 5px;
+      display: none;
+
+      &.open {
+        display: block;
+      }
+
+      &--badge {
+        font-weight: bold;
+        background: #ff8f5e;
+        color: white;
+        font-size: 8px;
+        width: 40px !important;
+        height: 16px !important;
+        padding: 3px 10px;
+        border-radius: 8px;
+        margin-left: 6px;
+        vertical-align: middle;
+      }
+    }
+  }
+}

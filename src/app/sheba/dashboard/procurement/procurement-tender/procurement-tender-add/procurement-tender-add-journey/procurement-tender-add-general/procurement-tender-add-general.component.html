@@ -1,0 +1,195 @@
+<form [formGroup]="form" class="procurement-rfq-general-form">
+    <div class="form-group">
+        <label class="form-title" for="title">RFQ Title</label>
+        <input placeholder="RFQ Title" class="form-control col-6" id="title" type="text" formControlName="title">
+        <p class="__error-message" *ngIf="showError && fc.title.errors && fc.title.errors.required"> RFQ Title is required </p>
+    </div>
+
+    <div class="form-group">
+        <label class="form-title">Labels</label>
+        <mat-form-field class="col-6 example-chip-list" [floatLabel]="'never'">
+            <mat-chip-list #chipList aria-label="Fruit selection">
+                <mat-chip *ngFor="let label of labels" [selectable]="selectable"
+                          [removable]="removable" (removed)="removeLabel(label)">
+                    {{ label.name }}
+                    <i id="close-material-chips-icon" matChipRemove *ngIf="removable" class="material-icons">close</i>
+                    </mat-chip>
+                <input matInput placeholder="Ex: Laptop, Driver (Labels will help you and organize your RFQ)"
+                       [matChipInputFor]="chipList"
+                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                       [matChipInputAddOnBlur]="addOnBlur"
+                       (matChipInputTokenEnd)="addLabel($event)">
+            </mat-chip-list>
+        </mat-form-field>
+
+        <p class="__error-message" *ngIf="showError && !labels.length"> Labels is required </p>
+    </div>
+
+    <div class="form-group">
+        <label class="form-title" for="noOfVendors">Maximum number of vendors you want to participate</label>
+        <input class="form-control col-2" id="noOfVendors" type="number"
+               formControlName="no_of_vendors" min="0">
+        <p class="__error-message" *ngIf="showError && fc.no_of_vendors.errors && fc.no_of_vendors.errors.required"> Number of Vendors is required </p>
+    </div>
+
+    <div class="form-group">
+        <label class="form-title" for="lastDateOfSubmission">Last Date of Submission</label>
+        <small id="lastDateOfSubmissionHelp" class="form-text text-muted">Vendors can participate by this date</small>
+        <div class="date-picker col-4 p-0">
+            <mat-datepicker #lastDateOfSubmission></mat-datepicker>
+            <input class="form-control" formControlName="last_date_of_submission" placeholder="Select date" id="lastDateOfSubmission"
+                   matInput [matDatepicker]="lastDateOfSubmission" [min]="getMinimumDateForSubmission()"
+                   (focus)="lastDateOfSubmission.open()">
+            <span class="vehicle-add__date-picker__toggle">
+            <mat-datepicker-toggle matSuffix [for]="lastDateOfSubmission"></mat-datepicker-toggle>
+          </span>
+        </div>
+        <p class="__error-message" *ngIf="showError && fc.last_date_of_submission.errors && fc.last_date_of_submission.errors.required"> Last Date of Submission is required </p>
+    </div>
+
+    <div class="form-group">
+        <label class="form-title" for="deliveryDate">Delivery Date</label>
+        <small id="deliveryDateHelp" class="form-text text-muted">Vendor will deliver the requirements within this dates </small>
+        <div class="date-picker col-4 p-0">
+            <app-date-range-picker theme="outline" id="deliveryDate" themeColor="gray" [minimal]="true" [allowSameDate]="true"
+                                   (dateRangeChange)="updateDeliveryDate($event)" [dateRange]="deliveryDateRange"
+                                   [minDate]="getMinimumDateForDelivery()"></app-date-range-picker>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-title">Payment Options</label>
+        <mat-radio-group aria-labelledby="tender-general-radio-group-label" class="tender-general-radio-group" formControlName="payment_option">
+            <mat-radio-button [ngClass]="{selected: selectedPaymentOption === payment_option}" color="primary"
+                              class="tender-general-radio-button col-6" [checked]="selectedPaymentOption === payment_option"
+                              *ngFor="let payment_option of paymentOptions; let i = index" [value]="payment_option" (change)="checkChange($event)">
+                {{ payment_option }}
+            </mat-radio-button>
+        </mat-radio-group>
+
+        <div class="col-6 tender-general-add-btn" [ngClass]="{'has-error': hasErrorOnNewPaymentMethod}">
+            <div class="d-flex bd-highlight">
+                <div class="align-self-center">
+                    <button class="btn" (click)="addPaymentMethod()">
+                        <span class="tender-general-add-btn-icon"><i class="fa fa-plus"></i></span>
+                    </button>
+                </div>
+                <div class="flex-shrink-1 w-100 bd-highlight">
+                    <input id="preferredOption" placeholder="Add Your Preferred Option" type="text" formControlName="new_payment_option"
+                         (keyup)="checkNewPaymentMethod($event)">
+                </div>
+            </div>
+<!--            <button class="btn" (click)="addPaymentMethod()">-->
+<!--                <span class="tender-general-add-btn-icon"><i class="fa fa-plus"></i></span>-->
+<!--            </button>-->
+
+<!--            <input id="preferredOption" placeholder="Add Your Preferred Option" type="text" formControlName="new_payment_option"-->
+<!--                   (keyup)="checkNewPaymentMethod($event)">-->
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-title">
+            Attachments
+<!--            <input type="file" (change)="onChange($event)" multiple><br/>-->
+        </label>
+        <div class="file-upload-drag">
+            <div class="drop-zone" (drop)="onFileDrop($event)">
+                <div  class="d-flex file-upload-drag__placeholder justify-content-center">
+                    <img src="../../../../../../../../assets/img/general-root/upload_icon.png" alt="">
+                    <div>
+                        <p>Drop files here to upload</p>
+                        <p class="sub">or <span>Browse</span> your files</p>
+                    </div>
+                </div>
+                <input type="file" multiple="multiple" (change)="onFileSelect($event)"/>
+            </div>
+
+
+            <div *ngFor="let item of encodedFiles">
+                <p class="file-upload-drag__file-item d-flex align-items-center">
+                    <span>{{ limitString(item.name) }}</span>
+                    <button type="button" class="btn remove-btn" (click)="removeSelectedFile(item)">
+                        <i class="material-icons">close</i>
+                    </button>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <div class="form-group">
+                <label class="form-title">Type of Your RFQ</label>
+                <mat-radio-group aria-labelledby="tender-general-radio-group-label" class="tender-general-radio-group" formControlName="rfq_type">
+                    <mat-radio-button color="primary" class="tender-general-radio-button" [value]="rfqTypes.Basic">
+                        Basic
+                    </mat-radio-button>
+                    <mat-radio-button color="primary" class="tender-general-radio-button" [value]="rfqTypes.Advanced">
+                        Advance
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <div class="form-group" *ngIf="isAdvancedTypeRFQ()">
+                <label class="form-title">I want to have</label>
+                <mat-checkbox color="primary" class="tender-general-checkbox" [formControl]="getRFQFormsFormControl(advancedRFQForms.PriceQuotation)">
+                    Price Quotation
+                </mat-checkbox>
+                <mat-checkbox color="primary" class="tender-general-checkbox" [formControl]="getRFQFormsFormControl(advancedRFQForms.TechnicalEvaluation)">
+                    Technical Evaluation
+                </mat-checkbox>
+                <mat-checkbox color="primary" class="tender-general-checkbox" [formControl]="getRFQFormsFormControl(advancedRFQForms.CompanyEvaluation)">
+                    Company Evaluation
+                </mat-checkbox>
+            </div>
+        </div>
+
+        <div class="col-8" *ngIf="isBasicTypeRFQ()">
+            <div class="d-flex justify-content-start rfq-form-basic-helper-section">
+                <div class="rfq-form-helper-img">
+                    <img [src]="'/assets/icons/info.png'" alt="">
+                </div>
+                <div>
+                    <p style="font-size: 14px; margin-bottom: 0rem;">
+                        Just type your requirements and get it done quickly
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8" *ngIf="isAdvancedTypeRFQ()">
+            <div class="d-flex justify-content-start rfq-form-helper-section">
+                <div class="rfq-form-helper-img">
+                    <img [src]="'/assets/icons/info.png'" alt="">
+                </div>
+                <div>
+                    <p>
+                        Type your specific requirements and get precise information from vendors for your proper valuation.
+                    </p>
+
+                    <div class="d-flex justify-content-start">
+
+                        <div class="rfq-form-helper-title">
+                            <p>Price Quotation</p>
+                            <p>Technical Evaluation</p>
+                            <p>Company Evaluation</p>
+                        </div>
+
+                        <div>
+                            <p>: Get specific price as per as your requirements</p>
+                            <p>: Create questions set as you want for your vendors for technical evaluation</p>
+                            <p>: Create questions set as you want for your vendors for company evaluation</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--  <button (click)="saveForm()">Save</button>-->
+</form>

@@ -1,0 +1,124 @@
+@import "../../../../../scss/variables";
+
+:host ::ng-deep {
+  .mat-button-wrapper {
+    //font-family: $font-opensans !important;
+    font-weight: 600;
+  }
+}
+
+.carousel-indicators > li {
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+.overlayText{
+  font-size: 56px;
+  font-weight: bold;
+  line-height: 1.36;
+  color: white;
+}
+.trialButton{
+  width: 300px;
+  height: 70px;
+  border-radius: 3px;
+  background-color: #437ff5;
+  z-index: 3;
+  color: white;
+  font-size: 18px;
+}
+
+.backdrop{
+  background-image: linear-gradient(114deg, #78b6fb 0%, #437ff5);
+  height: 300px;
+  width: 100%;
+}
+.texts{
+  color: white;
+}
+.title{
+  font-size: 40px;
+  //font-family: OpenSans, sans-serif;
+  line-height: 1.4px;
+}
+.description{
+  font-size: 24px;
+  line-height: 1.5px;
+}
+.name{
+   font-size: 20px;
+   font-weight: bold;
+ }
+.designation{
+  font-size: 18px;
+}
+
+.clearfix {
+  clear: both;
+}
+.tile1{
+  top: -12px;
+  right: 450px;
+  position: absolute;
+}
+.tile2{
+  left: 0;
+  bottom: 0;
+  position: absolute;
+}
+.titleBottom{
+  //font-family: $font-opensans;
+  font-size: 40px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+}
+.subtitle{
+  opacity: 0.8;
+  //font-family: Lato;
+  font-size: 24px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+.buttonRow{
+  display: flex;
+  align-items: flex-start;
+}
+.outerDiv{
+  position: relative;
+  height: 250px;
+  background-color: #f5f6fa;
+}
+@media screen and (max-width: 768px) {
+  :host ::ng-deep {
+    .mat-button-wrapper {
+      //font-family: $font-poppins !important;
+      font-weight: 500 !important;
+    }
+  }
+  .tile1, .tile2 {
+    display: none;
+  }
+  .titleBottom{
+    font-size: 20px;
+    //font-family: $font-poppins;
+    font-weight: 500;
+  }
+  .trialButton{
+    width: 200px;
+    height: 40px;
+    font-size: 14px;
+    //font-family: $font-poppins;
+  }
+  .bottomRow{
+    text-align: center;
+  }
+  .title {
+    //font-family: $font-poppins;
+  }
+}

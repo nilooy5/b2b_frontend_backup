@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="row" [ngStyle]="{'margin-bottom' : tenderList.length ? '0' : '100px'}">
+
+        <div class="col-lg-3 d-none d-lg-flex tender-column__filter">
+
+            <app-tender-list-filter [tenderListFilterOptions]="tenderListFilterOptions"
+                                    [searchValue]="searchValue"
+                                    [sortOption]="selectedSortOption"
+                                    [pageNumber]="selectedPageNumber"
+                                    [categoryIdFromParams]="categoryIdFromParams"
+                                    (filterEmitter)="setFilteredTenderList($event)"></app-tender-list-filter>
+        </div>
+
+        <div class="col-lg-9 col-sm-12 tender-column__list">
+
+            <div class="row" style="margin-bottom: 15px">
+                <div class="col-xl-12 col-lg-12 col-md-8 col-sm-9 col-8">
+                    <div class="search-input">
+                        <i class="material-icons">search</i>
+                        <input type="text" class="form-container__control" [formControl]="searchFormControl" placeholder="Search">
+                    </div>
+                </div>
+                <div class="d-xl-none d-lg-none col-md-4 col-sm-3 col-4 pl-0">
+                    <button class="button button--outline w-100 filter-mobile-btn" data-toggle="modal" data-target="#filterModal"
+                            [ngStyle]="{'background-image': 'url(' + filterIcon + ')'}">
+                        Filter
+                    </button>
+
+                    <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h5 class="modal-title" id="filterModalLabel">Filter By</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <app-tender-list-filter [tenderListFilterOptions]="tenderListFilterOptions"
+                                                            [searchValue]="searchValue"
+                                                            [sortOption]="selectedSortOption"
+                                                            [pageNumber]="selectedPageNumber"
+                                                            [categoryIdFromParams]="categoryIdFromParams"
+                                                            (filterEmitter)="setFilteredTenderList($event)"></app-tender-list-filter>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="button button--filled" data-dismiss="modal">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="topBarElements d-flex align-items-center">
+                <div class="tender-count mr-auto">{{totalTenderListCount}} Records found</div>
+                <div class="toggleView">
+                    <button mat-button class="toggleViewButton toggleViewButton--list" (click)="toggleView('list')"
+                            [ngClass]="{'open': viewSwitch === 'list'}">
+                    <span class="material-icons">
+                        view_list
+                    </span>
+                    </button>
+                    <button mat-button class="toggleViewButton toggleViewButton--grid" (click)="toggleView('grid')"
+                            [ngClass]="{'open': viewSwitch === 'grid'}">
+                    <span class="material-icons" style="transform: rotate(-90deg)">
+                        view_quilt
+                    </span>
+                    </button>
+                </div>
+                <mat-form-field appearance="outline">
+                    <mat-select class="sortOptions" [value]="'desc'" (selectionChange)="onChangeSortSelection($event)">
+                        <mat-option value="desc" >Latest Posts</mat-option>
+                        <mat-option value="asc">Older Posts</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <section>
+                <app-tender-list-banner *ngIf="viewSwitch === 'list'" [tenderList]="tenderList"></app-tender-list-banner>
+                <app-tender-list-masonry *ngIf="viewSwitch === 'grid'" [tenderList]="tenderList" [totalTenders]="totalTenderListCount"></app-tender-list-masonry>
+            </section>
+
+            <section class="d-flex justify-content-center" style="margin-bottom: 50px" *ngIf="tenderList.length > 0">
+                <app-tender-list-pagination [paginationData]="tenderListPagination" (pageNumberEmitter)="handlePagination($event)"></app-tender-list-pagination>
+            </section>
+        </div>
+
+    </div>
+</div>

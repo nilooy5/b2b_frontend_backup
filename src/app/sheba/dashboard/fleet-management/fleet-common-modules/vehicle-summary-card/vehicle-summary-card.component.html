@@ -1,0 +1,17 @@
+<div class="layout__card d-flex">
+    <img src="https://i.ibb.co/VqhqtZ8/image.png" alt="" class="vehicle-img">
+    <div>
+        <div style="margin-top: 10px; margin-bottom: 10px">
+            <p style="margin-bottom: 8px">{{vehicleInfo.vehicle_model}}</p>
+            <p class="vehicle-info">
+                                 <span><i class="material-icons"
+                                          [class.active]="vehicleInfo.status === 'active'"
+                                          [class.inactive]="vehicleInfo.status === 'inactive'"
+                                 >brightness_1</i>{{vehicleInfo.status}}</span>
+            <li>{{vehicleInfo.vehicle_type}}</li>
+            <li>{{vehicleInfo.assigned_to}}</li>
+            <i class="material-icons more-icon">more</i>
+            </p>
+        </div>
+    </div>
+</div>

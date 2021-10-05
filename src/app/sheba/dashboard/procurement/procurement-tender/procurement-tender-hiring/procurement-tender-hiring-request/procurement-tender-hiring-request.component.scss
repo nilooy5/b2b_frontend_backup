@@ -1,0 +1,275 @@
+@import '../../../../../../../scss/layouts';
+@import '../../../../../../../scss/variables';
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+.notificationBanner {
+  width: 732px;
+  font-size: 14px;
+  color: #00593e;
+  height: 50px;
+  border-radius: 3px;
+  border: solid 0.5px #a4ebd5;
+  background-color: #e2fbf3;
+  margin: 30px 15px;
+  font-family: $font-lato;
+
+}
+input[type=number] {
+  -moz-appearance:textfield; /* Firefox */
+}
+
+ul {
+  padding-left: 24px;
+}
+
+li {
+  list-style: disc;
+}
+
+h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+::ng-deep {
+
+  #proposedPrice {
+    width: 100%;
+
+    .mat-form-field-infix {
+      padding: 27px 0 25px 0;
+    }
+  }
+
+
+  .mat-input-element {
+
+    &:enabled {
+      color: rgba(0, 0, 0, 0.8);
+    }
+
+    &:disabled {
+      color: rgba(0, 0, 0, 0.8);
+
+    }
+  }
+
+  .mat-row {
+    border-bottom: solid 1px #d2d8e6;
+  }
+
+  .mat-header-row {
+    background-color: #a7b1cc;
+  }
+
+  .mat-form-field-wrapper {
+    padding: 5px 0;
+  }
+
+  .mat-form-field-infix {
+    width: auto !important;
+    border: none;
+  }
+
+  .mat-form-field-appearance-outline {
+
+    .mat-form-field-wrapper {
+      margin: 0 !important;
+    }
+
+    .mat-form-field-flex {
+      padding: 2px 0.75em 0 0.75em !important;
+      //padding: 0 !important;
+    }
+
+    .mat-form-field-outline {
+      //padding: 0.4em 0;
+      margin: 0.4em 0;
+      background-color: #f0f2f7;
+      border-radius: 5px;
+      //border: solid 1px #d3d8e6;
+    }
+
+    &.mat-form-field-disabled {
+      .mat-form-field-outline {
+        border: none;
+        color: rgba(0, 0, 0, 0);
+        background-color: #fff;
+      }
+    }
+
+  }
+
+  #table {
+    margin-bottom: 0;
+    border-spacing: 0 2px;
+
+    width: 100%;
+    table-layout: fixed;
+
+    th, td {
+      overflow: hidden;
+      width: 100px !important;
+      text-overflow: ellipsis;
+      //white-space: nowrap;
+    }
+
+    thead {
+      tr {
+        th.mat-header-cell {
+          font-size: 14px;
+          font-weight: 500 ;
+          padding: 15px !important;
+
+          &:first-of-type {
+            padding-left: 25px !important;
+          }
+
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td.mat-cell {
+          font-size: 14px;
+
+          &:first-of-type {
+            border-radius: 5px 0 0 0;
+            padding-left: 15px !important;
+          }
+
+          &:last-of-type {
+            border-radius: 0 5px 0 0;
+          }
+        }
+      }
+    }
+
+    td.mat-footer-cell{
+      span {
+        display: block;
+      }
+      .total-title {
+        span {
+          padding: 7px 10px 7px 5px;
+        }
+      }
+      .total-price {
+        span {
+          padding: 7px 14px;
+        }
+      }
+
+      padding: 25px 0;
+      border-spacing: 0;
+      border: 0;
+      border-radius: 0 0 5px 5px;
+      background-color: $white;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+}
+
+#unitPriceSpan {
+  padding: 2px 0.75em 0 0.75em !important;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.layout__card {
+  margin-bottom: 30px;
+  padding: 35px 30px;
+}
+
+.hiring-request {
+  &__info {
+
+    h5 {
+      color: $black40;
+      font-size: 14px;
+    }
+
+    &__title {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    &__quotation {
+      font-size: 20px !important;
+    }
+
+  }
+}
+
+.main-content-block {
+  padding: 20px 0 20px 0;
+
+  .main-title {
+    padding: 6px 0 8px 0;
+  }
+
+  .actions-column {
+    &__start-edit,
+    &__confirm-edit,
+    &__delete {
+      font-size: 17px;
+      color: #2f38f1;
+    }
+  }
+
+}
+
+.terms-policy {
+
+  &__main-title {
+    padding: 6px 0 10px 0;
+    h3 {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.8);
+      margin-bottom: 0;
+    }
+  }
+
+  &__card {
+    p, li {
+      font-size: 14px;
+      line-height: 1.57;
+      color: $black60;
+    }
+
+
+  }
+
+  &__btn {
+    &__edit {
+      width: 80px;
+      height: auto;
+      border-radius: 3px;
+      padding: 3px;
+      color: #2f38f1;
+      border: solid 1px #2f38f1;
+      background-color: #ffffff;
+    }
+  }
+
+}
+
+.button--filled  {
+  width: 300px;
+  height: 50px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #2f38f1;
+}
+

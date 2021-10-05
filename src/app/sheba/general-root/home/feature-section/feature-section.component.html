@@ -1,0 +1,16 @@
+<div [style.background-color]="data.backgroundColor">
+  <div class="container feature-img landing__section"
+       [style.background-image]="'url('+data.img+')'"
+       [class.feature-img--right]="data.textAlignment === 'left'"
+       [class.feature-img--left]="data.textAlignment === 'right'">
+    <div class="row">
+      <div [class.col-md-7]="data.textAlignment === 'left'"
+           [class.col-md-6]="data.textAlignment === 'right'"
+           [class.offset-md-6]="data.textAlignment === 'right'"
+           style="padding-right: 0">
+        <h1 class="landing__section__title">{{data.title}}</h1>
+        <p class="landing__section__description">{{data.text}}</p>
+      </div>
+    </div>
+  </div>
+</div>

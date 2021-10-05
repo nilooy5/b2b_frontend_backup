@@ -1,0 +1,106 @@
+<div [ngClass]="layout.applyCSSClass ? 'rfq-journey-container' : ''">
+
+    <ng-container *ngIf="layout.showHeader">
+        <div class="d-flex justify-content-center" style="height: 65px; padding-top: 8px">
+            <h3 class="rfq-journey-header"> {{ layout.headerTitle }} </h3>
+
+            <ng-template #popContent class="d-flex flex-column">
+                <div>Learn how to create a proper Request for Quotation</div>
+                <div class="playVideo d-flex align-items-center">
+                    <div class="d-flex" data-toggle="modal" data-target="#myModal" (click)="playVideo()"
+                         style="cursor: pointer">
+                        <div class="material-icons">play_circle_filled</div>
+                        <div style="padding-top: 2px">Play Video</div>
+                    </div>
+                </div>
+            </ng-template>
+
+            <button type="button" class="btn" placement="right" [ngbPopover]="popContent"
+                    popoverClass="my-custom-class">
+                <i class="material-icons-outlined">info</i>
+            </button>
+        </div>
+        <hr class="rfq-journey-header__divider">
+    </ng-container>
+
+    <section [ngClass]="layout.applyCSSClass ? 'rfq-journey-content' : ''">
+        <router-outlet></router-outlet>
+    </section>
+
+    <ng-container *ngIf="layout.showFooter">
+        <div class="rfq-journey-footer"
+             [ngClass]="{'rfq-journey-footer--advanced': currentJourneyState !== 'create', 'open': isSidebarOpen}">
+
+            <ng-container *ngIf="currentJourneyState === 'create'">
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <button mat-button class="footerButton footerButton--draft" [disabled]="isGeneralInfoDisabled"
+                                (click)="submitTender(0)">Save Draft
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <button mat-button class="footerButton footerButton--next" [disabled]="isGeneralInfoDisabled"
+                                (click)="submitTender(1)"> POST
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="currentJourneyState === 'technical'">
+                <div class="row justify-content-between" style="width: 100%">
+                    <div class="col-md-2">
+                        <button mat-button class="footerButton footerButton--back" (click)="goToCreate()">
+                            <span class="material-icons">keyboard_backspace</span>&nbsp;&nbsp;Back
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <button mat-button class="footerButton footerButton--next" (click)="saveData()"> Save Question
+                            Set
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="currentJourneyState === 'company'">
+                <div class="row justify-content-between" style="width: 100%">
+                    <div class="col-md-2">
+                        <button mat-button class="footerButton footerButton--back" (click)="goToCreate()">
+                            <span class="material-icons">keyboard_backspace</span>&nbsp;&nbsp;Back
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <button mat-button class="footerButton footerButton--next" (click)="saveData()"> Save Question Set</button>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="currentJourneyState === 'price'">
+                <div class="row justify-content-between" style="width: 100%">
+                    <div class="col-md-2">
+                        <button mat-button class="footerButton footerButton--back" (click)="goToCreate()">
+                            <span class="material-icons">keyboard_backspace</span>&nbsp;&nbsp;Back
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <button mat-button class="footerButton footerButton--next" (click)="saveData()"> Save Price
+                            Quotation
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>
+
+<div class="help-container" *ngIf="layout.showHelpLink">
+    <div class="help-content">
+        <div class="help-content-info" style="position: relative; padding: 0 15px">
+            <span class="material-icons help-content-info__icon">info_outline</span>
+            <p class="help-content-info__title"> Learn more about tender </p>
+        </div>
+        <a class="help-content-link" target="_blank" [href]="redirectToHelp()">
+            <span class="help-content-link__title"> Go to Help </span>
+            <span class="material-icons help-content-link__icon">keyboard_backspace</span>
+        </a>
+    </div>
+</div>

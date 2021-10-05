@@ -1,0 +1,69 @@
+<div class="basic-info" [formGroup]="basicInfoForm">
+
+    <!-- Container: Title -->
+    <div class="mb-20">
+        <!-- Button: Title -->
+        <ng-container *ngIf="!showTitleInput">
+            <button class="basic-info__button" (click)="showInput('title')">+ Add Title</button>
+        </ng-container>
+
+        <!-- Input: Title -->
+        <ng-container *ngIf="showTitleInput">
+            <div class="d-flex flex-column form-container">
+                <label for="title" class="form-container__label">Title</label>
+                <input type="text" name="title" id="title" class="form-container__control" placeholder="Enter tender title" (input)="onChangeInput($event)" formControlName="title">
+            </div>
+        </ng-container>
+    </div>
+
+    <div class="mb-20 form-container">
+        <textarea #rfqDescription name="description" id="rfqDescription"
+                  class="form-container__control basic-info-control__description"
+                  [ngClass]="{ 'error': fc.description.errors && fc.description.errors.minlength}"
+                  placeholder="What do you need for your company?" (input)="onChangeInput($event)" formControlName="description"></textarea>
+        <span class="error-message" *ngIf="fc.description.errors && fc.description.errors.minlength">
+            Type at least 20 characters in description
+        </span>
+    </div>
+
+    <!-- Buttons: Budget & Tags-->
+    <div class="d-flex mb-20" *ngIf="!showBudgetInput || !showTagsInput">
+
+        <ng-container *ngIf="!showBudgetInput">
+            <button class="basic-info__button" (click)="showInput('budget')">+ Add Budget</button>
+        </ng-container>
+
+        <ng-container *ngIf="!showTagsInput">
+            <button class="basic-info__button" [ngClass]="{ 'flex-grow-1': !showBudgetInput }" (click)="showInput('tags')">+ Add Tags</button>
+        </ng-container>
+
+    </div>
+
+    <!-- Input: Budget -->
+    <ng-container *ngIf="showBudgetInput">
+        <div class="d-flex flex-column form-container mb-20">
+            <label for="budget" class="form-container__label">Budget</label>
+            <div class="input-group d-flex flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">
+                        <img src="../../../../../../../assets/svg/bdt.svg" alt="">
+                    </span>
+                </div>
+                <input type="number" name="budget" id="budget" class="form-container__control budget-input" placeholder="Enter estimated budget for your tender"
+                       (input)="onChangeInput($event)" formControlName="budget">
+            </div>
+<!--            <input type="text" name="budget" id="budget" class="form-container__control budget-input" (input)="onChangeInput($event)"-->
+<!--                   placeholder="Enter estimated budget for RFQ" formControlName="budget">-->
+        </div>
+    </ng-container>
+
+    <!-- Input: Tags -->
+    <ng-container *ngIf="showTagsInput">
+        <div class="d-flex flex-column form-container mb-20">
+            <label for="tags" class="form-container__label">Tags</label>
+            <app-rfq-create-tags id="tags" (tagsList)="receivedTags($event)"></app-rfq-create-tags>
+        </div>
+    </ng-container>
+
+
+</div>

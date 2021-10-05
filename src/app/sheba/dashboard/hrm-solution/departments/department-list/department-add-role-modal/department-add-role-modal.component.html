@@ -1,0 +1,36 @@
+<div mat-dialog-content>
+    <div class="dialog-content-inner">
+        <div class="generic-modal">
+            <div class="generic-modal__header">
+                <p>Add Department</p>
+                <button type="button" class="close" (click)="close()">
+                    <i class="material-icons">close</i>
+                </button>
+            </div>
+
+            <form class="editable__form" [formGroup]="roleInformation" (submit)="submit()">
+                <div class="form-group form-add-group row" style="border: none">
+                    <label for="department" class="col-sm-4 col-form-label">Department</label>
+                    <div class="col-md-8 custom-swich" style="text-align: left">
+                        <input type="text" class="form-control" disabled id="department" [value]="department.name">
+                    </div>
+                </div>
+                <div class="form-group form-add-group row" style="border: none">
+                    <label for="name" class="col-md-4 col-form-label">Role</label>
+                    <div class="col-md-8">
+                        <input  class="form-control" placeholder="e.g. ADMIN" name="name" id="name" formControlName="name">
+                        <p class="error-message" *ngIf="showFormValidationError && roleInformation.get('name').hasError('required')">
+                            Department Role is required</p>
+                    </div>
+                </div>
+
+                <div class="form-group form-add-group row" style="border: none">
+                    <div class="col-md-8 offset-md-4" style="text-align: left">
+                        <button class="form-button" mat-button matStepperNext style="margin: 0" type="submit">Create Role</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

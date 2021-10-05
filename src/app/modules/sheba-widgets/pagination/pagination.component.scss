@@ -1,0 +1,40 @@
+.pagination {
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 1.125rem;
+  color: transparentize(black, .4);
+
+  &-buttons {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-button {
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    padding: 0;
+    min-height: 28px;
+    color: white;
+    background-color: #a7b1cc;
+
+    &:disabled {
+      background-color: lighten(#a7b1cc, 5%);
+    }
+  }
+
+  &-counter {
+    margin: 0 10px;
+
+    span {
+      padding: 0 4px;
+      font-size: .9rem;
+      font-weight: 500;
+    }
+  }
+}

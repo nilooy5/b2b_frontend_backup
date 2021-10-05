@@ -1,0 +1,110 @@
+<div class="b2b-breadcrumb">
+    <div *ngIf="currentRoute !== 'quotation'">
+        <a [routerLink]="['/','dashboard','procurement']">RFQ</a><span> / </span>
+        <a [routerLink]="['/','dashboard','procurement']">List</a> <span> / </span>
+        <span *ngIf="!hasBids">Details</span>
+        <span *ngIf="hasBids && currentRoute  !== 'messaging'">Quotations</span>
+        <span *ngIf="hasBids && currentRoute === 'messaging'">Messages</span>
+    </div>
+
+    <div *ngIf="hasBids && currentRoute === 'quotation'">
+        <a [routerLink]="['/','dashboard','procurement']">RFQ</a><span> / </span>
+        <a [routerLink]="['/','dashboard','procurement']">List</a> <span> / </span>
+        <a [routerLink]="['/','dashboard','procurement', procurementDetails.id]">Quotations</a> <span> / </span>
+        <span>Detail</span>
+    </div>
+</div>
+
+<div class="layout__card">
+    <div class="row">
+        <div class="col-md-3 procurement-details__info">
+            <h5>ID</h5>
+            <h6 class="procurement-details__info__title">
+                #{{ procurementDetails.id }} &nbsp;
+                <span class="procurement-status">
+                    {{ procurementDetails.status }}
+                </span>
+            </h6>
+        </div>
+        <div class="col-md-4 procurement-details__info align-self-center">
+            <h5>Procurement Title</h5>
+            <div class="d-flex">
+                <section>
+                    <h6 class="procurement-details__info__title">
+                        {{ procurementDetails.title }}
+                    </h6>
+                </section>
+            </div>
+        </div>
+
+        <!-- START: If Procurement has Bids -->
+        <div class="col-md-2 procurement-details__info align-self-center" *ngIf="hasBids">
+            <h5>Expiration Date</h5>
+            <div class="d-flex">
+                <section>
+                    <h6 class="procurement-details__info__title">
+                        {{ procurementDetails.last_date_of_submission}}
+                    </h6>
+                </section>
+            </div>
+        </div>
+        <div class="col-md-3 procurement-hiring-details__info align-self-center" *ngIf="hasBids">
+            <div class="d-flex float-right procurement-hiring-details__btn">
+                <a mat-menu-item [href]="getQuotationLink()" *ngIf="showDownloadQuotation">
+                    <span class="procurement-details__menu__item">
+                        <i class="material-icons">cloud_download</i>
+                        Download Quotations
+                    </span>
+                </a>
+                <button id="viewDetails" class="button button-outline mr-2 procurement-hiring-details__btn__details"
+                        (click)="onViewDetails()">
+                    View Details
+                </button>
+
+            </div>
+        </div>
+        <!-- END: If Procurement has Bids -->
+
+
+        <div class="col-md-5 procurement-details__info" *ngIf="!hasBids">
+            <div class="float-right procurement-details__btn">
+
+                <button
+                    class="button button-outline button-primary mr-2 procurement-details__btn__publish justify-content-center"
+                    *ngIf="showBackToComparison" [routerLink]="['/','dashboard','procurement', procurementDetails.id]">
+                    Back To Comparison
+                </button>
+
+                <button
+                    class="button button-outline button-primary mr-2 procurement-details__btn__publish justify-content-center"
+                    *ngIf="isRFQPublished === null"
+                    (click)="onPublish(1)">
+                    Publish
+                </button>
+
+                <button
+                    class="button button-outline button-primary procurement-details__btn__kebab justify-content-center"
+                    mat-button [matMenuTriggerFor]="menu">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item
+                            (click)="onPrint()">
+                        <span class="procurement-details__menu__item"><i class="material-icons">local_printshop</i> Print</span>
+                    </button>
+                    <a mat-menu-item [href]="getDownloadLink()">
+                        <span class="procurement-details__menu__item"><i class="material-icons">cloud_download</i> Download</span>
+                    </a>
+                    <mat-divider *ngIf="isRFQPublished !== null"></mat-divider>
+                    <button mat-menu-item [routerLink]="['/','dashboard','procurement','invite']"
+                            [queryParams]="{procurement: procurementDetails.id}">
+                        <span class="procurement-details__menu__item"><i class="material-icons">send</i> Invite</span>
+                    </button>
+                </mat-menu>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<router-outlet></router-outlet>

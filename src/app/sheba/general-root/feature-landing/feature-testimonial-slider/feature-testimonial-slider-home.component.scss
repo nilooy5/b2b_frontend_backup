@@ -1,0 +1,254 @@
+@import "../../../../../scss/variables";
+
+h1, p {
+  font-family: $font-lato !important;
+}
+
+#testimonial {
+
+  width: 100%;
+  padding: 90px 230px 150px 230px;
+  background-image: linear-gradient(114deg, #78b6fb 0%, #437ff5);
+
+  .slick-prev, .slick-next {
+    background-color: rgb(84, 145, 247);
+    border: solid 1px #fff;
+
+    &:before{
+      border-top: 3px solid  #fff;
+      border-right: 3px solid  #fff;
+    }
+  }
+
+  .slick-prev, .slick-next {
+    background-color: rgb(84, 145, 247) ;
+    border: solid 1px #fff;
+  }
+
+
+  .testimonial-section {
+
+    &__image {
+      display: flex;
+      justify-content: center;
+      padding-right: 30px;
+      position: relative;
+
+      .comma {
+        position: absolute;
+        z-index: -1;
+        right: -65px !important;
+        top: -60px !important;
+       }
+    }
+
+    &__info {
+
+      padding: 15px !important;;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+
+      h1 {
+        color: $white !important;
+        font-size: 40px;
+        font-weight: bold;
+        margin-bottom: 30px;
+      }
+
+      .user {
+        &__comment {
+          color: $white !important;
+          font-size: 24px;
+          line-height: 1.5;
+          margin-bottom: 50px;
+        }
+        &__name {
+          color: $white !important;
+          font-size: 20px;
+          font-weight: bold;
+          margin-bottom: 12px;
+        }
+        &__designation {
+          color: $white !important;
+          font-size: 18px;
+        }
+      }
+
+      .p-60 {
+      }
+
+    }
+  }
+
+  .img-fluid {
+    max-width: 370px;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+
+  :host ::ng-deep {
+
+    .slick-prev, .slick-next {
+      top: 78%;
+    }
+
+    .slick-prev {
+      left: 89%;
+    }
+
+  }
+
+  #testimonial {
+    padding: 150px 80px;
+
+    .p-60 {
+      padding: 60px 20px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+
+  :host ::ng-deep {
+
+    .slick-dots {
+      bottom: -70px;
+    }
+    .slick-dots li button:before {
+      font-size: 10px !important;
+    }
+  }
+  #testimonial {
+    padding: 150px 0;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  :host ::ng-deep {
+
+    .slick-prev, .slick-next {
+      top: 85%;
+    }
+
+
+    .slick-prev {
+      left: 85%;
+
+      &.slick-disabled{
+        opacity: 0;
+      }
+
+      &:before {
+        transform: rotate(225deg);
+        left: 15px;
+      }
+    }
+
+  }
+
+  #testimonial {
+    .testimonial-section {
+
+      &__image {
+        padding-right: 40px;
+      }
+
+      &__info {
+
+        h1 {
+          font-size: 30px;
+        }
+
+        .user {
+          &__comment {
+            font-size: 20px;
+          }
+          &__name {
+            font-size: 17px;
+          }
+          &__designation {
+            font-size: 14px;
+          }
+        }
+
+      }
+
+      .img-fluid {
+        max-width: 300px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 479px) {
+
+  :host ::ng-deep {
+
+    .slick-dots {
+      bottom: -40px;
+    }
+    .slick-dots li button:before {
+      font-size: 10px !important;
+    }
+  }
+  #testimonial {
+    padding: 70px 0;
+    background: #fff;
+    .testimonial-section {
+      h1 {
+        color: rgba(0, 0, 0, 0.8) !important;
+        font-size: 20px;
+        font-weight: 500;
+        font-family: $font-poppins !important;
+      }
+      &__image {
+        display: flex;
+        justify-content: center;
+        //padding-right: 15px;
+        margin-bottom: 30px;
+        padding: 40px 60px 0 60px !important;
+
+        .comma {
+          width: 30px;
+          position: absolute;
+          right: -20px !important;
+          top: -12px !important;
+          z-index: 0;
+        }
+      }
+
+      &__info {
+        padding: 0 60px !important;
+        h1 {
+          display: none;
+        }
+        p, span {
+          text-align: center;
+        }
+
+        .user {
+          &__comment {
+            color: $black80 !important;
+            font-size: 16px;
+            margin-bottom: 20px;
+          }
+          &__name {
+            color: $black80 !important;
+            font-size: 16px;
+          }
+          &__designation {
+            color: $black80 !important;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .img-fluid {
+      max-width: 74px !important;
+    }
+  }
+}
+

@@ -1,0 +1,76 @@
+<div class="quick-purchase">
+    <div *ngIf="this.currentJourneyState === 'quick-purchase'" class="allServicesSearch">
+        <div>
+            <h3 class="quick-purchase__title">All Services</h3>
+        </div>
+        <div class="searchPanel">
+            <div class="input-group search-input input-group--primary form-inline">
+                <input aria-describedby="basic-addon1" class="form-control searchBox"
+                       placeholder="Search your desired service" type="text"
+                       style="padding-left: 20px" (keyup)="search($event)">
+                <div class="search-div">
+                    <i class="material-icons" style="color: white">search</i>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--Breadcrumb-->
+    <div *ngIf="this.currentJourneyState !== 'quick-purchase'" class="b2b-breadcrumb">
+        <a [routerLink]="['/', 'dashboard', 'quick-purchase']">Home </a>
+        <ng-container *ngIf="storage.order.subcategory">
+            <span>/</span>
+            <a [routerLink]="['/','dashboard','quick-purchase']"
+               [queryParams]="{category: storage.order.subcategory.parent_id}">
+                {{storage.order.subcategory.parent_name}}
+            </a>
+        </ng-container>
+        <ng-container *ngIf="storage.order.subcategory">
+            <span>/</span>
+            <a [routerLink]="['/','dashboard','quick-purchase','select-service']">
+                {{ storage.order.subcategory.name }}
+            </a>
+        </ng-container>
+    </div>
+
+    <!-- Call and message button -->
+    <div class="btnColumn">
+        <div>
+            <button mat-button class="rectangle">
+                <mat-icon class="callMsgBtn">email</mat-icon>
+                <span class="spanText">Email <b>b2b@sheba.xyz</b></span>
+            </button>
+        </div>
+        <div>
+            <button mat-button class="rectangle" style="display: flex">
+                <mat-icon class="callMsgBtn">call</mat-icon>
+                <span class="spanText">Call <b>16516</b> for any query</span>
+            </button>
+        </div>
+    </div>
+
+
+    <router-outlet></router-outlet>
+
+    <div class="quick-purchase__footer" *ngIf="showJourneyNavigation" [class.opened]="open">
+
+        <mat-progress-bar mode="determinate" color="#1dbe7e" class="journey-progress" *ngIf="showJourneyNavigation" [value]="progressBar()"></mat-progress-bar>
+        <div class="container d-flex justify-content-between">
+            <div class="prev">
+                <button class="btn button--primary--outline" style="border-color: #d0d0d0" (click)="prev()">
+                    <i class="material-icons">chevron_left</i> PREV
+                </button>
+            </div>
+
+            <div class="next">
+                <span class="steps">Next Step : {{ nextStep }}</span>
+                <button class="btn button--primary--filled" (click)="next()" [disabled]="!getValidation(route)">
+                    NEXT <i class="material-icons">chevron_right</i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <app-service-cart [showCounter]="progress === 1"></app-service-cart>
+</div>

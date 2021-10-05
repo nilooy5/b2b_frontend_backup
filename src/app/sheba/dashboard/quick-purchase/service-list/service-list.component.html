@@ -1,0 +1,12 @@
+<div class="service-list container">
+    <app-journey-header title="Add Service" [showCart]="false"></app-journey-header>
+
+    <app-service-list-item *ngFor="let service of services"
+                           (updateQuantity)="updateServiceQuantity(service, $event)"
+                           (selectServiceEmitter)="addService($event)"
+                           (removeServiceEmitter)="removeService(service)"
+                           (viewDetails)="viewDetails($event)"
+                           [data]="service"></app-service-list-item>
+
+    <!--<app-service-options [options]="selectedServiceOptions ? selectedServiceOptions.questions : null"></app-service-options>-->
+</div>

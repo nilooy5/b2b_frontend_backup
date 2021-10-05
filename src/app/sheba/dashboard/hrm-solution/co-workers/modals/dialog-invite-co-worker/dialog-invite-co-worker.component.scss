@@ -1,0 +1,150 @@
+
+::ng-deep .mat-dialog-container {
+  padding: 0px !important;
+  border-radius: 10px;
+}
+.Portlet {
+  height: 28px;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--black);
+}
+.cross {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+.BG {
+  height: 60px;
+  border-radius: 10px;
+  background-color: var(--white);
+}
+.Send-Email-invitatio {
+  width: 329px;
+  height: 52px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: rgba(10, 15, 20, 0.75);
+}
+.Invite-single-and-mu {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  color: #484b4f;
+}
+.normal {
+  width: 600px;
+  height: 140px;
+  object-fit: contain;
+  overflow: auto;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: white;
+  border: 1px solid #bbc0cc;
+}
+::ng-deep .ng2-tag-input{
+  padding: 0 !important;
+  border-bottom: 0 !important;
+}
+.taginput{
+  padding:  16px 61px 20px 61px;
+}
+::ng-deep .ng2-tag-input__text-input{
+  background-color: white;
+  height: 20px !important;
+  font-size: 12px !important;
+  font-family: Poppins !important;
+  font-size: 16px;
+}
+// ::ng-deep .tag-wrapper{
+//   width: 176px;
+//   height: 24px;
+//   border-radius: 6px;
+//   border: solid 1px #5a6172;
+// }
+
+// ::ng-deep .ta g__text {
+//   width: 126px;
+//   height: 18px;
+//   font-family: Poppins;
+//   font-size: 12px;
+//   font-weight: normal;
+//   font-stretch: normal;
+//   font-style: normal;
+//   line-height: 1.5;
+//   letter-spacing: normal;
+//   color: rgba(10, 15, 20, 0.75);
+// }
+.sendButton {
+  width: 180px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--primary);
+}
+
+.invite-text {
+  width: 123px;
+  height: 20px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: var(--white);
+}
+button {
+  border-color: white!important;
+  border-width: 0px !important;
+}
+:host ::ng-deep .ng2-tag-input tag {
+  height: 24px;
+  border-radius: 6px;
+  border: solid 1px #5a6172;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  background-color: white;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: rgba(10, 15, 20, 0.75);
+ }
+ :host ::ng-deep svg {
+  height: 10px !important;
+  margin-bottom: 2px;
+}
+.Rectangle {
+  height: 32px;
+  justify-content: center;
+  background-color: #e75050;
+}
+.Please-make-sure-tha {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--white);
+}

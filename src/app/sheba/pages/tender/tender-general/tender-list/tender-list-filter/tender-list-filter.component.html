@@ -1,0 +1,95 @@
+<div class="tender-list-filter">
+
+    <h4 class="h4-title h4-title--semibold-weight tender-list-filter__header d-none d-lg-flex">Filter By</h4>
+
+    <!-- Category -->
+    <section class="tender-list-filter__section">
+        <p class="tender-list-filter__title">Category</p>
+        <div class="checkbox-wrapper">
+            <mat-checkbox
+                [disabled]="isAllCategoriesDisabled"
+                [checked]="isAllCategoriesChecked" (change)="changeCategory('all')"
+            >All Categories</mat-checkbox>
+
+            <div [formGroup]="formGroup">
+
+                <div *ngFor="let category of categories.slice(0, 4);let i  = index" formArrayName="categories" >
+                    <mat-checkbox  [formControlName]="i" (change)="changeCategory('category')">
+                        {{ category.name }}
+                    </mat-checkbox>
+                </div>
+
+                <ng-container *ngIf="testCategories && categories.length > 4">
+                    <div *ngFor="let category of categories.slice(4);let j = index" formArrayName="categories" >
+                        <mat-checkbox  [formControlName]="j + 4" (change)="changeCategory('category')">
+                            {{ category.name }}
+                        </mat-checkbox>
+                    </div>
+                </ng-container>
+
+            </div>
+
+        </div>
+        <button *ngIf="categories.length > 4" class="btn btn-link category-more-btn" (click)="showCategoriesMore()">{{ moreCategoriesText }}</button>
+    </section>
+
+    <!-- Post Type -->
+    <section class="tender-list-filter__section">
+        <p class="tender-list-filter__title">Post Type</p>
+        <div class="checkbox-wrapper">
+
+            <mat-checkbox [disabled]="isAllPostTypeDisabled" [checked]="isAllPostTypeChecked" (change)="chancePostType('all')">
+                All Post Types
+            </mat-checkbox>
+
+            <div [formGroup]="formGroup">
+                <div *ngFor="let postType of postTypes;let i  = index" formArrayName="postTypes" >
+                    <mat-checkbox  [formControlName]="i" (change)="chancePostType('postType')">
+                        {{ postType.value }}
+                    </mat-checkbox>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--  Budget -->
+    <section class="tender-list-filter__section">
+        <p class="tender-list-filter__title">Budget</p>
+        <form [formGroup]="budgetRangeForm">
+            <ng5-slider [options]="budgetSliderOptions" formControlName="budgetRangeControl"></ng5-slider>
+        </form>
+        <div class="d-flex justify-content-center">
+            <p class="budget-amount">{{ budgetRangeForm.value.budgetRangeControl[0] | currency: 'BDT':'symbol-narrow': '1.0'}}</p>
+            <span class="px-1">-</span>
+            <p class="budget-amount">{{ budgetRangeForm.value.budgetRangeControl[1] | currency: 'BDT':'symbol-narrow': '1.0'}}</p>
+        </div>
+    </section>
+
+    <!-- Delivery Between -->
+    <section class="tender-list-filter__section">
+        <p class="tender-list-filter__title">Delivery Between</p>
+        <app-material-date-range-picker
+            [initialDateRange]="deliveryTimeline"
+            (selectedDateRange)="handleDeliveryTimeline($event)"></app-material-date-range-picker>
+    </section>
+
+    <!-- Popular Tags -->
+    <section class="tender-list-filter__section mb-50">
+        <p class="tender-list-filter__title">Popular Tags</p>
+        <div class="popularTags d-flex">
+            <div class="popularTags__tag"
+                 *ngFor="let tag of popularTags"
+                 (click)="onSelectTag(tag)"
+                 [ngClass]="{'active': tag.id | selectedTags: selectedTags}">{{ tag.name }}</div>
+        </div>
+    </section>
+
+    <!-- Reset Filters -->
+    <section class="d-flex justify-content-center align-items-center">
+        <button class="btn btn-link d-flex align-items-center reset-filter-btn">
+            <img src="assets/svg/cross.svg" alt="clear">
+            <span class="reset-filter-btn__title" (click)="resetFilter()">Reset Filters</span>
+        </button>
+    </section>
+
+</div>

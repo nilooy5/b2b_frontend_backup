@@ -1,0 +1,14 @@
+<div class="journey__container container">
+    <app-journey-header title="Additional Information" [showCart]="false"
+                        [counter]="selectedServices.length"></app-journey-header>
+    <div class="center-form">
+        <span class="subscription-additional-info-textarea-header">
+            Write if you have any additional information to tell
+        </span>
+        <textarea (keyup)="updateAdditionalInfo($event)" rows="7" [value]="''"
+                  placeholder="Ex. I need 2 cleaner for 4 days to clean our 6000sf office."
+                  class="subscription-additional-info-textarea">
+        </textarea>
+    </div>
+</div>
+

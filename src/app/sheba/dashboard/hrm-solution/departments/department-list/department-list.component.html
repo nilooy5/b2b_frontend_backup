@@ -1,0 +1,44 @@
+<app-department-list-filter (addEmitter)="addDepartment()" (sortEmitter)="sortDepartments($event)" (searchEmitter)="searchDepartments($event)"></app-department-list-filter>
+
+<div class="main-content-block">
+    <div class="main-content-table" *ngIf="departments">
+        <table *ngIf="(departments.length && dataSource)" mat-table [dataSource]="dataSource"
+               class="table  designer-table">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Department</th>
+                <td mat-cell *matCellDef="let element">
+                    <span>{{element.name}}</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="created_at">
+                <th mat-header-cell *matHeaderCellDef>Created Details</th>
+                <td mat-cell *matCellDef="let element">
+                    <span>{{element.created_at}}</span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element" style="text-align: right">
+                    <button class="button button-flat button-fav" (click)="addRole(element)" matTooltip="Add Role">
+                        <i class="material-icons">add</i>
+                    </button>
+                    <!--<button class="button button-flat button-fav" (click)="editDepartment()" matTooltip="Edit Department">-->
+                        <!--<i class="material-icons">create</i>-->
+                    <!--</button>-->
+                    <!--<button class="button button-flat button-fav" (click)="removeDepartment()" matTooltip="Remove Department">-->
+                        <!--<i class="material-icons">delete</i>-->
+                    <!--</button>-->
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+        </table>
+        <div class="no-driver" *ngIf="!departments.length">
+            <p>No Departments Available.</p>
+        </div>
+    </div>
+    <div class="no-driver" *ngIf="!departments || departments === undefined">
+        <p>No Departments Available.</p>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+.main-contents {
+  font-family: "Poppins", sans-serif;
+  // background-image: url("../../../../../assets/svg/icons/digigo-landing/offers/bg.svg");
+  background-position: center;
+  padding: 50px 0 40px;
+
+  .title {
+    font-size: 44px;
+    font-weight: 600;
+    padding-bottom: 20px;
+  }
+  .card-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 80px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .offer-card {
+      border-radius: 5px;
+      box-shadow: 0 3px 20px 0 rgba(9, 24, 99, 0.06);
+      border: solid 1px #c5d9ff;
+      background: white;
+      height: 100px;
+      width: 260px;
+      padding: 11px 18px 11px;
+
+      &__title {
+        font-size: 20px;
+        font-weight: 600;
+        padding-bottom: 5px;
+      }
+
+      &__description {
+        font-size: 15px;
+        font-weight: 500;
+        color: #646464;
+      }
+    }
+  }
+}
+
+.row {
+  padding: 0;
+  width: 100%;
+}
+
+.card-end {
+  justify-content: flex-end;
+}
+.card-center {
+  justify-content: center;
+}
+.card-start {
+  justify-content: flex-start;
+}
+
+.title-blue {
+  color: #437ff5;
+}
+
+.title-green {
+  color: #108d5f;
+}
+
+.title-red {
+  color: #cb5d4a;
+}
+
+.title-brown {
+  color: #bb7a45;
+}
+
+.row {
+  margin: 0;
+}
+
+.img-container {
+  img {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .main-contents {
+
+    padding: 30px 0 30px;
+
+    .title {
+      font-size: 24px;
+    }
+
+    .card-container {
+      justify-content: center !important;
+      margin-bottom: 20px !important;
+
+      .offer-card {
+        height: max-content;
+        width: 250px;
+        padding: 15px;
+
+        &__title {
+          font-size: 18px;
+        }
+
+        &__description {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .image-container {
+    display: none !important;
+  }
+}

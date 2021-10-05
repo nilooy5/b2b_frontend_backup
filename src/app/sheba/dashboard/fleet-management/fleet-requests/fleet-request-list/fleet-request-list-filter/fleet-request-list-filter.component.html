@@ -1,0 +1,18 @@
+<div class="flex justify-content-start">
+    <div class="form-item">
+        <mat-form-field appearance="outline">
+            <mat-select placeholder="Vehicle" (closed)="FilterItems()" [(ngModel)]="filter.vehicle">
+                <mat-option *ngFor="let item of vehicleTypes"
+                            [value]="item">{{item|hyphenStrip|titlecase}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="form-item ml-2">
+        <mat-form-field appearance="outline">
+            <mat-select placeholder="Status" (closed)="FilterItems()" [(ngModel)]="filter.status">
+                <mat-option *ngFor="let item of status"
+                            [value]="item">{{item|hyphenStrip|titlecase}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>

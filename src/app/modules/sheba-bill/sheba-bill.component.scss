@@ -1,0 +1,39 @@
+@import "../../../scss/variables";
+@import "../../../scss/layouts";
+
+.sheba-bill {
+  padding: 0;
+  background-color: #FCFCFC;
+  border-radius: 4px;
+  margin-bottom: 20px;
+
+  &__header {
+    background-color: $cream_grey;
+    border-radius: 4px;
+    padding: 10px 16px;
+    margin-bottom: 16px;
+
+    span {
+      color: $black;
+      font-weight: 500;
+    }
+  }
+
+  &__body {
+    padding: 20px;
+  }
+
+  &__item {
+    padding: 5px 16px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: $black;
+    font-size: 16px;
+    margin-bottom: 20px
+  }
+
+}

@@ -1,0 +1,17 @@
+<div class="breadcrumb-container">
+    <div class="breadcrumb-content" [ngClass]="{ open:isSidebarClosed }">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" *ngFor="let breadcrumb of breadcrumbList">
+                <a [ngClass]="{active: breadcrumb.isActive === true}"
+                   [routerLink]="breadcrumb.path">
+                    {{ breadcrumb.title }}
+                </a>
+            </li>
+        </ol>
+
+        <div class="breadcrumb-buttons">
+            <button class="button button--primary--outline breadcrumb-buttons__outline" [routerLink]="['/', 'dashboard', 'rfq', 'orders']">View Tender Orders</button>
+            <button class="button button--filled breadcrumb-buttons__filled" [routerLink]="['/', 'dashboard', 'rfq', 'create']">Create new tender</button>
+        </div>
+    </div>
+</div>

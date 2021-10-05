@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600,500&display=swap');
+@import "src/scss/colors";
+
+.mat-stepper-vertical {
+  //margin-top: 8px;
+}
+
+.mat-form-field {
+  //margin-top: 16px;
+}
+
+.stepper-container {
+  padding: 28px 15px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px 0 rgba(19, 34, 64, 0.1);
+  position: relative;
+
+  &__text {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.43;
+    color: rgba(0, 0, 0, .8);
+    margin-bottom: 25px;
+  }
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 10;
+}
+
+:host ::ng-deep {
+  .mat-step {
+    margin-bottom: 10px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .mat-step-header {
+    background-color: $grey-light;
+    border-radius: 10px;
+    height: 2px;
+
+    .mat-step-icon {
+      background-color: #38c8e7;
+    }
+
+    .mat-step-label {
+      font-size: 14px !important;
+      font-weight: 500 !important;
+    }
+
+    .mat-step-icon-selected {
+      background-color: #12b886 !important;
+    }
+  }
+
+  .mat-step-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .mat-stepper-vertical-line {
+    &:before {
+      display: none;
+    }
+  }
+
+  .mat-vertical-content {
+    padding: 0;
+  }
+}
+
+.horizontal-stepper-container {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+
+  .stepper-container {
+    display: none;
+  }
+
+  .horizontal-stepper-container {
+    display: unset;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 0 rgba(19, 34, 64, 0.1);
+  }
+
+  :host ::ng-deep {
+
+    .mat-horizontal-content-container {
+      display: none !important;
+    }
+
+    .mat-stepper-horizontal {
+      background-color: transparent;
+    }
+
+    .mat-step {
+      margin-bottom: 10px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    .mat-step-header {
+      background-color: transparent;
+      border-radius: 10px;
+      height: 35px;
+      display: block;
+      padding: 0;
+
+      .mat-step-icon {
+        background-color: #38c8e7;
+      }
+
+      .mat-step-label {
+        font-size: 14px !important;
+        font-weight: 500 !important;
+      }
+
+      .mat-step-icon-selected {
+        background-color: #12b886 !important;
+      }
+    }
+
+    .mat-step-icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    .mat-vertical-content {
+      padding: 0;
+    }
+
+    .mat-horizontal-stepper-header .mat-step-icon {
+      margin-right: 0;
+    }
+
+  }
+}

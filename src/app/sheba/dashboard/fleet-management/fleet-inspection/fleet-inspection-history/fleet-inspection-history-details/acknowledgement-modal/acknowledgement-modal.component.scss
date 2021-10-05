@@ -1,0 +1,16 @@
+.close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 10;
+}
+.acknowledge-form {
+  text-align: left;
+  margin: 0;
+  padding: 30px;
+  label {
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+}

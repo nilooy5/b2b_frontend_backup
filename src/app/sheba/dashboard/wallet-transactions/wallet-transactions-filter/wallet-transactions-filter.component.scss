@@ -1,0 +1,56 @@
+@import '../../../../../../src/scss/variables';
+
+.table-list-filter {
+  .balance {
+    text-align: right;
+    p {
+      text-align: right;
+      color: $gray;
+      margin: 0;
+    }
+    h4 {
+      color: $forest_green;
+    }
+  }
+}
+
+.taka-sign {
+  font-family: $font-hind-siliguri;
+}
+
+mat-form-field{
+  background-color: white;
+}
+
+.pagination {
+  p {
+    margin: 0;
+  }
+  .pagination--control {
+    button {
+      background-color: $theme-grey;
+      padding: 5px;
+      width: 30px;
+      height: 30px;
+      margin-left: 10px;
+      i {
+        color: $white;
+        font-size: 16px;
+      }
+    }
+    p {
+      margin-left: 10px;
+      font-size: 14px;
+      span {
+        color: $theme-color;
+        font-weight: 500;
+      }
+    }
+  }
+}
+.downBtn{
+  background-color: #437ff5;
+  color: white;
+  height: 45px;
+  margin-left: 10px;
+}

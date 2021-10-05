@@ -1,0 +1,61 @@
+<div class="main-table-block" *ngIf="show_invitations" style="margin-bottom: 50px;">
+    <table mat-table class="main-table-theme" [dataSource]="dataSource">
+        <ng-container matColumnDef="vendor_name">
+            <th mat-header-cell *matHeaderCellDef style="width: 40%">
+                Vendor Name
+                <i class="fas fa-sort pl-2 cursor-pointer" (click)="sort('sort_by_name')"></i>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <span class="invitation-vendor-info">
+                    <img [src]="element.vendor.logo" alt="vendor image">
+                    <span class="vendor-name" > {{ element.vendor.name }} </span>
+                </span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="invited_on">
+            <th mat-header-cell *matHeaderCellDef style="width: 20%">
+                Invited on
+                <i class="fas fa-sort pl-2 cursor-pointer" (click)="sort('sort_by_date')"></i>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <span class="invitation-invited-on"> {{ element.invited_on }} </span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="participation">
+            <th mat-header-cell *matHeaderCellDef style="width: 20%">
+                Participation
+                <i class="fas fa-sort pl-2 cursor-pointer" (click)="sort('sort_by_status')"></i>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <span class="invitation-status">{{ element.status }}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef style="width: 20%"></th>
+            <td mat-cell *matCellDef="let element">
+                <span *ngIf="element.status !== 'Participated' && !can_invite_again" id="actionColumnContents" (click)="inviteAgain(element.vendor.id)" >
+                    <i class="material-icons invitation-again">send</i> Invite Again
+                </span>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row, columns: displayedColumns;" style="cursor: pointer"></tr>
+    </table>
+</div>
+
+<div *ngIf="show_invitations === false">
+    <div class="container-fluid no-invitation-container">
+        <div class="row">
+            <div class="col-md-12 bg-white no-invitation-content">
+                <img class="no-invitation-img" src="../../../../../assets/svg/no_rfq_list.svg" alt="Success">
+                <p class="no-invitation-heading">Invite vendors participate!</p>
+                <p class="no-invitation-text">Start inviting your enlisted vendors to get their quotation in this request for quotation.</p>
+                <button class="btn btn-primary no-invitation-btn" (click)="redirectToInvite()" >Invite Vendors</button>
+            </div>
+        </div>
+    </div>
+</div>

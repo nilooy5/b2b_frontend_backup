@@ -1,0 +1,19 @@
+<div class="container add-confirm" [ngClass]="{large: theme === 'large', 'room-for-action': showControl === false}" >
+    <img *ngIf="type === types.success" src="https://i.ibb.co/rG1vWWj/sucess-request.png" alt="">
+    <img *ngIf="type === types.failure" src="https://i.ibb.co/kKmBDZ4/fail-request.png" alt="">
+
+    <h4>{{title}}</h4>
+
+    <p>{{text}}</p>
+
+    <section *ngIf="showControl">
+        <div class="text-center" style="margin-top: 20px" *ngIf="type === types.success">
+            <button class="btn button--primary--filled" style="padding: 10px 16px; margin-right: 16px" (click)="viewDetails()">View Details</button>
+            <button class="btn button--primary--outline" style="padding: 10px 16px" *ngIf="showAnotherButton"
+                    (click)="addAnother()">Add Another</button>
+        </div>
+        <div class="text-center" style="margin-top: 20px" *ngIf="type === types.failure">
+            <button class="btn button--primary--filled" style="padding: 10px 16px" (click)="addAnother()">Try Again</button>
+        </div>
+    </section>
+</div>

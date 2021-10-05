@@ -1,0 +1,31 @@
+      <div class="navbar">
+        <div class="container d-flex">
+            <div class="flex-fill" [ngClass]="{'row-position': !isMobileDevice, 'row-position-mb':isMobileDevice}">
+                <ngx-slick-carousel
+                class="carousel"
+                #slickModal="slick-carousel"
+                [config]="slideConfig"
+                (init)="slickInit($event)"
+                (breakpoint)="breakpoint($event)"
+                (afterChange)="afterChange($event)"
+                (beforeChange)="beforeChange($event)"
+                >
+                <div ngxSlickItem *ngFor="let tender of tenders"  class="slide mt-2">
+                            <p *ngIf="isMobileDevice" class="tiny-text" [ngClass]="{'fontsize': isMobileDevice}"><img src="/assets/svg/icons/rfq/category.svg"
+                                class="img"> {{tender.created_at_time}} : {{tender.title.length>5?tender.title.substr(0, 5) + '... ' :tender.title}}
+                                &nbsp; <span class="readmore" *ngIf="tender.title.length>6" [routerLink]="['/tender/list', tender.id]">read more</span>
+                            </p>
+                            <p *ngIf="!isMobileDevice" class="tiny-text" [ngClass]="{'fontsize': isMobileDevice}"><img src="/assets/svg/icons/rfq/category.svg"
+                                class="img"> {{tender.created_at_time}} : {{tender.title.length>15?tender.title.substr(0, 16 )+ '... ' :tender.title}}
+                                &nbsp; <span class="readmore" *ngIf="tender.title.length>6" [routerLink]="['/tender/list', tender.id]">read more</span>
+                            </p>
+                </div>
+                </ngx-slick-carousel>
+            </div>
+            <div class="flex-fill"  [ngClass]="{'btn-desk': !isMobileDevice, 'btn-mobile': isMobileDevice}" >
+                    <a class="btn BG" [routerLink]="['/tender/list']" > View All Tenders </a>
+            </div>
+       </div>
+      </div>
+
+

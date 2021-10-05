@@ -1,0 +1,154 @@
+@import 'src/scss/variables';
+
+::ng-deep {
+  .mat-calendar-body-selected {
+    background-color: $primary;
+  }
+  .date-picker {
+    position: relative;
+
+    .mat-input-element {
+      border: solid 1px $grey-medium;
+      border-radius: 10px;
+      background: $grey-light;
+      height: 40px !important;
+      padding-left: 15px;
+      cursor: pointer;
+    }
+
+    &__toggle {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+    }
+
+    span {
+      top: 0 !important;
+    }
+
+  }
+  .delivery-date-range-picker .form-control {
+    height: 40px;
+    border-radius: 10px;
+  }
+}
+
+:host ::ng-deep {
+  .form-container__dropdown {
+    .ng-select-container {
+      height: 40px;
+      border: solid 1px $grey-medium;
+      background-color: $grey-light;
+    }
+    .ng-dropdown-panel {
+      z-index: 1;
+    }
+  }
+}
+
+.px-15 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.form-container__label {
+  font-size: 14px;
+}
+
+.expansion-panel {
+  &-container {
+    margin-bottom: 24px;
+  }
+
+  &-toggle {
+    display: none;
+  }
+
+  &-label {
+    display: block;
+    font-weight: $font-weight-semiBold;
+    font-size: 14px;
+
+    margin-bottom: 0;
+    padding: 8px 20px;
+    line-height: 1.71;
+
+    color: $black-80;
+    background: $grey-light;
+
+    cursor: pointer;
+
+    border-radius: 10px;
+    transition: all 0.25s ease-out;
+    position: relative;
+
+    &::after {
+      content: ' ';
+      display: inline-block;
+      border: solid #437ff5;
+      padding: 3px;
+      border-width: 0 2px 2px 0;
+      //vertical-align: middle;
+      transform: translateY(-2px) rotate(-45deg);
+      transition: transform .2s ease-out;
+
+      position: absolute;
+      right: 25px;
+      top: 18px;
+    }
+  }
+
+  &-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease-in-out;
+  }
+
+  &-toggle:checked + &-label::after {
+    border: solid #fff;
+    padding: 3px;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) translateX(-6px);
+  }
+
+  &-toggle:checked + &-label + &-content {
+    max-height: 100vh;
+    overflow: visible;
+  }
+
+  &-toggle:checked + &-label {
+    color: $white;
+    background-color: $secondary;
+  }
+}
+
+.payment-method {
+  &__button {
+    padding: 0;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: $font-weight-semiBold;
+    color: #437ff5;
+    background-color: transparent;
+    border: 1px solid transparent;
+  }
+
+  &__options {
+    padding: 3px 12px;
+    background: $grey-light;
+    border-radius: 12.5px;
+    font-size: 12px;
+    line-height: 1.33;
+    border: 0;
+    margin-right: 5px;
+    color: rgba(10, 15, 20, 0.75);
+    transition: all ease-in-out 0.3s;
+
+    &:hover {
+      background: $primary;
+      color: white;
+      box-shadow: 0 11px 15px 0 rgba(19, 34, 64, 0.1);
+    }
+  }
+}
+

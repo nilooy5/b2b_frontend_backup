@@ -1,0 +1,129 @@
+.block-select {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  margin-bottom: 20px;
+  &-container {
+    width: 100%;
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    overflow-x: auto;
+    position: absolute;
+
+    &-wrapper {
+      position: relative;
+      width: 100%;
+      height: 140px;
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+      overflow: hidden;
+    }
+  }
+
+  &-items {
+    display: inline-flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 20px;
+    border: 2px solid transparent;
+    width: 100%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    position: relative;
+
+    &-checkbox {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    &-check {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: #2f38f1;
+      color: white;
+      width: 24px;
+      height: 24px;
+      align-items: center;
+      justify-content: center;
+      -ms-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+
+    }
+
+    &-container {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      position: relative;
+      width: 25%;
+      height: 120px;
+      min-width: 220px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &.active {
+        & .block-select-item {
+          border-color: #2f38f1;
+
+          & .block-select-item-check {
+            display: flex;
+          }
+        }
+
+        & .block-select-item-checkbox {
+
+        }
+
+      }
+    }
+  }
+
+  &-nav {
+    position: absolute;
+    right: -20px;
+    top: 55px;
+    display: block;
+    font-size: 1.2rem;
+    border-radius: 50% !important;
+    width: 40px;
+    height: 40px;
+    min-height: 40px;
+    z-index: 3;
+
+    &.nav-left {
+      left: -20px;
+      right: auto;
+    }
+  }
+
+}
+
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}

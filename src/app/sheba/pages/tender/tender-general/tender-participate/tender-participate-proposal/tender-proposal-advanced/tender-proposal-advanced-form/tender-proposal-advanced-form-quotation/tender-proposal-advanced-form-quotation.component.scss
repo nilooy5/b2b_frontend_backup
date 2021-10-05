@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600,500&display=swap');
+@import "src/scss/colors";
+
+.quotation-form {
+  background: white;
+  box-shadow: 0 1px 5px 0 rgba(19, 34, 64, 0.1);
+  border-radius: 10px;
+
+  &__title {
+    h4 {
+      font-size: 20px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.4;
+      text-align: center;
+      padding: 16px;
+      border-bottom: solid 0.5px #d3d8e6;
+    }
+  }
+
+  &__body {
+    padding: 40px 50px 30px;
+
+    .quotation-footer {
+      .mat-button {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.25;
+        color: var(--white);
+        width: 150px;
+        height: 40px;
+        border-radius: 8px;
+        background-color: var(--primary);
+
+        &:disabled {
+          background: $grey-medium;
+          border-color: $grey-medium;
+          cursor: not-allowed;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+:host ::ng-deep {
+
+  .mat-form-field-appearance-outline.mat-form-field-disabled .mat-form-field-outline {
+    color: rgba(0, 0, 0, 0);
+    background-color: #f7f9fc;
+  }
+
+  .mat-table {
+    background: white;
+    border-radius: 10px;
+
+    .mat-header-row {
+      border-radius: 10px;
+      height: 50px;
+      background: #303778;
+      margin-bottom: 10px;
+
+      .mat-header-cell {
+        background: #303778;
+        height: 50px;
+      }
+
+      .mat-header-cell:first-of-type {
+        border-radius: 10px 0 0 10px;
+      }
+
+      .mat-header-cell:last-of-type {
+        border-radius: 0 10px 10px 0;
+      }
+    }
+
+    .mat-row {
+      background: #f7f9fc; // not getting color from variables
+      border-radius: 10px;
+      height: 50px;
+      margin-bottom: 5px;
+      cursor: pointer;
+      border-bottom: 0;
+      transition: all 500ms;
+
+      &:hover {
+        box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+      }
+
+      &:hover .mat-cell {
+        background: white !important;
+      }
+
+      .mat-cell {
+        font-size: 16px;
+        color: rgba(10, 15, 20, 0.75);
+        height: 50px;
+        background: $grey-light;
+        transition: all 500ms;
+        word-break: break-word;
+
+        .form-container__control {
+          width: 130px;
+          min-height: unset;
+          height: 30px;
+
+          &:focus {
+            border: solid 1px $primary;
+            &:hover {
+              border: solid 1px #5a6172;
+            }
+          }
+
+          &:hover {
+            border: solid 1px #5a6172;
+            &:focus {
+              border: solid 1px $primary;
+            }
+          }
+        }
+        ::-webkit-input-placeholder {
+          opacity: 0.4;
+          font-size: 12px;
+          line-height: 1.5;
+          color: black;
+          display: flex;align-items: center;
+        }
+
+        ::-moz-placeholder {
+          opacity: 0.4;
+          font-size: 12px;
+          line-height: 1.5;
+          color: black;
+          display: flex;align-items: center;
+        }
+
+        :-ms-input-placeholder {
+          opacity: 0.4;
+          font-size: 12px;
+          line-height: 1.5;
+          color: black;
+          display: flex;align-items: center;
+        }
+
+        ::placeholder {
+          opacity: 0.4;
+          font-size: 12px;
+          line-height: 1.5;
+          color: black;
+          display: flex;align-items: center;
+        }
+      }
+    }
+    .mat-footer-row {
+      .mat-footer-cell {
+        font-weight: 600;
+        background: $grey-light;
+        border: 0;
+        padding: 5px;
+        vertical-align: middle;
+        color: rgba(0, 0, 0, 0.75);
+      }
+      .mat-footer-cell:first-of-type {
+        border-radius: 5px 0 0 5px;
+      }
+      .mat-footer-cell:last-of-type {
+        border-radius: 0 5px 5px 0;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .quotation-form {
+    margin: 0 15px;
+
+    &__body {
+      padding: 20px 15px 30px;
+    }
+  }
+
+  :host ::ng-deep {
+    .mat-table {
+      .mat-row {
+        .mat-cell {
+          .form-container__control {
+            max-width: 90px;
+            width: unset;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .extra-small-screen {
+    overflow-x: scroll;
+  }
+}

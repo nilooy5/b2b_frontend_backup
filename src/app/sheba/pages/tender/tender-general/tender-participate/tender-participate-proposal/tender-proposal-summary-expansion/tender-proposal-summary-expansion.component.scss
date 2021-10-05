@@ -1,0 +1,109 @@
+@import 'src/scss/variables';
+@import "../../../../../../../../../src/scss/colors";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600,500&display=swap');
+
+.expansion {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px 0 rgba(19, 34, 64, 0.1);
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 30px;
+
+  &__head {
+    cursor: pointer;
+    padding: 10px 30px;
+    line-height: 1.5;
+    font-weight: 600;
+    border-bottom: solid 0.5px #d3d8e6;
+
+    &__label {
+      align-self: center;
+    }
+
+    &__icon {
+      align-self: center;
+      color: $primary;
+      .material-icons {
+        font-size: 32px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  &__highlights {
+    padding: 20px 30px 30px;
+    &__title {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 1.33;
+      margin-bottom: 10px;
+    }
+    &__budget {
+      font-weight: 600;
+      font-size: 32px;
+    }
+  }
+
+  &__details {
+    flex-wrap: wrap;
+    padding: 0 30px 55px;
+
+    &__description {
+      font-size: 16px;
+      line-height: 1.5;
+      padding-right: 70px;
+      color: rgba(10, 15, 20, 0.75);
+      padding-left: 0;
+    }
+
+    &__stats {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.57;
+      color: rgba(10, 15, 20, 0.75);
+
+      &__stat {
+        margin-bottom: 11px;
+      }
+    }
+  }
+
+  #tenderDetails {
+    display: none;
+  }
+}
+
+
+.icon {
+  height: 24px;
+  width: 24px;
+  margin-right: 10px;
+}
+
+.budgetNull {
+  margin-top: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+@media screen and (max-width: 768px) {
+  .expansion {
+    margin: 0 15px 15px;
+    &__highlights {
+      flex-wrap: wrap;
+      padding: 20px 20px 30px;
+      margin-bottom: 15px;
+    }
+    &__details {
+      padding: 0 20px 30px;
+      &__description {
+        padding-right: 0;
+        padding-bottom: 30px;
+      }
+      &__stats {
+        padding: 0;
+      }
+    }
+  }
+}

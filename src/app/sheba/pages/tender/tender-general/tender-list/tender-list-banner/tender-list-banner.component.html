@@ -1,0 +1,96 @@
+<div class="tender-container">
+
+    <div class="tender-card" *ngFor="let tender of tenderList" [routerLink]="['/', 'tender', 'list', tender.id]">
+
+        <div class="row row-title flex-nowrap">
+            <div class="col-xl-9 col-lg-8 col-md-8 col-9">
+                <h3 class="tender-card__title" *ngIf="tender.title"> {{ tender.title }} </h3>
+                <p class="tender-card__description" *ngIf="!tender.title && tender.shared_to !== 'public'"> {{tender.description}} </p>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-4 col-3 pl-xl-0">
+                <div *ngIf="tender.shared_to === 'verified' " class="tender-card__seal">
+                    <img class="img-fluid tender-card__seal-image" src="assets/svg/icons/tender/shield.svg" alt="verified vendors">
+                    <p class="tender-card__seal-title">Only Sheba.xyz verified vendors can apply</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-description">
+
+            <div class="col-xl-9 col-lg-8 col-md-8 col-12">
+
+                <!-- Tender Description: If Tender Title is available OR Tender title is not available and Tender is public -->
+                <ng-container>
+                    <p class="tender-card__description" *ngIf="tender.title"> {{tender.description}} </p>
+                    <p class="tender-card__description" *ngIf="!tender.title && tender.shared_to === 'public'"> {{tender.description}} </p>
+                </ng-container>
+
+                <!-- Tender Labels -->
+                <div class="tender-card__labels" *ngIf="tender.labels && tender.labels.length > 0">
+                    <p *ngFor="let label of tender.labels">{{ label }}</p>
+                </div>
+
+                <!-- Tender Additional Information: Last Date of Submission, Delivery Timeline, Category, Payment Option -->
+                <div class="tender-card__additional-info">
+                    <div class="tender-card__additional-info__content" *ngIf="tender.last_date_of_submission">
+                        <img class="img-fluid" [src]="tender.last_date_of_submission.icon" alt="Calendar">
+                        <p>Last date of submission - {{ tender.last_date_of_submission.date }}</p>
+                    </div>
+                    <div class="tender-card__additional-info__content" *ngIf="tender.delivery_within">
+                        <img class="img-fluid" [src]="tender.delivery_within.icon" alt="Date Range" >
+                        <p>Delivery within - {{ tender.delivery_within.date_range }}</p>
+                    </div>
+                    <div class="tender-card__additional-info__content" *ngIf="tender.category">
+                        <img class="img-fluid" [src]="tender.category.icon" alt="Category">
+                        <p>Category - {{ tender.category.name }}</p>
+                    </div>
+                    <div class="tender-card__additional-info__content" *ngIf="tender.payment">
+                        <img class="img-fluid" [src]="tender.payment.icon" alt="Payment">
+                        <p>Payment - {{ tender.payment.option }}</p>
+                    </div>
+                </div>
+
+                <!-- Tender Status: Vendor Participation Count, Time Remaining For Applying -->
+                <div class="tender-card__status-info">
+                    <div class="tender-card__status-info__content" *ngIf="tender.remaining_days"
+                         [ngStyle]="{'background-color': tender.remaining_days.color}">
+
+                        <img class="img-fluid" [src]="tender.remaining_days.icon" alt="Clock">
+                        <p>{{ tender.remaining_days.days }}</p>
+
+                    </div>
+
+                    <div class="tender-card__status-info__content" *ngIf="tender.number_of_applicants_or_applications"
+                         [ngStyle]="{'background-color': tender.number_of_applicants_or_applications.color}">
+
+                        <img class="img-fluid" [src]="tender.number_of_applicants_or_applications.icon" alt="Vendor">
+
+                        <p *ngIf="tender.number_of_applicants_or_applications.applications">
+                            {{ tender.number_of_applicants_or_applications.applications }}
+                        </p>
+
+                        <p *ngIf="tender.number_of_applicants_or_applications.vendors">
+                            {{ tender.number_of_applicants_or_applications.vendors }}
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-xl-3 col-lg-4 col-md-4 col-12 d-flex justify-content-md-center">
+                <div class="tender-card__price">
+                    <ng-container *ngIf="tender.estimated_price; else noBudgetFound">
+                        <h2> {{ tender.estimated_price | currency: 'BDT':'symbol-narrow': '1.0' }} </h2>
+                    </ng-container>
+                    <ng-template #noBudgetFound>
+                        <p> Budget to be fixed </p>
+                    </ng-template>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

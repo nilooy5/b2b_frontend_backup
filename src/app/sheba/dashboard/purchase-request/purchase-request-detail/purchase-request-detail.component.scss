@@ -1,0 +1,106 @@
+@import "../../../../../../src/scss/variables";
+
+.purchase-request-forms-details-header{
+  opacity: 0.8;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: #a7b1cc;
+  padding: 12px 0 12px 20px;
+}
+
+.purchase-request-forms-details{
+  padding: 30px 30px;
+  margin-bottom: 30px;
+
+  .purchase-request-forms-details-row{
+    border-bottom: solid 1.5px #e5ebfa;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+
+    &:last-child{
+      border-bottom: 0;
+    }
+  }
+
+  .purchase-request-forms__create-button{
+    border-radius: 4px;
+    border: solid 1.5px #2f38f1;
+    color: #2f38f1;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 5px 10px 5px 10px;
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  h4{
+    opacity: 0.6;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+  }
+
+  .request-details{
+    opacity: 0.8;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+
+    &.request-price{
+      font-size: 14px;
+      font-weight: 500;
+      color: #458ae6;
+    }
+  }
+
+  &-table{
+    thead{
+      border-bottom: 1px solid #f5f7fc;
+
+      tr{
+        th{
+          opacity: 0.8;
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+    }
+
+    tbody{
+      tr{
+        td{
+          opacity: 0.8;
+          font-size: 14px;
+          font-weight: 400;
+          color: #000000;
+
+          input {
+            border: 1.5px solid $theme-light-grey;
+            background-color: #fafbfc;
+            padding: 20px 16px;
+          }
+
+          textarea{
+            border: 1.5px solid $theme-light-grey;
+            background-color: #fafbfc;
+            padding: 20px 16px;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+.mat-header-cell{
+  margin-bottom: 10px;
+  border: 0;
+}
+
+tr{
+  margin-bottom: 10px;
+  border: 0;
+}

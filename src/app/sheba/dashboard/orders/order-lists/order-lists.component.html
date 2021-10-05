@@ -1,0 +1,87 @@
+<div class="main-content-container">
+    <div class="main-title-block">
+        <div class="main-title">
+            <h2>Orders</h2>
+        </div>
+        <div class="main-title-actions">
+            <div class="flex">
+                <button class="button button-theme mr-2 " [routerLink]="['/','dashboard','quick-purchase']"><span><i
+                        class="fas fa-plus"></i></span></button>
+                <div class="form-item">
+                    <input type="text" class="form-control input--primary input--primary-small"
+                           placeholder="Search ...." [(ngModel)]="search" (keyup)="filterOrders()">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-content-filter" *ngIf="orders.length">
+        <div class="button-group">
+            <button class="button button-small button-outline button-success" [ngClass]="{active:filter==null}"
+                    (click)="filterBy(null)">All
+            </button>
+            <button *ngFor="let item of filterItems" class="button button-small button-outline button-success"
+                    [ngClass]="{active:filter==item.name}"
+                    (click)="filterBy(item.name)">{{item.name}} ({{item.number}})
+            </button>
+        </div>
+    </div>
+    <div class="main-content-block">
+        <div class="main-content-table">
+            <table *ngIf="(orders.length && dataSource); else empty" mat-table [dataSource]="dataSource"
+                   class="table ">
+                <ng-container matColumnDef="service">
+                    <th mat-header-cell *matHeaderCellDef>Service</th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="flex flex-start">
+                                  <span class="profile-image-avatar mr-2">
+                                  <img [lazyLoad]="element.category_thumb" [defaultImage]="appConfig.defaultImage"
+                                       alt="">
+                              </span>
+                            <span class="flex flex-column align-items-start">
+                    <span>{{element.category_name}}</span>
+                      <span class="badge badge-pill mat-caption status-badge"
+                            [style.background-color]="element.status_color">{{element.status}}</span>
+                  </span>
+                        </div>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="provider">
+                    <th mat-header-cell *matHeaderCellDef>Service Provider</th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="flex flex-start">
+                                  <span class="profile-image-avatar mr-2 logo">
+                                  <img [src]="element.partner_logo"
+                                       alt="">
+                              </span>
+                            <span class="flex flex-column align-items-start">
+                    <span>{{element.partner_name}}</span>
+                      <span class="text-muted mat-caption">{{element.contact_number}}</span>
+                  </span>
+                        </div>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef>Price</th>
+                    <td mat-cell
+                        *matCellDef="let element"> <span class="mat-title">
+                        {{element.discounted_price|currency:'৳':'symbol':'1.1-2'}}
+                    </span></td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions" stickyEnd>
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element">
+                        <button class="button button-small button-outline button-primary text-capitalize"
+                                [routerLink]="['/','dashboard','orders',element.id]"> Detail
+                        </button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+            </table>
+            <ng-template #empty>
+                <app-no-item heading="No Order placed"></app-no-item>
+            </ng-template>
+        </div>
+    </div>
+</div>

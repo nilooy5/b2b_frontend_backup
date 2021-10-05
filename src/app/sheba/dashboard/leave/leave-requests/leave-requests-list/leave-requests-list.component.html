@@ -1,0 +1,106 @@
+<div *ngIf="showRequestList">
+<app-leave-requests-list-filter [departments]="departments"
+                                [filteredEmployees]="filteredEmployees"
+                                [selectedRow]="selection.selected"
+                                [totalLeaveRequestsCount]="totalLeaveRequestsCount"
+                                [limit]="getLimit()"
+                                [dataOffset]="dataOffset"
+                                [currentLength]="currentLength"
+                                [sortType]="sortType"
+                                (filterEmitter)="filterLeaveRequests($event)"></app-leave-requests-list-filter>
+
+
+<div class="main-table-block">
+
+    <table mat-table class="main-table-theme" *ngIf="(filteredLeaveRequests.length && dataSource)" [dataSource]="dataSource" >
+
+        <ng-container matColumnDef="select" >
+            <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                              [checked]="selection.hasValue() && isAllSelected()"
+                              *ngIf="checkStatus()">
+                </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row" >
+                <mat-checkbox (click)="$event.stopPropagation()"
+                              (change)="$event ? selection.toggle(row) : null"
+                              [checked]="selection.isSelected(row)"
+                              *ngIf="row.leaveStatus.label === 'Pending'">
+                </mat-checkbox>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="employeeName">
+            <th mat-header-cell *matHeaderCellDef>
+                Employee Name
+                <i class="fas fa-sort pl-2 cursor-pointer" (click)="sortEmployeeName()" ></i>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <span> {{ element.employeeName }}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="leaveType">
+            <th mat-header-cell *matHeaderCellDef> Leave Type </th>
+            <td mat-cell *matCellDef="let element">
+                <span>{{ element.leaveType }}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="leaveDays">
+            <th mat-header-cell *matHeaderCellDef> Leave Days </th>
+            <td mat-cell *matCellDef="let element">
+                <span>{{ element.leaveDays }}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="leaveStatus">
+            <th mat-header-cell *matHeaderCellDef> Your Approval </th>
+            <td mat-cell *matCellDef="let element">
+                <app-badge [badge]="element.leaveStatus"></app-badge>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="totalStatus">
+            <th mat-header-cell *matHeaderCellDef> Leave Status </th>
+            <td mat-cell *matCellDef="let element">
+                <div class="row" style="width: 200px; margin-top: 6px;">
+                    <div class="col-md-7">
+                        <app-badge [badge]="element.totalStatus"></app-badge>
+                    </div>
+                    <div class="ol-md-5">
+                        <button type="button" class="btn p-0" placement="top" ngbTooltip="{{ element.approvers }}" closeDelay="10" tooltipClass="my-custom-class">
+                            <i class="material-icons info-icon">info_outline</i>
+                        </button>
+                    </div>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <i class="material-icons arrow-blue">keyboard_arrow_right</i>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row, columns: displayedColumns;" (click)="redirectToLeaveRequestDetails(row)" style="cursor: pointer"></tr>
+
+    </table>
+
+    <div class="nothing-found-table" *ngIf="!filteredLeaveRequests.length">
+        <h2>No Leave Request Found</h2>
+    </div>
+
+</div>
+
+<div class="nothing-found-table" *ngIf="!filteredLeaveRequests || filteredLeaveRequests === undefined">
+    <h2>No Leave Request Found</h2>
+</div>
+
+</div>
+
+<div *ngIf="!showRequestList">
+    <app-leave-requests-list-empty></app-leave-requests-list-empty>
+</div>

@@ -1,0 +1,22 @@
+.auto-complete {
+  &-lists {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-flow: column;
+    background-color: white;
+    min-width: 100%;
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      white-space: normal;
+      padding: 6px 15px;
+      width: 100%;
+      &:not(:last-child) {
+        border-bottom: 1px solid #ddd;
+      }
+    }
+  }
+
+}

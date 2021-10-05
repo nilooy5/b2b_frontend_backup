@@ -1,0 +1,71 @@
+<div class="bulk-upload-modal">
+
+    <div class="modal-header d-flex justify-content-between align-content-middle">
+        <h3 class="bulk-upload-modal-header align-self-center">Import File</h3>
+
+        <button class="bulk-upload-modal-clear-btn align-self-center" (click)="close()">
+            <i class="material-icons">clear</i>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <div *ngIf="!bulkFile">
+            <p>
+                Use our CSV spreadsheet template to add the detail of each {{info.type}}. <br>
+                We support these file formats:
+            </p>
+
+            <ul>
+                <li>
+                    Excel Spreadsheet (.xlsx)
+                </li>
+                <li>
+                    Excel 5.0/95 Spreadsheet (.xls)
+                </li>
+            </ul>
+        </div>
+
+        <div *ngIf="bulkFile" class="d-flex justify-content-between" style="padding-bottom: 20px;">
+            <p>{{bulkFile.name}}</p>
+
+            <div class="change-btn-wrapper">
+                <input class="file-upload-field" type="file" name="changeFile" id="changeFile" accept=".xlsx,.xls,.xlm,.xla,.xlc,.xlt,.xlw"
+                       (change)="importBulkFile($event)" />
+
+                <button class="btn change-upload-btn">
+                    Change File
+                </button>
+                <!--<p v-if="topUpDataExcelError" class="error-text">{{topUpDataExcelError}}</p>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-body-footer d-flex justify-content-between">
+        <a class="align-self-center" [href]="info.link" download>
+            Download XLS Template
+        </a>
+
+        <div class="d-flex justify-content-start" *ngIf="!bulkFile">
+            <button class="btn btn-block cancel-upload-btn" (click)="close()">
+                Cancel
+            </button>
+
+            <div class="upload-btn-wrapper">
+                <input class="file-upload-field" type="file" name="bulkFileUpload" id="bulkFileUpload" accept=".xlsx,.xls,.xlm,.xla,.xlc,.xlt,.xlw" (change)="importBulkFile($event)" />
+
+                <button class="btn btn-block file-upload-btn">
+                    Import File
+                </button>
+                <!--<p v-if="topUpDataExcelError" class="error-text">{{topUpDataExcelError}}</p>-->
+            </div>
+        </div>
+
+        <div *ngIf="bulkFile" class="upload-btn-wrapper">
+            <button class="btn btn-block file-upload-btn" (click)="uploadBulkFile()">
+                Upload File
+            </button>
+        </div>
+
+    </div>
+
+</div>

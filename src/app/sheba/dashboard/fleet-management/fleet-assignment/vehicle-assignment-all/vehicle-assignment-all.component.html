@@ -1,0 +1,42 @@
+<div class="b2b-breadcrumb">
+    <a [routerLink]="['/','dashboard','fleet-management','assignments']">Fleet Management</a><span>/</span>
+    <a [routerLink]="['/','dashboard','fleet-management','vehicle']">Vehicles</a> <span>/</span>
+    <span>Vehicle assignment</span>
+</div>
+<div class="main-content-container">
+    <div class="main-content-block pb-0">
+        <app-vehicle-assignments-filter (OnFilterEvent)="loadCalendar($event)"></app-vehicle-assignments-filter>
+    </div>
+    <div class="main-content-block">
+        <div class="content-block-container">
+            <div class="content-block-left">
+                <div class="content-block-header">
+                    <span> {{groupText[groupType]}}</span> <span><mat-spinner [diameter]="20"
+                                                                              *ngIf="loadingData"></mat-spinner></span>
+                </div>
+                <div class="content-block-left-items" *ngIf="data && data.length">
+                    <div class="content-block-item" *ngFor="let item of data">
+                        <div class="content-block-item-image">
+                            <div class="profile-image-avatar">
+                                <img [lazyLoad]="item.image" alt="" [defaultImage]="appConfig.defaultImage">
+                            </div>
+                        </div>
+                        <div class="content-block-item-content">
+                            <div class="content-block-item-title">
+                                {{item.name}}
+                            </div>
+                            <div class="content-block-item-texts">
+                                <span [ngClass]="{active:item.status=='Active'||item.status=='active'}">{{item.status}}</span>
+                                <span>{{item.type}}</span> <span>{{item.department}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-block-right" *ngIf="data && data.length">
+                <app-fleet-calendar [viewType]="viewType" [viewItems]="data"
+                                    [startDate]="startDate"></app-fleet-calendar>
+            </div>
+        </div>
+    </div>
+</div>

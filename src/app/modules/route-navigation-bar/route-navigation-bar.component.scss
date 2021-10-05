@@ -1,0 +1,54 @@
+@import 'src/scss/variables';
+
+:host /deep/ {
+    .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+      background-color: #347dfd;
+      height: 3px;
+    }
+}
+
+.navigation {
+  &-container {
+    width: 100%;
+    //padding: 15px 60px 15px 20px;
+    background-color: #fff;
+    margin-bottom: 50px;
+  }
+
+  &-inner {
+    width: 100%;
+    background-color: white;
+    padding-left: 100px;
+    border-bottom: solid 1px #e0e1e4;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    -webkit-transition: padding-left .3s ease-in-out;
+    -moz-transition: padding-left .3s ease-in-out;
+    -ms-transition: padding-left .3s ease-in-out;
+    -o-transition: padding-left .3s ease-in-out;
+    transition: padding-left .3s ease-in-out;
+    z-index: 5;
+
+    &.open {
+      padding-left: 235px;
+    }
+
+    nav {
+      border-bottom: 0;
+    }
+
+    a {
+      color: #666666;
+      opacity: 1;
+      min-width: 100px;
+      font-size: 14px;
+      line-height: 1.29;
+
+      &.active {
+        color: #347dfd;
+      }
+    }
+  }
+}
+

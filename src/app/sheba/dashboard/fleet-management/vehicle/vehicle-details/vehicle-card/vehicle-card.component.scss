@@ -1,0 +1,46 @@
+@import "../../../../../../../scss/variables";
+
+h5 {
+  margin: 16px 24px;
+}
+
+.vehicle-card {
+  background-color: $white;
+  padding: 16px;
+  border-radius: 4px;
+  img {
+    height: 80px;
+    width: 80px;
+    border-radius: 4px;
+    margin-right: 20px;
+  }
+  .vehicle-info {
+    font-size: 20px;
+    p {
+      margin-bottom: 10px;
+      .status-badge {
+        background-color: $mat-green-light;
+        color: $mat-green;
+        font-weight: 400;
+        font-size: 12px;
+        padding: 3px 15px;
+        position: relative;
+        top: -3px;
+      }
+      &.schedule {
+        color: $mid_grey;
+        font-size: 14px;
+        span {
+          color: $black60;
+        }
+        i {
+          font-size: 20px;
+          position: relative;
+          top: 4px;
+          margin-right: 10px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

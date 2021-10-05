@@ -1,0 +1,19 @@
+@import "../../../leave-requests/leave-requests-details/leave-requests-details-info/leave-requests-details-info.component";
+
+.key-arrow-right {
+  color: $primary;
+}
+
+:host::ng-deep {
+  .main-table-theme thead tr th.mat-header-cell {
+    border: 0;
+    height: 50px;
+
+    &:first-of-type {
+      border-radius: 10px 0 0 10px;
+    }
+    &:last-of-type {
+      border-radius: 0 10px 10px 0;
+    }
+  }
+}

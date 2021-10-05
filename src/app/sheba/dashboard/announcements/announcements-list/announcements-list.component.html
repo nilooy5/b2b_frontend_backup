@@ -1,0 +1,81 @@
+<app-announcements-list-filter [totalAnnouncementsCount]="totalAnnouncementsCount"
+                               [limit]="getLimit()"
+                               (filterEmitter)="filterAnnouncements($event)"
+                               (searchInputEmitter)="handleSearch($event)"></app-announcements-list-filter>
+
+<div class="main-content-container">
+    <div class="main-content-block">
+        <div class="main-content-table">
+            <table mat-table class="table designer-table" id="table" *ngIf="(filteredAnnouncements.length && dataSource)"
+                   [dataSource]="dataSource" [trackBy]="trackByFn">
+
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef>ID</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span> #N-{{ element.id }}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef>Type</th>
+                    <td mat-cell *matCellDef="let element">
+            <span class="announcement-type" [ngClass]="element.type | announcementColor: 'type' ">
+                {{ element.type }}
+            </span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="title">
+                    <th mat-header-cell *matHeaderCellDef>Title</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span> {{ element.title }}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef>Status</th>
+                    <td mat-cell *matCellDef="let element">
+            <span class="announcement-status" [ngClass]="element.status | announcementColor: 'status' ">
+                {{ element.status }}
+            </span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="end_date">
+                    <th mat-header-cell *matHeaderCellDef>Ends At</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>{{ element.end_date | date: 'dd/MM/yyyy' }}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="created_at">
+                    <th mat-header-cell *matHeaderCellDef>Created at</th>
+                    <td mat-cell *matCellDef="let element">
+                        <span>{{ element.created_at | date: 'dd/MM/yyyy' }}</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element" id="actionsColumnContent">
+                        <i class="material-icons">keyboard_arrow_right</i>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+
+                <tr mat-row *matRowDef="let row, columns: displayedColumns;" class="pointer"
+                    (click)="redirectToAnnouncement(row.id)"></tr>
+
+            </table>
+
+            <div class="no-announcements" *ngIf="!filteredAnnouncements.length">
+                <h3>No Announcement Available.</h3>
+            </div>
+        </div>
+
+        <div class="no-announcements" *ngIf="!filteredAnnouncements || filteredAnnouncements === undefined">
+            <h3>No Announcement Available</h3>
+        </div>
+    </div>
+</div>

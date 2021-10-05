@@ -1,0 +1,45 @@
+<div class="list-filter ">
+    <div class="row d-flex justify-content-between align-items-center" style="margin-top: 15px">
+        <div class="col-md-3" style="padding-right: 0">
+            <div class="select--primary">
+                <select name="" id="submissionFilter" (change)="selectVehicle($event)" style="padding: 5px 16px">
+                    <option value="" selected>All Vehicle</option>
+                    <option value="hatchback">Hatchback</option>
+                    <option value="sedan">Sedan</option>
+                    <option value="suv">SUV</option>
+                    <option value="passenger_van">Passenger Van</option>
+                    <option value="others">Others</option>
+                </select>
+                <i class="material-icons" style="top: 5px">keyboard_arrow_down</i>
+            </div>
+        </div>
+        <div class="col-md-3" style="padding-right: 0">
+            <div class="select--primary">
+                <select name="" id="formFilter" (change)="selectForm($event)" style="padding: 5px 16px">
+                    <option disabled selected>Filter inspection forms</option>
+                    <option *ngFor="let item of forms" [value]="item.id">{{item.title}}</option>
+                    <option value="">All</option>
+                </select>
+                <i class="material-icons" style="top: 5px">keyboard_arrow_down</i>
+            </div>
+        </div>
+        <div class="col-md-2" style="padding-right: 0">
+            <div class="select--primary">
+                <select name="" id="sortFilter" (change)="selectSort($event)" style="padding: 5px 16px">
+                    <option value="0">Ascending</option>
+                    <option value="1">Descending</option>
+                </select>
+                <i class="material-icons" style="top: 5px">keyboard_arrow_down</i>
+            </div>
+        </div>
+        <div class="pagination d-flex align-items-center justify-content-end col">
+            <!--<p>37 Records found</p>-->
+            <div class="pagination--control d-flex align-items-center">
+
+                <button class="btn" (click)="PreviousPage()"><i class="material-icons">keyboard_arrow_left</i></button>
+                <!--<p><span>1</span> / 5</p>-->
+                <button class="btn" (click)="nextPage()"><i class="material-icons">keyboard_arrow_right</i></button>
+            </div>
+        </div>
+    </div>
+</div>

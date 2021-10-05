@@ -1,0 +1,108 @@
+@import "../../../../../../../../scss/variables";
+
+.procurement-tender-bid-vendor-card {
+  padding: 20px 15px;
+  &.minimal {
+    padding: 10px 0;
+  }
+  p {
+    font-size: 14px;
+    margin: 0;
+  }
+  i {
+    font-size: 14px;
+    position: relative;
+    top: 2px;
+  }
+  &__logo {
+    position: relative;
+    width: auto;
+    height: 51px;
+    margin-right: 10px;
+    overflow: visible;
+    border-radius: 5px;
+    border: solid 1.5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    img {
+      width: 50px;
+      height: 99%;
+    }
+    .favorite-notion {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      background-color: #fa5252;
+      border-radius: 50%;
+      height: 16px;
+      width: 16px;
+      text-align: center;
+      i {
+        color: $white;
+        font-size: 11px !important;
+        position: relative;
+        top: -1px;
+      }
+    }
+  }
+  &__name {
+    color: $black80;
+    cursor: pointer;
+  }
+  &__rating {
+    font-weight: 500;
+    color: $ratings-gold;
+    margin-right: 5px;
+    font-size: 12px !important;
+    i {
+      font-size: 12px !important;
+    }
+  }
+  &__show {
+    color: $black20;
+    i {
+      font-size: 16px !important;
+    }
+    &.active {
+      color: $view_active_green;
+    }
+  }
+  &__date {
+    font-size: 10px !important;
+    color: $black60;
+  }
+  &__favorite {
+    top: 3px;
+    &.active {
+      color: $status-red;
+    }
+  }
+  &__quotation-btn {
+    padding: 3px 7px;
+    font-size: 12px;
+    margin-top: 10px;
+    width: 82px;
+    height: 26px;
+    border-radius: 13px;
+  }
+  &__hired-tag {
+    padding: 1px;
+    border: 1px solid #E30F21;
+    color: #E30F21;
+    font-weight: 800;
+    font-size: 12px;
+    margin-left: 10px;
+    line-height: 1;
+    border-radius: 1px;
+  }
+}
+.form-field {
+  &-message {
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+    border: solid 1px #2f38f1;
+    background-color: #2f38f1;
+    color: #ffffff;
+    margin-top: 5.5px;
+  }
+}

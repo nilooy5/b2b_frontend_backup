@@ -1,0 +1,96 @@
+<div class="expansion-panel-container">
+
+    <input id="expansion" class="expansion-panel-toggle" type="checkbox">
+
+    <label for="expansion" class="expansion-panel-label">
+        <span>Additional Information</span>
+    </label>
+
+    <div class="expansion-panel-content" [formGroup]="additionalInfoForm">
+
+        <div class="row mb-20">
+            <!-- Sharing To -->
+            <div class="col-md-6">
+                <label class="form-container__label">Sharing to</label>
+                <ng-select class="form-container__dropdown" [searchable]="false" [clearable]="false" formControlName="sharing_to">
+                    <ng-option *ngFor="let shareTo of sharingTo" [value]="shareTo.key">
+                        {{ shareTo.value }}
+                    </ng-option>
+                </ng-select>
+            </div>
+
+            <!-- Delivery Timeline -->
+            <div class="col-md-6 pl-0">
+                <label class="form-container__label">Delivery Timeline</label>
+                <div class="date-picker w-100">
+                    <app-material-date-range-picker class="delivery-date-range-picker"
+                        [initialDateRange]="deliveryTimelineObj"
+                        (selectedDateRange)="handleDeliveryTimeline($event)"></app-material-date-range-picker>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-20">
+            <!--  Last Date of Submission -->
+            <div class="col-md-6">
+                <label class="form-container__label">Last date of quotation submission</label>
+                <div class="date-picker w-100">
+                    <mat-datepicker #lastDateOfSubmission></mat-datepicker>
+                    <input class="form-control"  id="lastDateOfSubmission"
+                           matInput [matDatepicker]="lastDateOfSubmission"
+                           (focus)="lastDateOfSubmission.open()"
+                           [min]="minDate" formControlName="last_date_of_submission"readonly>
+                    <span class="date-picker__toggle">
+                            <mat-datepicker-toggle matSuffix [for]="lastDateOfSubmission"></mat-datepicker-toggle>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Number of Participants -->
+            <div class="col-md-6 pl-0">
+                <label class="form-container__label">Number of participants</label>
+                <ng-select class="form-container__dropdown" [searchable]="false" [clearable]="false" formControlName="number_of_participants">
+                    <ng-option *ngFor="let participant of numberOfParticipants" [value]="participant.key">
+                        {{ participant.value }}
+                    </ng-option>
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Categories -->
+            <div class="col-md-6">
+                <label class="form-container__label">Category</label>
+                <ng-select class="form-container__dropdown" [searchable]="false" [clearable]="false" formControlName="category">
+                    <ng-option *ngFor="let category of categories" [value]="category.id">
+                        {{ category.name }}
+                    </ng-option>
+                </ng-select>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="col-md-6 d-flex align-items-end pl-0" style="padding-bottom: 8px">
+                <ng-container *ngIf="!showPaymentMethodInput">
+                    <button class="payment-method__button" (click)="showInput('payment')">+ Add Payment Method</button>
+                </ng-container>
+            </div>
+            <div class="col-md-12 mt-20 py-0 px-15">
+                <!-- Input: Budget -->
+                <ng-container *ngIf="showPaymentMethodInput">
+                    <div class="d-flex flex-column form-container mb-20">
+                        <label for="payment" class="form-container__label">Payment Method</label>
+                        <input type="text" id="payment" class="form-container__control"
+                               formControlName="payment_option"
+                               placeholder="Enter desired payment method from given options">
+                    </div>
+                    <div class="d-flex mb-30" >
+                        <ng-container *ngFor="let payment of paymentMethods">
+                            <button class="payment-method__options" (click)="assignPayment(payment)">{{payment}}</button>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+
+</div>

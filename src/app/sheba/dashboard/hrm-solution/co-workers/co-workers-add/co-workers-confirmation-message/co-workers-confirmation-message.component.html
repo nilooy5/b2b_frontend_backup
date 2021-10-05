@@ -1,0 +1,17 @@
+<ng-container *ngIf="showMessageContainer">
+    <div class="message-container d-flex justify-content-between" [ngClass]="{success: isSuccessful, error: !isSuccessful}">
+        <div class="d-flex align-items-center">
+            <i class="material-icons message-icon">
+                <ng-template [ngIf]="isSuccessful">check_circle</ng-template>
+                <ng-template [ngIf]="!isSuccessful">error</ng-template>
+            </i>
+            <p class="m-0" style="font-size: 14px; line-height: 1.43; color: #fff;">
+                {{ message }}
+            </p>
+        </div>
+
+        <div class="d-flex align-items-center">
+            <i class="material-icons close-icon cursor-pointer" (click)="closeMessageContainer()">close</i>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,26 @@
+<div class="breadcrumb-container">
+    <div class="breadcrumb-content" [ngClass]="{ open:isSidebarClosed }">
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" *ngFor="let breadcrumb of breadcrumbList">
+                <a [ngClass]="{active: breadcrumb.isActive === true}"
+                   [routerLink]="breadcrumb.path">
+                    {{ breadcrumb.title }}
+                </a>
+            </li>
+        </ol>
+
+        <div class="breadcrumb-buttons">
+            <!--<button class="button button&#45;&#45;primary&#45;&#45;outline breadcrumb-buttons__outline">
+                Download
+            </button>-->
+            <button (click)="inviteCoWorker()" class="button button--primary--outline breadcrumb-buttons__outline">
+                Invite co-worker
+            </button>
+            <button class="button button--filled breadcrumb-buttons__filled" [routerLink]="['.', 'add']">
+                Add Co-worker
+            </button>
+        </div>
+
+    </div>
+</div>

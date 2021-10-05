@@ -1,0 +1,64 @@
+<app-fleet-issue-list-filter (sortEmitter)="applySort($event)" (filterEmitter)="applyFilter($event)"></app-fleet-issue-list-filter>
+
+<div class="main-content-block">
+    <div class="main-content-table" *ngIf="issues">
+        <table *ngIf="(issues.length && dataSource)" mat-table [dataSource]="dataSource"
+               class="table  designer-table">
+            <ng-container matColumnDef="vehicle">
+                <th mat-header-cell style="min-width: 30%" *matHeaderCellDef>Vehicle</th>
+                <td mat-cell *matCellDef="let element">
+                    <div style="margin-top: 10px; margin-bottom: 10px">
+                        <p style="margin-bottom: 8px">{{element.vehicle.vehicle_model}}</p>
+                        <p class="vehicle-info">
+                                 <span><i class="material-icons"
+                                          [class.active]="element.vehicle.status === 'active'"
+                                          [class.inactive]="element.vehicle.status === 'inactive'"
+                                 >brightness_1</i>{{element.vehicle.status}}</span>
+                        <li>{{element.vehicle.vehicle_type}}</li>
+                        <li>{{element.vehicle.assigned_to}}</li>
+                        </p>
+                    </div>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="submission_id">
+                <th mat-header-cell *matHeaderCellDef>Submitted</th>
+                <td mat-cell *matCellDef="let element">
+                    <span style="font-size: 14px; color: #458ae6">Submission#{{element.id}}</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="issue">
+                <th mat-header-cell *matHeaderCellDef>Issue</th>
+                <td mat-cell *matCellDef="let element">
+                    <div style="margin-top: 10px; margin-bottom: 10px" class="issue-info">
+                        <p style="margin-bottom: 8px">{{element.title}}
+                            <span class="issue-status-badge"
+                                  [class.open]="element.status === 'open'"
+                                  [class.closed]="element.status === 'closed'"
+                                  [class.overdue]="element.status === 'overdue'"
+                                  [class.process]="element.status === 'process'">{{element.status}}</span>
+                        </p>
+                        <p class="issue-description" style="margin-bottom: 8px">{{element.comment}} </p>
+                    </div>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="actions" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                    <button class="button button-flat button-fav"
+                            [routerLink]="['/','dashboard', 'fleet-management', 'issue',element.id]"><i
+                        class="fa fa-chevron-right"></i>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+        </table>
+        <div class="no-driver" *ngIf="issues && !issues.length">
+            <p>No Inspections Available.</p>
+        </div>
+    </div>
+    <div class="no-driver" *ngIf="!issues || issues === undefined">
+        <p>No Inspections Available.</p>
+    </div>
+</div>

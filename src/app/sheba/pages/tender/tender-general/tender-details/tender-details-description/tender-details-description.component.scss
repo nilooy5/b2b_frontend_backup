@@ -1,0 +1,168 @@
+@import "src/scss/variables";
+@import "src/app/sheba/pages/tender/tender-general/tender-list/tender-list-banner/tender-list-banner.component.scss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600,500&display=swap');
+
+
+.tender-description {
+  margin: 30px 30px 0 0;
+  font-family: "Poppins", sans-serif;
+
+  &__head {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 0 rgba(19, 34, 64, 0.1);
+    padding: 20px 30px;
+    margin-bottom: 20px;
+
+    &__left {
+      padding-right: 15px;
+
+      &__title {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 1.33;
+        margin-bottom: 10px;
+        word-break: break-word;
+      }
+
+      &__labels {
+        font-size: 12px;
+      }
+
+      &__category {
+        margin-top: 15px;
+        font-size: 14px;
+        font-weight: 500;
+
+        img {
+          height: 24px;
+          width: 24px;
+          margin-right: 10px;
+        }
+      }
+    }
+
+    &__budget {
+      &__title {
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      &__amount {
+        font-weight: 600;
+        font-size: 32px;
+      }
+    }
+  }
+
+  &__details {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 0 rgba(19, 34, 64, 0.1);
+    margin-bottom: 30px;
+
+    &__title {
+      font-weight: 600;
+      border-bottom: solid 0.5px #d3d8e6;
+      padding: 14px 30px;
+    }
+
+    &__description {
+      padding: 20px 30px 30px;
+      word-break: break-word;
+    }
+
+    &__attachments {
+      font-size: 14px;
+      font-weight: 600;
+      padding: 0 30px 35px;
+
+      &__title {
+        line-height: 1.43;
+        margin-bottom: 15px;
+      }
+
+      &__contents {
+      }
+    }
+  }
+}
+
+.attachment {
+  margin-right: 15px;
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+
+  &__preview {
+    height: 80px;
+
+    img {
+      border-radius: 10px 10px 0 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__type {
+    text-align: center;
+    font-weight: 600;
+    color: white;
+    height: 20px;
+    border-radius: 0 0 10px 10px;
+  }
+}
+
+.budgetNull {
+  margin-top: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.partner {
+  color: white;
+  font-size: 14px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  background-color: #e75050;
+  line-height: 1.43;
+  margin-bottom: 15px;
+
+  &--verified {
+    background-color: #c71f66;
+
+    a {
+      font-weight: 600;
+      margin-left: 18px;
+      border-bottom: dashed 1px white;
+      color: white;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tender-description {
+    margin: 30px 15px 0 15px;
+
+    &__head {
+      flex-wrap: wrap;
+      padding: 15px 20px 30px;
+
+      &__budget {
+        margin-top: 20px;
+      }
+    }
+
+    &__details {
+      margin-bottom: 15px;
+      &__description {
+        padding: 15px 20px 30px;
+      }
+      &__attachments {
+        padding: 0 20px 30px;
+      }
+    }
+  }
+}
+

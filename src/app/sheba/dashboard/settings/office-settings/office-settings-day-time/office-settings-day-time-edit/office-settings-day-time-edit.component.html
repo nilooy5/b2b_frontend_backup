@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-11 bg-white p-0 office-settings-info-edit-container">
+            <div class="office-settings-info-edit-header">
+                <p class="m-0">Office day & time settings</p>
+            </div>
+            <hr>
+            <div class="office-settings-info-edit-content">
+                <form [formGroup]="form" (submit)="submit($event)">
+                    <div class="row m-0 office-settings-info-edit-padding28">
+<!--                        <div class="col-md-3 p-0 mt-2">-->
+<!--                            <p class="office-settings-info-edit-title">Office hour type</p>-->
+<!--                        </div>-->
+                        <div class="col-md-3 p-0" style="margin-top: 3px">
+                            <p class="office-settings-info-edit-title">Office hour type</p>
+                        </div>
+                        <div class="col-md-9 p-0 m-0">
+<!--                            <mat-radio-group aria-label="Select an option">-->
+                                <mat-radio-button value="fixed" [checked]="true"> <span class="ml-2 office-settings-info-edit-value"> Fixed Time </span>
+                                    <span class="ml-2 office-settings-info-edit-subvalue"> - Office starts & ends on a fixed time </span>
+                                </mat-radio-button>
+                                <br>
+<!--                                <mat-radio-button value="flexible" [disabled]="true"> <span class="ml-2 office-settings-info-edit-value"> Flexible Time </span>-->
+<!--                                    <span class="ml-2 office-settings-info-edit-subvalue"> - Office starts within a fixed & hours count </span>-->
+<!--                                </mat-radio-button>-->
+<!--                            </mat-radio-group>-->
+                        </div>
+                    </div>
+                    <div class="row m-0 office-settings-info-edit-padding15">
+                        <div class="col-md-3 p-0 mt-3">
+                            <p class="office-settings-info-edit-title">Start Time</p>
+                        </div>
+                        <div class="col-md-9 p-0 m-0">
+                            <mat-form-field appearance="outline">
+                                <input class="office-settings-info-edit-value" type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" matInput
+                                       id="Start Date"
+                                       formControlName="start_date"
+                                       placeholder="Choose a start time" required>
+                                <i class="material-icons" style="opacity: 0.3" matSuffix>watch_later</i>
+                            </mat-form-field>
+                            <owl-date-time [pickerType]="'timer'" [hour12Timer]="true" #dt1></owl-date-time>
+                        </div>
+                    </div>
+                    <div class="row m-0 office-settings-info-edit-padding15">
+                        <div class="col-md-3 p-0 mt-3">
+                            <p class="office-settings-info-edit-title">End Time</p>
+                        </div>
+                        <div class="col-md-9 p-0 m-0">
+                            <mat-form-field appearance="outline">
+                                <input class="office-settings-info-edit-value" type="text" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" matInput id="End Date"
+                                       formControlName="end_date"
+                                       placeholder="Choose a end time" required>
+                                <i class="material-icons" style="opacity: 0.3" matSuffix>watch_later</i>
+                            </mat-form-field>
+                            <owl-date-time [pickerType]="'timer'" [hour12Timer]="true" #dt2></owl-date-time>
+                        </div>
+                    </div>
+                    <div class="row m-0 office-settings-info-edit-padding28">
+                        <div class="col-md-3 p-0 mt-2">
+                            <p class="office-settings-info-edit-title">Weekend</p>
+                        </div>
+                        <div class="col-md-9 p-0 m-0">
+                            <div class="row">
+                                <div class="col-md-3" *ngFor="let weekend of weekends">
+                                      <mat-checkbox [checked]="existing_weekends.indexOf(weekend) != -1" [value]="weekend" (change)="onCheckChange($event)"> <span class="ml-1 office-settings-info-edit-value"> {{ weekend }} </span></mat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0 office-settings-info-edit-padding28">
+                        <div class="col-md-3 p-0 mt-2">
+
+                        </div>
+                        <div class="col-md-9 p-0 m-0">
+                            <button type="submit" id="save-button">SAVE</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

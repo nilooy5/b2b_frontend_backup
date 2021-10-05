@@ -1,0 +1,64 @@
+<div class="journey__container">
+    <div *ngIf="!showConfirm"   >
+        <app-journey-header title="Invite Vendors" [showCart]="false"></app-journey-header>
+        <div class="procurement-tender-invite__search">
+            <app-multi-select-with-search #multiSelectWithSearch [items]="vendorsForMultiSelect" (select)="handleVendors($event)"></app-multi-select-with-search>
+        </div>
+        <br><br>
+        <div *ngIf="selectedVendors.length">
+            <h5 class="text-center">Selected Vendors</h5>
+
+            <br>
+
+            <ul class="selected-vendors">
+                <li class="d-flex justify-content-between align-items-center" *ngFor="let item of selectedVendors">
+                    <img src="https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/images/partners/logos/1496558303_dhaka_setup.jpeg" alt="">
+                    <div style="flex-grow: 1">
+                        <h6>{{item.name}}</h6>
+                        <p>
+                            {{item.mobile}} <span class="ball"></span> {{item.address}}
+                        </p>
+                    </div>
+                    <button class="btn button--filled selected-vendors__close-btn" (click)="removeItem(item)"><i class="material-icons">close</i></button>
+                </li>
+            </ul>
+
+            <br>
+
+            <div class="text-center">
+                <button class="btn button--filled procurement-tender-invite__button" (click)="inviteVendors()">{{inviteRequestLoading ? 'Loading...' : 'Invite Vendors'}}</button>
+            </div>
+        </div>
+        <div *ngIf="!selectedVendors.length" class="addVendor">
+            <h3>Did not enlist the vendor you are looking for?</h3>
+            <div class="d-flex  justify-content-center">
+                <button  [routerLink]="['/', 'dashboard', 'vendors', 'add']"
+                    class="button button-primary button-semi-small button-outline">Add New Vendor</button>
+            </div>
+        </div>
+
+        <br><br><br>
+
+        <section class="skip-invite" style="padding-top: 5em">
+            <div>
+                <a [routerLink]="['/', 'dashboard', 'procurement']">Skip inviting vendors ></a>
+            </div>
+        </section>
+    </div>
+    <div *ngIf="showConfirm">
+        <app-confirm-message
+            theme="large"
+            [type]="confirmType"
+            [title]="confirmTitle"
+            [text]="confirmMessage" [showControl]="false"></app-confirm-message>
+
+        <div class="d-flex justify-content-center invite-confirm-action">
+            <button class="btn button--filled" (click)="viewProcurementDetails()" style="margin-right: 10px">
+                View Details
+            </button>
+            <button class="btn button--outline" (click)="resetInvite()">
+                Invite Again
+            </button>
+        </div>
+    </div>
+</div>

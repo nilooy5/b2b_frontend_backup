@@ -1,0 +1,41 @@
+@import 'src/scss/variables';
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin-bottom: 0;
+  list-style: none;
+  background-color: transparent;
+  &-container {
+    width: 100%;
+    padding: 15px 60px 15px 20px;
+    background-color: #fff;
+
+    &.htmlMarkup {
+      padding: 5px 60px 5px 20px;
+    }
+  }
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 100px;
+    -webkit-transition: padding-left .3s ease-in-out;
+    -moz-transition: padding-left .3s ease-in-out;
+    -ms-transition: padding-left .3s ease-in-out;
+    -o-transition: padding-left .3s ease-in-out;
+    transition: padding-left .3s ease-in-out;
+    &.open {
+      padding-left: 240px;
+    }
+  }
+  &-item {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.8);
+    & .active {
+      color: rgba(0, 0, 0, 0.5);
+      cursor: auto;
+    }
+  }
+}

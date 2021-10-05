@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="row d-flex justify-content-end">
+        <div class="purchase-request-forms__action">
+            <button class="button button-primary button-semi-small purchase-request-forms__create-button mr-3" (click)="createForm()">
+                Create Form
+            </button>
+        </div>
+    </div>
+
+    <div class="purchase-request-forms__section row">
+        <div class="col-4" *ngFor="let form of forms">
+            <app-purchase-request-form-card [form]="form"></app-purchase-request-form-card>
+        </div>
+    </div>
+</div>

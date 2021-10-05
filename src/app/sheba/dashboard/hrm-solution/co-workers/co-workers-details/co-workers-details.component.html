@@ -1,0 +1,40 @@
+<app-co-workers-details-header [headerInfo]="headerInfo"></app-co-workers-details-header>
+
+<div class="main-content-container">
+    <div class="main-content-block">
+        <div class="main-content-inner-block">
+            <div class="main-content-inner-block-left" style="width: 270px">
+
+                <ul class="main-content-inner-block-nav" style="margin-bottom: 160px">
+                    <li class="main-content-inner-block-nav-item">
+                        <a routerLinkActive="active" [routerLink]="['.', 'basic']">Basic</a>
+                    </li>
+                    <li class="main-content-inner-block-nav-item">
+                        <a routerLinkActive="active" [routerLink]="['.', 'official']">Official</a>
+                    </li>
+                    <li class="main-content-inner-block-nav-item">
+                        <a routerLinkActive="active" [routerLink]="['.', 'personal']">Personal</a>
+                    </li>
+                    <li class="main-content-inner-block-nav-item">
+                        <a routerLinkActive="active" [routerLink]="['.', 'financial']">Financial</a>
+                    </li>
+                    <li class="main-content-inner-block-nav-item">
+                        <a routerLinkActive="active" [routerLink]="['.', 'emergency']">Emergency</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="main-content-inner-block-content" style="padding: 30px">
+                <router-outlet></router-outlet>
+                <div class="row">
+                    <div class="offset-lg-4 col-lg-8">
+                        <a class="button button--primary--outline edit-button" (click)="redirectToCoWorkerAdd()">Edit</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

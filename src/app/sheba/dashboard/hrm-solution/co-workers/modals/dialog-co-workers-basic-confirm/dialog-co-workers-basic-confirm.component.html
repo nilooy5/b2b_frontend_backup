@@ -1,0 +1,30 @@
+<div mat-dialog-content>
+    <div class="dialog-content-inner">
+        <div class="confirm-modal">
+
+            <div class="icon-div" (click)="dialogRef.close()">
+                <i class="material-icons">close</i>
+            </div>
+
+            <img *ngIf="data.type === 'success'" src="../../../../../../../assets/svg/check_green.svg" alt="Success">
+            <img *ngIf="data.type === 'failure'" src="../../../../../../../assets/svg/cross_error_red.svg" alt="Failure">
+
+            <h4> {{ data.title }} </h4>
+
+            <p> {{ data.text }} </p>
+
+            <div class="d-flex justify-content-center">
+                <ng-container *ngIf="data.type === 'success'">
+                    <button class="button button--primary--filled" (click)="buttonClick('complete')">Complete Profile</button>
+                    <button class="button button--primary--outline" (click)="buttonClick('another')">Add Another</button>
+                </ng-container>
+
+                <ng-container *ngIf="data.type === 'failure'">
+                    <button class="button button--primary--filled" (click)="buttonClick('try-again')">Try Again</button>
+                    <button class="button button--primary--outline" (click)="dialogRef.close()">Close</button>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+

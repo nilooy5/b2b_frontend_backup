@@ -1,0 +1,9 @@
+<div class="partner-list container">
+    <app-journey-header title="Select Service Provider" [showCart]="false"></app-journey-header>
+    <p>{{partners ? partners.length : 0}} Service providers available. Select the suitable one for you.</p>
+    <app-partner-list-item *ngFor="let partner of partners"
+                           [partner]="partner"
+                           [storageService]="orderService"></app-partner-list-item>
+</div>
+
+

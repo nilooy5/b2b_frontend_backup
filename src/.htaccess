@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    AddDefaultCharset UTF-8
+    RewriteEngine On
+    RewriteBase /
+
+    RewriteCond %{REQUEST_FILENAME} -s [OR]
+    RewriteCond %{REQUEST_FILENAME} -l [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^.*$ - [NC,L]
+
+    RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet)
+    RewriteRule ^tender/list/(.*)$ info.php?id=$1 [NC,L]
+
+    RewriteRule ^(.*) index.html [NC,L]
+</IfModule>

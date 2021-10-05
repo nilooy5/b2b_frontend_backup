@@ -1,0 +1,45 @@
+
+.main-content-inner-block-nav-item {
+  position: relative;
+  a {
+    font-size: 14px;
+    line-height: 1.57;
+    color: rgba(10, 15, 20, 0.75);
+
+    &.active {
+      background-color: rgba(67, 127, 245, 0.02);
+      color: #437ff5;
+      font-weight: 500;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 6px;
+        height: 100%;
+        background-color: #4373f5;
+        border-radius: 0 100px 100px 0;
+      }
+    }
+  }
+}
+
+.edit-button {
+  padding: 0;
+  min-height: 0;
+  width: 120px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  border: solid 1px #4373f5;
+  color: #437ff5 !important;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  border-radius: 8px !important;
+
+  &:hover {
+    background-color: #4373f5;
+    color: #fff !important;
+  }
+}

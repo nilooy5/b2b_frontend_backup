@@ -1,0 +1,18 @@
+<div class="d-flex flex-column bd-highlight">
+    <div class="text-right bd-highlight">
+        <img (click)="onNoClick()" src="/assets/svg/cross_black.svg"
+             class="cross">
+    </div>
+    <div class="bd-highlight text-center mt-3">
+        <img [src]="data.icon"
+             class="confirm">
+    </div>
+    <div class="bd-highlight wait text-center mt-4">{{data.type}}</div>
+    <div class="bd-highlight Are-you-sure-you-wan text-center">
+        {{data.message}}
+    </div>
+    <div class="bd-highlight text-center">
+        <button (click)="onNoClick()" class="BG-no mr-2">{{data.button_1}}</button>
+        <button class="BG-yes ml-4" (click)="action()">{{data.button_2}}</button>
+    </div>
+</div>

@@ -1,0 +1,112 @@
+@import "../../../scss/colors";
+
+.slider-date-picker {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  margin-bottom: 20px;
+  &-container {
+    width: 100%;
+    display: block;
+    padding: 20px 0;
+    overflow: hidden;
+    overflow-x: auto;
+    position: absolute;
+    &::-webkit-scrollbar {
+      display: none;
+      width: 0px;  /* Remove scrollbar space */
+      background: transparent;  /* Optional: just make scrollbar invisible */
+    }
+    &::-webkit-scrollbar-thumb {
+      background: transparent;
+    }
+
+    &-wrapper {
+      position: relative;
+      width: 100%;
+      height: 110px;
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+      margin: 0 0 20px;
+      overflow: hidden;
+    }
+  }
+
+  &-items {
+    display: inline-flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    width: 100%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+    &.active {
+      background-color: $primary-green-light;
+      border: 1px solid $primary-green;
+      color: $primary-green;
+      p {
+        color: $primary-green;
+      }
+    }
+    h2 {
+      font-size: 32px;
+      font-weight: 400;
+      margin-bottom: 2px;
+      color: $primary-green;;
+    }
+    p {
+      margin: 0;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.4);
+    }
+    &-container {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      position: relative;
+      padding: 0 10px 0 0;
+      width: 80px;
+      height: 80px;
+      min-width: 70px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &-nav {
+    position: absolute;
+    right: -20px;
+    top: 40px;
+    display: block;
+    font-size: 1rem;
+    border-radius: 50% !important;
+    width: 30px;
+    height: 30px;
+    min-height: 30px;
+    z-index: 3;
+
+    &.nav-left {
+      left: -20px;
+      right: auto;
+    }
+  }
+
+}

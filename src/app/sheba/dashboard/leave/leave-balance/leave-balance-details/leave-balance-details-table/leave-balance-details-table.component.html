@@ -1,0 +1,61 @@
+<table *ngIf="leaveBalanceTable.leaves.length > 0; else noLeaveData" mat-table class="main-table-theme table designer-table" [dataSource]="dataSource">
+
+    <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-cell  style="width: 20%; padding: 18px 20px 18px 20px !important;" *matCellDef="let element">
+            <span>{{element.date}}</span>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="leave_type">
+        <th mat-header-cell *matHeaderCellDef>Leave Type</th>
+        <td mat-cell  style="width: 20%; padding: 18px 20px 18px 10px !important;" *matCellDef="let element">
+            <span>{{element.leave_type}}</span>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="leave_days">
+        <th mat-header-cell *matHeaderCellDef>Leave Days</th>
+        <td mat-cell  style="width: 15%; padding: 18px 20px 18px 40px !important;" *matCellDef="let element">
+            <span>{{element.leave_days}}</span>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="approvalStatus">
+        <th mat-header-cell *matHeaderCellDef>Your Approval</th>
+        <td mat-cell  style="width: 20%; padding: 18px 20px 18px 10px !important;" *matCellDef="let element">
+            <span class="text-capitalize" [ngClass]="getStatus(element.approval_request_status)">{{element.approval_request_status}}</span>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Leave Status</th>
+        <td mat-cell  style="width: 20%; padding: 18px 20px 18px 10px !important;" *matCellDef="let element">
+            <span class="text-capitalize" [ngClass]="getStatus(element.status)">{{element.status}}</span>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell style="text-align: end;" *matCellDef="let element" id="actionsColumnContent">
+            <i class="material-icons key-arrow-right" *ngIf="element.request.has_access; else elseBlock">keyboard_arrow_right</i>
+            <ng-template #elseBlock class="material-icons"></ng-template>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row, columns: displayedColumns;" [ngStyle]="{'cursor': row.request.has_access ? 'pointer' : 'not-allowed'}" (click)="redirectToLeaveRequestDetails(row)" ></tr>
+</table>
+
+<ng-template #noLeaveData>
+    <table mat-table class="main-table-theme table designer-table" [dataSource]="noDataSource">
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center; border-radius: 6px"> Leave Balances </th>
+            <td mat-cell *matCellDef="let element" style="text-align: center; border-radius: 6px; font-weight: bold">No Leave Balance Data found for this employee</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="noLeaveColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: noLeaveColumns;"></tr>
+    </table>
+</ng-template>

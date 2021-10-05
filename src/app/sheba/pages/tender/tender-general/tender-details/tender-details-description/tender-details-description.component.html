@@ -1,0 +1,62 @@
+<div class="tender-description">
+
+    <!--banner invited-->
+    <div class="partner" *ngIf = "tender.is_invited_vendor_only">
+        <span>
+            <img src="../../../../../../../assets/svg/icons/tender/lock.svg" alt="lock">
+            This RFQ is for invited vendors only. You can only participate if the company has invited you to this
+        </span>
+    </div>
+
+    <!--banner verified-->
+    <div class="partner partner--verified" *ngIf = "tender.is_sheba_verified_vendor_only">
+        <span>
+            <img src="../../../../../../../assets/svg/icons/tender/lock.svg" alt="lock">
+            This RFQ is open for Sheba.xyz verified vendors only. Call <span style="font-weight: 600;">16516</span> to get verified.
+            <a style="" href="https://b2b.dev-sheba.xyz" target="_blank">Get verified</a>
+        </span>
+    </div>
+
+    <!--head-->
+    <div class="tender-description__head d-flex justify-content-between">
+        <div class="tender-description__head__left flex-column">
+            <div class="tender-description__head__left__title">
+                {{tender.title}}
+                <div *ngIf="!tender.title">{{tender.description.slice(0, 18)}}...</div>
+            </div>
+            <div class="tender-description__head__left__labels d-flex" *ngIf="tender.labels">
+                <div *ngFor="let label of tender.labels">
+                    <div class="tender-card__left__tags__tag">{{label}}</div>
+                </div>
+            </div>
+            <div class="tender-description__head__left__category d-flex align-items-center" *ngIf="tender.category">
+                <img src="{{tender.category.icon}}" alt="cat_icon">
+                Category - {{tender.category.name}}
+            </div>
+        </div>
+        <div class="tender-description__head__budget flex-column d-flex justify-content-center">
+            <div class="tender-description__head__budget__title">Budget</div>
+            <div class="tender-description__head__budget__amount" *ngIf="tender.estimated_price">
+                ৳&nbsp;{{numericFormat.numberWithCommas(tender.estimated_price)}}</div>
+            <div *ngIf="!tender.estimated_price" class="budgetNull">To be fixed</div>
+        </div>
+    </div>
+    <!--details-->
+    <div class="tender-description__details">
+        <div class="tender-description__details__title">Details</div>
+        <div class="tender-description__details__description">{{tender.description}}</div>
+        <div class="tender-description__details__attachments" *ngIf="tender.attachments.length">
+            <div class="tender-description__details__attachments__title">
+                Attachments
+            </div>
+            <div class="tender-description__details__attachments__contents d-flex">
+                <div *ngFor="let item of tender.attachments" class="attachment d-flex flex-column"
+                     (click)="downloadAttachment(item.file)">
+                    <div class="attachment__preview"><img src="{{item.file}}" alt=""></div>
+                    <div class="attachment__type text-uppercase"
+                         [ngStyle]="{'background': item.file_type.toLowerCase() === 'jpg' ? '#12b886' : '#e75050'}">{{item.file_type}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

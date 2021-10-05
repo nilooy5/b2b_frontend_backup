@@ -1,0 +1,155 @@
+@import "../../../../../../../scss/variables";
+
+
+.main-content {
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 1px 5px 0 rgba(19, 34, 64, 0.1);
+  padding: 0 30px 33px;
+  margin-top: 20px;
+  margin-bottom: 70px;
+
+  &__head {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: rgba(0, 0, 0, 0.8);
+    padding: 20px 0;
+    border-bottom: solid 1px #d3d8e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__buttons {
+
+      .mat-button {
+        width: 120px !important;
+        margin-left: 24px;
+        color: white;
+        background: #437ff5;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+    }
+
+  }
+}
+
+table {
+  font-size: 16px;
+
+  tr {
+    .colonSign {
+      width: 28px;
+      padding-left: 8px;
+    }
+
+    td {
+      vertical-align: initial;
+    }
+  }
+}
+
+.buttonsRow {
+  margin-top: 24px;
+  justify-content: flex-end;
+
+  &__col {
+    justify-content: flex-end;
+  }
+}
+
+.workorder {
+
+  &__name {
+    color: #303030;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  &__id {
+    margin-left: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, .8);
+  }
+}
+
+.termsAndConditions {
+  margin-left: 15px;
+  margin-right: 15px;
+
+  &__title {
+    color: rgba(0, 0, 0, .8);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  &__content {
+    border-radius: 5px;
+    background: white;
+    font-size: 14px;
+    color: rgba(10, 15, 20, 0.75);
+    line-height: 1.57;
+
+    ul {
+      margin-left: 15px;
+
+      li {
+        list-style: disc;
+      }
+    }
+  }
+}
+
+.address {
+  margin-top: 40px;
+
+  &__to {
+
+    &__label {
+      color: rgba(0, 0, 0, .8);
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    &__content {
+      color: #323232;
+      font-size: 12px;
+      padding-left: 0;
+    }
+  }
+}
+
+:host ::ng-deep {
+  .main-content-table table.designer-table tbody tr td.mat-cell {
+    background: #f6f8fb !important;
+    font-size: 16px !important;
+  }
+
+  .main-content-table table.designer-table thead tr th.mat-header-cell {
+    background: $grey-medium;
+    font-size: 16px !important;
+    font-weight: 500;
+  }
+}
+
+.mat-footer-cell {
+  background: #f6f8fb;
+  border: 0;
+
+  &__box {
+    margin: 8px;
+  }
+}
+
+.breakdown {
+  font-size: 16px;
+  line-height: 2.5;
+  font-weight: 600;
+  background: #f6f8fb;
+}

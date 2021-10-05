@@ -1,0 +1,52 @@
+<div class="service-cart-item d-flex justify-content-between">
+    <img class="service-cart-item__img"
+         [src]="service.thumb ? service.thumb : 'https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/sheba_xyz/png/default-service.png'"
+         onerror="this.src='https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/sheba_xyz/png/default-service.png'">
+
+    <div class="service-cart-item__info">
+        <p>{{service.name}}</p>
+        <ul class="service-cart-item__breakdown">
+            <li>Quantity: {{ service.quantity }}</li>
+            <div *ngIf="service.questions">
+                <li *ngIf="service.questions.length === 1 && service.questions[0].input_type === 'selectbox'; else other_content">
+                    {{ service.questions[0].answers[service.options ? service.options[0] : service.option[0]] }}
+                </li>
+                <ng-template #other_content>
+                    <li *ngFor="let question of service.questions; let i = index">
+                        {{ question.answers[service.options ? service.options[i] : service.option[i]] }}
+                    </li>
+                </ng-template>
+            </div>
+        </ul>
+    </div>
+
+    <div class="d-flex">
+        <h3 class="service-cart-item__price" *ngIf="orderService.Partner && orderService.Partner.breakdown[index]">
+            <span class="taka-sign">৳</span>
+            {{ orderService.Partner.breakdown[index].discounted_price / orderService.Partner.breakdown[index].quantity }}
+        </h3>
+        <div class="service-cart-item__edit d-flex">
+            <div class="service-cart-item__edit__counter" *ngIf="service">
+                <button class="btn button--success" (click)="increaseServiceQuantity(index)">
+                    <i class="material-icons" >add</i>
+                </button>
+                <input type="number" [(ngModel)]="serviceQuantity" id="quantity" (input)="onChangeQuantity(index, $event)" (blur)="onBlur($event)" >
+                <button class="btn button--success" [disabled]="serviceQuantity <= service.min_quantity" (click)="decreaseServiceQuantity(index)">
+                    <i class="material-icons" >remove</i>
+                </button>
+            </div>
+
+            <div style="margin-top: 3px; margin-left: 10px">
+                <span>{{ service.unit ? service.unit: 'unit'}}</span>
+            </div>
+
+
+            <div class="service-cart-item__edit__remove" *ngIf="for === 'service'" (click)="removeService()" >
+                <button class="btn"><i class="material-icons">close</i></button>
+            </div>
+            <div class="service-cart-item__edit__remove" *ngIf="for === 'subscription'" >
+                <button class="btn" (click)="removeSubscriptionService(index)"><i class="material-icons">close</i></button>
+            </div>
+        </div>
+    </div>
+</div>

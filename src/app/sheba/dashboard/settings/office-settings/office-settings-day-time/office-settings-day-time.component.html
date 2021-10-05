@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 p-0">
+            <p *ngIf="showSuccessAlert">
+                <ngb-alert type="custom" [dismissible]="true" *ngIf="!staticAlertClosed" (close)="staticAlertClosed = true">
+                    <i class="fas fa-check mr-3 success-icon"></i>  Settings updated successfully
+                </ngb-alert>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 bg-white p-0 office-settings-info-contain">
+            <div class="office-settings-info-header">
+                <p class="m-0">Operational Information</p>
+            </div>
+            <hr>
+            <div class="office-settings-info-content">
+                <div class="row m-0 office-settings-info-row-space">
+                    <div class="col-md-3 p-0">
+                        <p class="m-0 d-flex office-hour-type"> <span class="office-settings-info-hour-type"> Office hour type </span> &nbsp;
+<!--                            <ng-template #popContent class="d-flex flex-column">-->
+<!--                                <div>configure if you want to go-->
+<!--                                    with fixed time or flexible hour</div>-->
+<!--                            </ng-template>-->
+<!--                            <button type="button" class="btn p-0" placement="right" [ngbPopover]="popContent" popoverClass="my-custom-class">-->
+<!--                                <i class="material-icons office-settings-info-icon">info_outline</i>-->
+<!--                            </button>-->
+<!--                            <button type="button" class="btn p-0" placement="right" ngbTooltip="configure if you want to go with fixed time or flexible hour" closeDelay="10" tooltipClass="my-custom-class">-->
+<!--                                <i class="material-icons office-settings-info-icon">info_outline</i>-->
+<!--                            </button>-->
+                        </p>
+                    </div>
+                    <div class="col-md-9 office-settings-info-value">
+                        <p class="m-0">{{ office_timing.office_hour_type }} </p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row m-0 office-settings-info-row-space">
+                    <div class="col-md-3 p-0 office-settings-info-title">
+                        <p class="m-0">Start Time</p>
+                    </div>
+                    <div class="col-md-9 office-settings-info-value">
+                        <p class="m-0"> {{ office_timing.start_time }} </p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row m-0 office-settings-info-row-space">
+                    <div class="col-md-3 p-0 office-settings-info-title">
+                        <p class="m-0">End Time</p>
+                    </div>
+                    <div class="col-md-9 office-settings-info-value">
+                        <p class="m-0"> {{ office_timing.end_time }} </p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row m-0 office-settings-info-row-space">
+                    <div class="col-md-3 p-0 office-settings-info-title">
+                        <p class="m-0">Weekend</p>
+                    </div>
+                    <div class="col-md-9 office-settings-info-value">
+                        <p class="m-0"> {{ weekend_days }} </p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row m-0">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-9 p-0">
+                        <div class="office-settings-info-edit-btn">
+                            <button class="mat-button-edit" [routerLink]="['/','dashboard','settings','office','day-time','edit']" > Edit Information </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

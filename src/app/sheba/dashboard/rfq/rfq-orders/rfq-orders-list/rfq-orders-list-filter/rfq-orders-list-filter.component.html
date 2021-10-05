@@ -1,0 +1,49 @@
+<div class="d-flex pb-20 mx-0">
+
+    <div class="sorting__status" [formGroup]="statusGroup">
+        <mat-form-field appearance="none">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status" (selectionChange)="selectStatus($event)">
+                <mat-option *ngFor="let status of tenderOrderStatuses" [value]="status.key">
+                    {{ status.title }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="date-range-picker">
+        <app-material-date-range-picker
+            [initialDateRange]="initialDateRange"
+            (selectedDateRange)="OnRangeSelected($event)"></app-material-date-range-picker>
+    </div>
+
+    <div class="search-input ml-auto">
+        <i class="material-icons">search</i>
+        <input type="text" class="form-control" placeholder="Search" (keyup)="search($event)">
+    </div>
+
+</div>
+
+<div class="row mx-0 justify-content-between">
+
+    <div class="totalRecords col px-0 align-self-center">
+        <h5 class="mb-0">{{ totalOrdersCount }} Records found</h5>
+    </div>
+
+    <div class="page-controls col px-0 d-flex justify-content-end">
+
+        <div class="item-count">
+            <span class="pagination_number"> {{ dataOffset }} - {{ currentLength }} of {{ totalOrdersCount }} </span>
+        </div>
+
+        <div id="next-previous-button" class="d-flex">
+            <button class="btn" id="prev-button" (click)="previousPage()">
+                <i class="material-icons">keyboard_arrow_left</i>
+            </button>
+            <button class="btn" id="next-button" (click)="nextPage()">
+                <i class="material-icons">keyboard_arrow_right</i>
+            </button>
+        </div>
+
+    </div>
+</div>

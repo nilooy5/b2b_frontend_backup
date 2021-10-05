@@ -1,0 +1,4 @@
+<div class="layout__grid-card" (click)="selectSubcategory()">
+    <div class="layout__grid-card-image" [defaultImage]="appConfig.defaultImage"  [lazyLoad]="data.banner"></div>
+    <p>{{limitString(data.name)}}</p>
+</div>

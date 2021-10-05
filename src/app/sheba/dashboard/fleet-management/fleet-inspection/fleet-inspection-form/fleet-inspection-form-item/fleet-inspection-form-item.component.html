@@ -1,0 +1,86 @@
+<div class="input-form" [ngClass]="{open:opened}">
+    <div class="input-form-title ">
+                    <span class="sheba-title-small" (click)="toggleOpen()"
+                          *ngIf="appearance=='create';else UpdateTitle">
+                        <ng-template [ngIf]="getType(formGroup)=='radio'">Pass/Fail</ng-template>
+                        <ng-template [ngIf]="getType(formGroup)=='text'">Free Text</ng-template>
+                        <ng-template [ngIf]="getType(formGroup)=='number'">Meter Reading</ng-template>
+                    </span>
+        <ng-template #UpdateTitle>
+                        <span *ngIf="data" (click)="toggleOpen()">
+                            <span class="sheba-title">{{data.title}}</span>
+                            <span class="sheba-title-small">
+                                (
+                        <ng-template [ngIf]="data.type=='radio'">Pass/Fail</ng-template>
+                        <ng-template [ngIf]="data.type=='text'">Free Text</ng-template>
+                        <ng-template [ngIf]="data.type=='number'">Meter Reading</ng-template>)
+                            </span>
+                        </span>
+        </ng-template>
+        <span class="input-form-title-actions">
+            <button color="primary" type="button" mat-icon-button (click)="toggleOpen()" *ngIf="appearance=='update'">
+                <i class="fa fa-pencil-alt" *ngIf="!opened;else editClose"></i>
+                <ng-template #editClose><i class="fa fa-times"></i></ng-template>
+            </button>
+            <button type="button" mat-icon-button color="primary" (click)="removeItem()"><i
+                    class="fa fa-trash"></i></button>
+        </span>
+    </div>
+    <div class="input-form-items">
+        <form [formGroup]="formGroup" (submit)="submit()">
+            <div class="form-group-row">
+                <div class="col-md-4"></div>
+                <div class="col-md-8 offset-4  mb-2 mt-2 pl-0">
+                    <mat-checkbox formControlName="is_required" class="checkbox-green" color="primary" >
+                        Required?
+                    </mat-checkbox>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="form-item-label col-md-4 ">
+                    <label for="inner_title" class="required">Title</label>
+                </div>
+                <div class="form-item horizontal col-md-8">
+                    <mat-form-field appearance="outline">
+                        <input type="text" formControlName="title" matInput id="inner_title"
+                               placeholder="Title">
+                    </mat-form-field>
+                    <span class="mat-error" *ngIf="formInputInvalid('title')">
+                        <span *ngIf="formGroup.get('title').hasError('required')">Title is required</span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="form-item-label col-md-4">
+                    <label for="short_description">Short Description</label>
+                </div>
+                <div class="form-item col-md-8 horizontal">
+                    <mat-form-field appearance="outline">
+                            <textarea [cdkTextareaAutosize]="true" cdkAutosizeMinRows="3" type="text" matInput
+                                      id="short_description" formControlName="short_description"
+                                      placeholder="Write description ...."></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="form-item-label col-md-4">
+                    <label for="instructions">Instructions</label>
+                </div>
+                <div class="form-item col-md-8 horizontal">
+                    <mat-form-field appearance="outline">
+                            <textarea [cdkTextareaAutosize]="true" cdkAutosizeMinRows="3" type="text" matInput
+                                      id="instructions" formControlName="instructions"
+                                      placeholder="Write instructions ...."></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-item" *ngIf="showSaveButton">
+               <div class="col-md-8 offset-4" style="padding-left: 0">
+                   <button type="submit" class="button button-primary button-semi-small">
+                       <span class="px-2">Save</span>
+                   </button>
+               </div>
+            </div>
+        </form>
+    </div>
+</div>

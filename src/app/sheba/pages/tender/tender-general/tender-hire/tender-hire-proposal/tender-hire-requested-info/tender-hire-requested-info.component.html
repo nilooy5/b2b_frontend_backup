@@ -1,0 +1,36 @@
+<div class="request-info-card">
+    <div class="header both-side-padding mobile-view">
+        <div class="d-flex mt-2 bd-highlight align-self-center">
+            <div class="p-3 flex-grow-1 bd-highlight Portlet">Negotiating Parties</div>
+          </div>
+    </div>
+    <mat-divider class="mobile-view"></mat-divider>
+    <div class=" bd-highlight round-padding">
+        <div class="d-flex flex-fill bd-highlight align-items-center">
+            <div class="mr-3">
+               <img class="logo" [src]="tenderHireDetails?.company?.logo">
+            </div>
+            <div class="ml-2">
+                <div class="Requested-from">
+                    Requested from
+                </div>
+                <div class="Company-Name">
+                    {{tenderHireDetails?.company?.name}}
+                </div>
+            </div>
+         </div>
+        <div class="d-flex flex-fill bd-highlight mb-margin align-items-center">
+            <div class="mr-3">
+                <img class="logo" [src]="tenderHireDetails?.vendor?.logo">
+              </div>
+              <div class="ml-2">
+                  <div class="Requested-from">
+                    Requested to
+                  </div>
+                  <div class="Company-Name">
+                    {{tenderHireDetails?.vendor?.name}}
+                  </div>
+              </div>
+        </div>
+      </div>
+</div>

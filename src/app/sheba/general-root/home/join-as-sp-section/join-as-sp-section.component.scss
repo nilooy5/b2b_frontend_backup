@@ -1,0 +1,120 @@
+@import "../../../../../scss/variables";
+
+.title {
+  color: $black80;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.subtitle{
+  color: rgba(0, 0, 0, 0.6);
+  //font-family: Lato;
+  font-size: 18px;
+  margin-bottom: 40px;
+  //font-weight: normal;
+  //padding: 20px 0 40px 15px;
+}
+
+.trialButton{
+  max-width: 300px;
+  padding: 17px 57px;
+  border-radius: 3px;
+  background-color: #437ff5;
+  font-size: 18px;
+  color: rgba(255,255,255,1);
+  font-family: Lato, sans-serif;
+  margin-bottom: 60px;
+}
+
+
+//
+//:host ::ng-deep {
+//  .mat-button-wrapper {
+//    font-family: $font-lato !important;
+//    font-weight: bold;
+//  }
+//}
+//
+//.title {
+//  color: $black80;
+//  font-size: 32px;
+//  font-weight: 600;
+//  line-height: 1.5;
+//}
+//.teamImage {
+//  width: 570px;
+//  height: 373px;
+//}
+//.outerDiv{
+//  padding-top: 80px;
+//}
+//.trialButton{
+//  width: 300px;
+//  height: 70px;
+//  border-radius: 3px;
+//  background-color: #437ff5;
+//  font-size: 18px;
+//  color: rgba(255,255,255,1);
+//  font-family: Lato, sans-serif;
+//}
+//.join-as-sp-section__img {
+//  height: 250px;
+//  width: auto;
+//  margin-bottom: 50px;
+//}
+//.subtitle{
+//  opacity: 0.6;
+//  font-family: Lato;
+//  font-size: 18px;
+//  font-weight: normal;
+//  padding: 20px 0 40px 15px;
+//}
+//.colLeft{
+//  padding-top: 60px;
+//}
+//@media screen and (max-width: 768px) {
+//  :host ::ng-deep {
+//    .mat-button-wrapper {
+//      font-family: $font-poppins !important;
+//      font-weight: 500 !important;
+//    }
+//  }
+//  .title, .subtitle, .btnDiv{
+//    text-align: center;
+//  }
+//  .btnDiv{
+//    margin-bottom: 20px;
+//  }
+//  .subtitle, .trialButton{
+//    font-size: 14px;
+//  }
+//  .title{
+//    font-size: 20px;
+//    font-weight: normal;
+//  }
+//  .image{
+//    text-align: center;
+//  }
+//  .teamImage{
+//    height: 150px;
+//    width: 230px;
+//    margin: 30px 45px 0 45px;
+//  }
+//  .subtitle{
+//    padding: 20px 20px 30px 20px;
+//  }
+//  .trialButton{
+//    height: 40px;
+//    width: 200px;
+//    font-size: 14px;
+//  }
+//  .outerDiv{
+//    padding-top: 0;
+//  }
+//  .innerRow {
+//    display: flex;
+//    justify-content: center;
+//  }
+//}

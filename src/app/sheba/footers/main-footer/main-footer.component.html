@@ -1,0 +1,69 @@
+<div class="footer-container" id="footer">
+    <div class="footer">
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 foot-block">
+                        <img [src]="'assets/img/statics/footer/sBusiness.png'" alt="shebalogo">
+                        <p class="body-2">
+                            sBusiness is a smart business assistant by Sheba Platform Limited that helps companies
+                            in dealing with the mundane job of procurement and managing employees on a monthly basis
+                            through online automation.
+                        </p>
+                    </div>
+                    <div class="col-md-2 foot-block">
+                        <span class="mat-title">PAGES</span>
+                        <ul class="links">
+                            <li><a [href]="env.customer_web_url + 'about'" target="_blank"><span>About</span></a></li>
+                            <li><a [href]="env.customer_web_url + 'terms'" target="_blank"><span>Terms of use</span></a></li>
+                            <li><a [href]="env.customer_web_url + 'privacy'" target="_blank"><span>Privacy Policy</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 foot-block">
+                        <span class="mat-title">GET IN TOUCH</span>
+                        <ul class="links">
+                            <li>16516</li>
+                            <li>b2b@sheba.xyz</li>
+                            <li>House #63 (1st Floor)<br>
+                                Road #04, Block-C<br>
+                                Banani, Dhaka 1213</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 foot-block">
+                        <span class="mat-title mat-title--newsletter-title">NEWSLETTER</span>
+                        <ul class="links">
+                            <li class="newsletterTexts">The latest news, articles, and resources, sent straight to your inbox every month.</li>
+                            <li class="newsletter d-flex">
+                                <input name="email" placeholder="Your Email" type="text" class="placeholder" [formControl]="email">
+                                <button mat-button class="trialButton"  (click)="onClick()">
+                                    <span class="subscribe">Subscribe</span>
+                                    <i class="material-icons">
+                                        send
+                                    </i>
+                                </button>
+                            </li>
+                            <li class="cpyLi"><span class="copyright" style="opacity: 0.4; font-size: 18px">© 2019 Sheba.xyz</span></li>
+                        </ul>
+                        <div class="social-links">
+                            <div class="mat-title mat-title--newsletter-title">FOLLOW US</div>
+                            <div class="social-links__icons">
+                                <img (click)="gotoLink(socialLinks.facebook)" src="../../../../assets/img/statics/footer/facebook.svg" alt="">
+<!--                                <img (click)="gotoLink(socialLinks.twitter)" src="../../../../assets/img/statics/footer/twitter.svg" alt="">-->
+                                <img (click)="gotoLink(socialLinks.linkedIn)" src="../../../../assets/img/statics/footer/linkedin.svg" alt="">
+                                <img (click)="gotoLink(socialLinks.instagram)" src="../../../../assets/img/statics/footer/instagram.svg" alt="">
+<!--                                <img (click)="gotoLink(socialLinks.googlePlus)" class="google_plus" src="../../../../assets/img/statics/footer/google_plus.svg" alt="">-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-banner container">
+        <div class="row">
+            <div class="texts col-md-12">
+                2019 <span class="sheba">Sheba.xyz</span>. All Rights Reserved.
+            </div>
+        </div>
+    </div>
+</div>

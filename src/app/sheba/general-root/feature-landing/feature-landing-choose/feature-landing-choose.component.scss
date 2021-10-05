@@ -1,0 +1,68 @@
+@import "../../../../../scss/variables";
+.componentStyle{
+  margin-top: 55px;
+  margin-bottom: 55px;
+}
+.topDiv {
+  margin-bottom: 50px
+}
+.title{
+  text-align: center;
+  font-size: 40px;
+  //font-family: OpenSans,sans-serif;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.subtitle{
+  text-align: center;
+  font-size: 18px;
+  //font-family: Lato, sans-serif;
+  opacity: 0.6;
+}
+.card_title{
+  font-size: 24px;
+  //font-family: Lato, sans-serif;
+  font-weight: 600;
+}
+.description{
+  font-size: 18px;
+  //font-family: Lato, sans-serif;
+  opacity: 0.6;
+}
+.col-md-3{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+img{
+  margin-bottom: 35px;
+}
+@media screen and (max-width: 768px)  {
+  .text-center {
+    padding: 0 20px;
+  }
+  .title{
+    font-size: 20px;
+    //font-family: $font-poppins;
+    font-weight: 500;
+  }
+  .subtitle {
+    font-size: 14px;
+  }
+  .card_title {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  .description {
+    font-size: 14px;
+  }
+  img{
+    margin-bottom: 21px;
+    height: 60px;
+  }
+  .topDiv {
+    margin-bottom: 30px;
+  }
+  .componentStyle{
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,67 @@
+@import 'src/scss/variables';
+
+.expense-details{
+  padding: 60px;
+  p {
+    font-family: $font-lato;
+    margin-bottom: 0;
+  }
+  hr {
+    background-color: #f8f8fb;
+    border-top: solid 1px #f8f8fb;
+    margin-top: 20px;
+    margin-bottom: 22px;
+  }
+  &__title {
+    color: $black60;
+    font-size: 14px;
+  }
+  &__info {
+    font-size: 14px;
+    font-weight: bold;
+    color: $black80;
+  }
+
+}
+
+.sorting {
+
+  &__month{
+    padding-bottom: 20px;
+    position: relative;
+
+    select {
+      background-color: #fff;
+      border: solid 1px #d3d8e6;
+      border-radius: 3px;
+      font-size: 14px;
+      position: relative;
+      -webkit-appearance: none; // Removing the default dropdown icon
+      -moz-appearance: none;
+      cursor: pointer;
+      font-family: $font-lato !important;
+      min-width: auto !important;
+      color: rgba(0, 0, 0, 0.6) ;
+      padding: 9px 79px 9px 15px ;
+
+
+      &:focus {
+        outline-color: transparent;
+      }
+
+      option {
+        color: rgba(0, 0, 0, 0.8);
+      }
+    }
+
+    i {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 24px;
+      color: rgba(0, 0, 0, 0.6);
+      pointer-events: none;
+    }
+
+  }
+}

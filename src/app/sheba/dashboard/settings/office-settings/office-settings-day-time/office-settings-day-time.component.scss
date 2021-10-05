@@ -1,0 +1,158 @@
+hr{
+  margin: 0;
+}
+
+// style for tooltip
+
+:host ::ng-deep .my-custom-class .tooltip-inner {
+  max-width: 400px;
+  width: 242px;
+  background: #000000;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 14px;
+  line-height: 24px;
+  text-align: left;
+  font-family: Poppins;
+  font-size: 14px;
+}
+
+//style for popover
+
+//.my-custom-class .popover-body{
+//    background: #282828;
+//    border-radius: 5px;
+//    color: #fff;
+//    padding: 16px;
+//    width: 222px;
+//    line-height: 24px;
+//}
+//
+//.my-custom-class .arrow::after{
+//  border-right-color: #000000;
+//}
+
+:host ::ng-deep .my-custom-class {
+  //margin-left: 16px;
+  margin-top: -2px;
+}
+
+.office-settings-info
+{
+  &-contain{
+    border-radius: 10px;
+    box-shadow: 0 3px 15px 0 rgba(19, 34, 64, 0.1);
+  }
+  &-header{
+    margin: 0;
+    padding: 14px 30px;
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+  }
+  &-row-space{
+    padding: 15px 0px;
+  }
+  &-content{
+    padding: 0 30px;
+  }
+  &-icon{
+    display: flex;
+    font-size: 18px;
+    color:  #0e3ec1;
+    margin-top: -4px;
+    margin-left: 3px;
+  }
+  &-title{
+    opacity: 0.6;
+    font-family: Poppins;
+    font-size: 14px;
+    color: #000000;
+  }
+  &-hour-type{
+    opacity: 0.6;
+    font-family: Poppins;
+    font-size: 14px;
+    color: #000000;
+  }
+  &-value{
+    padding: 0 0 0 26px;
+    opacity: 0.8;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+  }
+  &-edit-btn{
+    padding: 20px 0 44px 26px;
+  }
+}
+
+.mat-button-edit{
+  font-size: 12px;
+  line-height: 1.5px;
+  font-weight: 600;
+  color: #437ff5;
+  width: 150px;
+  height: 30px;
+  border-radius: 6px;
+  border: solid 1px #4373f5;
+  background: #fff;
+}
+
+.success-icon{
+  background: #ffffff;
+  border-radius: 50%;
+  color: #12b886;
+  font-size: 15px;
+  padding: 4px;
+}
+
+:host ::ng-deep .alert-custom {
+  color: #ffffff;
+  background-color: #12b886;
+  border-color: #12b886;
+  border-radius: 8px;
+  justify-content: left;
+  font-family: Poppins;
+}
+
+:host ::ng-deep .alert-custom .close{
+  color: #0b0b0b;
+}
+
+//.popover .popover-body{
+//  background: #282828;
+//  border-radius: 5px;
+//  color: #fff;
+//  padding: 16px;
+//  width: 222px;
+//  line-height: 24px;
+//}
+
+@media screen and (min-width: 1600px) {
+  .container-fluid {
+    padding-right: 24%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container-fluid{
+    width: 165%;
+  }
+
+  .office-settings-info{
+    &-value{
+      padding: 0 0 0 60px;
+    }
+    &-edit-btn{
+      padding: 20px 0 44px 60px;
+    }
+  }
+
+  .office-hour-type{
+    width: 160px;
+  }
+}

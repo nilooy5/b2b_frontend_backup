@@ -1,0 +1,22 @@
+<div class="flex justify-content-start">
+    <div class="form-item horizontal mr-2">
+        <mat-form-field appearance="outline">
+            <mat-select placeholder="Inspection Form" (selectionChange)="OnFilter()"
+                        [(ngModel)]="filter.inspection_form">
+                <mat-option *ngFor="let item of formList"
+                            [value]="item.id">{{item.title|titlecase}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="form-item horizontal mr-2">
+        <mat-form-field appearance="outline">
+            <mat-select [(ngModel)]="filter.type"
+                        placeholder="Inspection Type"
+                        id="InspectionScheduleType" (selectionChange)="OnFilter()">
+                <mat-option *ngFor="let item of types" [value]="item">
+                    {{item|titlecase}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>

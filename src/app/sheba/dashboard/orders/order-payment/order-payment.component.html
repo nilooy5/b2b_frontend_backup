@@ -1,0 +1,26 @@
+<div class="service-payment__bill">
+  <div class="service-payment__header d-flex justify-content-between">
+    <span>Select Payment Options</span>
+    <span style="font-size: 14px; font-weight: 400"><i class="material-icons"
+                               style="font-size: 14px; position: relative; top: 1px; color: #12b372; margin-right: 5px"
+                            >lock</i> Safe & Secure</span>
+  </div>
+
+  <div class="container">
+    <p>Your order is currently confirmed as <strong>pay with cash</strong>.
+      You can also pay now by using following payment options.</p>
+
+    <div class="row">
+      <div class="col-6" *ngFor="let payment of payments">
+        <div class="payment-method"
+             (click)="selectPaymentMethod(payment)">
+          <p><img [src]="'https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/sheba_xyz/png/payment_method/'+payment.asset+'.png'" alt=""></p>
+          <p>{{payment.name}}</p>
+        </div>
+      </div>
+        <div class="col-12">
+            <p *ngIf="completingPayment">Loading..</p>
+        </div>
+    </div>
+  </div>
+</div>

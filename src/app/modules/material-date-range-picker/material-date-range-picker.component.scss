@@ -1,0 +1,64 @@
+@import 'src/scss/variables';
+
+:host ::ng-deep {
+
+  .md-drppicker {
+    width: 500px !important;
+    z-index: 1;
+    font-family: $font-lato !important;
+    .btn {
+      text-transform: capitalize;
+      box-shadow: none;
+      border: solid 1px #4373f5;
+      background-color: #4373f5;
+      line-height: 32px;
+      font-size: 14px;
+      min-width: 60px;
+      border-radius: 5px;
+      &.btn-default {
+        color: #000;
+        background-color: #fff;
+        border: solid 1px #bbc0cc;
+        margin-right: 10px;
+      }
+    }
+
+    td.active,
+    td.active:hover {
+      background-color: $primary;
+    }
+    td.in-range,
+    td.in-range:hover {
+      background-color: $primary;
+      color: #fff;
+    }
+
+    option.disabled,
+    td.disabled {
+      color: rgba(0, 0, 0, 0.3);
+      text-decoration: none;
+    }
+
+    .dropdowns {
+      width: 60px;
+    }
+
+  }
+  .form-control {
+    background-color: #f7f9fc !important;
+  }
+  .form-control:disabled, .form-control[readonly] {
+    background-color: #fff;
+  }
+}
+input[id='date-ranger-picker-material'] {
+  cursor: pointer;
+  //background: url('../../../assets/svg/calender.svg') no-repeat 98% 50%;
+  padding-right: 10px;
+}
+
+input[id='date-ranger-picker-material'] {
+  cursor: pointer;
+  //background: url('../../../assets/svg/calender.svg') no-repeat 98% 50%;
+  padding-right: 10px;
+}

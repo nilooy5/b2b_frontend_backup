@@ -1,0 +1,37 @@
+<div class="main-content">
+    <div class="content-title">Employee Info</div>
+    <div class="contents">
+        <div class="container-fluid">
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Employee Name</div>
+                <div class="field-row__data col-md-8">
+                    <div class="employeeCard">
+                        <div class="employeeCard-pic">
+                            <img [src]="leaveBalanceInfo.employee_pro_pic" alt="">
+                        </div>
+                        <div class="employeeCard-details">
+                            <div class="employeeCard-details-name">{{leaveBalanceInfo.employee_name}}</div>
+                            <div class="employeeCard-details-data">{{leaveBalanceInfo.employee_mobile}}</div> <!-- TODO: Number not specified-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Employee ID</div>
+                <div class="field-row__data col-md-8">{{leaveBalanceInfo.employee_id}}</div>
+            </div>
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Designation</div>
+                <div class="field-row__data col-md-8">{{leaveBalanceInfo.designation}}</div>
+            </div>
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Department</div>
+                <div class="field-row__data col-md-8">{{leaveBalanceInfo.department}}</div>
+            </div>
+            <div class="field-row row">
+                <div class="field-row__label col-md-4">Joined</div>
+                <div class="field-row__data col-md-8">{{leaveBalanceInfo.join_date}}</div>
+            </div>
+        </div>
+    </div>
+</div>

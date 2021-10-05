@@ -1,0 +1,17 @@
+@import "../../../../../../../src/scss/variables";
+.info-attachment {
+  margin: 0;
+  span {
+    font-size: 12px;
+    color: $black60;
+  }
+  a {
+    i {
+      font-size: 14px;
+      margin-left: 10px;
+      position: relative;
+      top: 2px;
+      color: $theme-color;
+    }
+  }
+}

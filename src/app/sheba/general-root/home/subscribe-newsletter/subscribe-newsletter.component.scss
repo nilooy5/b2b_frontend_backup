@@ -1,0 +1,93 @@
+@import "src/scss/variables";
+
+:host ::ng-deep {
+  .mat-button-wrapper {
+    font-weight: 600;
+  }
+}
+.cBody{
+  margin-bottom: 70px;
+}
+.tile1{
+  top: 0;
+  right: 0;
+  position: absolute;
+}
+.envelop{
+  left: 10%;
+  bottom: 0;
+  position: absolute;
+}
+input {
+}
+/*input,button {
+  z-index: 100;
+}*/
+.overlayDiv {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.title{
+  font-size: 32px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: center;
+  padding: 30px;
+}
+.subtitle{
+  opacity: 0.8;
+  font-size: 24px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+.trialButton{
+  width: 140px;
+  height: 50px;
+  border-radius:0 3px 3px 0;
+  background-color: #437ff5;
+  z-index: 3;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+}
+.container-fluid{
+  background-color: #f5f6fa;
+}
+.buttonRow{
+  display: flex;
+  align-items: flex-start;
+}
+.outerDiv{
+  position: relative;
+  height: 250px;
+}
+.formField{
+  height: 50px;
+  border-radius: 3px 0 0 3px;
+  background-color: white;
+}
+.contents {
+  z-index: 100;
+}
+input{
+  width: 400px;
+  height: 50px;
+  border-radius: 3px 0 0 3px;
+  border: solid 1px #c8c8cc;
+  background-color: white;
+  padding: 16px;
+}
+@media screen and (max-width: 768px) {
+  .cBody{
+    display: none;
+  }
+}

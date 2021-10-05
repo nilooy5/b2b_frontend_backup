@@ -1,0 +1,28 @@
+<div class="container add-confirm">
+    <img src="https://i.ibb.co/rG1vWWj/sucess-request.png" alt="">
+    <div *ngIf="isPublished === '1'">
+        <h4>TENDER has been published successfully</h4>
+        <p>You can also invite your own vendors, share the TENDER and start managing directly form TENDER details.</p>
+    </div>
+
+    <div *ngIf="isPublished === '0'">
+        <h4>TENDER has been saved as draft successfully</h4>
+        <p>You can check this from TENDER list and publish it anytime.</p>
+    </div>
+
+    <div class="text-center" style="margin-top: 25px; margin-bottom: 25px">
+        <button class="btn button--primary--filled" style="padding: 10px 16px; margin-right: 16px"
+                *ngIf="isPublished === '0'" (click)="onPublish(1)">Publish
+        </button>
+
+        <button class="btn button--primary--outline" style="padding: 10px 22px; margin-right: 16px" [routerLink]="['/','dashboard','procurement', procurementID, 'details']" [queryParams]="{'print':true}">Print</button>
+        <button class="btn button--primary--outline" style="padding: 10px 22px"
+                [routerLink]="['/','dashboard','procurement','invite']" [queryParams]="{procurement: procurementID}"
+                *ngIf="isPublished === '1'">Invite
+        </button>
+    </div>
+
+    <button class="btn btn-link rfq-details-link" (click)="redirectToProcurement(procurementID)">
+       {{ loadingRfq ? 'Loading' : 'View TENDER Details' }}
+    </button>
+</div>

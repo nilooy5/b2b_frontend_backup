@@ -1,0 +1,10 @@
+<div class="dates-container">
+    <div class="dates">
+        <div class="dates-item" *ngFor="let date of dates">
+            <span class="dates-item-text" [ngClass]="{active:date.checked,hover:date.hover}">{{date.value}}</span>
+            <input type="checkbox" class="dates-item-checkbox" (mouseenter)="date.hover=true"
+                   (mouseleave)="date.hover=false" [(ngModel)]="date.checked"
+                   (ngModelChange)="checkDates()">
+        </div>
+    </div>
+</div>

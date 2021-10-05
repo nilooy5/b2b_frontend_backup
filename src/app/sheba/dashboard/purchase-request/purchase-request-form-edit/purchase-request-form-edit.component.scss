@@ -1,0 +1,115 @@
+@import "../../../../../scss/variables";
+
+h3{
+  color: $black;
+  opacity: 0.8;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.purchase-request-form{
+  margin-bottom: 40px;
+
+  .col-form-label{
+    opacity: 0.8;
+    font-size: 14px;
+    font-weight: 400;
+    color: $black;
+  }
+
+  &-section{
+    background-color: $white;
+    font-family: $theme-font;
+    margin-top: 20px;
+    border-radius: 4px;
+    padding: 40px 20px 40px 20px;
+   text-align: center;
+
+    h3{
+      opacity: 0.8;
+      font-size: 20px;
+      font-weight: 500;
+      color: $black;
+    }
+
+    .button{
+      font-size: 14px;
+      font-weight: 500;
+      border: 1.5px solid $theme-font-color;
+      color: $theme-font-color;
+      min-height: 44px;
+    }
+  }
+
+  &-table__builder{
+    margin-bottom: 20px;
+
+    input {
+      border: 1.5px solid $theme-light-grey;
+      background-color: #fafbfc;
+      padding: 20px 16px;
+    }
+
+    .select--primary select {
+      padding: 9px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0;
+      border: solid 1.5px $theme-light-grey;
+      border-radius: 4px;
+      width: 100%;
+      min-height: 45px;
+      color: rgba(0, 0, 0, .34);
+      background-color: #fafbfc;
+    }
+
+    .select--primary i {
+      top: 12px;
+      right: 16px;
+    }
+
+    .delete-row-button{
+      border-radius: 3px;
+      border: solid 1.5px #d3d8e6;
+      background-color: #fafbfc;
+      text-align: center;
+      color: #cb1f1f;
+      padding: 9px 15px 9px 10px;
+      i{
+        font-size: 24px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .add-row-button{
+    border: none;
+    background-color: #1dbe7e;
+    text-align: center;
+    color: #fff;
+    padding: 9px 10px 9px 11px;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
+    i{
+      font-size: 24px;
+      font-weight: 400;
+      color: #fff;
+    }
+  }
+
+  .preview-button{
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    border: 1.5px solid $theme-font-color;
+    color: $theme-font-color;
+    padding: 9px 24px 9px 24px;
+  }
+
+
+  &-column{
+    vertical-align: middle;
+    margin-bottom: 0;
+  }
+}

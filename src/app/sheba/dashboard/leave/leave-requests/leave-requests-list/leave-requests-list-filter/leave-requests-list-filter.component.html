@@ -1,0 +1,100 @@
+<div class="d-flex flex-wrap pb-30 mx-0">
+    <div class="filtering">
+        <label>
+            <ng-select class="form-container__dropdown selection-button"
+                       [searchable]="false"
+                       [clearable]="false"
+                       (change)="selectStatus($event)"
+                       placeholder="Status">
+                <ng-option value="all">All</ng-option>
+                <ng-option value="accepted">Accepted</ng-option>
+                <ng-option value="pending">Pending</ng-option>
+                <ng-option value="rejected">Rejected</ng-option>
+            </ng-select>
+        </label>
+    </div>
+
+    <div class="filtering">
+        <label>
+            <ng-select class="form-container__dropdown selection-button"
+                       [searchable]="false"
+                       [clearable]="false"
+                       (change)="selectDepartment($event)"
+                       placeholder="Department">
+                <ng-option value="all" *ngIf="departments.length">All</ng-option>
+                <ng-option *ngFor="let department of departments"
+                        [value]="department.id">{{ department.name }}</ng-option>
+                <ng-option *ngIf="!departments.length" disabled>No Departments Available</ng-option>
+            </ng-select>
+        </label>
+    </div>
+
+    <div class="filtering">
+        <label>
+            <ng-select class="form-container__dropdown selection-button"
+                       [searchable]="false"
+                       [clearable]="false"
+                       (change)="selectEmployee($event)"
+                       placeholder="Employee">
+                <ng-option value="" *ngIf="filteredEmployees.length > 1">All</ng-option>
+                <ng-option *ngFor="let employee of filteredEmployees"
+                        [value]="employee.id">{{ employee.profile.name }}</ng-option>
+                <ng-option *ngIf="!filteredEmployees.length" disabled>No Employees Available</ng-option>
+            </ng-select>
+        </label>
+    </div>
+
+    <div class="search ml-auto">
+        <i class="search__icon material-icons">search</i>
+        <label>
+            <input type="text" class="form-control search__input" placeholder="Search" (input)="search($event)">
+        </label>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p *ngIf="showSuccessAlert">
+            <ngb-alert type="success_ribbon" [dismissible]="true" *ngIf="showSuccessAlert" (close)="initiateAgain()">
+                <img class="ribbon-img" src="../../../../../../../assets/svg/succes_img_ribbon.svg" alt="info">
+                {{ alert_message }}
+            </ngb-alert>
+        </p>
+    </div>
+</div>
+
+<div class="d-flex justify-content-between align-items-center">
+
+   <div class="d-flex align-items-center">
+       <h5 class="total-info">{{ totalLeaveRequestsCount }} Records found</h5>
+
+       <ng-container *ngIf="selectedRow.length">
+           <div class="filtering pl-4">
+               <label>
+                   <select class="filtering__select" (change)="selectAction($event)">
+                       <option hidden>Bulk Action</option>
+                       <option *ngFor="let option of bulkActionOptions | keyvalue" [value]="option.key">
+                           {{ option.value }}
+                       </option>
+                   </select>
+                   <i class="filtering__arrow-icon material-icons">keyboard_arrow_down</i>
+               </label>
+           </div>
+       </ng-container>
+   </div>
+
+    <div class="pagination-button">
+        <div class="align-self-center pr-3">
+            <span style="color: rgba(0, 0, 0, 0.6); font-size: 14px"> {{ dataOffset }} - {{ currentLength }} of {{ totalLeaveRequestsCount }}</span>
+        </div>
+        <button class="pagination-button__previous"
+                [class.disabled]="isPreviousPageUnavailable()" (click)="previousPage()">
+            <i class="material-icons">keyboard_arrow_left</i>
+        </button>
+        <button class="pagination-button__next"
+                [class.disabled]="isNextPageUnavailable()" (click)="nextPage()">
+            <i class="material-icons">keyboard_arrow_right</i>
+        </button>
+    </div>
+
+</div>

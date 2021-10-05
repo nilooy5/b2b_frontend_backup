@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-md-6" *ngFor="let advanceOption of advanceOptions | keyvalue" [ngStyle]="{ 'padding': advanceOption.value.padding }">
+        <div class="advance-options-item" (click)="option(advanceOption.value.name)">
+            <button class="advance-options-button-link d-flex" >
+                <img class="align-self-center" [src]="advanceOption.value.image" [alt]="advanceOption.value.alt">
+                <span class="advance-options-title align-self-center"> {{ advanceOption.value.title }} </span>
+                <span  class="material-icons align-self-center advance-options-icon" *ngIf="advanceOption.value.hasValue">done</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!--<div class="advanced-settings">-->
+<!--    <div class="row">-->
+<!--        <div class="col-md-12 d-flex justify-content-between">-->
+<!--            <button mat-button class="image"-->
+<!--                    [style.backgroundImage]="'url(../../../../../../assets/svg/icons/rfq/attachment.svg)'">-->
+<!--                Add Attachments-->
+<!--                <span class="material-icons">done</span>-->
+<!--            </button>-->
+<!--            <button mat-button class="image"-->
+<!--                    [style.backgroundImage]="'url(../../../../../../assets/svg/icons/rfq/comp_eval.svg)'">-->
+<!--                Ask for Company Evaluation-->
+<!--                <span  class="material-icons">done</span>-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--        <div class="col-md-12 d-flex justify-content-between">-->
+<!--            <button mat-button class="image"-->
+<!--                    [style.backgroundImage]="'url(../../../../../../assets/svg/icons/rfq/price_quote.svg)'">-->
+<!--                Ask for Price Quotation-->
+<!--                <span class="material-icons">done</span>-->
+<!--            </button>-->
+<!--            <button mat-button class="image"-->
+<!--                    [style.backgroundImage]="'url(../../../../../../assets/svg/icons/rfq/tech_eval.svg)'">-->
+<!--                Ask for Company Evaluation-->
+<!--                <span class="material-icons">done</span>-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->

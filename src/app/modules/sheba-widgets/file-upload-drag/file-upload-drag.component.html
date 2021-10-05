@@ -1,0 +1,30 @@
+<div class="file-upload-drag">
+    <div ng2FileDrop
+         [uploader]="uploader"
+         class="drop-zone">
+        <div class="d-flex file-upload-drag__placeholder justify-content-center">
+            <img src="../../../../assets/img/general-root/upload_icon.png" alt="">
+            <div>
+                <p>Drop files here to upload</p>
+                <p class="sub">or <span>Browse</span> your files</p>
+            </div>
+        </div>
+        <input type="file" ng2FileSelect [uploader]="uploader" />
+    </div>
+
+
+    <div *ngFor="let item of uploader.queue">
+        <p class="file-upload-drag__file-item d-flex align-items-center">
+            <span>{{ item?.file?.name }}</span>
+            <button type="button" class="btn remove-btn" (click)="item.remove(); updateQueue()">
+                <i class="material-icons">close</i>
+            </button>
+        </p>
+    </div>
+
+    <button type="button" class="btn button--filled btn-block file-upload-drag__button"
+            (click)="uploader.uploadAll()"
+            [disabled]="!uploader.getNotUploadedItems().length" *ngIf="!noUpload">
+        Upload
+    </button>
+</div>

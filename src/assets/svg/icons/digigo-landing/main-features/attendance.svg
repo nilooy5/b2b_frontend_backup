@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="587" height="442" viewBox="0 0 587 442">
+    <defs>
+        <filter id="prefix__d" width="124.6%" height="124.6%" x="-12.3%" y="-11.5%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feMorphology in="SourceAlpha" radius="2" result="shadowInner"/>
+            <feOffset dy="2" in="shadowInner" result="shadowInner"/>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="9.5"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"/>
+        </filter>
+        <filter id="prefix__f" width="128.4%" height="128.4%" x="-14.2%" y="-11%" filterUnits="objectBoundingBox">
+            <feOffset dy="5" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feMorphology in="SourceAlpha" radius="2" result="shadowInner"/>
+            <feOffset dy="5" in="shadowInner" result="shadowInner"/>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="6.5"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.932801178 0"/>
+        </filter>
+        <filter id="prefix__h" width="112.4%" height="112.4%" x="-6.2%" y="-5.6%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feMorphology in="SourceAlpha" radius="2" result="shadowInner"/>
+            <feOffset dy="2" in="shadowInner" result="shadowInner"/>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="6.5"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"/>
+        </filter>
+        <filter id="prefix__j" width="121.1%" height="125.2%" x="-10.5%" y="-12.6%" filterUnits="objectBoundingBox">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="12"/>
+        </filter>
+        <filter id="prefix__k" width="132.8%" height="293.6%" x="-16.4%" y="-48.4%" filterUnits="objectBoundingBox">
+            <feOffset dy="33" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="15"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0469023164 0"/>
+        </filter>
+        <filter id="prefix__m" width="118.5%" height="210.9%" x="-9.2%" y="-50.2%" filterUnits="objectBoundingBox">
+            <feOffset dy="3" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="10"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.290221632 0 0 0 0 0.290175289 0 0 0 0 0.290237457 0 0 0 0.0670618444 0"/>
+        </filter>
+        <circle id="prefix__a" cx="165" cy="165" r="120"/>
+        <circle id="prefix__b" cx="158.5" cy="168.5" r="77.5"/>
+        <circle id="prefix__c" cx="165.5" cy="165.5" r="165.5"/>
+        <mask id="prefix__e" width="240" height="240" x="0" y="0" fill="#fff" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox">
+            <use xlink:href="#prefix__a"/>
+        </mask>
+        <mask id="prefix__g" width="155" height="155" x="0" y="0" fill="#fff" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox">
+            <use xlink:href="#prefix__b"/>
+        </mask>
+        <mask id="prefix__i" width="331" height="331" x="0" y="0" fill="#fff" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox">
+            <use xlink:href="#prefix__c"/>
+        </mask>
+        <rect id="prefix__l" width="374.967" height="65.077" x="0" y="0" rx="5.165"/>
+        <rect id="prefix__n" width="340.879" height="56.813" x="0" y="0" rx="5.165"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#FFF" d="M0 0H570V420H0z" opacity=".01" transform="translate(17)"/>
+        <g>
+            <g stroke-linejoin="bevel">
+                <g stroke-dasharray="6" transform="translate(17) translate(0 14) translate(208 8)">
+                    <use fill="#000" filter="url(#prefix__d)" xlink:href="#prefix__a"/>
+                    <use stroke="#99ECCD" stroke-width="4" mask="url(#prefix__e)" xlink:href="#prefix__a"/>
+                </g>
+                <g stroke-dasharray="1 8" transform="translate(17) translate(0 14) translate(208 8)">
+                    <use fill="#000" filter="url(#prefix__f)" xlink:href="#prefix__b"/>
+                    <use stroke="#8AEEC9" stroke-width="4" mask="url(#prefix__g)" xlink:href="#prefix__b"/>
+                </g>
+                <g stroke-dasharray="1 6" transform="translate(17) translate(0 14) translate(208 8)">
+                    <use fill="#000" filter="url(#prefix__h)" xlink:href="#prefix__c"/>
+                    <use stroke="#9FF2D3" stroke-width="4" mask="url(#prefix__i)" xlink:href="#prefix__c"/>
+                </g>
+            </g>
+            <path fill="#2D302F" fill-opacity=".078" d="M46 106H388V392H46z" filter="url(#prefix__j)" transform="translate(17) translate(0 14)"/>
+            <g transform="translate(17) translate(0 14) translate(3.81)">
+                <rect width="321.253" height="354.232" x="45.967" y=".516" fill="#FDFEFF" stroke="#A0E7CD" stroke-width="1.033" rx="8.264"/>
+                <g transform="translate(45.45 4.131)">
+                    <text fill="#111D31" font-family="Nunito-SemiBold, Nunito" font-size="14.462" font-weight="500">
+                        <tspan x="57.846" y="29.456">Working Days</tspan>
+                    </text>
+                    <circle cx="37.187" cy="24.791" r="4.132" fill="#3D91F3"/>
+                    <text fill="#111D31" font-family="Nunito-Bold, Nunito" font-size="14.462" font-weight="bold">
+                        <tspan x="244.324" y="29.462">24 </tspan> <tspan x="265.611" y="29.462" font-family="Nunito-SemiBold, Nunito" font-size="10.33" font-weight="500">days</tspan>
+                    </text>
+                    <path stroke="#E6E6E6" stroke-linecap="round" stroke-width="1.033" d="M1.549 49.066L321.769 49.066"/>
+                </g>
+                <g transform="translate(45.45 53.714)">
+                    <text fill="#111D31" font-family="Nunito-SemiBold, Nunito" font-size="14.462" font-weight="500">
+                        <tspan x="57.846" y="29.462">On Time</tspan>
+                    </text>
+                    <circle cx="37.187" cy="24.791" r="4.132" fill="#24AB6A"/>
+                    <text fill="#111D31" font-family="Nunito-Bold, Nunito" font-size="14.462" font-weight="bold">
+                        <tspan x="244.309" y="29.462">22 </tspan> <tspan x="265.611" y="29.462" font-family="Nunito-SemiBold, Nunito" font-size="10.33" font-weight="500">days</tspan>
+                    </text>
+                </g>
+                <g transform="translate(83.67 96.066)">
+                    <g opacity=".962">
+                        <use fill="#000" filter="url(#prefix__k)" xlink:href="#prefix__l"/>
+                        <use fill="#FFF" xlink:href="#prefix__l"/>
+                    </g>
+                    <text fill="#111D31" font-family="Nunito-SemiBold, Nunito" font-size="14.462" font-weight="500">
+                        <tspan x="72.308" y="37.725">Late</tspan>
+                    </text>
+                    <circle cx="50.615" cy="33.055" r="5.165" fill="#D6404F"/>
+                    <text fill="#111D31" font-family="Nunito-Bold, Nunito" font-size="14.462" font-weight="bold">
+                        <tspan x="298.472" y="37.725">01 </tspan> <tspan x="319.745" y="37.725" font-family="Nunito-SemiBold, Nunito" font-size="10.33" font-weight="500">day</tspan>
+                    </text>
+                </g>
+                <g transform="translate(45.45 301.626)">
+                    <text fill="#111D31" font-family="Nunito-SemiBold, Nunito" font-size="14.462" font-weight="500">
+                        <tspan x="57.846" y="29.462">Absent</tspan>
+                    </text>
+                    <circle cx="37.187" cy="24.791" r="4.132" fill="#555A5E"/>
+                    <text fill="#111D31" font-family="Nunito-Bold, Nunito" font-size="14.462" font-weight="bold">
+                        <tspan x="249.432" y="29.462">01 </tspan> <tspan x="270.705" y="29.462" font-family="Nunito-SemiBold, Nunito" font-size="10.33" font-weight="500">day</tspan>
+                    </text>
+                </g>
+                <g transform="translate(0 202.462)">
+                    <use fill="#000" filter="url(#prefix__m)" xlink:href="#prefix__n"/>
+                    <use fill="#FFF" xlink:href="#prefix__n"/>
+                    <text fill="#111D31" font-family="Nunito-SemiBold, Nunito" font-size="14.462" font-weight="500">
+                        <tspan x="60.945" y="33.593">Left Early</tspan>
+                    </text>
+                    <circle cx="39.253" cy="28.923" r="4.132" fill="#EEB728"/>
+                    <text fill="#111D31" font-family="Nunito-Bold, Nunito" font-size="14.462" font-weight="bold">
+                        <tspan x="267.483" y="33.593">01 </tspan> <tspan x="288.756" y="33.593" font-family="Nunito-SemiBold, Nunito" font-size="10.33" font-weight="500">day</tspan>
+                    </text>
+                </g>
+                <g transform="translate(45.45 152.88)">
+                    <text fill="#111D31" font-family="Nunito-SemiBold, Nunito" font-size="14.462" font-weight="500">
+                        <tspan x="57.846" y="29.462">Left Timely</tspan>
+                    </text>
+                    <circle cx="37.187" cy="24.791" r="4.132" fill="#2FB9C5"/>
+                    <text fill="#111D31" font-family="Nunito-Bold, Nunito" font-size="14.462" font-weight="bold">
+                        <tspan x="249.432" y="29.462">01 </tspan> <tspan x="270.705" y="29.462" font-family="Nunito-SemiBold, Nunito" font-size="10.33" font-weight="500">day</tspan>
+                    </text>
+                </g>
+                <g transform="translate(45.45 252.044)">
+                    <text fill="#111D31" font-family="Nunito-SemiBold, Nunito" font-size="14.462" font-weight="500">
+                        <tspan x="57.846" y="29.462">On Leave</tspan>
+                    </text>
+                    <circle cx="37.187" cy="24.791" r="4.132" fill="#BCBEC1"/>
+                    <text fill="#111D31" font-family="Nunito-Bold, Nunito" font-size="14.462" font-weight="bold">
+                        <tspan x="249.432" y="29.462">01 </tspan> <tspan x="270.705" y="29.462" font-family="Nunito-SemiBold, Nunito" font-size="10.33" font-weight="500">day</tspan>
+                    </text>
+                    <path stroke="#E6E6E6" stroke-linecap="round" stroke-width="1.033" d="M1.549 49.066L321.769 49.066"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

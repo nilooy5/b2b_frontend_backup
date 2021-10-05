@@ -1,0 +1,22 @@
+<!--<app-subscription-breadcrumb *ngIf="showJourneyNavigation" ></app-subscription-breadcrumb>-->
+<div class="subscription">
+    <router-outlet></router-outlet>
+
+    <div class="journey__footer" *ngIf="showJourneyNavigation" [class.opened]="open">
+        <mat-progress-bar mode="determinate" color="#1dbe7e" class="journey-progress" *ngIf="showJourneyNavigation" [value]="progress * (100/7)"></mat-progress-bar>
+        <div class="container d-flex justify-content-between">
+            <div class="prev">
+                <button class="btn button--primary--outline" style="border-color: #d0d0d0" (click)="prev()">
+                    <i class="material-icons">chevron_left</i> PREV
+                </button>
+            </div>
+
+            <div class="next">
+                <span class="steps">Next Step: {{ nextStep }}</span>
+                <button class="btn button--primary--filled" (click)="next()" [disabled]="!getValidation(journeyState)">
+                    NEXT <i class="material-icons">chevron_right</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

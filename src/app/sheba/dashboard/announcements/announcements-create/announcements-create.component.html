@@ -1,0 +1,84 @@
+<div class="container announcement-create" *ngIf="confirmation.isHidden">
+    <form class="announcement-create__form " [formGroup]="form">
+        <ng-template matStepLabel>Announcement</ng-template>
+        <div class="form-group row">
+            <label for="title" class="col-md-3 col-form-label">Title</label>
+            <div class="col-md-9">
+                <input placeholder="Title" class="form-control" id="title" type="text" formControlName="title" required>
+                <p class="announcement-create__error-message" *ngIf="showError && fc.type.errors && fc.type.errors.required">
+                    Title is required
+                </p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="short_description" class="col-md-3 col-form-label">Short Description</label>
+            <div class="col-md-9">
+                <textarea name="description" id="short_description" rows="3"
+                          class="form-control"
+                          placeholder="Short Description" type="text" formControlName="short_description" required style="width: inherit">
+                </textarea>
+                <p class="announcement-create__error-message" *ngIf="showError && fc.type.errors && fc.type.errors.required">
+                    Short Description is required
+                </p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="description" class="col-md-3 col-form-label">Description</label>
+            <div class="col-md-9">
+
+                <ng-template [ngIf]="isDescriptionEditable">
+                    <angular-editor id="description" formControlName="description" [config]="config"></angular-editor>
+                    <!--                    <div class="form-control" id="description" formControlName="description" [ngxSummernote] required></div>-->
+                    <ng-template [ngIf]="isDescriptionValid()">
+                        <a class="button button-outline button-primary"(click)="onClickEditPreview(1)" > Preview </a>
+                    </ng-template>
+                </ng-template>
+
+                <ng-template [ngIf]="!isDescriptionEditable">
+                    <div class="descriptionPreview">
+                        <p class="mb-5" [innerHTML]="form.controls.description.value"></p>
+                        <a class="button button-outline button-primary " (click)="onClickEditPreview(2)" style="margin: 0"> Edit </a>
+                    </div>
+                </ng-template>
+
+                <p class="announcement-create__error-message" *ngIf="showError && fc.description.errors && fc.description.errors.required">Description is required</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="type" class="col-md-3 col-form-label">Type</label>
+            <div class="col-md-9">
+                <div class="select--primary announcement-create__select">
+                    <select name="type" id="type" formControlName="type" required>
+                        <option *ngFor="let type of types | keyvalue" value="{{ type.key }}">{{ type.value }}</option>
+                    </select>
+                    <i class="material-icons">keyboard_arrow_down</i>
+                </div>
+                <p class="announcement-create__error-message" *ngIf="showError && fc.type.errors && fc.type.errors.required">Type is required</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="endDate">End Date</label>
+            <div class="col-md-9">
+                <div class="date-picker">
+                    <mat-datepicker #endDate></mat-datepicker>
+                    <input class="form-control" formControlName="end_date" placeholder="Select date" id="endDate"
+                           matInput [matDatepicker]="endDate" [min]="getMinimumEndDate()" (focus)="endDate.open()">
+                    <span class="announcement-create__date-picker__toggle">
+              <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+            </span>
+                </div>
+            </div>
+            <ng-template *ngIf="showError && fc.end_date.errors">
+                <p class="announcement-create__error-message" *ngIf="fc.end_date.errors.required"> End Date is required </p>
+            </ng-template>
+        </div>
+        <div class="form-group row">
+            <div class="offset-md-3 col-md-9">
+                <button class="m-0 mt-20" [class.disabled]="isFormInValid()" [disabled]="isFormInValid()" (click)="submit()">Submit</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<app-confirm-message *ngIf="confirmation.isShown" (viewDetailsEmitter)="viewDetails()" [confirmation]="confirmation"></app-confirm-message>

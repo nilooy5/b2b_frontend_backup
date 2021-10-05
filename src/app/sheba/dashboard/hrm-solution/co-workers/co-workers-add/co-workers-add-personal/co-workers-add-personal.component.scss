@@ -1,0 +1,57 @@
+@import "src/scss/variables";
+
+::ng-deep {
+  .mat-calendar-body-selected {
+    background-color: $primary;
+  }
+  .date-picker {
+    position: relative;
+    .mat-input-element {
+      border: solid 1px $grey-medium;
+      border-radius: 10px;
+      background: $grey-light;
+      height: 40px !important;
+      padding-left: 15px;
+      cursor: pointer;
+    }
+    &__toggle {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+    }
+    span {
+      top: 0 !important;
+    }
+  }
+}
+
+#phone {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.date-input {
+
+  &:focus {
+    border: solid 1.5px $primary;
+    outline: 0;
+
+    &:hover {
+      border: solid 1.5px $input-focus-border-color;
+    }
+    &::-webkit-input-placeholder {
+      color: $black-40;
+    }
+    &::-moz-placeholder {
+      color: $black-40;
+    }
+    &:-moz-placeholder {
+      color: $black-40;
+    }
+    &:-ms-input-placeholder {
+      color: $black-40;
+    }
+  }
+
+
+}

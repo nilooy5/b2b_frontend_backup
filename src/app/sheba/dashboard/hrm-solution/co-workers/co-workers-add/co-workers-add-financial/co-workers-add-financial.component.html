@@ -1,0 +1,78 @@
+<div class="co-workers-add__header">
+    <h5>Financial Information</h5>
+</div>
+
+<hr class="co-workers-add__divider">
+
+<div class="co-workers-add__controls" [formGroup]="financialInfoForm">
+
+    <!-- TIN Number -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="tin_number" class="form-container__label"> TIN Number </label>
+        </div>
+        <div class="col-lg-9">
+            <input type="text" name="tin_number" id="tin_number" class="form-container__control"
+                   placeholder="Ex : 112233" formControlName="tin_number">
+        </div>
+    </div>
+
+    <!-- TIN Certificate Copy -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="tin_certificate" class="form-container__label"> TIN Certificate Copy </label>
+        </div>
+        <div class="col-lg-9">
+
+            <div class="attachment-container">
+
+                <i class="material-icons add-icon">add</i>
+
+                <input type="text" name="tin_certificate" id="tin_certificate" class="form-container__control attachment-input"
+                       placeholder="Choose File" [value]="tinCertificateAttachmentName" readonly>
+
+                <div class="attachment-button-container">
+                    <input type="file" (change)="selectTinCertificate($event)">
+                    <button class="button button--outline browse-button">Browse</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bank Name -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="bank_name" class="form-container__label"> Bank Name </label>
+        </div>
+        <div class="col-lg-9">
+            <ng-select id="bank_name" class="form-container__dropdown" placeholder="Select Bank"
+                       [searchable]="false" [clearable]="false" formControlName="bank_name">
+                <ng-option *ngFor="let item of banks" [value]="item.key"> {{ item.value }} </ng-option>
+            </ng-select>
+        </div>
+    </div>
+
+    <!-- Bank Account Number -->
+    <div class="row form-container align-items-center">
+        <div class="col-lg-3">
+            <label for="bank_account_number" class="form-container__label"> Bank Account Number </label>
+        </div>
+        <div class="col-lg-9">
+            <input type="text" name="bank_account_number" id="bank_account_number" class="form-container__control"
+                   placeholder="Ex : 112233" formControlName="bank_account_number">
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="row">
+        <div class="offset-lg-3 col-lg-9">
+            <button class="button button--filled submit-info" (click)="submitFinancialInformation()" [disabled]="isSaving">
+                <span  *ngIf="!isSaving;else loader"> Save </span>
+                <ng-template #loader><span><i class="fas fa-spinner fa-spin" style="font-size: 20px"></i></span></ng-template>
+            </button>
+        </div>
+    </div>
+
+</div>

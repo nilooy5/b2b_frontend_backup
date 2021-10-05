@@ -1,0 +1,62 @@
+<div class="container-fluid banner">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="row d-flex flex-row">
+                <div class="col-md-4 section">
+                    <div class="section__label">Order</div>
+                    <div class="section__content">
+                        <div class="section__text">ID #{{ bidId }}</div>
+                        <div class="orderStatus"
+                             [ngClass]="getStatusColor(order.procurement_status)">{{ order.procurement_status }}</div>
+                    </div>
+                </div>
+                <div class="col-md-8 section">
+                    <div class="section__label">Service</div>
+                    <div *ngIf="order.category" class="section__content d-flex">
+                        <img class="section__img" alt="Vendor Logo" [src]="order.category.image" onerror="this.src='https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/sheba_xyz/png/default-service.png'">
+                        <div class="section__details">
+                            <div class="section__text">{{ order.procurement_title }}</div>
+                            <div class="section__details__category">{{ order.category.name }}</div>
+                        </div>
+                    </div>
+                    <div *ngIf="!order.category" class="section__content d-flex">
+                        <img alt="Uncategorized Image" src="https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/sheba_xyz/png/default-service.png" class="section__img">
+                        <div class="section__details">
+                            <div class="section__text">{{ order.procurement_title }}</div>
+                            <div class="section__details__category"> Uncategorized </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="section__label">service provider</div>
+            <div class="section__content d-flex">
+                <img class="section__img" alt="Vendor Logo" [src]="order.vendor.logo"
+                     onerror="this.src='https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/sheba_xyz/png/default-service.png'">
+                <div class="section__details">
+                    <div class="section__text">{{order.vendor.name}}</div>
+                    <div class="section__badge d-flex">
+                        <div class="verification">
+                            <div *ngIf="order.vendor.status === 'Sheba Verified'"
+                                 class="d-flex verification verification--verified">
+                                <div class="text">{{order.vendor.status}}</div>
+                                <span class="material-icons">check_circle</span>
+                            </div>
+                            <div *ngIf="order.vendor.status !== 'Sheba Verified'"
+                                 class="d-flex verification verification--notVerified">
+                                <div class="text">{{order.vendor.status}}</div>
+                                <span class="material-icons">cancel</span>
+                            </div>
+                        </div>
+                        <div class="section__badge__contact">
+                            <span class="material-icons">fiber_manual_record</span> {{order.vendor.mobile}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

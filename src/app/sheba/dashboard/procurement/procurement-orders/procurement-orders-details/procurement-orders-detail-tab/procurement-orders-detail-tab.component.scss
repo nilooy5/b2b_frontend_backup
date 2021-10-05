@@ -1,0 +1,144 @@
+@import "../../../../../../../../src/scss/variables";
+
+:host ::ng-deep {
+  .mat-header-row {
+    background-color: #a7b1cc;
+  }
+
+
+  /**
+      =================================
+      Custom Style for Quotation Table
+      =================================
+  **/
+
+  #table {
+    margin-bottom: 0;
+    border-spacing: 0 2px;
+
+    thead {
+      tr {
+        th.mat-header-cell {
+          font-size: 14px;
+          font-weight: 500 ;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td.mat-cell {
+          font-size: 14px;
+
+          &:first-of-type {
+            border-radius: 5px 0 0 0;
+          }
+
+          &:last-of-type {
+            border-radius: 0 5px 0 0;
+          }
+        }
+      }
+    }
+
+  }
+
+  /**
+    =====================================
+    Custom Style for File Uploader Module
+    =====================================
+  **/
+
+  #file-uploader {
+    .file-upload-drag {
+      .drop-zone {
+        padding: 30px;
+        border: dashed 1px $theme-light-grey;
+        border-radius: 5px;
+      }
+
+      .file-upload-drag__placeholder {
+        padding: 0;
+        img {
+          align-self: center;
+        }
+      }
+    }
+  }
+
+
+  /**
+      =================================
+      Custom Style for Comments Module
+      =================================
+  **/
+
+  #order-detail-comments {
+    .comments-title {
+      margin: 0;
+      color: $black80;
+      font-size: 14px;
+      font-weight: 500;
+      padding-bottom: 20px;
+    }
+  }
+
+}
+
+.order-detail-tab {
+  padding: 30px 0;
+  &__section-title {
+    color: $black80;
+    font-size: 14px;
+    font-weight: 500;
+    padding-bottom: 20px;
+    margin: 0;
+  }
+
+  &__section-content {
+    padding-bottom: 30px;
+
+    #additional-information-content {
+      color: $black60;
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1.57;
+    }
+
+    h3 {
+      font-size: 14px;
+      color: $black80;
+      font-weight: 500;
+    }
+    #procurement-id  {
+      font-size: 16px;
+      font-weight: 500;
+      color: $theme-font-color;
+      margin: 0;
+    }
+    span {
+      color: $black60;
+      font-size: 14px;
+      font-weight: normal;
+    }
+  }
+}
+
+.attachment {
+  //padding: 24px;
+  .attachment__item {
+    padding: 16px 0;
+    border-bottom: 1px solid #e5ebfa;
+    font-size: 12px;
+    .attachment__buttons {
+      a {
+        color: $theme-color;
+        margin-left: 10px;
+        i {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+

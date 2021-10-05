@@ -1,0 +1,60 @@
+@import 'src/scss/variables';
+
+.feature-settings-container {
+  display: flex;
+  position: absolute;
+  top: 83px;
+  right: -259px;
+  transition: right 0.5s ease-in-out;
+  max-height: 40px;
+  border-radius: 4px 0 0 4px;
+  z-index: 6;
+  background-color: $primary;
+  cursor: pointer;
+  //width: 40px;
+  //padding: 8px;
+
+  &:hover {
+    right: 0;
+    transition: right 0.5s ease-in-out;
+  }
+
+  .settings-icon {
+    padding: 8px;
+  }
+
+  .settings-items {
+    background-color: $white;
+    width: 259px;
+
+    .list-group {
+      box-shadow: none;
+    }
+
+    .item-heading {
+      font-size: 14px;
+      line-height: 1.57;
+      color: rgba(10, 15, 20, 0.75);
+      cursor: context-menu;
+    }
+
+    .custom-item {
+      display: flex;
+      align-items: center;
+      i {
+        color: #bbc0cc; margin-right: 12px; font-size: 20px;
+      }
+      span {
+        font-size: 14px;
+        line-height: 1.57;
+        color: rgba(10, 15, 20, 0.75);
+      }
+      &:hover {
+        background-color: $primary;
+        i, span {
+          color: $white;
+        }
+      }
+    }
+  }
+}

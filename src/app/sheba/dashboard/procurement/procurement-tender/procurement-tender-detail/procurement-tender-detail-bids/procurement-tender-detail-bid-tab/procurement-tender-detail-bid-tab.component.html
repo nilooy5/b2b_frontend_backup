@@ -1,0 +1,31 @@
+<div class="container-fluid procurement-bid">
+    <div class="row d-flex justify-content-between">
+        <div class="col-md-3 pl-0" style="margin-top: 30px;">
+            <section class="layout__card layout__card--base procurement-bid__bidder-list">
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <div class="d-flex justify-content-between align-items-center procurement-bid__bidder-list__header">
+                            <h6>All Bidders</h6>
+                            <button class="button" [class.active]="favoriteFilterOn" (click)="filterFavorites()"><i class="material-icons">{{ favoriteFilterOn ? 'favorite' : 'favorite_border' }}</i>Favorites</button>
+                        </div>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <div class="procurement-bid__bidder-list__compare-link">
+                            <a [routerLink]="['/', 'dashboard', 'procurement', this.procurementId]">Compare all Quotations</a>
+                        </div>
+                    </mat-list-item>
+                    <ng-template [ngIf]="vendors && vendors.length">
+                        <mat-list-item role="listitem" *ngFor="let vendor of vendors; let i = index">
+                            <app-procurement-tender-bid-vendor-card [procurementID]="procurementId" [vendor]="vendor" [index]="i" [visibleIndexes]="compareIndexes" style="width: 100%;"></app-procurement-tender-bid-vendor-card>
+                        </mat-list-item>
+                    </ng-template>
+                    <ng-template [ngIf]="vendors && !vendors.length">
+                    </ng-template>
+                </mat-list>
+            </section>
+        </div>
+        <div class="col-md-9 pr-0" style="margin-top: 30px; flex-grow: 1">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

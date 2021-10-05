@@ -1,0 +1,19 @@
+<div class="approver-card">
+    <div class="approver-card__image">
+        <img [src]="approver.pro_pic" alt="">
+    </div>
+    <div class="approver-card__info">
+        <p class="approver-card__name">{{approver.name}}</p>
+        <p class="approver-card__designation">{{approver.designation}}, {{approver.department}}</p>
+        <p class="approver-card__mobile">{{approver.mobile}}</p>
+        <p class="approver-card__status badge"
+           [ngClass]="{
+               'approver-card__status--pending': approver.status === 'pending',
+               'approver-card__status--approved': approver.status === 'accepted',
+               'approver-card__status--rejected': approver.status === 'rejected'
+           }"
+        >
+            {{approver.status}}
+        </p>
+    </div>
+</div>

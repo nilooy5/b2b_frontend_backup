@@ -1,0 +1,143 @@
+<div class="main-content-container">
+    <div class="order-detail-tab">
+
+        <!-- START: General Information & Additional Information / Price Quotation -->
+        <div class="row pb-30">
+            <div class="col-md-4">
+                <h6 class="order-detail-tab__section-title">General Info</h6>
+                <div class="p-30 bg-white order-detail-tab__section-content">
+                    <div class="pb-30">
+                        <h3>Procurement</h3>
+                        <a id="procurement-id" (click)="onClickProcurementId()"># P-{{ procurementDetails.procurement_id }}</a>
+                    </div>
+                    <div class="pb-30">
+                        <h3>Price</h3>
+                        <span>৳{{ procurementDetails.bid_price | number}}</span>
+                    </div>
+                    <div>
+                        <h3>Job Duration</h3>
+                        <span>
+                            {{ procurementDetails.procurement_start_date }} - {{ procurementDetails.procurement_end_date }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div *ngIf="rfqType === 'basic'">
+                    <h6 class="order-detail-tab__section-title">Additional Information</h6>
+                    <div class="p-30 bg-white order-detail-tab__section-content">
+                        <p id="additional-information-content">
+                            {{ procurementDetails.procurement_additional_info }}
+                        </p>
+                    </div>
+                </div>
+
+                <div *ngIf="rfqType === 'advanced'">
+
+                    <h6 class="order-detail-tab__section-title">Price Quotation</h6>
+
+                    <div class="main-content-container">
+                        <div class="main-content-table">
+
+                            <table id="table" mat-table [dataSource]="priceQuotationDataSource" class="table designer-table">
+
+                                <ng-container matColumnDef="serialNo">
+                                    <th mat-header-cell *matHeaderCellDef>SL NO</th>
+                                    <td mat-cell *matCellDef="let element; let i = index">
+                                        <span>{{ i + 1 }}</span>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="itemName">
+                                    <th mat-header-cell *matHeaderCellDef>Item Name / Description</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <span>{{ element.itemName }}</span>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="specifications">
+                                    <th mat-header-cell *matHeaderCellDef>Specifications</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <span>{{ element.specifications }}</span>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="unit">
+                                    <th mat-header-cell *matHeaderCellDef>Unit</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <span>{{ element.unit }}</span>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="price">
+                                    <th mat-header-cell *matHeaderCellDef>Price</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <span> {{ element.price }} </span>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="totalPrice">
+                                    <th mat-header-cell *matHeaderCellDef>Total Price</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <span> {{ element.totalPrice | number }} </span>
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+
+                            <div class="no-driver" *ngIf="!priceQuotationDataSource.length">
+                                <p>No Price Quotation Available.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- START: General Information & Additional Information / Price Quotation -->
+
+        <!-- START: File Uploader -->
+        <div class="row pb-30">
+            <div class="col-md-4">
+                <h6 class="order-detail-tab__section-title">Documents</h6>
+                <div class="p-20 bg-white order-detail-tab__section-content">
+                    <div class="attachment">
+                        <app-file-upload-drag id="file-uploader" [url]="attachmentUploadUrl" (uploaded)="handleUploaded()"></app-file-upload-drag>
+
+                        <div *ngIf="attachments.length">
+                            <div *ngFor="let item of attachments" class="attachment__item d-flex justify-content-between">
+                                <span>{{limitString(item.title)}}</span>
+
+                                <div class="attachment__buttons">
+                                    <a [href]="item.file" target="_blank">
+                                        <i class="material-icons">remove_red_eye</i>
+                                    </a>
+                                    <a [href]="item.file" target="_blank" download>
+                                        <i class="material-icons">file_download</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END: File Uploader -->
+
+        <!-- START: Comments -->
+        <div class="row">
+            <div class="col-md-12">
+                <app-comments id="order-detail-comments" postUsertype="business" (OnCommentUpdate)="handleComment()" [comments]="comments"
+                              title="Comments" [postUrl]="'procurements/' + procurementId + '/comments'"></app-comments>
+            </div>
+        </div>
+        <!-- END: Comments -->
+
+    </div>
+</div>
+
+
+

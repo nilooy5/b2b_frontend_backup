@@ -1,0 +1,43 @@
+<app-sms-settings-filter (sortEmitter)="applySort($event)" (filterEmitter)="applyFilter($event)"></app-sms-settings-filter>
+
+<div class="main-content-block">
+    <div class="main-content-table" *ngIf="settings">
+        <!--designer-table-->
+        <table *ngIf="(settings.length && dataSource)" mat-table [dataSource]="dataSource"
+               class="table">
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef>Action</th>
+                <td mat-cell *matCellDef="let element">
+                    <span>{{element.event_title}}</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="sms">
+                <th mat-header-cell *matHeaderCellDef style="width: 50%;">Sms</th>
+                <td mat-cell *matCellDef="let element">
+                    <span>{{element.template}}</span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                    <span class="custom-swich">
+                        <mat-slide-toggle [checked]="element.is_published === 1 ? true : false " (change)="togglePublish($event, element.id)"><span style="text-transform: uppercase">{{element.is_published ? 'On' : 'Off'}}</span></mat-slide-toggle>
+                    </span>
+
+                    <button class="button button-flat button-fav">
+                        <i class="material-icons" (click)="editSmsSetting(element.id)">create</i>
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+        </table>
+        <div class="no-driver" *ngIf="!settings.length">
+            <p>No Templates Available.</p>
+        </div>
+    </div>
+    <div class="no-driver" *ngIf="!settings || settings === undefined">
+        <p>No Templates Available.</p>
+    </div>
+</div>

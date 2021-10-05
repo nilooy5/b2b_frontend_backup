@@ -1,0 +1,89 @@
+<ng-container *ngIf="currentPath !== 'hire' && currentPath !== 'price' && currentPath !== 'technical' && currentPath !== 'company' ">
+    <div class="container-fluid">
+    <div *ngIf="show_alert && procurementDetails.status === 'Draft'" style="margin-left: -15px;margin-right: -15px">
+        <p>
+            <ngb-alert type="custom" (close)="show_alert = false">
+                <img class="rfq-details-warning-img" src="../../../../../../assets/svg/rfq_details_warning_icon.svg" alt="Success">
+                You will not recieve any quotation from vendors until you publish the request for quotation.</ngb-alert>
+        </p>
+    </div>
+    <div class="row rfq-details-container">
+        <div class="col-md-12 bg-white rfq-details-header">
+            <div class="row">
+                <div class="col-md-3">
+                    <p class="rfq-details-title">ID</p>
+                    <div class="p-0 m-0" [ngSwitch]="procurementDetails.status">
+                        <p class="rfq-details-value"># {{ procurementDetails.id }} &nbsp;
+                            <span class="rfqStatus draft" *ngSwitchCase="'Draft'"> {{ procurementDetails.status }} </span>
+                            <span class="rfqStatus open" *ngSwitchCase="'Open'"> {{ procurementDetails.status }} </span>
+                            <span class="rfqStatus expired" *ngSwitchCase="'Expired'"> {{ procurementDetails.status }} </span>
+                            <span class="rfqStatus hired" *ngSwitchCase="'Hired'"> {{ procurementDetails.status }} </span>
+                            <span class="rfqStatus closed" *ngSwitchCase="'Closed'"> {{ procurementDetails.status }} </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <p class="rfq-details-title">Title</p>
+                    <p class="rfq-details-value" style="word-break: break-word">{{ procurementDetails.title }}</p>
+                </div>
+                <div class="col-md-4">
+                    <div *ngIf="procurementDetails.status === 'Draft'" class="publish-btn-ipad">
+                        <div class="drop-button">
+                            <button mat-button class="submitButton text-left" (click)="postRFQ(selectedSharing.value)">
+                                <span class="material-icons">{{selectedSharing.icon}}</span>
+                                <span>&nbsp;&nbsp;{{selectedSharing.label}}</span>
+                            </button>
+                            <mat-form-field class="drop-select" appearance="none">
+                                <mat-select [(value)]="initialSharingOption" (selectionChange)="setSharingOption($event)">
+                                    <mat-option *ngFor="let option of sharingOptions" [value]="option">
+                                        <span class="material-icons">{{option.icon}}</span>
+                                        <span>{{option.label}}</span>
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div *ngIf="procurementDetails.status !== 'Draft'">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="rfq-details-title">Last Date of Submission</p>
+                                <p class="rfq-details-value">{{ procurementDetails.last_date_of_submission }}</p>
+                            </div>
+                            <div class="col-md-4 kebab-btn" style="display: flex; justify-content: flex-end">
+                                <button
+                                    class="button button-primary rfq-details__btn__kebab justify-content-center"
+                                    mat-button [matMenuTriggerFor]="menu">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <mat-menu #menu="matMenu">
+                                    <a mat-menu-item [href]="getDownloadLink()">
+                                        <span class="rfq-details__menu__item"><i class="material-icons">get_app</i> Download Tender Details</span>
+                                    </a>
+                                    <mat-divider></mat-divider>
+                                    <a mat-menu-item (click)="onPrint()">
+                                        <span class="rfq-details__menu__item"><i class="material-icons">check_circle</i> Print Tender Details</span>
+                                    </a>
+                                    <mat-divider></mat-divider>
+                                    <a *ngIf="!can_show_options" mat-menu-item (click)="redirectToInvite(procurementDetails.id)">
+                                        <span class="rfq-details__menu__item"><i class="material-icons">mail</i> Invite Vendors</span>
+                                    </a>
+                                    <mat-divider></mat-divider>
+                                    <button *ngIf="!can_show_options" mat-menu-item (click)="shareRfq()">
+                                        <span class="rfq-details__menu__item"><i class="material-icons">grade</i> Share with Others</span>
+                                    </button>
+                                </mat-menu>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</ng-container>
+
+<router-outlet></router-outlet>
+
+<ng-container *ngIf="currentPath !== 'hire' && currentPath !== 'price' && currentPath !=='technical' && currentPath !== 'company'">
+    <app-rfq-footer-help></app-rfq-footer-help>
+</ng-container>

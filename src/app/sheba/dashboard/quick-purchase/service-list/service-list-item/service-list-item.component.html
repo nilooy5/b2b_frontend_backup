@@ -1,0 +1,40 @@
+<div class="service-list-item d-flex justify-content-between align-items-center">
+    <div class="imgDiv">
+        <img class="service-list-item__img"
+             [src]="data.thumb"
+             onerror="this.src='https://s3.ap-south-1.amazonaws.com/cdn-shebaxyz/sheba_xyz/png/default-service.png'">
+        <div class="addedDot" *ngIf="numberOfAddedInCart()">
+        </div>
+    </div>
+
+
+    <div class="service-list-item__info">
+        <p>{{data.name}}
+            <span class="addedService" *ngIf="numberOfAddedInCart()">
+                {{numberOfAddedInCart()}} service added
+            </span>
+        </p>
+        <!--<p>{{data.id}}</p>
+        <p>{{ storage.order.serviceDetails.id }}</p>-->
+        <button class="btn btn-link" (click)="viewDetailsEvent()">
+            More Info <i class="material-icons">chevron_right</i>
+        </button>
+    </div>
+
+    <button class="btn service-list-item__add-button button--pill" (click)="selectService()">
+        ADD
+    </button>
+<!--    <button *ngIf="checkIfSelected()" class="btn service-list-item__added-button button&#45;&#45;pill" (click)="removeService()">-->
+<!--        ADDED-->
+<!--    </button>-->
+    <!--<div *ngIf="isSelected" class="service-list-item__edit d-flex">-->
+        <!--<div class="service-list-item__edit__counter">-->
+            <!--<button class="btn button&#45;&#45;success" (click)="increaseServiceQuantity()"><i class="material-icons">add</i></button>-->
+            <!--<input type="text" [value]="data.quantity + ' unit'" disabled>-->
+            <!--<button class="btn button&#45;&#45;success" (click)="decreaseServiceQuantity()"><i class="material-icons">remove</i></button>-->
+        <!--</div>-->
+        <!--<div class="service-list-item__edit__remove" (click)="removeService(data)">-->
+            <!--<button class="btn"><i class="material-icons">close</i></button>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>

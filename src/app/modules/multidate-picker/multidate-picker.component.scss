@@ -1,0 +1,67 @@
+@import "../../../scss/variables";
+
+::ng-deep  {
+  ngb-datepicker {
+    font-family: 'Rubik', Roboto, "Helvetica Neue", sans-serif;
+    width: 100%;
+    border: none !important;
+    .custom-select {
+      display: none;
+    }
+    .ngb-dp-months {
+      width: 70%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+    }
+    .ngb-dp-header {
+      display: none;
+    }
+    .ngb-dp-month-name, .ngb-dp-week {
+      background: transparent !important;
+      border: none;
+    }
+
+    .ngb-dp-weekdays {
+      margin-bottom: 20px;
+    }
+
+    .ngb-dp-month-name {
+      margin: 20px auto;
+    }
+
+    .ngb-dp-weekday, .ngb-dp-day {
+      font-size: 13px;
+      width: 3rem;
+      font-style: normal;
+      color: $black;
+      text-align: center;
+    }
+    .ngb-dp-day.disabled {
+      color: darkgrey;
+    }
+  }
+}
+
+.custom-day {
+  text-align: center;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 4px 15px 6px 15px;
+  width: 3.5em;
+}
+.custom-day.range, .custom-day:hover {
+  background-color: #4fbfa6;
+  color: white;
+}
+.custom-day.disabled:hover {
+  background-color: transparent;
+  color: darkgrey;
+}
+.custom-day.faded {
+  background-color: #4fbfa6;
+}
+.custom-day.selected{
+  color: $white;
+  background-color: $status-green;
+}

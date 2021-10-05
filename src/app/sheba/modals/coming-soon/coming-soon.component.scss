@@ -1,0 +1,25 @@
+@import "../../../../scss/variables";
+.coming-soon-modal {
+  text-align: center;
+  padding: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: $theme-font-color;
+    text-transform: uppercase;
+  }
+  p {
+    color: $mid_grey;
+  }
+  button {
+    padding: 16px 36px;
+    font-size: 18px;
+  }
+}

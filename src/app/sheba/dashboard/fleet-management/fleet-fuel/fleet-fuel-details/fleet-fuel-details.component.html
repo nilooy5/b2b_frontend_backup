@@ -1,0 +1,107 @@
+<h4 *ngIf="fuel">Fuel Entry #{{fuel.id}}</h4>
+
+<div class="container" style="padding-bottom: 100px">
+
+    <app-vehicle-summary-card [vehicleInfo]="fuel.vehicle"></app-vehicle-summary-card>
+
+    <br>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="layout__card layout__card__header" style="margin-bottom: 10px">
+                Fuel Details
+            </div>
+            <div class="layout__card info-list container" style="margin-bottom: 10px">
+                <div class="row info-list__item" style="margin: 0 0">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Vehicle </label>
+                    </div>
+                    <div class="col-8 info-list__item__data d-flex">
+                        <p>{{fuel.vehicle.vehicle_model}}[{{fuel.vehicle.model_year}}]</p>
+                    </div>
+                </div>
+                <div class="row info-list__item" style="margin: 0 0">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Date </label>
+                    </div>
+                    <div class="col-8 info-list__item__data">
+                        <p style="color: #458ae6"> {{fuel.refilled_date | date:"EEE, MMMM d, y, h:mm a"}} </p>
+                    </div>
+                </div>
+                <div class="row info-list__item" style="margin: 0 0">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Fuel Type/Grade </label>
+                    </div>
+                    <div class="col-8 info-list__item__data">
+                        <p> {{fuel.type}} </p>
+                    </div>
+                </div>
+                <div class="row info-list__item" style="margin: 0 0">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Quantity </label>
+                    </div>
+                    <div class="col-8 info-list__item__data">
+                        <p> {{fuel.volume}} {{fuel.unit}} </p>
+                    </div>
+                </div>
+                <div class="row info-list__item" style="margin: 0 0">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Total Price </label>
+                    </div>
+                    <div class="col-8 info-list__item__data">
+                        <p> BDT {{fuel.price}} </p>
+                    </div>
+                </div>
+                <div class="row info-list__item" style="margin: 0 0">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Vendor Name </label>
+                    </div>
+                    <div class="col-8 info-list__item__data">
+                        <p> {{fuel.station_name}} </p>
+                    </div>
+                </div>
+                <div class="row info-list__item" style="margin: 0 0">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Vendor Address </label>
+                    </div>
+                    <div class="col-8 info-list__item__data">
+                        <p> {{fuel.station_address}}</p>
+                    </div>
+                </div>
+                <div class="row info-list__item" style="margin: 0 0">
+                    <div class="col-4 info-list__item__label" style="padding-left: 0">
+                        <label> Reference </label>
+                    </div>
+                    <div class="col-8 info-list__item__data">
+                        <p> {{fuel.reference}} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 ">
+            <div class="layout__card attachment">
+                <app-file-upload-drag [url]="attachmentUploadUrl" (uploaded)="handleUploaded()"></app-file-upload-drag>
+
+                <div *ngIf="attachments.length">
+                    <div *ngFor="let item of attachments" class="attachment__item d-flex justify-content-between">
+                        <span>{{limitString(item.title)}}</span>
+
+                        <div class="attachment__buttons">
+                            <a [href]="item.file" target="_blank"><i class="material-icons">remove_red_eye</i></a>
+                            <a [href]="item.file" target="_blank" download><i
+                                class="material-icons">file_download</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="layout__card">
+                <app-comments postUsertype="business" (OnCommentUpdate)="handleComment()" [comments]="comments"
+                              title="Comments"
+                              [postUrl]="'fuel-logs/' + fuelId + '/comments'"></app-comments>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="quick-purchase__cart container">
+    <app-journey-header title="Cart" [showCart]="false"></app-journey-header>
+    <div class="container">
+        <div *ngIf="for !== 'subscription'">
+            <div *ngFor="let service of orderService.Services; let i = index">
+                <app-service-cart-item [service]="service" [index]="i"
+                                       [showCounter] = "showCounter"
+                                       (serviceRemove)="removeService(i)"
+                                       (decreaseQuantity)="decreaseServiceQuantity(i)"
+                                       (increaseQuantity)="increaseServiceQuantity(i)"></app-service-cart-item>
+            </div>
+            <p *ngIf="!orderService.Services.length">Your cart is empty.</p>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between">
+        <button class="btn button button--outline" (click)="goToOptionPage()">Add More Service</button>
+        <p class="quick-purchase__cart__price price" *ngIf="orderService.Partner">
+            Approximate Total Price: <span class="quick-purchase__cart__amount amount">
+            <span class="taka-sign">৳ </span>{{numberWithCommas(calculatePrice())}}</span>
+        </p>
+    </div>
+</div>

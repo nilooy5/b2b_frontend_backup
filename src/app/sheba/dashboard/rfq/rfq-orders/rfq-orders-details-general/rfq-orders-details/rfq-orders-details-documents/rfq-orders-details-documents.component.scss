@@ -1,0 +1,42 @@
+@import "../rfq-orders-details.component";
+
+.document {
+  border-bottom: solid 1px #e5ebfa;
+  padding-bottom: 10px;
+  padding-top: 5px;
+
+  &-texts {
+    flex-wrap: wrap;
+    word-break: break-word;
+
+    &__filename {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.43;
+      color: #484b4f;
+      padding-bottom: 2px;
+
+    }
+
+    &__specs {
+      font-size: 12px;
+      line-height: 1.5;
+      color: $black-40;
+
+      .material-icons {
+        margin: 0 8px 0 6px;
+        font-size: 6px;
+        color: rgba(10, 15, 20, 0.75);
+      }
+    }
+  }
+
+  &-buttons {
+    .material-icons {
+      font-size: 20px;
+      color: #437ff5;
+      margin: 0 !important;
+    }
+  }
+}
+
